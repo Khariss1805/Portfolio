@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khariss Creations Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/72f26000c4.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="header">
+        <div class="container">
+            
+            <nav>
+                
+                <img src="Images/Firma khariss.png" class="logo">
+                <ul id="sidemenu">
+                    <li><a href="#header">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <i class="fa-solid fa-x" onclick="closemenu()"></i>
+                </ul>
+                <i class="fa-solid fa-bars" onclick="openmenu()"></i>
+            </nav>
+            <div class="header-text">
+                <p>UI/UX Designer</p>
+                <h1>Hi there! I'm <span>Julieta</span><br> Lara from Colombia</h1>
+            </div>
+        </div>
+    </div>
+<!----------about---------->
+
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="about-col-1">
+                    <img src="Images/Foto ceremonia - Julieta Lara.png " alt="">
+                </div>
+                <div class="about-col-2">
+                    <h1 class="sub-title">About Me</h1>
+                    <p>I am a multimedia engineer deeply passionate about the intersection of technology, creativity, 
+                        and human-centered design. Throughout my academic and professional journey, I have developed a 
+                        versatile skill set that spans graphic design, web development, audiovisual production, and interactive 
+                        experiences. However, my true passion lies in user experience (UX) design, where I merge analytical 
+                        thinking with creativity to craft intuitive and engaging digital solutions. I thrive on exploring how 
+                        design and technology can work together to create impactful, user-friendly products that improve people’s lives.
+                        
+                    </p>
+                    <div class="tab-titles">
+                        <p class="tab-links active-link" onclick="opentab('skills')">Skills</p> 
+                        <p class="tab-links" onclick="opentab('education')">Education</p>
+                        <p class="tab-links" onclick="opentab('experience')">Experience</p>
+                        
+                    </div>
+                    <div class="tab-contents active-tab" id="skills">
+                        <ul>
+                            <li><span>UI/UX</span><br>Designing web/app interfaces, user experience</li>
+                            <li><span>GRAPHIC DESIGN</span><br>Creative content creation</li>
+                            <li><span>WEB DEVELPOMENT</span><br>Web app development</li>                          
+                        </ul>
+                    </div>
+                    <div class="tab-contents" id="experience">
+                        <ul>
+                            <li><span>UX/UI DESIGNER</span> <br> 2024-Current <br> Designing menu app for NonaAntonjos</li>
+                            <li><span>CONTENT CREATOR</span><br> 2022 <br> Content creation and promotion for ViveSports</li>                       
+                        </ul>
+                    </div>
+                    <div class="tab-contents" id="education">
+                        <ul>
+                            <li><span>UNDERGRADUATE DEGREE IN MULTIMEDIA ENGINEERING</span><br> 2020 - 2024 <br> Universidad Autónoma de Occidente.</li>
+                            <li><span>CERTIFICATE HUMAN-COMPUTER INTERACTION: THE FOUNDATIONS OF UX DESIGN</span><br> 2024 <br> The Interaction Design Foundation</li>
+                            <li><span>CERTIFICATE MOBILE UI DESIGN</span><br> 2024 <br> The Interaction Design Foundation.</li>
+                            <li><span>CERTIFICATE MOBILE UX STRATEGY: HOW TO BUILD SUCCESSFUL PRODUCTS</span><br> 2024 <br> The Interaction Design Foundation.</li>
+                            <li><span>CERTIFICATE GET YOUR PRODUCT USED: ADOPTION AND APPROPRIATION</span><br> 2024 <br> The Interaction Design Foundation.</li>      
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+<!----------Services---------->
+    <div id="services">
+        <div class="container">
+            <h1 class="sub-title">My Services</h1>
+            <div class="services-list">
+                <div>
+                    <i class="fa-solid fa-pencil"></i>
+                    <h2>UX/UI Design</h2>
+                    <p>I craft intuitive and visually appealing user interfaces that enhance user experiences. By focusing on 
+                        usability and aesthetics, I ensure that each design solution meets the needs of both users and businesses</p>
+                    <a href="#portfolio">Learn more</a>
+                </div>
+                <div>
+                    <i class="fas fa-file-alt"></i>
+                    <h2>Graphic Design</h2>
+                    <p>I create compelling visual content that communicates messages effectively. With a blend of creativity and 
+                        technical skills, I design graphics that engage audiences across various platforms, from social media to print.</p>
+                    <a href="graphic.html">Learn more</a>
+                </div>
+                <div>
+                    <i class="fa-solid fa-pen-nib"></i>
+                    <h2>Content Creation</h2>
+                    <p> I craft visually compelling and engaging content that resonates with your audience. From graphic design to multimedia 
+                        production, I ensure every piece is aligned with your brand’s voice, creating impactful and memorable experiences
+                        across digital platforms.</p>
+                    <a href="content.html">Learn more</a>
+                </div>
+                <div>
+                    <i class="fa-solid fa-code"></i>
+                    <h2>Web design</h2>
+                    <p>I develop responsive and user-friendly websites that align with modern standards. Combining clean code with a 
+                        strong design foundation, I build functional and aesthetically pleasing websites tailored to your needs.</p>
+                    <a href="webdev.html">Learn more</a>
+                </div>
+
+            </div>
+        </div>
+        
+    </div>
+    <!----------portofolio---------->
+    <div id="portfolio">
+        <div class="container">
+            <h1 class="sub-title">My Work</h1>
+            <div class="work-list">
+                <div class="work">
+                    <img src="Images/Nona ptt.png">
+                    <div class="layer">
+                        <h3>Menu app</h3>
+                        <p>Redesigning a modern, user-friendly digital menu for a catering company, Nona Antojos. 
+                            The goal is to enhance the customer experience by improving navigation, visual appeal, 
+                            and accessibility, ensuring the menu is both functional and engaging across all devices</p>
+                            <a href="nona.html"><i class="fa-solid fa-up-right-from-square"></i> </a>
+                    </div>
+                </div>
+                <div class="work">
+                    <img src="Images/Estilo Base (2).png">
+                    <div class="layer">
+                        <h3>Serious VR Videogame</h3>
+                        <p>Virtual reality narrative that immerses players in the emotional journey of a young woman facing 
+                            challenges related to gender-based violence. Through interactive storytelling, the game fosters 
+                            empathy and explores themes of resilience and emotional healing.</p>
+                            <a href="Irina.html"><i class="fa-solid fa-up-right-from-square"></i> </a>
+                    </div>
+                </div>
+                <div class="work">
+                    <img src="Images/Slide 42.png">
+                    <div class="layer">
+                        <h3>Food Expolorer</h3>
+                        <p>Mobile app that highlights hidden culinary gems in Cali. It lets local businesses showcase their offerings,
+                             track performance, and engage with customers. Users can discover new dining spots, rate and review dishes, 
+                             and support local food ventures..</p>
+                            <a href="https://www.behance.net/gallery/176425141/Food-Explorer"><i class="fa-solid fa-up-right-from-square"></i> </a>
+                    </div>
+                </div>
+            </div>
+            <a href="#" class="btn">See more</a>
+
+        </div>
+    </div>
+ <!----------Contact---------->
+    <div id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="contact-left">
+                    <h1 class="sub-title">Contact Me</h1>
+                    <p> <i class="fa-solid fa-envelope"></i> julietalarar98@gmail.com</p>
+                    <p> <i class="fa-solid fa-phone"></i> +57 322 211 8698</p>
+                    <div class="social-icons">
+                        <a href="https://www.behance.net/julietalararo"><i class="fa-brands fa-square-behance"></i></a>
+                        <a href="https://www.linkedin.com/in/julieta-lara-romero-525366285/"><i class="fa-brands fa-linkedin"></i></a>
+                    </div>
+                    <a href="Images/CV.pdf.pdf" download class="btn btn2">Download CV</a>
+                </div>
+                <div class="contact-right">
+                    <img src="Images/Firma khariss.png" class="logo2">
+                </div>
+            </div>
+        </div>
+        <div class="copryright">
+            <p>copryright Julieta. Made with Easy Tutorials</p>
+        </div>
+    </div>
+
+    <script>
+        var tablinks = document.getElementsByClassName("tab-links");
+        var tabcontents = document.getElementsByClassName("tab-contents");
+
+        function opentab(tabname){
+            for(tablink of tablinks){
+                tablink.classList.remove("active-link");
+            }
+            for(tabcontent of tabcontents){
+                tabcontent.classList.remove("active-tab");
+            }
+            event.currentTarget.classList.add("active-link");
+            document.getElementById(tabname).classList.add("active-tab");
+        }
+    </script>
+    <script>
+        var sidemenu = document.getElementById("sidemenu");
+        function openmenu(){
+            sidemenu.style.right = "0";
+        }
+        function closemenu(){
+            sidemenu.style.right = "-200px";
+        }
+         
+    </script>
+</body>
+</html>
