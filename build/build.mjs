@@ -273,7 +273,7 @@ function workCase(c, dir, key, i) {
 <div class="wrap narrow case-body">
   <div class="actions" data-reveal>${links}</div>
   <nav class="case-nav" aria-label="${c.nav.projects}" data-reveal>
-    <a href="${rel(p, dir + 'projects.html')}">${L.back}</a>
+    <a class="case-back" href="${rel(p, dir + 'projects.html')}"><span class="muted">${c.nav.projects}</span>${L.back}</a>
     <a class="case-next" href="${rel(p, dir + 'work/' + nextKey + '.html')}"><span class="muted">${c.labels.next}</span>${nextTitle}</a>
   </nav>
 </div>
@@ -304,7 +304,7 @@ function workArchive(c, dir) {
 <div class="wrap wide">${groups}</div>
 <div class="wrap narrow case-body">
   <nav class="case-nav" aria-label="${c.nav.projects}" data-reveal>
-    <a href="${rel(p, dir + 'projects.html')}">${c.work.labels.back}</a>
+    <a class="case-back" href="${rel(p, dir + 'projects.html')}"><span class="muted">${c.nav.projects}</span>${c.work.labels.back}</a>
     <a class="case-next" href="${rel(p, dir + 'work/irina.html')}"><span class="muted">${c.labels.next}</span>${c.work.irina.title}</a>
   </nav>
 </div>
@@ -630,7 +630,7 @@ ${dash ? `<div class="wrap wide">${dash}</div>` : ''}
   </section>
   <section data-reveal><h2>${c.labels.tools}</h2><ul class="tags plain">${pr.tools.map((t) => `<li>${t}</li>`).join('')}</ul></section>
   <nav class="case-nav" aria-label="${c.nav.projects}" data-reveal>
-    <a href="${rel(p, dir + 'projects.html')}">${c.labels.back}</a>
+    <a class="case-back" href="${rel(p, dir + 'projects.html')}"><span class="muted">${c.nav.projects}</span>${c.labels.back}</a>
     <a class="case-next" href="${rel(p, dir + 'projects/' + next + '.html')}"><span class="muted">${c.labels.next}</span>${T(c.projects[next].title, c)}</a>
   </nav>
 </div>
