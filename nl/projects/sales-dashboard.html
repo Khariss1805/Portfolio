@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Een salesdashboard waar een webshop op kan draaien | Julieta Lara Romero</title>
+  <meta name="description" content="Een dashboard in Power BI-stijl met een jaar aan bestellingen: omzet, categorieën, seizoenen en retouren op één scherm.">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f7f4fc" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#150f26" media="(prefers-color-scheme: dark)">
+  <meta property="og:title" content="Een salesdashboard waar een webshop op kan draaien | Julieta Lara Romero">
+  <meta property="og:description" content="Een dashboard in Power BI-stijl met een jaar aan bestellingen: omzet, categorieën, seizoenen en retouren op één scherm.">
+  <meta property="og:type" content="website">
+  <link rel="alternate" hreflang="en" href="https://khariss1805.github.io/Portfolio/projects/sales-dashboard.html">
+  <link rel="alternate" hreflang="nl" href="https://khariss1805.github.io/Portfolio/nl/projects/sales-dashboard.html">
+  <link rel="alternate" hreflang="pt-PT" href="https://khariss1805.github.io/Portfolio/pt/projects/sales-dashboard.html">
+  <link rel="alternate" hreflang="es" href="https://khariss1805.github.io/Portfolio/es/projects/sales-dashboard.html">
+  <link rel="alternate" hreflang="x-default" href="https://khariss1805.github.io/Portfolio/projects/sales-dashboard.html">
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Instrument+Sans:ital,wght@0,400..700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/site.css">
+  <script>document.documentElement.classList.add('js');setTimeout(function(){if(!window.__site)document.documentElement.classList.remove('js')},3000)</script>
+</head>
+<body>
+<div class="read-progress" aria-hidden="true"></div>
+<a class="skip" href="#main">Naar de inhoud</a>
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="brand" href="../index.html">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="13" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="16" cy="16" r="5" fill="currentColor"/></svg>
+      <span><span class="brand-name">Julieta Lara Romero</span><span class="brand-role">Data-analist en UX/UI-designer</span></span>
+    </a>
+    <nav class="main-nav" aria-label="Main">
+      <a href="../index.html">Home</a>
+      <a href="../about.html">Over mij</a>
+      <a href="../projects.html" aria-current="page">Projecten</a>
+      <a href="../../assets/Julieta-Lara-Romero-CV.pdf">Cv</a>
+    </nav>
+    <nav class="lang-switch" aria-label="Taal"><a href="../../projects/sales-dashboard.html" hreflang="en" lang="en" title="English">EN</a><a href="sales-dashboard.html" hreflang="nl" lang="nl" title="Nederlands" aria-current="true">NL</a><a href="../../pt/projects/sales-dashboard.html" hreflang="pt-PT" lang="pt-PT" title="Português">PT</a><a href="../../es/projects/sales-dashboard.html" hreflang="es" lang="es" title="Español">ES</a></nav>
+  </div>
+</header>
+<main id="main">
+<article>
+<header class="page-head case-head">
+  <div class="wrap narrow">
+    <nav class="crumbs hero-in" style="--d:0" aria-label="Kruimelpad"><a href="../index.html">Home</a><span aria-hidden="true">/</span><a href="../projects.html">Projecten</a></nav>
+    <p class="case-tags hero-in" style="--d:1"><span class="tag">Dashboards en BI</span><span class="tag tag-practice">Oefenproject</span></p>
+    <h1 class="hero-in" style="--d:2">Een salesdashboard waar een webshop op kan draaien</h1>
+    <p class="hero-lead hero-in" style="--d:3">De webshop hield de verkoop bij in vijf spreadsheets die nooit overeenkwamen. Ik bouwde één model en één dashboard, zodat elk team dezelfde cijfers leest.</p>
+    <div class="case-results hero-in" style="--d:4"><span class="result"><strong><span class="count" data-to="53.8" data-dec="1">53,8</span>%</strong><span>van de omzet komt uit twee categorieën</span></span><span class="result"><strong><span class="count" data-to="21.9" data-dec="1">21,9</span>%</strong><span>van de kledingbestellingen komt retour</span></span></div>
+    <p class="practice-note hero-in" style="--d:5">Dit is een oefenproject. Het bedrijf is fictief en de data is synthetisch, gegenereerd om zich te gedragen als echte productdata. De vragen, methodes en code zijn wat ik in de praktijk zou gebruiken.</p>
+  </div>
+</header>
+<div class="wrap narrow case-body">
+  <section data-reveal><h2>De vraag</h2><p>Een fictieve webshop verkoopt in zes categorieën. Elk team exporteerde zijn eigen cijfers en overleggen begonnen met discussies over welke spreadsheet klopte.</p><p>De vraag: waar komt de omzet vandaan, wanneer piekt die, en wat vreet er ongemerkt aan?</p></section>
+  <section data-reveal><h2>De data</h2><p>Twaalf maanden aan bestellingen: 39.709 bestellingen met hun artikelen, producten en categorieën, plus elke retour.</p></section>
+  <section><h2 data-reveal>Wat ik deed</h2><ol class="steps"><li data-reveal style="--d:0">Per bedrijfsdefinitie één SQL-query geschreven, bijvoorbeeld omzet zonder geannuleerde bestellingen, zodat elke visual dezelfde logica gebruikt.</li><li data-reveal style="--d:1">De data gemodelleerd in een sterschema: bestellingen en retouren als feiten; datums, producten en categorieën als dimensies.</li><li data-reveal style="--d:2">Het dashboard hieronder gebouwd: vier KPI-tegels, omzet per maand en een uitsplitsing per categorie.</li><li data-reveal style="--d:3">DAX-measures toegevoegd voor de gemiddelde bestelwaarde en de groei ten opzichte van vorig jaar.</li></ol></section>
+</div>
+<div class="wrap wide"><div class="dash" data-reveal>
+      <div class="dash-bar"><span class="dash-dots" aria-hidden="true"><i></i><i></i><i></i></span><span>Een salesdashboard waar een webshop op kan draaien</span></div>
+      <div class="kpis"><div class="kpi"><span>Omzet</span><strong>€<span class="count" data-to="2.34" data-dec="2">2,34</span>M</strong></div><div class="kpi"><span>Bestellingen</span><strong><span class="count" data-to="39709" data-dec="0">39.709</span></strong></div><div class="kpi"><span>Gem. bestelling</span><strong>€<span class="count" data-to="59" data-dec="0">59</span></strong></div><div class="kpi kpi-miss"><span>Retourpercentage</span><strong><span class="count" data-to="8.6" data-dec="1">8,6</span>%</strong></div></div>
+      <div class="dash-grid">
+        <div class="dash-wide"><figure class="chart-fig" data-reveal>
+  <div class="figbox"><div class="chart"><canvas id="p1-months" role="img" aria-label="Omzet per maand."></canvas></div></div>
+  <figcaption>Omzet per maand. <span class="muted">Beweeg over de grafiek of tik erop voor de exacte waarden.</span></figcaption>
+  <details class="data-table"><summary>Toon de cijfers</summary><div class="table-scroll"><table><thead><tr><th></th><th scope="col">Omzet (× € 1.000)</th></tr></thead><tbody><tr><th scope="row">jan</th><td class="num">150</td></tr><tr><th scope="row">feb</th><td class="num">138</td></tr><tr><th scope="row">mrt</th><td class="num">158</td></tr><tr><th scope="row">apr</th><td class="num">170</td></tr><tr><th scope="row">mei</th><td class="num">184</td></tr><tr><th scope="row">jun</th><td class="num">175</td></tr><tr><th scope="row">jul</th><td class="num">174</td></tr><tr><th scope="row">aug</th><td class="num">186</td></tr><tr><th scope="row">sep</th><td class="num">182</td></tr><tr><th scope="row">okt</th><td class="num">214</td></tr><tr><th scope="row">nov</th><td class="num">281</td></tr><tr><th scope="row">dec</th><td class="num">340</td></tr></tbody></table></div></details>
+</figure></div>
+        <figure class="chart-fig" data-reveal>
+  <div class="figbox"><div class="chart" style="--h:354px"><canvas id="p1-cats" role="img" aria-label="Omzet per categorie over het jaar."></canvas></div></div>
+  <figcaption>Omzet per categorie over het jaar. <span class="muted">Beweeg over de grafiek of tik erop voor de exacte waarden.</span></figcaption>
+  <details class="data-table"><summary>Toon de cijfers</summary><div class="table-scroll"><table><thead><tr><th></th><th scope="col">Omzet (× € 1.000)</th></tr></thead><tbody><tr><th scope="row">Elektronica</th><td class="num">698</td></tr><tr><th scope="row">Wonen</th><td class="num">559</td></tr><tr><th scope="row">Kleding</th><td class="num">407</td></tr><tr><th scope="row">Beauty</th><td class="num">289</td></tr><tr><th scope="row">Sport</th><td class="num">244</td></tr><tr><th scope="row">Boeken</th><td class="num">142</td></tr></tbody></table></div></details>
+</figure>
+        <figure class="chart-fig" data-reveal>
+  <div class="figbox"><div class="chart" style="--h:354px"><canvas id="p1-returns" role="img" aria-label="Aandeel geretourneerde bestellingen, per categorie."></canvas></div></div>
+  <figcaption>Aandeel geretourneerde bestellingen, per categorie. <span class="muted">Beweeg over de grafiek of tik erop voor de exacte waarden.</span></figcaption>
+  <details class="data-table"><summary>Toon de cijfers</summary><div class="table-scroll"><table><thead><tr><th></th><th scope="col">Bestellingen geretourneerd (%)</th></tr></thead><tbody><tr><th scope="row">Kleding</th><td class="num">21,9</td></tr><tr><th scope="row">Sport</th><td class="num">9,7</td></tr><tr><th scope="row">Wonen</th><td class="num">8,2</td></tr><tr><th scope="row">Elektronica</th><td class="num">5,3</td></tr><tr><th scope="row">Beauty</th><td class="num">3,4</td></tr><tr><th scope="row">Boeken</th><td class="num">2,2</td></tr></tbody></table></div></details>
+</figure>
+      </div>
+    </div></div>
+<div class="wrap narrow case-body">
+  <section><h2 data-reveal>Wat ik vond</h2><div class="finding">
+      <h3 data-reveal>Twee categorieën dragen de webshop</h3>
+      <p data-reveal>Elektronica en wonen zijn goed voor 53,8% van de omzet. Een slechte maand in een van die twee raakt het hele bedrijf.</p>
+      
+    </div><div class="finding">
+      <h3 data-reveal>December is bijna twee gewone maanden waard</h3>
+      <p data-reveal>De omzet in december ligt 73% boven het maandgemiddelde, en het laatste kwartaal levert 35,5% van het jaar. Voorraad en campagnes moeten in oktober klaarstaan.</p>
+      
+    </div><div class="finding">
+      <h3 data-reveal>Kledingretouren zijn een verborgen kostenpost</h3>
+      <p data-reveal>21,9% van de kledingbestellingen komt terug, tegen 8,6% in de hele webshop. Dat is zo’n € 89.000 aan terugbetaalde verkopen per jaar.</p>
+      
+    </div></section>
+  <section><h2 data-reveal>Wat ik zou aanraden</h2><ul class="recs"><li data-reveal style="--d:0">De teamspreadsheets uitfaseren en het gedeelde model gebruiken als enige bron van cijfers.</li><li data-reveal style="--d:1">Voorraad en marketing voor het laatste kwartaal vanaf oktober plannen, niet vanaf november.</li><li data-reveal style="--d:2">Een betere maattabel testen op de kledingpagina’s en het retourpercentage als succesmaat gebruiken.</li></ul></section>
+  <section data-reveal><h2>Een blik op de code</h2>
+    <figure class="code"><figcaption>SQL + DAX</figcaption><pre tabindex="0" translate="no"><code>-- Monthly revenue and returns by category (feeds the Power BI model)
+SELECT
+  date_trunc('month', o.ordered_at)              AS month,
+  p.category,
+  COUNT(DISTINCT o.order_id)                     AS orders,
+  SUM(oi.quantity * oi.unit_price)               AS revenue,
+  AVG(CASE WHEN r.order_id IS NOT NULL THEN 1.0 ELSE 0 END) AS return_rate
+FROM orders o
+JOIN order_items oi USING (order_id)
+JOIN products    p  USING (product_id)
+LEFT JOIN returns r USING (order_id)
+WHERE o.status &lt;&gt; 'cancelled'
+GROUP BY 1, 2;
+
+-- DAX measures
+Average order value = DIVIDE ( [Revenue], [Orders] )
+Revenue vs last year % =
+VAR prev = CALCULATE ( [Revenue], SAMEPERIODLASTYEAR ( 'Date'[Date] ) )
+RETURN DIVIDE ( [Revenue] - prev, prev )</code></pre></figure>
+  </section>
+  <section data-reveal><h2>Tools</h2><ul class="tags plain"><li>Power BI</li><li>DAX</li><li>SQL</li><li>Excel</li></ul></section>
+  <nav class="case-nav" aria-label="Projecten" data-reveal>
+    <a href="../projects.html">Alle projecten</a>
+    <a class="case-next" href="checkout-ab-test.html"><span class="muted">Volgend project</span>Werkte het nieuwe checkoutontwerp echt?</a>
+  </nav>
+</div>
+</article>
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <p class="footer-name">Julieta Lara Romero</p>
+      <p class="muted">Data-analist en UX/UI-designer. Drietalig (Spaans, Engels en Portugees), met een achtergrond in Multimedia Engineering en Business Intelligence.</p>
+    </div>
+    <div>
+      <h2 class="footer-h">Pagina’s</h2>
+      <ul class="plain">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../about.html">Over mij</a></li>
+        <li><a href="../projects.html">Projecten</a></li>
+        <li><a href="../../assets/Julieta-Lara-Romero-CV.pdf">Cv</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2 class="footer-h">Contact</h2>
+      <ul class="plain">
+        <li><a href="mailto:julietalarar98@gmail.com">julietalarar98@gmail.com</a></li>
+        <li><a href="https://www.linkedin.com/in/julieta-lara-romero-525366285/" rel="me">LinkedIn</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-base muted">
+    <p>© 2026 Julieta Lara Romero</p>
+    <p>Met de hand ontworpen en gebouwd in HTML, CSS en JavaScript. De grafieken gebruiken synthetische data.</p>
+  </div>
+</footer>
+<script src="../../assets/site.js" defer></script>
+<script type="application/json" id="chart-data">{"locale":"nl-NL","charts":{"p1-months":{"type":"bar","labels":["jan","feb","mrt","apr","mei","jun","jul","aug","sep","okt","nov","dec"],"axis":"Omzet (× € 1.000)","series":[{"name":"Omzet (× € 1.000)","values":[150,138,158,170,184,175,174,186,182,214,281,340],"colors":["iris","iris","iris","iris","iris","iris","iris","iris","iris","orchid","orchid","orchid"]}]},"p1-cats":{"type":"hbar","labels":["Elektronica","Wonen","Kleding","Beauty","Sport","Boeken"],"axis":"Omzet (× € 1.000)","series":[{"name":"Omzet (× € 1.000)","values":[698,559,407,289,244,142],"colors":["orchid","orchid","iris","iris","iris","iris"]}]},"p1-returns":{"type":"hbar","unit":"%","labels":["Kleding","Sport","Wonen","Elektronica","Beauty","Boeken"],"axis":"Bestellingen geretourneerd (%)","series":[{"name":"Bestellingen geretourneerd (%)","values":[21.9,9.7,8.2,5.3,3.4,2.2],"colors":["orchid","iris","iris","iris","iris","iris"]}]}}}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" defer></script>
+<script src="../../assets/charts.js" defer></script>
+</body>
+</html>

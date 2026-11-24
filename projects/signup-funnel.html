@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Where new users drop out of sign-up | Julieta Lara Romero</title>
+  <meta name="description" content="Funnel analysis in PostgreSQL of a six-step sign-up flow, by device, to find the one step worth redesigning first.">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f7f4fc" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#150f26" media="(prefers-color-scheme: dark)">
+  <meta property="og:title" content="Where new users drop out of sign-up | Julieta Lara Romero">
+  <meta property="og:description" content="Funnel analysis in PostgreSQL of a six-step sign-up flow, by device, to find the one step worth redesigning first.">
+  <meta property="og:type" content="website">
+  <link rel="alternate" hreflang="en" href="https://khariss1805.github.io/Portfolio/projects/signup-funnel.html">
+  <link rel="alternate" hreflang="nl" href="https://khariss1805.github.io/Portfolio/nl/projects/signup-funnel.html">
+  <link rel="alternate" hreflang="pt-PT" href="https://khariss1805.github.io/Portfolio/pt/projects/signup-funnel.html">
+  <link rel="alternate" hreflang="es" href="https://khariss1805.github.io/Portfolio/es/projects/signup-funnel.html">
+  <link rel="alternate" hreflang="x-default" href="https://khariss1805.github.io/Portfolio/projects/signup-funnel.html">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Instrument+Sans:ital,wght@0,400..700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/site.css">
+  <script>document.documentElement.classList.add('js');setTimeout(function(){if(!window.__site)document.documentElement.classList.remove('js')},3000)</script>
+</head>
+<body>
+<div class="read-progress" aria-hidden="true"></div>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="brand" href="../index.html">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="13" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="16" cy="16" r="5" fill="currentColor"/></svg>
+      <span><span class="brand-name">Julieta Lara Romero</span><span class="brand-role">Data Analyst & UX/UI Designer</span></span>
+    </a>
+    <nav class="main-nav" aria-label="Main">
+      <a href="../index.html">Home</a>
+      <a href="../about.html">About</a>
+      <a href="../projects.html" aria-current="page">Projects</a>
+      <a href="../assets/Julieta-Lara-Romero-CV.pdf">Résumé</a>
+    </nav>
+    <nav class="lang-switch" aria-label="Language"><a href="signup-funnel.html" hreflang="en" lang="en" title="English" aria-current="true">EN</a><a href="../nl/projects/signup-funnel.html" hreflang="nl" lang="nl" title="Nederlands">NL</a><a href="../pt/projects/signup-funnel.html" hreflang="pt-PT" lang="pt-PT" title="Português">PT</a><a href="../es/projects/signup-funnel.html" hreflang="es" lang="es" title="Español">ES</a></nav>
+  </div>
+</header>
+<main id="main">
+<article>
+<header class="page-head case-head">
+  <div class="wrap narrow">
+    <nav class="crumbs hero-in" style="--d:0" aria-label="Breadcrumb"><a href="../index.html">Home</a><span aria-hidden="true">/</span><a href="../projects.html">Projects</a></nav>
+    <p class="case-tags hero-in" style="--d:1"><span class="tag">Product analytics</span><span class="tag tag-practice">Practice project</span></p>
+    <h1 class="hero-in" style="--d:2">Where new users drop out of sign-up</h1>
+    <p class="hero-lead hero-in" style="--d:3">A web app had plenty of visitors but few active users. I followed each visitor through sign-up to find exactly where they gave up.</p>
+    <div class="case-results hero-in" style="--d:4"><span class="result"><strong><span class="count" data-to="12.8" data-dec="1">12.8</span>%</strong><span>of visitors become active users</span></span><span class="result"><strong><span class="count" data-to="48" data-dec="0">48</span>%</strong><span>of mobile users lost at email verification</span></span></div>
+    <p class="practice-note hero-in" style="--d:5">This is a practice project. The company is fictional and the data is synthetic, generated to behave like real product data. The questions, methods and code are the ones I would use on the job.</p>
+  </div>
+</header>
+<div class="wrap narrow case-body">
+  <section data-reveal><h2>The question</h2><p>A fictional project-management web app gets 40,000 visitors a month, but only a small share ever create their first project.</p><p>The question: at which step do people leave, and is it the same on mobile and desktop?</p></section>
+  <section data-reveal><h2>The data</h2><p>One month of event logs: each user’s device and the sign-up events they reached, from viewing the landing page to creating a first project.</p></section>
+  <section><h2 data-reveal>What I did</h2><ol class="steps"><li data-reveal style="--d:0">Turned raw events into one row per user with a flag for each funnel step, using conditional aggregation in SQL.</li><li data-reveal style="--d:1">Calculated the share of visitors reaching each step, and the share lost at each step, by device.</li><li data-reveal style="--d:2">Built the funnel in Tableau and shared it with the design team.</li><li data-reveal style="--d:3">Sketched a lighter verification flow in Figma for the step that lost the most users.</li></ol></section>
+</div>
+
+<div class="wrap narrow case-body">
+  <section><h2 data-reveal>What I found</h2><div class="finding">
+      <h3 data-reveal>Mobile users fall behind at every step</h3>
+      <p data-reveal>18.7% of desktop visitors end up creating a project, against 9.5% on mobile. The gap opens at email verification.</p>
+      <figure class="chart-fig" data-reveal>
+  <div class="figbox"><div class="chart" style="--h:534px"><canvas id="p3-funnel" role="img" aria-label="Share of visitors reaching each step, by device."></canvas></div></div>
+  <figcaption>Share of visitors reaching each step, by device. <span class="muted">Hover or tap the chart for exact values.</span></figcaption>
+  <details class="data-table"><summary>Show the numbers</summary><div class="table-scroll"><table><thead><tr><th></th><th scope="col">Desktop</th><th scope="col">Mobile</th></tr></thead><tbody><tr><th scope="row">Landing page</th><td class="num">100</td><td class="num">100</td></tr><tr><th scope="row">Started sign-up</th><td class="num">44</td><td class="num">38</td></tr><tr><th scope="row">Entered email</th><td class="num">38.7</td><td class="num">30.8</td></tr><tr><th scope="row">Verified email</th><td class="num">28.7</td><td class="num">16</td></tr><tr><th scope="row">Completed profile</th><td class="num">24.6</td><td class="num">13.4</td></tr><tr><th scope="row">Created first project</th><td class="num">18.7</td><td class="num">9.5</td></tr></tbody></table></div></details>
+</figure>
+    </div><div class="finding">
+      <h3 data-reveal>Email verification is the step to fix</h3>
+      <p data-reveal>After people start signing up, verification is the biggest leak: 39.1% of users who enter their email never confirm it. On mobile it is 48%, on desktop 26%. People switch to their email app and do not come back.</p>
+      <figure class="chart-fig" data-reveal>
+  <div class="figbox"><div class="chart"><canvas id="p3-drop" role="img" aria-label="Share of users lost at each step."></canvas></div></div>
+  <figcaption>Share of users lost at each step. <span class="muted">Hover or tap the chart for exact values.</span></figcaption>
+  <details class="data-table"><summary>Show the numbers</summary><div class="table-scroll"><table><thead><tr><th></th><th scope="col">Users lost at this step (%)</th></tr></thead><tbody><tr><th scope="row">Started sign-up</th><td class="num">59.9</td></tr><tr><th scope="row">Entered email</th><td class="num">16.3</td></tr><tr><th scope="row">Verified email</th><td class="num">39.1</td></tr><tr><th scope="row">Completed profile</th><td class="num">15</td></tr><tr><th scope="row">Created first project</th><td class="num">26.5</td></tr></tbody></table></div></details>
+</figure>
+    </div></section>
+  <section><h2 data-reveal>What I would recommend</h2><ul class="recs"><li data-reveal style="--d:0">Let users start working before verifying their email, and ask for it later.</li><li data-reveal style="--d:1">On mobile, replace the confirmation link with a six-digit code users can type without leaving the app.</li><li data-reveal style="--d:2">If mobile verification matched desktop, the app would gain about 1,050 active users a month.</li></ul></section>
+  <section data-reveal><h2>A look at the code</h2>
+    <figure class="code"><figcaption>PostgreSQL</figcaption><pre tabindex="0" translate="no"><code>WITH steps AS (
+  SELECT
+    user_id,
+    device,
+    MAX(CASE WHEN event = 'landing_view'   THEN 1 ELSE 0 END) AS s1_landing,
+    MAX(CASE WHEN event = 'signup_start'   THEN 1 ELSE 0 END) AS s2_start,
+    MAX(CASE WHEN event = 'email_entered'  THEN 1 ELSE 0 END) AS s3_email,
+    MAX(CASE WHEN event = 'email_verified' THEN 1 ELSE 0 END) AS s4_verified,
+    MAX(CASE WHEN event = 'profile_done'   THEN 1 ELSE 0 END) AS s5_profile,
+    MAX(CASE WHEN event = 'first_project'  THEN 1 ELSE 0 END) AS s6_first
+  FROM events
+  WHERE occurred_at &gt;= now() - INTERVAL '30 days'
+  GROUP BY user_id, device
+)
+SELECT
+  device,
+  SUM(s1_landing)  AS landing,
+  SUM(s2_start)    AS started,
+  SUM(s4_verified) AS verified,
+  SUM(s6_first)    AS activated,
+  ROUND(100.0 * SUM(s4_verified) / NULLIF(SUM(s3_email), 0), 1) AS verify_rate_pct
+FROM steps
+GROUP BY device;</code></pre></figure>
+  </section>
+  <section data-reveal><h2>Tools</h2><ul class="tags plain"><li>PostgreSQL</li><li>SQL</li><li>Tableau</li><li>Figma</li></ul></section>
+  <nav class="case-nav" aria-label="Projects" data-reveal>
+    <a href="../projects.html">All projects</a>
+    <a class="case-next" href="usability-study.html"><span class="muted">Next project</span>Testing two prototypes of a booking app</a>
+  </nav>
+</div>
+</article>
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <p class="footer-name">Julieta Lara Romero</p>
+      <p class="muted">Data Analyst and UX/UI Designer. Trilingual (Spanish, English, Portuguese), with a background in Multimedia Engineering and Business Intelligence.</p>
+    </div>
+    <div>
+      <h2 class="footer-h">Pages</h2>
+      <ul class="plain">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li><a href="../projects.html">Projects</a></li>
+        <li><a href="../assets/Julieta-Lara-Romero-CV.pdf">Résumé</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2 class="footer-h">Contact</h2>
+      <ul class="plain">
+        <li><a href="mailto:julietalarar98@gmail.com">julietalarar98@gmail.com</a></li>
+        <li><a href="https://www.linkedin.com/in/julieta-lara-romero-525366285/" rel="me">LinkedIn</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-base muted">
+    <p>© 2026 Julieta Lara Romero</p>
+    <p>Designed and built by hand with HTML, CSS and JavaScript. Charts use synthetic data.</p>
+  </div>
+</footer>
+<script src="../assets/site.js" defer></script>
+<script type="application/json" id="chart-data">{"locale":"en-GB","charts":{"p3-funnel":{"type":"hbar","unit":"%","max":100,"labels":["Landing page","Started sign-up","Entered email","Verified email","Completed profile","Created first project"],"axis":"Visitors reaching the step (%)","legend":true,"series":[{"name":"Desktop","values":[100,44,38.7,28.7,24.6,18.7],"color":"iris"},{"name":"Mobile","values":[100,38,30.8,16,13.4,9.5],"color":"orchid"}]},"p3-drop":{"type":"bar","unit":"%","labels":["Started sign-up","Entered email","Verified email","Completed profile","Created first project"],"axis":"Users lost at this step (%)","series":[{"name":"Users lost at this step (%)","values":[59.9,16.3,39.1,15,26.5],"colors":["iris","iris","orchid","iris","iris"]}]}}}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" defer></script>
+<script src="../assets/charts.js" defer></script>
+</body>
+</html>

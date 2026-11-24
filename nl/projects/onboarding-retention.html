@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blijven nieuwe leden langer door een onboarding-rondleiding? | Julieta Lara Romero</title>
+  <meta name="description" content="Cohortanalyse van een fictieve wellness-app nadat die een begeleide rondleiding voor nieuwe leden toevoegde.">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f7f4fc" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#150f26" media="(prefers-color-scheme: dark)">
+  <meta property="og:title" content="Blijven nieuwe leden langer door een onboarding-rondleiding? | Julieta Lara Romero">
+  <meta property="og:description" content="Cohortanalyse van een fictieve wellness-app nadat die een begeleide rondleiding voor nieuwe leden toevoegde.">
+  <meta property="og:type" content="website">
+  <link rel="alternate" hreflang="en" href="https://khariss1805.github.io/Portfolio/projects/onboarding-retention.html">
+  <link rel="alternate" hreflang="nl" href="https://khariss1805.github.io/Portfolio/nl/projects/onboarding-retention.html">
+  <link rel="alternate" hreflang="pt-PT" href="https://khariss1805.github.io/Portfolio/pt/projects/onboarding-retention.html">
+  <link rel="alternate" hreflang="es" href="https://khariss1805.github.io/Portfolio/es/projects/onboarding-retention.html">
+  <link rel="alternate" hreflang="x-default" href="https://khariss1805.github.io/Portfolio/projects/onboarding-retention.html">
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Instrument+Sans:ital,wght@0,400..700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/site.css">
+  <script>document.documentElement.classList.add('js');setTimeout(function(){if(!window.__site)document.documentElement.classList.remove('js')},3000)</script>
+</head>
+<body>
+<div class="read-progress" aria-hidden="true"></div>
+<a class="skip" href="#main">Naar de inhoud</a>
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="brand" href="../index.html">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="13" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="16" cy="16" r="5" fill="currentColor"/></svg>
+      <span><span class="brand-name">Julieta Lara Romero</span><span class="brand-role">Data-analist en UX/UI-designer</span></span>
+    </a>
+    <nav class="main-nav" aria-label="Main">
+      <a href="../index.html">Home</a>
+      <a href="../about.html">Over mij</a>
+      <a href="../projects.html" aria-current="page">Projecten</a>
+      <a href="../../assets/Julieta-Lara-Romero-CV.pdf">Cv</a>
+    </nav>
+    <nav class="lang-switch" aria-label="Taal"><a href="../../projects/onboarding-retention.html" hreflang="en" lang="en" title="English">EN</a><a href="onboarding-retention.html" hreflang="nl" lang="nl" title="Nederlands" aria-current="true">NL</a><a href="../../pt/projects/onboarding-retention.html" hreflang="pt-PT" lang="pt-PT" title="Português">PT</a><a href="../../es/projects/onboarding-retention.html" hreflang="es" lang="es" title="Español">ES</a></nav>
+  </div>
+</header>
+<main id="main">
+<article>
+<header class="page-head case-head">
+  <div class="wrap narrow">
+    <nav class="crumbs hero-in" style="--d:0" aria-label="Kruimelpad"><a href="../index.html">Home</a><span aria-hidden="true">/</span><a href="../projects.html">Projecten</a></nav>
+    <p class="case-tags hero-in" style="--d:1"><span class="tag">Productanalyse</span><span class="tag tag-practice">Oefenproject</span></p>
+    <h1 class="hero-in" style="--d:2">Blijven nieuwe leden langer door een onboarding-rondleiding?</h1>
+    <p class="hero-lead hero-in" style="--d:3">Een wellness-app voegde in mei een korte rondleiding toe voor nieuwe leden. Ik mat of dat veranderde hoe lang ze bleven.</p>
+    <div class="case-results hero-in" style="--d:4"><span class="result"><strong>+<span class="count" data-to="16.9" data-dec="1">16,9</span> pt</strong><span>actieve leden na 6 maanden</span></span><span class="result"><strong>+<span class="count" data-to="7" data-dec="0">7</span> pt</strong><span>retentie na 3 maanden sinds de lancering</span></span></div>
+    <p class="practice-note hero-in" style="--d:5">Dit is een oefenproject. Het bedrijf is fictief en de data is synthetisch, gegenereerd om zich te gedragen als echte productdata. De vragen, methodes en code zijn wat ik in de praktijk zou gebruiken.</p>
+  </div>
+</header>
+<div class="wrap narrow case-body">
+  <section data-reveal><h2>De vraag</h2><p>Veel nieuwe leden vertrekken in de eerste maand: 24% van wie de rondleiding overslaat, is na één maand weg.</p><p>De vraag: blijven leden die de rondleiding zien langer, en is dat sinds de lancering te zien in de cohorten?</p></section>
+  <section data-reveal><h2>De data</h2><p>Negen maandelijkse aanmeldcohorten (januari tot en met september), de actieve maanden per lid en of die de rondleiding afrondde.</p></section>
+  <section><h2 data-reveal>Wat ik deed</h2><ol class="steps"><li data-reveal style="--d:0">Een cohorttabel gebouwd in SQL: per aanmeldmaand het aandeel leden dat na elke maand nog actief is.</li><li data-reveal style="--d:1">De cohorten vóór en na de lancering van de rondleiding in mei vergeleken.</li><li data-reveal style="--d:2">De retentiecurves van leden die de rondleiding zagen en leden die die oversloegen vergeleken.</li><li data-reveal style="--d:3">Het cohortoverzicht eerst in Figma ontworpen, zodat het helder leest voordat ik het in Tableau bouwde.</li></ol></section>
+</div>
+
+<div class="wrap narrow case-body">
+  <section><h2 data-reveal>Wat ik vond</h2><div class="finding">
+      <h3 data-reveal>Cohorten vanaf mei blijven langer</h3>
+      <p data-reveal>De retentie na 3 maanden was gemiddeld 69,7% voor de cohorten van januari tot april en 76,7% vanaf mei: 7 punten meer.</p>
+      <figure class="chart-fig" data-reveal data-heat><div class="figbox"><div class="table-scroll"><table class="heat-table">
+  <caption class="sr-only">Aandeel van elk aanmeldcohort dat nog actief is, per maand sinds aanmelding.</caption>
+  <thead><tr><th scope="col">Aanmeldmaand</th><th scope="col">Leden</th><th scope="col">M0</th><th scope="col">M1</th><th scope="col">M2</th><th scope="col">M3</th><th scope="col">M4</th><th scope="col">M5</th><th scope="col">M6</th></tr></thead>
+  <tbody><tr><th scope="row">jan 2026</th><td class="num">415</td><td class="heat heat-strong" style="--k:1.000;--w:0">100%</td><td class="heat heat-strong" style="--k:0.816;--w:1">81,6%</td><td class="heat heat-strong" style="--k:0.758;--w:2">75,8%</td><td class="heat heat-strong" style="--k:0.709;--w:3">70,9%</td><td class="heat heat-strong" style="--k:0.673;--w:4">67,3%</td><td class="heat heat-strong" style="--k:0.625;--w:5">62,5%</td><td class="heat heat-strong" style="--k:0.598;--w:6">59,8%</td></tr><tr><th scope="row">feb 2026</th><td class="num">390</td><td class="heat heat-strong" style="--k:1.000;--w:1">100%</td><td class="heat heat-strong" style="--k:0.807;--w:2">80,7%</td><td class="heat heat-strong" style="--k:0.750;--w:3">75%</td><td class="heat heat-strong" style="--k:0.702;--w:4">70,2%</td><td class="heat heat-strong" style="--k:0.659;--w:5">65,9%</td><td class="heat heat-strong" style="--k:0.614;--w:6">61,4%</td><td class="heat heat-strong" style="--k:0.575;--w:7">57,5%</td></tr><tr><th scope="row">mrt 2026</th><td class="num">491</td><td class="heat heat-strong" style="--k:1.000;--w:2">100%</td><td class="heat heat-strong" style="--k:0.788;--w:3">78,8%</td><td class="heat heat-strong" style="--k:0.735;--w:4">73,5%</td><td class="heat heat-strong" style="--k:0.686;--w:5">68,6%</td><td class="heat heat-strong" style="--k:0.634;--w:6">63,4%</td><td class="heat heat-strong" style="--k:0.595;--w:7">59,5%</td><td class="heat heat-strong" style="--k:0.558;--w:8">55,8%</td></tr><tr><th scope="row">apr 2026</th><td class="num">532</td><td class="heat heat-strong" style="--k:1.000;--w:3">100%</td><td class="heat heat-strong" style="--k:0.799;--w:4">79,9%</td><td class="heat heat-strong" style="--k:0.740;--w:5">74%</td><td class="heat heat-strong" style="--k:0.691;--w:6">69,1%</td><td class="heat heat-strong" style="--k:0.638;--w:7">63,8%</td><td class="heat heat-strong" style="--k:0.593;--w:8">59,3%</td><td class="heat-empty"></td></tr><tr><th scope="row">mei 2026</th><td class="num">530</td><td class="heat heat-strong" style="--k:1.000;--w:4">100%</td><td class="heat heat-strong" style="--k:0.820;--w:5">82%</td><td class="heat heat-strong" style="--k:0.798;--w:6">79,8%</td><td class="heat heat-strong" style="--k:0.771;--w:7">77,1%</td><td class="heat heat-strong" style="--k:0.738;--w:8">73,8%</td><td class="heat-empty"></td><td class="heat-empty"></td></tr><tr><th scope="row">jun 2026</th><td class="num">567</td><td class="heat heat-strong" style="--k:1.000;--w:5">100%</td><td class="heat heat-strong" style="--k:0.825;--w:6">82,5%</td><td class="heat heat-strong" style="--k:0.803;--w:7">80,3%</td><td class="heat heat-strong" style="--k:0.763;--w:8">76,3%</td><td class="heat-empty"></td><td class="heat-empty"></td><td class="heat-empty"></td></tr><tr><th scope="row">jul 2026</th><td class="num">605</td><td class="heat heat-strong" style="--k:1.000;--w:6">100%</td><td class="heat heat-strong" style="--k:0.855;--w:7">85,5%</td><td class="heat heat-strong" style="--k:0.830;--w:8">83%</td><td class="heat-empty"></td><td class="heat-empty"></td><td class="heat-empty"></td><td class="heat-empty"></td></tr><tr><th scope="row">aug 2026</th><td class="num">645</td><td class="heat heat-strong" style="--k:1.000;--w:7">100%</td><td class="heat heat-strong" style="--k:0.819;--w:8">81,9%</td><td class="heat-empty"></td><td class="heat-empty"></td><td class="heat-empty"></td><td class="heat-empty"></td><td class="heat-empty"></td></tr><tr><th scope="row">sep 2026</th><td class="num">650</td><td class="heat heat-strong" style="--k:1.000;--w:8">100%</td><td class="heat-empty"></td><td class="heat-empty"></td><td class="heat-empty"></td><td class="heat-empty"></td><td class="heat-empty"></td><td class="heat-empty"></td></tr></tbody></table></div></div><figcaption>Aandeel van elk aanmeldcohort dat nog actief is, per maand sinds aanmelding.</figcaption></figure>
+    </div><div class="finding">
+      <h3 data-reveal>Het verschil groeit in de tijd</h3>
+      <p data-reveal>Na 6 maanden is 68,3% van de leden die de rondleiding zagen nog actief, tegen 51,4% van wie die oversloeg. Het grootste deel van het verschil ontstaat in de eerste maand.</p>
+      <figure class="chart-fig" data-reveal>
+  <div class="figbox"><div class="chart"><canvas id="p6-curves" role="img" aria-label="Retentiecurve, met en zonder rondleiding."></canvas></div></div>
+  <figcaption>Retentiecurve, met en zonder rondleiding. <span class="muted">Beweeg over de grafiek of tik erop voor de exacte waarden.</span></figcaption>
+  <details class="data-table"><summary>Toon de cijfers</summary><div class="table-scroll"><table><thead><tr><th></th><th scope="col">Rondleiding gezien</th><th scope="col">Rondleiding overgeslagen</th></tr></thead><tbody><tr><th scope="row">M0</th><td class="num">100</td><td class="num">100</td></tr><tr><th scope="row">M1</th><td class="num">86</td><td class="num">76</td></tr><tr><th scope="row">M2</th><td class="num">82,1</td><td class="num">70,3</td></tr><tr><th scope="row">M3</th><td class="num">78,4</td><td class="num">65</td></tr><tr><th scope="row">M4</th><td class="num">74,9</td><td class="num">60,1</td></tr><tr><th scope="row">M5</th><td class="num">71,5</td><td class="num">55,6</td></tr><tr><th scope="row">M6</th><td class="num">68,3</td><td class="num">51,4</td></tr></tbody></table></div></details>
+</figure>
+    </div></section>
+  <section><h2 data-reveal>Wat ik zou aanraden</h2><ul class="recs"><li data-reveal style="--d:0">De rondleiding korter en lastiger over te slaan maken, zodat meer leden hem afronden.</li><li data-reveal style="--d:1">Een contactmoment toevoegen aan het eind van de eerste maand, wanneer de meeste leden vertrekken.</li><li data-reveal style="--d:2">Een paar maanden een kleine groep zonder rondleiding aanhouden, om het effect zuiver te meten.</li></ul></section>
+  <section data-reveal><h2>Een blik op de code</h2>
+    <figure class="code"><figcaption>SQL</figcaption><pre tabindex="0" translate="no"><code>WITH members AS (
+  SELECT member_id,
+         date_trunc('month', signup_at) AS cohort,
+         saw_onboarding_tour
+  FROM memberships
+),
+activity AS (
+  SELECT m.cohort, m.member_id,
+         (EXTRACT(YEAR FROM age(a.month, m.cohort)) * 12
+          + EXTRACT(MONTH FROM age(a.month, m.cohort)))::int AS month_n
+  FROM members m
+  JOIN monthly_activity a USING (member_id)
+)
+SELECT cohort,
+       month_n,
+       ROUND(100.0 * COUNT(DISTINCT member_id)
+             / FIRST_VALUE(COUNT(DISTINCT member_id))
+               OVER (PARTITION BY cohort ORDER BY month_n), 1) AS retained_pct
+FROM activity
+GROUP BY cohort, month_n
+ORDER BY cohort, month_n;</code></pre></figure>
+  </section>
+  <section data-reveal><h2>Tools</h2><ul class="tags plain"><li>SQL</li><li>Tableau</li><li>Cohortanalyse</li><li>Figma</li></ul></section>
+  <nav class="case-nav" aria-label="Projecten" data-reveal>
+    <a href="../projects.html">Alle projecten</a>
+    <a class="case-next" href="sales-dashboard.html"><span class="muted">Volgend project</span>Een salesdashboard waar een webshop op kan draaien</a>
+  </nav>
+</div>
+</article>
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <p class="footer-name">Julieta Lara Romero</p>
+      <p class="muted">Data-analist en UX/UI-designer. Drietalig (Spaans, Engels en Portugees), met een achtergrond in Multimedia Engineering en Business Intelligence.</p>
+    </div>
+    <div>
+      <h2 class="footer-h">Pagina’s</h2>
+      <ul class="plain">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../about.html">Over mij</a></li>
+        <li><a href="../projects.html">Projecten</a></li>
+        <li><a href="../../assets/Julieta-Lara-Romero-CV.pdf">Cv</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2 class="footer-h">Contact</h2>
+      <ul class="plain">
+        <li><a href="mailto:julietalarar98@gmail.com">julietalarar98@gmail.com</a></li>
+        <li><a href="https://www.linkedin.com/in/julieta-lara-romero-525366285/" rel="me">LinkedIn</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-base muted">
+    <p>© 2026 Julieta Lara Romero</p>
+    <p>Met de hand ontworpen en gebouwd in HTML, CSS en JavaScript. De grafieken gebruiken synthetische data.</p>
+  </div>
+</footer>
+<script src="../../assets/site.js" defer></script>
+<script type="application/json" id="chart-data">{"locale":"nl-NL","charts":{"p6-curves":{"type":"line","unit":"%","labels":["M0","M1","M2","M3","M4","M5","M6"],"axis":"Leden nog actief (%)","series":[{"name":"Rondleiding gezien","values":[100,86,82.1,78.4,74.9,71.5,68.3],"color":"iris"},{"name":"Rondleiding overgeslagen","values":[100,76,70.3,65,60.1,55.6,51.4],"color":"orchid","dash":true}]}}}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" defer></script>
+<script src="../../assets/charts.js" defer></script>
+</body>
+</html>

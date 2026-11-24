@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>O novo design do checkout funcionou mesmo? | Julieta Lara Romero</title>
+  <meta name="description" content="Um teste A/B de um checkout redesenhado, lido com cuidado: efeito global, efeito por dispositivo e se o resultado é fiável.">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f7f4fc" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#150f26" media="(prefers-color-scheme: dark)">
+  <meta property="og:title" content="O novo design do checkout funcionou mesmo? | Julieta Lara Romero">
+  <meta property="og:description" content="Um teste A/B de um checkout redesenhado, lido com cuidado: efeito global, efeito por dispositivo e se o resultado é fiável.">
+  <meta property="og:type" content="website">
+  <link rel="alternate" hreflang="en" href="https://khariss1805.github.io/Portfolio/projects/checkout-ab-test.html">
+  <link rel="alternate" hreflang="nl" href="https://khariss1805.github.io/Portfolio/nl/projects/checkout-ab-test.html">
+  <link rel="alternate" hreflang="pt-PT" href="https://khariss1805.github.io/Portfolio/pt/projects/checkout-ab-test.html">
+  <link rel="alternate" hreflang="es" href="https://khariss1805.github.io/Portfolio/es/projects/checkout-ab-test.html">
+  <link rel="alternate" hreflang="x-default" href="https://khariss1805.github.io/Portfolio/projects/checkout-ab-test.html">
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Instrument+Sans:ital,wght@0,400..700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/site.css">
+  <script>document.documentElement.classList.add('js');setTimeout(function(){if(!window.__site)document.documentElement.classList.remove('js')},3000)</script>
+</head>
+<body>
+<div class="read-progress" aria-hidden="true"></div>
+<a class="skip" href="#main">Saltar para o conteúdo</a>
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="brand" href="../index.html">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="13" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="16" cy="16" r="5" fill="currentColor"/></svg>
+      <span><span class="brand-name">Julieta Lara Romero</span><span class="brand-role">Analista de dados e designer UX/UI</span></span>
+    </a>
+    <nav class="main-nav" aria-label="Main">
+      <a href="../index.html">Início</a>
+      <a href="../about.html">Sobre mim</a>
+      <a href="../projects.html" aria-current="page">Projetos</a>
+      <a href="../../assets/Julieta-Lara-Romero-CV.pdf">CV</a>
+    </nav>
+    <nav class="lang-switch" aria-label="Idioma"><a href="../../projects/checkout-ab-test.html" hreflang="en" lang="en" title="English">EN</a><a href="../../nl/projects/checkout-ab-test.html" hreflang="nl" lang="nl" title="Nederlands">NL</a><a href="checkout-ab-test.html" hreflang="pt-PT" lang="pt-PT" title="Português" aria-current="true">PT</a><a href="../../es/projects/checkout-ab-test.html" hreflang="es" lang="es" title="Español">ES</a></nav>
+  </div>
+</header>
+<main id="main">
+<article>
+<header class="page-head case-head">
+  <div class="wrap narrow">
+    <nav class="crumbs hero-in" style="--d:0" aria-label="Percurso de navegação"><a href="../index.html">Início</a><span aria-hidden="true">/</span><a href="../projects.html">Projetos</a></nav>
+    <p class="case-tags hero-in" style="--d:1"><span class="tag">Investigação UX</span><span class="tag tag-practice">Projeto de prática</span></p>
+    <h1 class="hero-in" style="--d:2">O novo design do checkout funcionou mesmo?</h1>
+    <p class="hero-lead hero-in" style="--d:3">A equipa de design simplificou o checkout de quatro passos para dois. Antes de o lançar, verifiquei se mudava o que os clientes faziam.</p>
+    <div class="case-results hero-in" style="--d:4"><span class="result"><strong>+<span class="count" data-to="25" data-dec="0">25</span>%</strong><span>mais compras concluídas</span></span><span class="result"><strong>+<span class="count" data-to="28" data-dec="0">28</span>%</strong><span>no telemóvel, onde mais importava</span></span></div>
+    <p class="practice-note hero-in" style="--d:5">Este é um projeto de prática. A empresa é fictícia e os dados são sintéticos, gerados para se comportarem como dados reais de um produto. As perguntas, os métodos e o código são os que usaria no trabalho.</p>
+  </div>
+</header>
+<div class="wrap narrow case-body">
+  <section data-reveal><h2>A pergunta</h2><p>Uma loja online fictícia redesenhou o checkout em Figma: menos campos, uma barra de progresso e compra sem conta logo no primeiro ecrã.</p><p>A pergunta: o novo design faz mais pessoas concluir a compra, e o efeito é igual no telemóvel e no computador?</p></section>
+  <section data-reveal><h2>Os dados</h2><p>48 578 sessões de checkout ao longo de 21 dias, divididas ao acaso entre o design atual (A) e o novo (B), com o dispositivo e se a compra foi concluída.</p></section>
+  <section><h2 data-reveal>O que fiz</h2><ol class="steps"><li data-reveal style="--d:0">Verifiquei primeiro a divisão: se A e B não recebessem cerca de metade do tráfego cada, o teste estaria comprometido.</li><li data-reveal style="--d:1">Comparei as taxas de conversão com um teste z de duas proporções e intervalos de confiança.</li><li data-reveal style="--d:2">Decompus o resultado por dispositivo, porque o redesign visava sobretudo ecrãs pequenos.</li><li data-reveal style="--d:3">Representei a conversão dia a dia para garantir que o resultado era estável e não um acaso dos primeiros dias.</li></ol></section>
+</div>
+
+<div class="wrap narrow case-body">
+  <section><h2 data-reveal>O que descobri</h2><div class="finding">
+      <h3 data-reveal>O novo checkout converte melhor</h3>
+      <p data-reveal>A conversão passou de 2,91% com o design atual para 3,64% com o novo, mais 25%. É muito improvável que a diferença se deva ao acaso (p < 0,001).</p>
+      <figure class="chart-fig" data-reveal>
+  <div class="figbox"><div class="chart"><canvas id="p2-cum" role="img" aria-label="Taxa de conversão acumulada por dia. As linhas separam-se cedo e não voltam a juntar-se."></canvas></div></div>
+  <figcaption>Taxa de conversão acumulada por dia. As linhas separam-se cedo e não voltam a juntar-se. <span class="muted">Passe o rato ou toque no gráfico para ver os valores.</span></figcaption>
+  <details class="data-table"><summary>Ver os números</summary><div class="table-scroll"><table><thead><tr><th></th><th scope="col">Checkout atual (A)</th><th scope="col">Checkout novo (B)</th></tr></thead><tbody><tr><th scope="row">Dia 1</th><td class="num">3,02</td><td class="num">3,89</td></tr><tr><th scope="row">Dia 2</th><td class="num">3,1</td><td class="num">3,42</td></tr><tr><th scope="row">Dia 3</th><td class="num">2,77</td><td class="num">3,61</td></tr><tr><th scope="row">Dia 4</th><td class="num">2,81</td><td class="num">3,26</td></tr><tr><th scope="row">Dia 5</th><td class="num">2,87</td><td class="num">3,38</td></tr><tr><th scope="row">Dia 6</th><td class="num">2,82</td><td class="num">3,46</td></tr><tr><th scope="row">Dia 7</th><td class="num">2,69</td><td class="num">3,48</td></tr><tr><th scope="row">Dia 8</th><td class="num">2,74</td><td class="num">3,44</td></tr><tr><th scope="row">Dia 9</th><td class="num">2,76</td><td class="num">3,56</td></tr><tr><th scope="row">Dia 10</th><td class="num">2,85</td><td class="num">3,55</td></tr><tr><th scope="row">Dia 11</th><td class="num">2,86</td><td class="num">3,61</td></tr><tr><th scope="row">Dia 12</th><td class="num">2,85</td><td class="num">3,55</td></tr><tr><th scope="row">Dia 13</th><td class="num">2,82</td><td class="num">3,63</td></tr><tr><th scope="row">Dia 14</th><td class="num">2,87</td><td class="num">3,71</td></tr><tr><th scope="row">Dia 15</th><td class="num">2,88</td><td class="num">3,78</td></tr><tr><th scope="row">Dia 16</th><td class="num">2,87</td><td class="num">3,73</td></tr><tr><th scope="row">Dia 17</th><td class="num">2,9</td><td class="num">3,71</td></tr><tr><th scope="row">Dia 18</th><td class="num">2,85</td><td class="num">3,69</td></tr><tr><th scope="row">Dia 19</th><td class="num">2,9</td><td class="num">3,65</td></tr><tr><th scope="row">Dia 20</th><td class="num">2,88</td><td class="num">3,63</td></tr><tr><th scope="row">Dia 21</th><td class="num">2,91</td><td class="num">3,64</td></tr></tbody></table></div></details>
+</figure>
+    </div><div class="finding">
+      <h3 data-reveal>Os utilizadores de telemóvel ganham mais</h3>
+      <p data-reveal>No telemóvel, a conversão subiu de 2,46% para 3,14% (+28%). No computador também melhorou, 21%. Menos campos pesam mais num ecrã pequeno.</p>
+      <figure class="chart-fig" data-reveal>
+  <div class="figbox"><div class="chart"><canvas id="p2-devices" role="img" aria-label="Taxa de conversão por dispositivo e design."></canvas></div></div>
+  <figcaption>Taxa de conversão por dispositivo e design. <span class="muted">Passe o rato ou toque no gráfico para ver os valores.</span></figcaption>
+  <details class="data-table"><summary>Ver os números</summary><div class="table-scroll"><table><thead><tr><th></th><th scope="col">Checkout atual (A)</th><th scope="col">Checkout novo (B)</th></tr></thead><tbody><tr><th scope="row">Telemóvel</th><td class="num">2,46</td><td class="num">3,14</td></tr><tr><th scope="row">Computador</th><td class="num">3,68</td><td class="num">4,44</td></tr></tbody></table></div></details>
+</figure>
+    </div></section>
+  <section><h2 data-reveal>O que recomendaria</h2><ul class="recs"><li data-reveal style="--d:0">Lançar o novo checkout para todos, começando pelo telemóvel.</li><li data-reveal style="--d:1">Continuar a acompanhar a conversão durante um mês após o lançamento, caso o efeito diminua quando deixar de ser novidade.</li><li data-reveal style="--d:2">Próximo teste: retirar por completo o passo de criação de conta no telemóvel.</li></ul></section>
+  <section data-reveal><h2>Um olhar sobre o código</h2>
+    <figure class="code"><figcaption>Python</figcaption><pre tabindex="0" translate="no"><code>import pandas as pd
+from statsmodels.stats.proportion import proportions_ztest, proportion_confint
+
+sessions = pd.read_csv(&quot;checkout_experiment.csv&quot;)   # one row per session
+
+# Guard against a broken split before reading any result
+split = sessions[&quot;variant&quot;].value_counts(normalize=True)
+assert abs(split[&quot;A&quot;] - 0.5) &lt; 0.01, &quot;Sample ratio mismatch&quot;
+
+summary = sessions.groupby(&quot;variant&quot;)[&quot;converted&quot;].agg([&quot;sum&quot;, &quot;count&quot;])
+z, p_value = proportions_ztest(summary[&quot;sum&quot;], summary[&quot;count&quot;])
+low, high = proportion_confint(summary[&quot;sum&quot;], summary[&quot;count&quot;], method=&quot;wilson&quot;)
+
+by_device = (sessions.groupby([&quot;device&quot;, &quot;variant&quot;])[&quot;converted&quot;]
+                     .mean().mul(100).round(2).unstack())
+print(summary, f&quot;p = {p_value:.4f}&quot;, by_device, sep=&quot;\n&quot;)</code></pre></figure>
+  </section>
+  <section data-reveal><h2>Ferramentas</h2><ul class="tags plain"><li>Python</li><li>statsmodels</li><li>Testes A/B</li><li>Figma</li></ul></section>
+  <nav class="case-nav" aria-label="Projetos" data-reveal>
+    <a href="../projects.html">Todos os projetos</a>
+    <a class="case-next" href="signup-funnel.html"><span class="muted">Próximo projeto</span>Onde os novos utilizadores desistem do registo</a>
+  </nav>
+</div>
+</article>
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <p class="footer-name">Julieta Lara Romero</p>
+      <p class="muted">Analista de dados e designer UX/UI. Trilingue (espanhol, inglês e português), com formação em Engenharia Multimédia e Business Intelligence.</p>
+    </div>
+    <div>
+      <h2 class="footer-h">Páginas</h2>
+      <ul class="plain">
+        <li><a href="../index.html">Início</a></li>
+        <li><a href="../about.html">Sobre mim</a></li>
+        <li><a href="../projects.html">Projetos</a></li>
+        <li><a href="../../assets/Julieta-Lara-Romero-CV.pdf">CV</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2 class="footer-h">Contacto</h2>
+      <ul class="plain">
+        <li><a href="mailto:julietalarar98@gmail.com">julietalarar98@gmail.com</a></li>
+        <li><a href="https://www.linkedin.com/in/julieta-lara-romero-525366285/" rel="me">LinkedIn</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-base muted">
+    <p>© 2026 Julieta Lara Romero</p>
+    <p>Desenhado e construído à mão com HTML, CSS e JavaScript. Os gráficos usam dados sintéticos.</p>
+  </div>
+</footer>
+<script src="../../assets/site.js" defer></script>
+<script type="application/json" id="chart-data">{"locale":"pt-PT","charts":{"p2-cum":{"type":"line","unit":"%","labels":["Dia 1","Dia 2","Dia 3","Dia 4","Dia 5","Dia 6","Dia 7","Dia 8","Dia 9","Dia 10","Dia 11","Dia 12","Dia 13","Dia 14","Dia 15","Dia 16","Dia 17","Dia 18","Dia 19","Dia 20","Dia 21"],"axis":"Conversão acumulada (%)","series":[{"name":"Checkout atual (A)","values":[3.02,3.1,2.77,2.81,2.87,2.82,2.69,2.74,2.76,2.85,2.86,2.85,2.82,2.87,2.88,2.87,2.9,2.85,2.9,2.88,2.91],"color":"lav","dash":true},{"name":"Checkout novo (B)","values":[3.89,3.42,3.61,3.26,3.38,3.46,3.48,3.44,3.56,3.55,3.61,3.55,3.63,3.71,3.78,3.73,3.71,3.69,3.65,3.63,3.64],"color":"iris"}]},"p2-devices":{"type":"bar","unit":"%","min":0,"labels":["Telemóvel","Computador"],"axis":"Taxa de conversão (%)","legend":true,"series":[{"name":"Checkout atual (A)","values":[2.46,3.68],"color":"lav"},{"name":"Checkout novo (B)","values":[3.14,4.44],"color":"iris"}]}}}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" defer></script>
+<script src="../../assets/charts.js" defer></script>
+</body>
+</html>

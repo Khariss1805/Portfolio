@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Waar nieuwe gebruikers afhaken bij het aanmelden | Julieta Lara Romero</title>
+  <meta name="description" content="Een funnelanalyse in PostgreSQL van een aanmelding in zes stappen, per apparaat, om de stap te vinden die als eerste een nieuw ontwerp verdient.">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f7f4fc" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#150f26" media="(prefers-color-scheme: dark)">
+  <meta property="og:title" content="Waar nieuwe gebruikers afhaken bij het aanmelden | Julieta Lara Romero">
+  <meta property="og:description" content="Een funnelanalyse in PostgreSQL van een aanmelding in zes stappen, per apparaat, om de stap te vinden die als eerste een nieuw ontwerp verdient.">
+  <meta property="og:type" content="website">
+  <link rel="alternate" hreflang="en" href="https://khariss1805.github.io/Portfolio/projects/signup-funnel.html">
+  <link rel="alternate" hreflang="nl" href="https://khariss1805.github.io/Portfolio/nl/projects/signup-funnel.html">
+  <link rel="alternate" hreflang="pt-PT" href="https://khariss1805.github.io/Portfolio/pt/projects/signup-funnel.html">
+  <link rel="alternate" hreflang="es" href="https://khariss1805.github.io/Portfolio/es/projects/signup-funnel.html">
+  <link rel="alternate" hreflang="x-default" href="https://khariss1805.github.io/Portfolio/projects/signup-funnel.html">
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Instrument+Sans:ital,wght@0,400..700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/site.css">
+  <script>document.documentElement.classList.add('js');setTimeout(function(){if(!window.__site)document.documentElement.classList.remove('js')},3000)</script>
+</head>
+<body>
+<div class="read-progress" aria-hidden="true"></div>
+<a class="skip" href="#main">Naar de inhoud</a>
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="brand" href="../index.html">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="13" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="16" cy="16" r="5" fill="currentColor"/></svg>
+      <span><span class="brand-name">Julieta Lara Romero</span><span class="brand-role">Data-analist en UX/UI-designer</span></span>
+    </a>
+    <nav class="main-nav" aria-label="Main">
+      <a href="../index.html">Home</a>
+      <a href="../about.html">Over mij</a>
+      <a href="../projects.html" aria-current="page">Projecten</a>
+      <a href="../../assets/Julieta-Lara-Romero-CV.pdf">Cv</a>
+    </nav>
+    <nav class="lang-switch" aria-label="Taal"><a href="../../projects/signup-funnel.html" hreflang="en" lang="en" title="English">EN</a><a href="signup-funnel.html" hreflang="nl" lang="nl" title="Nederlands" aria-current="true">NL</a><a href="../../pt/projects/signup-funnel.html" hreflang="pt-PT" lang="pt-PT" title="Português">PT</a><a href="../../es/projects/signup-funnel.html" hreflang="es" lang="es" title="Español">ES</a></nav>
+  </div>
+</header>
+<main id="main">
+<article>
+<header class="page-head case-head">
+  <div class="wrap narrow">
+    <nav class="crumbs hero-in" style="--d:0" aria-label="Kruimelpad"><a href="../index.html">Home</a><span aria-hidden="true">/</span><a href="../projects.html">Projecten</a></nav>
+    <p class="case-tags hero-in" style="--d:1"><span class="tag">Productanalyse</span><span class="tag tag-practice">Oefenproject</span></p>
+    <h1 class="hero-in" style="--d:2">Waar nieuwe gebruikers afhaken bij het aanmelden</h1>
+    <p class="hero-lead hero-in" style="--d:3">Een webapp had veel bezoekers maar weinig actieve gebruikers. Ik volgde elke bezoeker door de aanmelding om precies te zien waar die opgaf.</p>
+    <div class="case-results hero-in" style="--d:4"><span class="result"><strong><span class="count" data-to="12.8" data-dec="1">12,8</span>%</strong><span>van de bezoekers wordt actieve gebruiker</span></span><span class="result"><strong><span class="count" data-to="48" data-dec="0">48</span>%</strong><span>van de mobiele gebruikers haakt af bij de e-mailbevestiging</span></span></div>
+    <p class="practice-note hero-in" style="--d:5">Dit is een oefenproject. Het bedrijf is fictief en de data is synthetisch, gegenereerd om zich te gedragen als echte productdata. De vragen, methodes en code zijn wat ik in de praktijk zou gebruiken.</p>
+  </div>
+</header>
+<div class="wrap narrow case-body">
+  <section data-reveal><h2>De vraag</h2><p>Een fictieve webapp voor projectmanagement krijgt 40.000 bezoekers per maand, maar maar een klein deel maakt ooit een eerste project.</p><p>De vraag: bij welke stap haken mensen af, en is dat op mobiel en desktop hetzelfde?</p></section>
+  <section data-reveal><h2>De data</h2><p>Een maand aan eventlogs: het apparaat van elke gebruiker en de aanmeldstappen die die bereikte, van de landingspagina tot het eerste project.</p></section>
+  <section><h2 data-reveal>Wat ik deed</h2><ol class="steps"><li data-reveal style="--d:0">Ruwe events omgezet naar één regel per gebruiker met een vlag per funnelstap, met conditionele aggregatie in SQL.</li><li data-reveal style="--d:1">Per apparaat het aandeel bezoekers berekend dat elke stap bereikt, en het aandeel dat bij elke stap afhaakt.</li><li data-reveal style="--d:2">De funnel gebouwd in Tableau en gedeeld met het designteam.</li><li data-reveal style="--d:3">In Figma een lichtere bevestigingsflow geschetst voor de stap waar de meeste gebruikers afhaakten.</li></ol></section>
+</div>
+
+<div class="wrap narrow case-body">
+  <section><h2 data-reveal>Wat ik vond</h2><div class="finding">
+      <h3 data-reveal>Mobiele gebruikers raken bij elke stap achterop</h3>
+      <p data-reveal>18,7% van de desktopbezoekers maakt uiteindelijk een project, tegen 9,5% op mobiel. Het gat ontstaat bij de e-mailbevestiging.</p>
+      <figure class="chart-fig" data-reveal>
+  <div class="figbox"><div class="chart" style="--h:534px"><canvas id="p3-funnel" role="img" aria-label="Aandeel bezoekers dat elke stap bereikt, per apparaat."></canvas></div></div>
+  <figcaption>Aandeel bezoekers dat elke stap bereikt, per apparaat. <span class="muted">Beweeg over de grafiek of tik erop voor de exacte waarden.</span></figcaption>
+  <details class="data-table"><summary>Toon de cijfers</summary><div class="table-scroll"><table><thead><tr><th></th><th scope="col">Desktop</th><th scope="col">Mobiel</th></tr></thead><tbody><tr><th scope="row">Landingspagina</th><td class="num">100</td><td class="num">100</td></tr><tr><th scope="row">Aanmelding gestart</th><td class="num">44</td><td class="num">38</td></tr><tr><th scope="row">E-mail ingevuld</th><td class="num">38,7</td><td class="num">30,8</td></tr><tr><th scope="row">E-mail bevestigd</th><td class="num">28,7</td><td class="num">16</td></tr><tr><th scope="row">Profiel ingevuld</th><td class="num">24,6</td><td class="num">13,4</td></tr><tr><th scope="row">Eerste project gemaakt</th><td class="num">18,7</td><td class="num">9,5</td></tr></tbody></table></div></details>
+</figure>
+    </div><div class="finding">
+      <h3 data-reveal>De e-mailbevestiging moet als eerste beter</h3>
+      <p data-reveal>Zodra mensen aan de aanmelding beginnen, is de bevestiging het grootste lek: 39,1% van wie een e-mailadres invult, bevestigt het nooit. Op mobiel is dat 48%, op desktop 26%. Mensen wisselen naar hun mailapp en komen niet terug.</p>
+      <figure class="chart-fig" data-reveal>
+  <div class="figbox"><div class="chart"><canvas id="p3-drop" role="img" aria-label="Aandeel gebruikers dat bij elke stap afhaakt."></canvas></div></div>
+  <figcaption>Aandeel gebruikers dat bij elke stap afhaakt. <span class="muted">Beweeg over de grafiek of tik erop voor de exacte waarden.</span></figcaption>
+  <details class="data-table"><summary>Toon de cijfers</summary><div class="table-scroll"><table><thead><tr><th></th><th scope="col">Gebruikers verloren bij deze stap (%)</th></tr></thead><tbody><tr><th scope="row">Aanmelding gestart</th><td class="num">59,9</td></tr><tr><th scope="row">E-mail ingevuld</th><td class="num">16,3</td></tr><tr><th scope="row">E-mail bevestigd</th><td class="num">39,1</td></tr><tr><th scope="row">Profiel ingevuld</th><td class="num">15</td></tr><tr><th scope="row">Eerste project gemaakt</th><td class="num">26,5</td></tr></tbody></table></div></details>
+</figure>
+    </div></section>
+  <section><h2 data-reveal>Wat ik zou aanraden</h2><ul class="recs"><li data-reveal style="--d:0">Gebruikers laten beginnen vóór ze hun e-mail bevestigen, en er later om vragen.</li><li data-reveal style="--d:1">Op mobiel de bevestigingslink vervangen door een code van zes cijfers die je intypt zonder de app te verlaten.</li><li data-reveal style="--d:2">Als de bevestiging op mobiel even goed liep als op desktop, zou de app er zo’n 1.050 actieve gebruikers per maand bij krijgen.</li></ul></section>
+  <section data-reveal><h2>Een blik op de code</h2>
+    <figure class="code"><figcaption>PostgreSQL</figcaption><pre tabindex="0" translate="no"><code>WITH steps AS (
+  SELECT
+    user_id,
+    device,
+    MAX(CASE WHEN event = 'landing_view'   THEN 1 ELSE 0 END) AS s1_landing,
+    MAX(CASE WHEN event = 'signup_start'   THEN 1 ELSE 0 END) AS s2_start,
+    MAX(CASE WHEN event = 'email_entered'  THEN 1 ELSE 0 END) AS s3_email,
+    MAX(CASE WHEN event = 'email_verified' THEN 1 ELSE 0 END) AS s4_verified,
+    MAX(CASE WHEN event = 'profile_done'   THEN 1 ELSE 0 END) AS s5_profile,
+    MAX(CASE WHEN event = 'first_project'  THEN 1 ELSE 0 END) AS s6_first
+  FROM events
+  WHERE occurred_at &gt;= now() - INTERVAL '30 days'
+  GROUP BY user_id, device
+)
+SELECT
+  device,
+  SUM(s1_landing)  AS landing,
+  SUM(s2_start)    AS started,
+  SUM(s4_verified) AS verified,
+  SUM(s6_first)    AS activated,
+  ROUND(100.0 * SUM(s4_verified) / NULLIF(SUM(s3_email), 0), 1) AS verify_rate_pct
+FROM steps
+GROUP BY device;</code></pre></figure>
+  </section>
+  <section data-reveal><h2>Tools</h2><ul class="tags plain"><li>PostgreSQL</li><li>SQL</li><li>Tableau</li><li>Figma</li></ul></section>
+  <nav class="case-nav" aria-label="Projecten" data-reveal>
+    <a href="../projects.html">Alle projecten</a>
+    <a class="case-next" href="usability-study.html"><span class="muted">Volgend project</span>Twee prototypes van een boekingsapp getest</a>
+  </nav>
+</div>
+</article>
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <p class="footer-name">Julieta Lara Romero</p>
+      <p class="muted">Data-analist en UX/UI-designer. Drietalig (Spaans, Engels en Portugees), met een achtergrond in Multimedia Engineering en Business Intelligence.</p>
+    </div>
+    <div>
+      <h2 class="footer-h">Pagina’s</h2>
+      <ul class="plain">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../about.html">Over mij</a></li>
+        <li><a href="../projects.html">Projecten</a></li>
+        <li><a href="../../assets/Julieta-Lara-Romero-CV.pdf">Cv</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2 class="footer-h">Contact</h2>
+      <ul class="plain">
+        <li><a href="mailto:julietalarar98@gmail.com">julietalarar98@gmail.com</a></li>
+        <li><a href="https://www.linkedin.com/in/julieta-lara-romero-525366285/" rel="me">LinkedIn</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-base muted">
+    <p>© 2026 Julieta Lara Romero</p>
+    <p>Met de hand ontworpen en gebouwd in HTML, CSS en JavaScript. De grafieken gebruiken synthetische data.</p>
+  </div>
+</footer>
+<script src="../../assets/site.js" defer></script>
+<script type="application/json" id="chart-data">{"locale":"nl-NL","charts":{"p3-funnel":{"type":"hbar","unit":"%","max":100,"labels":["Landingspagina","Aanmelding gestart","E-mail ingevuld","E-mail bevestigd","Profiel ingevuld","Eerste project gemaakt"],"axis":"Bezoekers die de stap bereiken (%)","legend":true,"series":[{"name":"Desktop","values":[100,44,38.7,28.7,24.6,18.7],"color":"iris"},{"name":"Mobiel","values":[100,38,30.8,16,13.4,9.5],"color":"orchid"}]},"p3-drop":{"type":"bar","unit":"%","labels":["Aanmelding gestart","E-mail ingevuld","E-mail bevestigd","Profiel ingevuld","Eerste project gemaakt"],"axis":"Gebruikers verloren bij deze stap (%)","series":[{"name":"Gebruikers verloren bij deze stap (%)","values":[59.9,16.3,39.1,15,26.5],"colors":["iris","iris","orchid","iris","iris"]}]}}}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" defer></script>
+<script src="../../assets/charts.js" defer></script>
+</body>
+</html>
