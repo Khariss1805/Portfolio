@@ -32,7 +32,7 @@
       const valueAxis = {
         grid, border: { display: false }, min: spec.min, max: spec.max, beginAtZero: true,
         title: { display: true, text: spec.axis, color: muted },
-        ticks: { callback: (v) => nf(v) + tickUnit, padding: 6 },
+        ticks: { callback: (v) => (Math.abs(v) >= 10000 ? new Intl.NumberFormat(locale, { notation: 'compact', maximumFractionDigits: 1 }).format(v) : nf(v)) + tickUnit, padding: 6, maxRotation: 0 },
       };
       const catAxis = { grid: { display: false }, border: { color: line }, ticks: { color: ink, padding: 6, autoSkip: false, maxRotation: 0, callback(v) { const l = this.getLabelForValue(v); if (horizontal || l.length <= 14) return l; const out = []; let cur = ''; l.split(' ').forEach((w) => { if ((cur + ' ' + w).trim().length > 14 && cur) { out.push(cur); cur = w; } else cur = (cur + ' ' + w).trim(); }); out.push(cur); return out; } } };
       return {
