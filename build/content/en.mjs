@@ -59,7 +59,7 @@ export default {
     skillsHeading: 'Skills and tools',
     skillsSub: 'What I use, and where you can see it.',
     skillGroups: [
-      { t: 'Data and analytics', tools: ['SQL', 'Python', 'Power BI', 'DAX', 'Tableau', 'Excel', 'Google Sheets', 'Statistics'], projects: ['sales-dashboard', 'signup-funnel', 'order-forecast'] },
+      { t: 'Data and analytics', tools: ['SQL (MySQL, PostgreSQL)', 'Python (pandas)', 'Power BI', 'DAX', 'Tableau', 'Advanced Excel', 'Google Sheets', 'Statistics'], projects: ['sales-dashboard', 'signup-funnel', 'order-forecast'] },
       { t: 'UX research', tools: ['Usability testing', 'SUS', 'A/B testing', 'Surveys', 'Personas', 'Journey maps', 'HCI'], projects: ['usability-study', 'checkout-ab-test'] },
       { t: 'UI and web design', tools: ['Figma', 'HTML', 'CSS', 'JavaScript', 'Photoshop', 'Illustrator', 'Premiere', 'After Effects'], projects: ['onboarding-retention', 'usability-study'] },
     ],
@@ -315,7 +315,7 @@ export default {
       category: 'ux',
       title: 'Did the new checkout design really work?',
       short: 'An A/B test of a redesigned checkout, read carefully: overall effect, effect by device and whether the result can be trusted.',
-      tools: ['Python', 'A/B testing', 'Figma', 'Excel'],
+      tools: ['Python', 'statsmodels', 'A/B testing', 'Figma'],
       results: [['+{p2.lift}%', 'more completed purchases'], ['+{p2.mobileLift}%', 'on mobile, where it mattered most']],
       lead: 'The design team simplified the checkout from four steps to two. Before rolling it out, I checked whether it changed what customers did.',
       question: [
@@ -346,7 +346,7 @@ export default {
       category: 'product',
       title: 'Where new users drop out of sign-up',
       short: 'Funnel analysis in PostgreSQL of a six-step sign-up flow, by device, to find the one step worth redesigning first.',
-      tools: ['SQL', 'Tableau', 'Figma', 'Excel'],
+      tools: ['PostgreSQL', 'SQL', 'Tableau', 'Figma'],
       results: [['{p3.overall}%', 'of visitors become active users'], ['{p3.mobileVerifyDrop}%', 'of mobile users lost at email verification']],
       lead: 'A web app had plenty of visitors but few active users. I followed each visitor through sign-up to find exactly where they gave up.',
       question: [
@@ -377,7 +377,7 @@ export default {
       category: 'ux',
       title: 'Testing two prototypes of a booking app',
       short: 'A moderated usability study with task success, time on task and SUS scores, comparing two rounds of a Figma prototype.',
-      tools: ['Figma', 'Usability testing', 'SUS', 'Python', 'Google Sheets', 'Excel'],
+      tools: ['Figma', 'Usability testing', 'SUS', 'Python', 'Google Sheets'],
       results: [['{p4.susV2}', 'SUS score, up from {p4.susV1}'], ['{p4.timeSaved}%', 'less time to complete the tasks']],
       lead: 'A fitness studio wanted an app to book classes. I tested the first Figma prototype, redesigned the weak spots, and tested again with numbers to compare.',
       question: [
@@ -439,7 +439,7 @@ export default {
       category: 'product',
       title: 'Does an onboarding tour keep new members longer?',
       short: 'Cohort analysis of a fictional wellness app after it added a guided onboarding tour.',
-      tools: ['SQL', 'Tableau', 'Cohort analysis', 'Figma', 'Excel'],
+      tools: ['SQL', 'Tableau', 'Cohort analysis', 'Figma'],
       results: [['+{p6.gap6} pts', 'active members at month 6'], ['+{p6.m3Lift} pts', 'month-3 retention after launch']],
       lead: 'A wellness app added a short guided tour for new members in May. I measured whether it changed how long they stayed.',
       question: [

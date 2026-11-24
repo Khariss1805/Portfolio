@@ -120,7 +120,7 @@ by_device = (sessions.groupby([&quot;device&quot;, &quot;variant&quot;])[&quot;c
                      .mean().mul(100).round(2).unstack())
 print(summary, f&quot;p = {p_value:.4f}&quot;, by_device, sep=&quot;\n&quot;)</code></pre></figure>
   </section>
-  <section data-reveal><h2>Herramientas</h2><ul class="tags plain"><li>Python</li><li>Pruebas A/B</li><li>Figma</li><li>Excel</li></ul></section>
+  <section data-reveal><h2>Herramientas</h2><ul class="tags plain"><li>Python</li><li>statsmodels</li><li>Pruebas A/B</li><li>Figma</li></ul></section>
   <nav class="case-nav" aria-label="Proyectos" data-reveal>
     <a class="case-back" href="../projects.html"><span class="muted">Proyectos</span>Todos los proyectos</a>
     <a class="case-next" href="signup-funnel.html"><span class="muted">Siguiente proyecto</span>Dónde abandonan el registro los nuevos usuarios</a>

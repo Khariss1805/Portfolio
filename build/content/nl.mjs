@@ -59,7 +59,7 @@ export default {
     skillsHeading: 'Vaardigheden en tools',
     skillsSub: 'Wat ik gebruik, en waar je het kunt zien.',
     skillGroups: [
-      { t: 'Data en analyse', tools: ['SQL', 'Python', 'Power BI', 'DAX', 'Tableau', 'Excel', 'Google Sheets', 'Statistiek'], projects: ['sales-dashboard', 'signup-funnel', 'order-forecast'] },
+      { t: 'Data en analyse', tools: ['SQL (MySQL, PostgreSQL)', 'Python (pandas)', 'Power BI', 'DAX', 'Tableau', 'Excel (gevorderd)', 'Google Sheets', 'Statistiek'], projects: ['sales-dashboard', 'signup-funnel', 'order-forecast'] },
       { t: 'UX-onderzoek', tools: ['Usabilitytests', 'SUS', 'A/B-tests', 'Enquêtes', 'Persona’s', 'Customer journeys', 'HCI'], projects: ['usability-study', 'checkout-ab-test'] },
       { t: 'UI- en webdesign', tools: ['Figma', 'HTML', 'CSS', 'JavaScript', 'Photoshop', 'Illustrator', 'Premiere', 'After Effects'], projects: ['onboarding-retention', 'usability-study'] },
     ],
@@ -315,7 +315,7 @@ export default {
       category: 'ux',
       title: 'Werkte het nieuwe checkoutontwerp echt?',
       short: 'Een A/B-test van een vernieuwde checkout, zorgvuldig gelezen: het totale effect, het effect per apparaat en of de uitkomst te vertrouwen is.',
-      tools: ['Python', 'A/B-testen', 'Figma', 'Excel'],
+      tools: ['Python', 'statsmodels', 'A/B-testen', 'Figma'],
       results: [['+{p2.lift}%', 'meer afgeronde aankopen'], ['+{p2.mobileLift}%', 'op mobiel, waar het het meest telde']],
       lead: 'Het designteam bracht de checkout terug van vier stappen naar twee. Voordat het live ging, controleerde ik of het veranderde wat klanten deden.',
       question: [
@@ -346,7 +346,7 @@ export default {
       category: 'product',
       title: 'Waar nieuwe gebruikers afhaken bij het aanmelden',
       short: 'Een funnelanalyse in PostgreSQL van een aanmelding in zes stappen, per apparaat, om de stap te vinden die als eerste een nieuw ontwerp verdient.',
-      tools: ['SQL', 'Tableau', 'Figma', 'Excel'],
+      tools: ['PostgreSQL', 'SQL', 'Tableau', 'Figma'],
       results: [['{p3.overall}%', 'van de bezoekers wordt actieve gebruiker'], ['{p3.mobileVerifyDrop}%', 'van de mobiele gebruikers haakt af bij de e-mailbevestiging']],
       lead: 'Een webapp had veel bezoekers maar weinig actieve gebruikers. Ik volgde elke bezoeker door de aanmelding om precies te zien waar die opgaf.',
       question: [
@@ -377,7 +377,7 @@ export default {
       category: 'ux',
       title: 'Twee prototypes van een boekingsapp getest',
       short: 'Een begeleide usabilitystudie met taaksucces, tijd per taak en SUS-scores, waarin twee rondes van een Figma-prototype worden vergeleken.',
-      tools: ['Figma', 'Usabilitytests', 'SUS', 'Python', 'Google Sheets', 'Excel'],
+      tools: ['Figma', 'Usabilitytests', 'SUS', 'Python', 'Google Sheets'],
       results: [['{p4.susV2}', 'SUS-score, eerst {p4.susV1}'], ['{p4.timeSaved}%', 'minder tijd om de taken te voltooien']],
       lead: 'Een fitnessstudio wilde een app om lessen te boeken. Ik testte het eerste Figma-prototype, herontwierp de zwakke plekken en testte opnieuw, met cijfers om te vergelijken.',
       question: [
@@ -439,7 +439,7 @@ export default {
       category: 'product',
       title: 'Blijven nieuwe leden langer door een onboarding-rondleiding?',
       short: 'Cohortanalyse van een fictieve wellness-app nadat die een begeleide rondleiding voor nieuwe leden toevoegde.',
-      tools: ['SQL', 'Tableau', 'Cohortanalyse', 'Figma', 'Excel'],
+      tools: ['SQL', 'Tableau', 'Cohortanalyse', 'Figma'],
       results: [['+{p6.gap6} pt', 'actieve leden na 6 maanden'], ['+{p6.m3Lift} pt', 'retentie na 3 maanden sinds de lancering']],
       lead: 'Een wellness-app voegde in mei een korte rondleiding toe voor nieuwe leden. Ik mat of dat veranderde hoe lang ze bleven.',
       question: [
