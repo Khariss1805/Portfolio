@@ -59,7 +59,6 @@ const TC = (s, c) => s.replace(PH, (_, p, k, abs) => {
   const v = stat(p, k, abs);
   return `<span class="count" data-to="${v}" data-dec="${decimals(v)}">${num(v, c)}</span>`;
 });
-const countSpan = (v, c, d) => `<span class="count" data-to="${v}" data-dec="${d}">${num(v, c, d)}</span>`;
 function rel(from, to) {
   const r = posix.relative(posix.dirname('/' + from), '/' + to);
   return r === '' ? './' : r;
@@ -515,102 +514,6 @@ function projectsIndex(c, dir) {
   page(c, dir, 'projects.html', 'projects', `${c.projectsPage.title} | ${CONFIG.name}`, c.projectsPage.sub, body);
 }
 
-// ---------------------------------------------------------------- charts
-function chartSpecs(c) {
-  const L = c.chart;
-  const d = data;
-  const S = {};
-  const months = L.months;
-  // P1 sales
-  S['p1-months'] = { type: 'bar', labels: months, axis: L.revenueK, series: [{ name: L.revenueK, values: d.p1.months.map((v) => Math.round(v / 1000)), colors: months.map((_, i) => (i >= 9 ? 'orchid' : 'iris')) }] };
-  S['p1-cats'] = { type: 'hbar', labels: d.p1.byCat.map((x) => L.cats[x.key]), axis: L.revenueK, series: [{ name: L.revenueK, values: d.p1.byCat.map((x) => Math.round(x.revenue / 1000)), colors: d.p1.byCat.map((_, i) => (i < 2 ? 'orchid' : 'iris')) }] };
-  const ret = [...d.p1.byCat].sort((a, b) => b.returnRate - a.returnRate);
-  S['p1-returns'] = { type: 'hbar', unit: '%', labels: ret.map((x) => L.cats[x.key]), axis: L.returnRate, series: [{ name: L.returnRate, values: ret.map((x) => x.returnRate), colors: ret.map((x) => (x.key === 'apparel' ? 'orchid' : 'iris')) }] };
-  // P2 A/B test
-  S['p2-cum'] = {
-    type: 'line', unit: '%', labels: d.p2.cum.A.map((_, i) => L.dayN.replace('{n}', i + 1)), axis: L.cumConversion,
-    series: [{ name: L.variantA, values: d.p2.cum.A, color: 'lav', dash: true }, { name: L.variantB, values: d.p2.cum.B, color: 'iris' }],
-  };
-  S['p2-devices'] = {
-    type: 'bar', unit: '%', min: 0, labels: d.p2.devices.map((x) => L.devices[x.key]), axis: L.conversion, legend: true,
-    series: [{ name: L.variantA, values: d.p2.devices.map((x) => x.A), color: 'lav' }, { name: L.variantB, values: d.p2.devices.map((x) => x.B), color: 'iris' }],
-  };
-  // P3 funnel
-  S['p3-funnel'] = {
-    type: 'hbar', unit: '%', max: 100, labels: d.p3.steps.map((k) => L.steps[k]), axis: L.pctOfVisitors, legend: true,
-    series: [{ name: L.devices.desktop, values: d.p3.desktop, color: 'iris' }, { name: L.devices.mobile, values: d.p3.mobile, color: 'orchid' }],
-  };
-  S['p3-drop'] = { type: 'bar', unit: '%', labels: d.p3.stepDrop.map((x) => L.steps[x.key]), axis: L.dropPct, series: [{ name: L.dropPct, values: d.p3.stepDrop.map((x) => x.drop), colors: d.p3.stepDrop.map((x) => (x.key === 'verify' ? 'orchid' : 'iris')) }] };
-  // P4 usability
-  const tasks = d.p4.tasks.map((k) => L.tasks[k]);
-  S['p4-success'] = {
-    type: 'bar', unit: '%', min: 0, max: 100, labels: tasks, axis: L.successPct, legend: true,
-    series: [{ name: L.v1, values: d.p4.res.v1.map((r) => r.success), color: 'lav' }, { name: L.v2, values: d.p4.res.v2.map((r) => r.success), color: 'iris' }],
-  };
-  S['p4-time'] = {
-    type: 'hbar', unit: ' s', labels: tasks, axis: L.medianTime, legend: true,
-    series: [{ name: L.v1, values: d.p4.res.v1.map((r) => r.time), color: 'lav' }, { name: L.v2, values: d.p4.res.v2.map((r) => r.time), color: 'iris' }],
-  };
-  // P5 forecast
-  const h = d.p5.history.length;
-  const pad = (n) => Array(n).fill(null);
-  S['p5-forecast'] = {
-    type: 'line', labels: Array.from({ length: h + 12 }, (_, i) => L.weekN.replace('{n}', i + 1)), axis: L.orders,
-    series: [
-      { name: L.actual, values: d.p5.history.concat(pad(12)), color: 'ink' },
-      { name: L.backtest, values: pad(h - 12).concat(d.p5.backtest, pad(12)), color: 'orchid', dash: true },
-      { name: L.forecast, values: pad(h - 1).concat([d.p5.history[h - 1]], d.p5.future), color: 'iris' },
-      { name: L.range, values: pad(h).concat(d.p5.band.map((b) => b[1])), color: 'lav', band: 'upper' },
-      { name: L.range, values: pad(h).concat(d.p5.band.map((b) => b[0])), color: 'lav', band: 'lower' },
-    ],
-  };
-  // P6 retention
-  S['p6-curves'] = {
-    type: 'line', unit: '%', labels: d.p6.curves.tour.map((_, i) => L.monthN.replace('{n}', i)), axis: L.retained,
-    series: [{ name: L.tour, values: d.p6.curves.tour, color: 'iris' }, { name: L.noTour, values: d.p6.curves.skip, color: 'orchid', dash: true }],
-  };
-  return S;
-}
-
-function heatTable(c, rows, colLabels, rowLabels, { caption, max, unit = '', rowHeader, extraCol }) {
-  const cells = rows.map((row, ri) => `<tr><th scope="row">${rowLabels[ri]}</th>${extraCol ? `<td class="num">${extraCol[ri]}</td>` : ''}${row.map((v, ci) => {
-    if (v == null) return '<td class="heat-empty"></td>';
-    const k = Math.max(0, Math.min(1, v / max));
-    return `<td class="heat${k > 0.55 ? ' heat-strong' : ''}" style="--k:${k.toFixed(3)};--w:${ri + ci}">${num(v, c, 1)}${unit}</td>`;
-  }).join('')}</tr>`).join('');
-  return `<div class="table-scroll"><table class="heat-table">
-  <caption class="sr-only">${caption}</caption>
-  <thead><tr><th scope="col">${rowHeader}</th>${extraCol ? `<th scope="col">${c.chart.members}</th>` : ''}${colLabels.map((l) => `<th scope="col">${l}</th>`).join('')}</tr></thead>
-  <tbody>${cells}</tbody></table></div>`;
-}
-
-function chartFigure(c, id, caption, specs) {
-  const L = c.chart;
-  const cap = T(caption, c);
-  if (id === 'p5-heat') {
-    const max = Math.max(...data.p5.heat.flat());
-    return `<figure class="chart-fig" data-reveal data-heat><div class="figbox">${heatTable(c, data.p5.heat, data.p5.hours.map((h) => `${h}h`), L.weekdays, { caption: cap, max, rowHeader: '' })}</div><figcaption>${cap}</figcaption></figure>`;
-  }
-  if (id === 'p6-cohorts') {
-    const months = data.p6.cohorts[0].row.map((_, i) => L.monthN.replace('{n}', i));
-    const fmt = new Intl.DateTimeFormat(c.locale, { month: 'short', year: 'numeric' });
-    const labels = data.p6.cohorts.map((g) => fmt.format(new Date(g.cohort + '-15')));
-    return `<figure class="chart-fig" data-reveal data-heat><div class="figbox">${heatTable(c, data.p6.cohorts.map((g) => g.row), months, labels, { caption: cap, max: 100, unit: '%', rowHeader: L.cohort, extraCol: data.p6.cohorts.map((g) => num(g.size, c)) })}</div><figcaption>${cap}</figcaption></figure>`;
-  }
-  const s = specs[id];
-  const series = s.series.filter((x) => !x.band)
-    .concat(s.series.filter((x) => x.band === 'upper').map((x) => ({ ...x, name: x.name + ' ↑' })), s.series.filter((x) => x.band === 'lower').map((x) => ({ ...x, name: x.name + ' ↓' })));
-  const rowsIdx = s.labels.map((_, i) => i).filter((i) => series.some((x) => x.values[i] != null));
-  const table = `<table><thead><tr><th></th>${series.map((x) => `<th scope="col">${x.name}</th>`).join('')}</tr></thead><tbody>${rowsIdx.map((i) => `<tr><th scope="row">${s.labels[i]}</th>${series.map((x) => `<td class="num">${x.values[i] == null ? '' : num(x.values[i], c, 2)}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
-  const bars = s.type === 'hbar' ? s.labels.length * s.series.length : 0;
-  const tall = s.type === 'hbar' ? ` style="--h:${Math.max(240, bars * 30 + s.labels.length * 14 + 90)}px"` : '';
-  return `<figure class="chart-fig" data-reveal>
-  <div class="figbox"><div class="chart"${tall}><canvas id="${id}" role="img" aria-label="${esc(cap)}"></canvas></div></div>
-  <figcaption>${cap} <span class="muted">${c.labels.chartHint}</span></figcaption>
-  <details class="data-table"><summary>${c.labels.table}</summary><div class="table-scroll">${table}</div></details>
-</figure>`;
-}
-
 // ---------------------------------------------------------------- Excel workbook preview
 function xlFormat(v, fmt, c) {
   if (v == null || typeof v === 'string') return v == null ? '' : esc(v);
@@ -628,7 +531,22 @@ function xlFormat(v, fmt, c) {
   }
 }
 
-function xlSheet(c, sh, si, slug) {
+// An Excel chart object for a sheet, drawn with Chart.js by assets/charts.js.
+const PCT = new Set(['pct', 'pct0', 'pct2']);
+function xlChartSpec(sh) {
+  const ch = sh.chart;
+  const h = sh.head;
+  return {
+    type: ch.type === 'bar' ? 'hbar' : ch.type === 'col' ? 'bar' : 'line',
+    unit: PCT.has(h[ch.series[0]].fmt) ? '%' : '',
+    labels: sh.rows.map((r) => r[ch.cat].v),
+    axis: ch.title,
+    legend: ch.series.length > 1,
+    series: ch.series.map((si, n) => ({ name: h[si].label, values: sh.rows.map((r) => r[si].v), color: ['iris', 'orchid', 'lav'][n] })),
+  };
+}
+
+function xlSheet(c, sh, si, slug, charts) {
   const ncols = Math.max(sh.head.length, sh.kpis.length);
   // Min and max per column (or per block) for conditional formatting.
   const range = (cols) => {
@@ -670,14 +588,25 @@ function xlSheet(c, sh, si, slug) {
     }).join('') + blank(n, r.length));
   });
   const id = `xl-${slug}-${si}`;
-  return `<div class="xl-sheet" role="tabpanel" id="${id}" aria-labelledby="${id}-tab"${si ? ' hidden' : ''}>
+  let chart = '';
+  if (sh.chart) {
+    const cid = `xlc-${slug}-${si}`;
+    const spec = xlChartSpec(sh);
+    charts[cid] = spec;
+    const bars = spec.type === 'hbar' ? spec.labels.length * spec.series.length : 0;
+    const tall = bars ? ` style="--h:${Math.max(260, bars * 26 + spec.labels.length * 12 + 90)}px"` : '';
+    chart = `<figure class="xl-chartobj"><figcaption>${esc(sh.chart.title)}</figcaption><div class="chart"${tall}><canvas id="${cid}" role="img" aria-label="${esc(sh.chart.title)}"></canvas></div></figure>`;
+  }
+  const side = chart && sh.head.length <= 6;
+  return `<div class="xl-sheet${side ? ' xl-side' : ''}" role="tabpanel" id="${id}" aria-labelledby="${id}-tab"${si ? ' hidden' : ''}>
     <div class="xl-grid-scroll" tabindex="0" aria-label="${esc(sh.name)}">
       <table class="xl-grid"><caption class="sr-only">${esc(sh.title)}</caption><thead><tr><th class="xl-corner" aria-hidden="true"></th>${letters}</tr></thead><tbody>${rows.join('')}</tbody></table>
     </div>
+    ${chart}
   </div>`;
 }
 
-function excelBlock(c, slug, p, sheets) {
+function excelBlock(c, slug, p, sheets, charts) {
   const X = c.xl;
   const own = CONFIG.excel[slug] || {};
   const file = own.file || `assets/excel/${slug}.xlsx`;
@@ -696,7 +625,7 @@ function excelBlock(c, slug, p, sheets) {
       <span class="xl-fx" aria-hidden="true">fx</span>
       <output class="xl-formula" aria-live="polite" aria-label="${X.formulaBar}" translate="no">${esc(startF)}</output>
     </div>
-    ${sheets.map((sh, si) => xlSheet(c, sh, si, slug)).join('')}
+    ${sheets.map((sh, si) => xlSheet(c, sh, si, slug, charts)).join('')}
     <div class="xl-tabs" role="tablist" aria-label="${X.sheets}">${tabs}<span class="xl-plus" aria-hidden="true">+</span></div>
     <div class="xl-status" aria-hidden="true"><span>${X.ready}</span><span>${X.hint}</span></div>`;
   }
@@ -764,39 +693,15 @@ function caseStudy(c, dir, slug, i) {
   const file = `projects/${slug}.html`;
   const p = dir + file;
   const pr = c.projects[slug];
-  const specs = chartSpecs(c);
   const book = workbooksFor(c)[slug];
-  const used = [];
-  const fig = (id, cap) => { if (specs[id]) used.push(id); return chartFigure(c, id, cap, specs); };
+  const charts = {};
   const next = PROJECTS[(i + 1) % PROJECTS.length];
-  let dash = '';
-  if (pr.dashboard) {
-    const L = c.chart;
-    const s1 = data.p1.stats;
-    const tiles = [
-      [L.kpiRevenue, `€${countSpan(s1.revenueM, c, 2)}M`],
-      [L.kpiOrders, countSpan(s1.orders, c, 0)],
-      [L.kpiAov, `€${countSpan(s1.aov, c, 0)}`],
-      [L.kpiReturns, `${countSpan(s1.returnRate, c, 1)}%`, true],
-    ].map(([k, v, warn]) => `<div class="kpi${warn ? ' kpi-miss' : ''}"><span>${k}</span><strong>${v}</strong></div>`).join('');
-    const [f0, f1, f2] = pr.findings;
-    dash = `<div class="dash" data-reveal>
-      <div class="dash-bar"><span class="dash-dots" aria-hidden="true"><i></i><i></i><i></i></span><span>${T(pr.title, c)}</span></div>
-      <div class="kpis">${tiles}</div>
-      <div class="dash-grid">
-        <div class="dash-wide">${fig(f1.chart, f1.caption)}</div>
-        ${fig(f0.chart, f0.caption)}
-        ${fig(f2.chart, f2.caption)}
-      </div>
-    </div>`;
-  }
+  const workbook = excelBlock(c, slug, p, book, charts);
   const findings = pr.findings.map((f) => `<div class="finding">
       <h3 data-reveal>${T(f.t, c)}</h3>
       <p data-reveal>${T(f.text, c)}</p>
-      ${pr.dashboard ? '' : fig(f.chart, f.caption)}
     </div>`).join('');
   const snip = snippets[pr.code];
-  const chartData = Object.fromEntries(used.map((id) => [id, specs[id]]));
   const body = `<article>
 <header class="page-head case-head">
   <div class="wrap narrow">
@@ -813,8 +718,7 @@ function caseStudy(c, dir, slug, i) {
   <section data-reveal><h2>${c.labels.data}</h2>${pr.data.map((t) => `<p>${T(t, c)}</p>`).join('')}</section>
   <section><h2 data-reveal>${c.labels.approach}</h2><ol class="steps">${pr.approach.map((t, k) => `<li data-reveal style="--d:${k}">${T(t, c)}</li>`).join('')}</ol></section>
 </div>
-${dash ? `<div class="wrap wide">${dash}</div>` : ''}
-${excelBlock(c, slug, p, book)}
+${workbook}
 <div class="wrap narrow case-body">
   <section><h2 data-reveal>${c.labels.findings}</h2>${findings}</section>
   <section><h2 data-reveal>${c.labels.recommend}</h2><ul class="recs">${pr.recommend.map((t, k) => `<li data-reveal style="--d:${k}">${T(t, c)}</li>`).join('')}</ul></section>
@@ -828,7 +732,7 @@ ${excelBlock(c, slug, p, book)}
   </nav>
 </div>
 </article>`;
-  const extra = used.length ? `<script type="application/json" id="chart-data">${JSON.stringify({ locale: c.locale, charts: chartData }).replace(/</g, '\\u003c')}</script>
+  const extra = Object.keys(charts).length ? `<script type="application/json" id="chart-data">${JSON.stringify({ locale: c.locale, charts }).replace(/</g, '\\u003c')}</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" defer></script>
 <script src="${rel(p, 'assets/charts.js')}" defer></script>` : '';
   page(c, dir, file, 'projects', `${T(pr.title, c)} | ${CONFIG.name}`, T(pr.short, c), body, extra, true);

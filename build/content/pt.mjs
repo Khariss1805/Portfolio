@@ -59,7 +59,7 @@ export default {
     skillsHeading: 'Competências e ferramentas',
     skillsSub: 'O que uso e onde o pode ver.',
     skillGroups: [
-      { t: 'Dados e análise', tools: ['SQL (MySQL, PostgreSQL)', 'Python (pandas)', 'Power BI', 'DAX', 'Tableau', 'Excel avançado', 'Google Sheets', 'Estatística'], projects: ['sales-dashboard', 'signup-funnel', 'order-forecast'] },
+      { t: 'Dados e análise', tools: ['SQL', 'Python', 'Power BI', 'DAX', 'Tableau', 'Excel', 'Google Sheets', 'Estatística'], projects: ['sales-dashboard', 'signup-funnel', 'order-forecast'] },
       { t: 'Investigação UX', tools: ['Testes de usabilidade', 'SUS', 'Testes A/B', 'Inquéritos', 'Personas', 'Journey maps', 'HCI'], projects: ['usability-study', 'checkout-ab-test'] },
       { t: 'Design UI e web', tools: ['Figma', 'HTML', 'CSS', 'JavaScript', 'Photoshop', 'Illustrator', 'Premiere', 'After Effects'], projects: ['onboarding-retention', 'usability-study'] },
     ],
@@ -315,7 +315,7 @@ export default {
       category: 'ux',
       title: 'O novo design do checkout funcionou mesmo?',
       short: 'Um teste A/B de um checkout redesenhado, lido com cuidado: efeito global, efeito por dispositivo e se o resultado é fiável.',
-      tools: ['Python', 'statsmodels', 'Testes A/B', 'Figma'],
+      tools: ['Python', 'Testes A/B', 'Figma', 'Excel'],
       results: [['+{p2.lift}%', 'mais compras concluídas'], ['+{p2.mobileLift}%', 'no telemóvel, onde mais importava']],
       lead: 'A equipa de design simplificou o checkout de quatro passos para dois. Antes de o lançar, verifiquei se mudava o que os clientes faziam.',
       question: [
@@ -346,7 +346,7 @@ export default {
       category: 'product',
       title: 'Onde os novos utilizadores desistem do registo',
       short: 'Análise de funil em PostgreSQL de um registo com seis passos, por dispositivo, para encontrar o passo que vale a pena redesenhar primeiro.',
-      tools: ['PostgreSQL', 'SQL', 'Tableau', 'Figma'],
+      tools: ['SQL', 'Tableau', 'Figma', 'Excel'],
       results: [['{p3.overall}%', 'dos visitantes tornam-se utilizadores ativos'], ['{p3.mobileVerifyDrop}%', 'dos utilizadores de telemóvel perdidos na confirmação do e-mail']],
       lead: 'Uma aplicação web tinha muitas visitas mas poucos utilizadores ativos. Segui cada visitante pelo registo para descobrir exatamente onde desistia.',
       question: [
@@ -377,7 +377,7 @@ export default {
       category: 'ux',
       title: 'A testar dois protótipos de uma app de reservas',
       short: 'Um estudo de usabilidade moderado com sucesso por tarefa, tempo por tarefa e pontuação SUS, a comparar duas rondas de um protótipo em Figma.',
-      tools: ['Figma', 'Testes de usabilidade', 'SUS', 'Python', 'Google Sheets'],
+      tools: ['Figma', 'Testes de usabilidade', 'SUS', 'Python', 'Google Sheets', 'Excel'],
       results: [['{p4.susV2}', 'pontuação SUS, antes {p4.susV1}'], ['{p4.timeSaved}%', 'menos tempo para concluir as tarefas']],
       lead: 'Um estúdio de fitness queria uma app para reservar aulas. Testei o primeiro protótipo em Figma, redesenhei os pontos fracos e voltei a testar com números para comparar.',
       question: [
@@ -439,7 +439,7 @@ export default {
       category: 'product',
       title: 'Um tour de boas-vindas faz os membros ficar mais tempo?',
       short: 'Análise de coortes de uma app de bem-estar fictícia depois de acrescentar um tour guiado para novos membros.',
-      tools: ['SQL', 'Tableau', 'Análise de coortes', 'Figma'],
+      tools: ['SQL', 'Tableau', 'Análise de coortes', 'Figma', 'Excel'],
       results: [['+{p6.gap6} pts', 'de membros ativos ao 6.º mês'], ['+{p6.m3Lift} pts', 'de retenção ao 3.º mês após o lançamento']],
       lead: 'Uma app de bem-estar acrescentou em maio um tour guiado curto para novos membros. Medi se isso mudou o tempo que ficam.',
       question: [
