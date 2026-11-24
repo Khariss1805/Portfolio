@@ -1,0 +1,163 @@
+{
+ "irina-title": {
+  "w": 1600,
+  "h": 900
+ },
+ "irina-scene": {
+  "w": 1057,
+  "h": 593
+ },
+ "irina-persona-client": {
+  "w": 1100,
+  "h": 619
+ },
+ "irina-persona-user": {
+  "w": 1100,
+  "h": 619
+ },
+ "irina-stakeholders": {
+  "w": 480,
+  "h": 360
+ },
+ "irina-swot": {
+  "w": 480,
+  "h": 360
+ },
+ "irina-mvp": {
+  "w": 1502,
+  "h": 642
+ },
+ "irina-journey": {
+  "w": 1539,
+  "h": 1713
+ },
+ "irina-prototypes-1": {
+  "w": 670,
+  "h": 432
+ },
+ "irina-prototypes-2": {
+  "w": 663,
+  "h": 397
+ },
+ "nona-cover": {
+  "w": 700,
+  "h": 731
+ },
+ "nona-persona": {
+  "w": 1589,
+  "h": 982
+ },
+ "nona-ia-1": {
+  "w": 1600,
+  "h": 744
+ },
+ "nona-ia-2": {
+  "w": 1141,
+  "h": 1368
+ },
+ "nona-taskflow": {
+  "w": 1424,
+  "h": 1096
+ },
+ "nona-userflow-1": {
+  "w": 873,
+  "h": 1789
+ },
+ "nona-userflow-2": {
+  "w": 842,
+  "h": 1853
+ },
+ "nona-prototypes": {
+  "w": 1036,
+  "h": 710
+ },
+ "food-explorer": {
+  "w": 1400,
+  "h": 825
+ },
+ "vorafood": {
+  "w": 742,
+  "h": 1076
+ },
+ "inest-1": {
+  "w": 1062,
+  "h": 498
+ },
+ "inest-2": {
+  "w": 847,
+  "h": 407
+ },
+ "inest-3": {
+  "w": 827,
+  "h": 393
+ },
+ "composition": {
+  "w": 302,
+  "h": 506
+ },
+ "illustration": {
+  "w": 696,
+  "h": 833
+ },
+ "chibi": {
+  "w": 960,
+  "h": 887
+ },
+ "restoration": {
+  "w": 787,
+  "h": 688
+ },
+ "photo-edit": {
+  "w": 821,
+  "h": 437
+ },
+ "visual-concept": {
+  "w": 1048,
+  "h": 631
+ },
+ "cgi-1": {
+  "w": 832,
+  "h": 557
+ },
+ "cgi-2": {
+  "w": 833,
+  "h": 556
+ },
+ "car-1": {
+  "w": 587,
+  "h": 367
+ },
+ "car-2": {
+  "w": 577,
+  "h": 307
+ },
+ "vive-poster": {
+  "w": 1600,
+  "h": 2107
+ },
+ "inest-video": {
+  "w": 640,
+  "h": 352,
+  "video": true
+ },
+ "anim-3d": {
+  "w": 1280,
+  "h": 720,
+  "video": true
+ },
+ "rose": {
+  "w": 1280,
+  "h": 720,
+  "video": true
+ },
+ "promo-nezuko": {
+  "w": 540,
+  "h": 960,
+  "video": true
+ },
+ "promo-sally": {
+  "w": 540,
+  "h": 960,
+  "video": true
+ }
+}

@@ -99,6 +99,56 @@
     });
   });
 
+  /* ------------------------------------------------------------ lightbox
+     Gallery images open larger in a native <dialog>: focus is trapped and
+     Escape closes it for free. Arrow keys move between images. */
+  var dialog = document.querySelector('dialog.lightbox');
+  var shots = [].slice.call(document.querySelectorAll('[data-lightbox]'));
+  if (dialog && shots.length && dialog.showModal) {
+    var lbImg = dialog.querySelector('img');
+    var lbCap = dialog.querySelector('figcaption');
+    var current = -1, opener = null;
+    function showShot(i) {
+      current = (i + shots.length) % shots.length;
+      var b = shots[current];
+      lbImg.src = b.dataset.lightbox;
+      lbImg.alt = b.dataset.caption;
+      lbCap.textContent = b.dataset.caption + '  ·  ' + (current + 1) + ' / ' + shots.length;
+      if (!reduced && lbImg.animate) lbImg.animate([{ opacity: 0.4 }, { opacity: 1 }], { duration: 180, easing: 'ease-out' });
+    }
+    function openShot(i) {
+      opener = shots[i];
+      showShot(i);
+      dialog.showModal();
+      if (!reduced && dialog.animate) {
+        dialog.animate([{ opacity: 0, transform: 'scale(0.96)' }, { opacity: 1, transform: 'none' }],
+          { duration: 240, easing: 'cubic-bezier(0.23, 1, 0.32, 1)' });
+      }
+    }
+    function closeShot() {
+      if (!dialog.open) return;
+      if (!reduced && dialog.animate) {
+        var a = dialog.animate([{ opacity: 1 }, { opacity: 0, transform: 'scale(0.98)' }], { duration: 160, easing: 'ease-out' });
+        a.onfinish = function () { dialog.close(); };
+      } else dialog.close();
+    }
+    shots.forEach(function (b, i) { b.addEventListener('click', function () { openShot(i); }); });
+    dialog.addEventListener('close', function () { if (opener) opener.focus(); });
+    dialog.addEventListener('click', function (e) {
+      var btn = e.target.closest('[data-lb]');
+      if (btn) {
+        if (btn.dataset.lb === 'close') closeShot(); else showShot(current + parseInt(btn.dataset.lb, 10));
+        return;
+      }
+      if (e.target === dialog) closeShot(); // click on the backdrop
+    });
+    dialog.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') showShot(current + 1);
+      if (e.key === 'ArrowLeft') showShot(current - 1);
+      if (e.key === 'Escape') { e.preventDefault(); closeShot(); }
+    });
+  }
+
   /* ------------------------------------------------------------ project filters */
   var group = document.querySelector('.filters');
   var list = document.getElementById('proj-list');
