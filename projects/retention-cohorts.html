@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Does a welcome call keep new members longer? | Julieta Lara Romero</title>
+  <meta name="description" content="Cohort analysis of a fictional health membership, comparing a welcome call with email-only onboarding.">
+  <meta name="color-scheme" content="light dark">
+  <meta property="og:title" content="Does a welcome call keep new members longer? | Julieta Lara Romero">
+  <meta property="og:description" content="Cohort analysis of a fictional health membership, comparing a welcome call with email-only onboarding.">
+  <meta property="og:type" content="website">
+  <link rel="alternate" hreflang="en" href="https://khariss1805.github.io/Portfolio/projects/retention-cohorts.html">
+  <link rel="alternate" hreflang="nl" href="https://khariss1805.github.io/Portfolio/nl/projects/retention-cohorts.html">
+  <link rel="alternate" hreflang="pt-PT" href="https://khariss1805.github.io/Portfolio/pt/projects/retention-cohorts.html">
+  <link rel="alternate" hreflang="es" href="https://khariss1805.github.io/Portfolio/es/projects/retention-cohorts.html">
+  <link rel="alternate" hreflang="x-default" href="https://khariss1805.github.io/Portfolio/projects/retention-cohorts.html">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Instrument+Sans:ital,wght@0,400..700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/site.css">
+  <script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="brand" href="../index.html">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="13" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="16" cy="16" r="5" fill="currentColor"/></svg>
+      <span><span class="brand-name">Julieta Lara Romero</span><span class="brand-role">CX & Data Analyst</span></span>
+    </a>
+    <nav class="main-nav" aria-label="Main">
+      <a href="../index.html">Home</a>
+      <a href="../about.html">About</a>
+      <a href="../projects.html" aria-current="page">Projects</a>
+      <a href="../assets/Julieta-Lara-Romero-CV.pdf">Résumé</a>
+    </nav>
+    <nav class="lang-switch" aria-label="Language"><a href="retention-cohorts.html" hreflang="en" lang="en" title="English" aria-current="true">EN</a><a href="../nl/projects/retention-cohorts.html" hreflang="nl" lang="nl" title="Nederlands">NL</a><a href="../pt/projects/retention-cohorts.html" hreflang="pt-PT" lang="pt-PT" title="Português">PT</a><a href="../es/projects/retention-cohorts.html" hreflang="es" lang="es" title="Español">ES</a></nav>
+  </div>
+</header>
+<main id="main">
+<article>
+<header class="page-head case-head">
+  <div class="wrap narrow">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">Home</a><span aria-hidden="true">/</span><a href="../projects.html">Projects</a></nav>
+    <p class="case-tags"><span class="tag">Operations and growth</span><span class="tag tag-practice">Practice project</span></p>
+    <h1>Does a welcome call keep new members longer?</h1>
+    <p class="hero-lead">A membership service started calling new members in their first week. I measured whether it changed how long they stayed.</p>
+    <div class="case-results"><span class="result"><strong>+16.9 pts</strong><span>active members at month 6</span></span><span class="result"><strong>+7 pts</strong><span>month-3 retention after the rollout</span></span></div>
+    <p class="practice-note">This is a practice project. The company is fictional and the data is synthetic, generated to behave like real contact-centre data. The questions, methods and code are the ones I would use on the job.</p>
+  </div>
+</header>
+<div class="wrap narrow case-body">
+  <section><h2>The question</h2><p>Many new members leave in the first month: 24% of email-onboarded members are gone after month one.</p><p>The question: do members who get a welcome call stay longer, and is the effect visible in the cohorts since it started in May?</p></section>
+  <section><h2>The data</h2><p>Nine monthly signup cohorts (January to September), each member’s active months, and onboarding channel.</p></section>
+  <section><h2>What I did</h2><ol class="steps"><li>Built a cohort table in SQL: for each signup month, the share of members still active after each month.</li><li>Compared cohorts before and after the welcome call started in May.</li><li>Compared retention curves of members with a welcome call and members with email only.</li><li>Designed the cohort view in Figma first so it would read clearly before building it in Tableau.</li></ol></section>
+</div>
+
+<div class="wrap narrow case-body">
+  <section><h2>What I found</h2><div class="finding">
+      <h3>Cohorts since May stay longer</h3>
+      <p>Month-3 retention averaged 69.7% for January to April cohorts and 76.7% for cohorts from May on: 7 points more.</p>
+      <figure class="chart-fig"><div class="figbox"><div class="table-scroll"><table class="heat-table">
+  <caption class="sr-only">Share of each signup cohort still active, by month since signup.</caption>
+  <thead><tr><th scope="col">Signup month</th><th scope="col">Members</th><th scope="col">M0</th><th scope="col">M1</th><th scope="col">M2</th><th scope="col">M3</th><th scope="col">M4</th><th scope="col">M5</th><th scope="col">M6</th></tr></thead>
+  <tbody><tr><th scope="row">Jan 2026</th><td class="num">415</td><td class="heat heat-strong" style="--k:1.000">100%</td><td class="heat heat-strong" style="--k:0.816">81.6%</td><td class="heat heat-strong" style="--k:0.758">75.8%</td><td class="heat heat-strong" style="--k:0.709">70.9%</td><td class="heat heat-strong" style="--k:0.673">67.3%</td><td class="heat heat-strong" style="--k:0.625">62.5%</td><td class="heat heat-strong" style="--k:0.598">59.8%</td></tr><tr><th scope="row">Feb 2026</th><td class="num">390</td><td class="heat heat-strong" style="--k:1.000">100%</td><td class="heat heat-strong" style="--k:0.807">80.7%</td><td class="heat heat-strong" style="--k:0.750">75%</td><td class="heat heat-strong" style="--k:0.702">70.2%</td><td class="heat heat-strong" style="--k:0.659">65.9%</td><td class="heat heat-strong" style="--k:0.614">61.4%</td><td class="heat heat-strong" style="--k:0.575">57.5%</td></tr><tr><th scope="row">Mar 2026</th><td class="num">491</td><td class="heat heat-strong" style="--k:1.000">100%</td><td class="heat heat-strong" style="--k:0.788">78.8%</td><td class="heat heat-strong" style="--k:0.735">73.5%</td><td class="heat heat-strong" style="--k:0.686">68.6%</td><td class="heat heat-strong" style="--k:0.634">63.4%</td><td class="heat heat-strong" style="--k:0.595">59.5%</td><td class="heat heat-strong" style="--k:0.558">55.8%</td></tr><tr><th scope="row">Apr 2026</th><td class="num">532</td><td class="heat heat-strong" style="--k:1.000">100%</td><td class="heat heat-strong" style="--k:0.799">79.9%</td><td class="heat heat-strong" style="--k:0.740">74%</td><td class="heat heat-strong" style="--k:0.691">69.1%</td><td class="heat heat-strong" style="--k:0.638">63.8%</td><td class="heat heat-strong" style="--k:0.593">59.3%</td><td class="heat-empty"></td></tr><tr><th scope="row">May 2026</th><td class="num">530</td><td class="heat heat-strong" style="--k:1.000">100%</td><td class="heat heat-strong" style="--k:0.820">82%</td><td class="heat heat-strong" style="--k:0.798">79.8%</td><td class="heat heat-strong" style="--k:0.771">77.1%</td><td class="heat heat-strong" style="--k:0.738">73.8%</td><td class="heat-empty"></td><td class="heat-empty"></td></tr><tr><th scope="row">Jun 2026</th><td class="num">567</td><td class="heat heat-strong" style="--k:1.000">100%</td><td class="heat heat-strong" style="--k:0.825">82.5%</td><td class="heat heat-strong" style="--k:0.803">80.3%</td><td class="heat heat-strong" style="--k:0.763">76.3%</td><td class="heat-empty"></td><td class="heat-empty"></td><td class="heat-empty"></td></tr><tr><th scope="row">Jul 2026</th><td class="num">605</td><td class="heat heat-strong" style="--k:1.000">100%</td><td class="heat heat-strong" style="--k:0.855">85.5%</td><td class="heat heat-strong" style="--k:0.830">83%</td><td class="heat-empty"></td><td class="heat-empty"></td><td class="heat-empty"></td><td class="heat-empty"></td></tr><tr><th scope="row">Aug 2026</th><td class="num">645</td><td class="heat heat-strong" style="--k:1.000">100%</td><td class="heat heat-strong" style="--k:0.819">81.9%</td><td class="heat-empty"></td><td class="heat-empty"></td><td class="heat-empty"></td><td class="heat-empty"></td><td class="heat-empty"></td></tr><tr><th scope="row">Sept 2026</th><td class="num">650</td><td class="heat heat-strong" style="--k:1.000">100%</td><td class="heat-empty"></td><td class="heat-empty"></td><td class="heat-empty"></td><td class="heat-empty"></td><td class="heat-empty"></td><td class="heat-empty"></td></tr></tbody></table></div></div><figcaption>Share of each signup cohort still active, by month since signup.</figcaption></figure>
+    </div><div class="finding">
+      <h3>The gap grows over time</h3>
+      <p>By month 6, 68.3% of members with a welcome call are still active, against 51.4% with email only. Most of the difference is created in the first month.</p>
+      <figure class="chart-fig">
+  <div class="figbox"><div class="chart"><canvas id="p6-curves" role="img" aria-label="Retention curve by onboarding channel."></canvas></div></div>
+  <figcaption>Retention curve by onboarding channel. <span class="muted">Hover or tap the chart for exact values.</span></figcaption>
+  <details class="data-table"><summary>Show the numbers</summary><div class="table-scroll"><table><thead><tr><th></th><th scope="col">Welcome call</th><th scope="col">Email only</th></tr></thead><tbody><tr><th scope="row">M0</th><td class="num">100</td><td class="num">100</td></tr><tr><th scope="row">M1</th><td class="num">86</td><td class="num">76</td></tr><tr><th scope="row">M2</th><td class="num">82.1</td><td class="num">70.3</td></tr><tr><th scope="row">M3</th><td class="num">78.4</td><td class="num">65</td></tr><tr><th scope="row">M4</th><td class="num">74.9</td><td class="num">60.1</td></tr><tr><th scope="row">M5</th><td class="num">71.5</td><td class="num">55.6</td></tr><tr><th scope="row">M6</th><td class="num">68.3</td><td class="num">51.4</td></tr></tbody></table></div></details>
+</figure>
+    </div></section>
+  <section><h2>What I would recommend</h2><ul class="recs"><li>Make the welcome call standard for all new members, scheduled in the first week.</li><li>Add a second check-in at the end of month one, where most members leave.</li><li>Keep a small email-only group for a few months, to measure the effect cleanly.</li></ul></section>
+  <section><h2>A look at the code</h2>
+    <figure class="code"><figcaption>SQL</figcaption><pre tabindex="0"><code>WITH members AS (
+  SELECT member_id,
+         date_trunc('month', signup_at) AS cohort,
+         onboarding_channel
+  FROM memberships
+),
+activity AS (
+  SELECT m.cohort, m.member_id,
+         (EXTRACT(YEAR FROM age(a.month, m.cohort)) * 12
+          + EXTRACT(MONTH FROM age(a.month, m.cohort)))::int AS month_n
+  FROM members m
+  JOIN monthly_activity a USING (member_id)
+)
+SELECT cohort,
+       month_n,
+       ROUND(100.0 * COUNT(DISTINCT member_id)
+             / FIRST_VALUE(COUNT(DISTINCT member_id))
+               OVER (PARTITION BY cohort ORDER BY month_n), 1) AS retained_pct
+FROM activity
+GROUP BY cohort, month_n
+ORDER BY cohort, month_n;</code></pre></figure>
+  </section>
+  <section><h2>Tools</h2><ul class="tags plain"><li>SQL</li><li>Tableau</li><li>Cohort analysis</li><li>Figma</li></ul></section>
+  <nav class="case-nav" aria-label="Projects">
+    <a href="../projects.html">All projects</a>
+    <a class="case-next" href="csat-drivers.html"><span class="muted">Next project</span>What really drives CSAT in a multilingual support desk</a>
+  </nav>
+</div>
+</article>
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <p class="footer-name">Julieta Lara Romero</p>
+      <p class="muted">CX & Data Analyst. Trilingual (Spanish, English, Portuguese), with a background in Multimedia Engineering and Business Intelligence.</p>
+    </div>
+    <div>
+      <h2 class="footer-h">Pages</h2>
+      <ul class="plain">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li><a href="../projects.html">Projects</a></li>
+        <li><a href="../assets/Julieta-Lara-Romero-CV.pdf">Résumé</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2 class="footer-h">Contact</h2>
+      <ul class="plain">
+        <li><a href="mailto:julietalarar98@gmail.com">julietalarar98@gmail.com</a></li>
+        <li><a href="tel:+573222118698">+57 322 211 8698</a></li>
+        
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-base muted">
+    <p>© 2026 Julieta Lara Romero</p>
+    <p>Built by hand with HTML, CSS and JavaScript. Charts use synthetic data.</p>
+  </div>
+</footer>
+<script src="../assets/site.js" defer></script>
+<script type="application/json" id="chart-data">{"locale":"en-GB","charts":{"p6-curves":{"type":"line","unit":"%","labels":["M0","M1","M2","M3","M4","M5","M6"],"axis":"Members still active (%)","series":[{"name":"Welcome call","values":[100,86,82.1,78.4,74.9,71.5,68.3],"color":"iris"},{"name":"Email only","values":[100,76,70.3,65,60.1,55.6,51.4],"color":"orchid","dash":true}]}}}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" defer></script>
+<script src="../assets/charts.js" defer></script>
+</body>
+</html>

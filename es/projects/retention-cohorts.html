@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>¿Una llamada de bienvenida hace que los afiliados se queden más? | Julieta Lara Romero</title>
+  <meta name="description" content="Análisis de cohortes de una membresía de salud ficticia, comparando llamada de bienvenida con bienvenida solo por correo.">
+  <meta name="color-scheme" content="light dark">
+  <meta property="og:title" content="¿Una llamada de bienvenida hace que los afiliados se queden más? | Julieta Lara Romero">
+  <meta property="og:description" content="Análisis de cohortes de una membresía de salud ficticia, comparando llamada de bienvenida con bienvenida solo por correo.">
+  <meta property="og:type" content="website">
+  <link rel="alternate" hreflang="en" href="https://khariss1805.github.io/Portfolio/projects/retention-cohorts.html">
+  <link rel="alternate" hreflang="nl" href="https://khariss1805.github.io/Portfolio/nl/projects/retention-cohorts.html">
+  <link rel="alternate" hreflang="pt-PT" href="https://khariss1805.github.io/Portfolio/pt/projects/retention-cohorts.html">
+  <link rel="alternate" hreflang="es" href="https://khariss1805.github.io/Portfolio/es/projects/retention-cohorts.html">
+  <link rel="alternate" hreflang="x-default" href="https://khariss1805.github.io/Portfolio/projects/retention-cohorts.html">
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Instrument+Sans:ital,wght@0,400..700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/site.css">
+  <script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+<a class="skip" href="#main">Ir al contenido</a>
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="brand" href="../index.html">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="13" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="16" cy="16" r="5" fill="currentColor"/></svg>
+      <span><span class="brand-name">Julieta Lara Romero</span><span class="brand-role">Analista de CX y datos</span></span>
+    </a>
+    <nav class="main-nav" aria-label="Main">
+      <a href="../index.html">Inicio</a>
+      <a href="../about.html">Sobre mí</a>
+      <a href="../projects.html" aria-current="page">Proyectos</a>
+      <a href="../../assets/Julieta-Lara-Romero-CV.pdf">Hoja de vida</a>
+    </nav>
+    <nav class="lang-switch" aria-label="Idioma"><a href="../../projects/retention-cohorts.html" hreflang="en" lang="en" title="English">EN</a><a href="../../nl/projects/retention-cohorts.html" hreflang="nl" lang="nl" title="Nederlands">NL</a><a href="../../pt/projects/retention-cohorts.html" hreflang="pt-PT" lang="pt-PT" title="Português">PT</a><a href="retention-cohorts.html" hreflang="es" lang="es" title="Español" aria-current="true">ES</a></nav>
+  </div>
+</header>
+<main id="main">
+<article>
+<header class="page-head case-head">
+  <div class="wrap narrow">
+    <nav class="crumbs" aria-label="Ruta de navegación"><a href="../index.html">Inicio</a><span aria-hidden="true">/</span><a href="../projects.html">Proyectos</a></nav>
+    <p class="case-tags"><span class="tag">Operación y crecimiento</span><span class="tag tag-practice">Proyecto de práctica</span></p>
+    <h1>¿Una llamada de bienvenida hace que los afiliados se queden más?</h1>
+    <p class="hero-lead">Un servicio de membresía empezó a llamar a los nuevos afiliados en su primera semana. Medí si eso cambió cuánto tiempo se quedan.</p>
+    <div class="case-results"><span class="result"><strong>+16,9 pts</strong><span>de afiliados activos al mes 6</span></span><span class="result"><strong>+7 pts</strong><span>de retención al mes 3 tras el cambio</span></span></div>
+    <p class="practice-note">Este es un proyecto de práctica. La empresa es ficticia y los datos son sintéticos, generados para comportarse como datos reales de un contact center. Las preguntas, los métodos y el código son los que usaría en el trabajo.</p>
+  </div>
+</header>
+<div class="wrap narrow case-body">
+  <section><h2>La pregunta</h2><p>Muchos afiliados nuevos se van en el primer mes: el 24% de los que recibieron bienvenida por correo ya no está tras el primer mes.</p><p>La pregunta: ¿los afiliados con llamada de bienvenida se quedan más tiempo, y se nota en las cohortes desde que empezó en mayo?</p></section>
+  <section><h2>Los datos</h2><p>Nueve cohortes mensuales de afiliación (enero a septiembre), los meses activos de cada afiliado y su canal de bienvenida.</p></section>
+  <section><h2>Lo que hice</h2><ol class="steps"><li>Construí una tabla de cohortes en SQL: para cada mes de afiliación, el porcentaje de afiliados aún activos después de cada mes.</li><li>Comparé las cohortes antes y después de que empezara la llamada de bienvenida en mayo.</li><li>Comparé las curvas de retención de afiliados con llamada y solo con correo.</li><li>Diseñé primero la vista de cohortes en Figma para que se leyera clara antes de construirla en Tableau.</li></ol></section>
+</div>
+
+<div class="wrap narrow case-body">
+  <section><h2>Lo que encontré</h2><div class="finding">
+      <h3>Las cohortes desde mayo se quedan más</h3>
+      <p>La retención al mes 3 promedió 69,7% en las cohortes de enero a abril y 76,7% desde mayo: 7 puntos más.</p>
+      <figure class="chart-fig"><div class="figbox"><div class="table-scroll"><table class="heat-table">
+  <caption class="sr-only">Porcentaje de cada cohorte aún activo, por mes desde la afiliación.</caption>
+  <thead><tr><th scope="col">Mes de afiliación</th><th scope="col">Afiliados</th><th scope="col">M0</th><th scope="col">M1</th><th scope="col">M2</th><th scope="col">M3</th><th scope="col">M4</th><th scope="col">M5</th><th scope="col">M6</th></tr></thead>
+  <tbody><tr><th scope="row">ene de 2026</th><td class="num">415</td><td class="heat heat-strong" style="--k:1.000">100%</td><td class="heat heat-strong" style="--k:0.816">81,6%</td><td class="heat heat-strong" style="--k:0.758">75,8%</td><td class="heat heat-strong" style="--k:0.709">70,9%</td><td class="heat heat-strong" style="--k:0.673">67,3%</td><td class="heat heat-strong" style="--k:0.625">62,5%</td><td class="heat heat-strong" style="--k:0.598">59,8%</td></tr><tr><th scope="row">feb de 2026</th><td class="num">390</td><td class="heat heat-strong" style="--k:1.000">100%</td><td class="heat heat-strong" style="--k:0.807">80,7%</td><td class="heat heat-strong" style="--k:0.750">75%</td><td class="heat heat-strong" style="--k:0.702">70,2%</td><td class="heat heat-strong" style="--k:0.659">65,9%</td><td class="heat heat-strong" style="--k:0.614">61,4%</td><td class="heat heat-strong" style="--k:0.575">57,5%</td></tr><tr><th scope="row">mar de 2026</th><td class="num">491</td><td class="heat heat-strong" style="--k:1.000">100%</td><td class="heat heat-strong" style="--k:0.788">78,8%</td><td class="heat heat-strong" style="--k:0.735">73,5%</td><td class="heat heat-strong" style="--k:0.686">68,6%</td><td class="heat heat-strong" style="--k:0.634">63,4%</td><td class="heat heat-strong" style="--k:0.595">59,5%</td><td class="heat heat-strong" style="--k:0.558">55,8%</td></tr><tr><th scope="row">abr de 2026</th><td class="num">532</td><td class="heat heat-strong" style="--k:1.000">100%</td><td class="heat heat-strong" style="--k:0.799">79,9%</td><td class="heat heat-strong" style="--k:0.740">74%</td><td class="heat heat-strong" style="--k:0.691">69,1%</td><td class="heat heat-strong" style="--k:0.638">63,8%</td><td class="heat heat-strong" style="--k:0.593">59,3%</td><td class="heat-empty"></td></tr><tr><th scope="row">may de 2026</th><td class="num">530</td><td class="heat heat-strong" style="--k:1.000">100%</td><td class="heat heat-strong" style="--k:0.820">82%</td><td class="heat heat-strong" style="--k:0.798">79,8%</td><td class="heat heat-strong" style="--k:0.771">77,1%</td><td class="heat heat-strong" style="--k:0.738">73,8%</td><td class="heat-empty"></td><td class="heat-empty"></td></tr><tr><th scope="row">jun de 2026</th><td class="num">567</td><td class="heat heat-strong" style="--k:1.000">100%</td><td class="heat heat-strong" style="--k:0.825">82,5%</td><td class="heat heat-strong" style="--k:0.803">80,3%</td><td class="heat heat-strong" style="--k:0.763">76,3%</td><td class="heat-empty"></td><td class="heat-empty"></td><td class="heat-empty"></td></tr><tr><th scope="row">jul de 2026</th><td class="num">605</td><td class="heat heat-strong" style="--k:1.000">100%</td><td class="heat heat-strong" style="--k:0.855">85,5%</td><td class="heat heat-strong" style="--k:0.830">83%</td><td class="heat-empty"></td><td class="heat-empty"></td><td class="heat-empty"></td><td class="heat-empty"></td></tr><tr><th scope="row">ago de 2026</th><td class="num">645</td><td class="heat heat-strong" style="--k:1.000">100%</td><td class="heat heat-strong" style="--k:0.819">81,9%</td><td class="heat-empty"></td><td class="heat-empty"></td><td class="heat-empty"></td><td class="heat-empty"></td><td class="heat-empty"></td></tr><tr><th scope="row">sept de 2026</th><td class="num">650</td><td class="heat heat-strong" style="--k:1.000">100%</td><td class="heat-empty"></td><td class="heat-empty"></td><td class="heat-empty"></td><td class="heat-empty"></td><td class="heat-empty"></td><td class="heat-empty"></td></tr></tbody></table></div></div><figcaption>Porcentaje de cada cohorte aún activo, por mes desde la afiliación.</figcaption></figure>
+    </div><div class="finding">
+      <h3>La brecha crece con el tiempo</h3>
+      <p>Al mes 6 sigue activo el 68,3% de los afiliados con llamada de bienvenida, frente al 51,4% de los que solo recibieron correo. La mayor parte de la diferencia se crea en el primer mes.</p>
+      <figure class="chart-fig">
+  <div class="figbox"><div class="chart"><canvas id="p6-curves" role="img" aria-label="Curva de retención por canal de bienvenida."></canvas></div></div>
+  <figcaption>Curva de retención por canal de bienvenida. <span class="muted">Pasa el cursor o toca el gráfico para ver los valores.</span></figcaption>
+  <details class="data-table"><summary>Ver los números</summary><div class="table-scroll"><table><thead><tr><th></th><th scope="col">Llamada de bienvenida</th><th scope="col">Solo correo</th></tr></thead><tbody><tr><th scope="row">M0</th><td class="num">100</td><td class="num">100</td></tr><tr><th scope="row">M1</th><td class="num">86</td><td class="num">76</td></tr><tr><th scope="row">M2</th><td class="num">82,1</td><td class="num">70,3</td></tr><tr><th scope="row">M3</th><td class="num">78,4</td><td class="num">65</td></tr><tr><th scope="row">M4</th><td class="num">74,9</td><td class="num">60,1</td></tr><tr><th scope="row">M5</th><td class="num">71,5</td><td class="num">55,6</td></tr><tr><th scope="row">M6</th><td class="num">68,3</td><td class="num">51,4</td></tr></tbody></table></div></details>
+</figure>
+    </div></section>
+  <section><h2>Lo que recomendaría</h2><ul class="recs"><li>Hacer la llamada de bienvenida estándar para todos los afiliados nuevos, agendada en la primera semana.</li><li>Agregar un segundo contacto al final del primer mes, que es cuando más afiliados se van.</li><li>Mantener un grupo pequeño solo con correo durante unos meses, para medir el efecto con claridad.</li></ul></section>
+  <section><h2>Un vistazo al código</h2>
+    <figure class="code"><figcaption>SQL</figcaption><pre tabindex="0"><code>WITH members AS (
+  SELECT member_id,
+         date_trunc('month', signup_at) AS cohort,
+         onboarding_channel
+  FROM memberships
+),
+activity AS (
+  SELECT m.cohort, m.member_id,
+         (EXTRACT(YEAR FROM age(a.month, m.cohort)) * 12
+          + EXTRACT(MONTH FROM age(a.month, m.cohort)))::int AS month_n
+  FROM members m
+  JOIN monthly_activity a USING (member_id)
+)
+SELECT cohort,
+       month_n,
+       ROUND(100.0 * COUNT(DISTINCT member_id)
+             / FIRST_VALUE(COUNT(DISTINCT member_id))
+               OVER (PARTITION BY cohort ORDER BY month_n), 1) AS retained_pct
+FROM activity
+GROUP BY cohort, month_n
+ORDER BY cohort, month_n;</code></pre></figure>
+  </section>
+  <section><h2>Herramientas</h2><ul class="tags plain"><li>SQL</li><li>Tableau</li><li>Análisis de cohortes</li><li>Figma</li></ul></section>
+  <nav class="case-nav" aria-label="Proyectos">
+    <a href="../projects.html">Todos los proyectos</a>
+    <a class="case-next" href="csat-drivers.html"><span class="muted">Siguiente proyecto</span>Qué mueve de verdad el CSAT en una mesa de soporte multilingüe</a>
+  </nav>
+</div>
+</article>
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <p class="footer-name">Julieta Lara Romero</p>
+      <p class="muted">Analista de CX y datos. Trilingüe (español, inglés y portugués), con formación en Ingeniería Multimedia e Inteligencia de Negocios.</p>
+    </div>
+    <div>
+      <h2 class="footer-h">Páginas</h2>
+      <ul class="plain">
+        <li><a href="../index.html">Inicio</a></li>
+        <li><a href="../about.html">Sobre mí</a></li>
+        <li><a href="../projects.html">Proyectos</a></li>
+        <li><a href="../../assets/Julieta-Lara-Romero-CV.pdf">Hoja de vida</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2 class="footer-h">Contacto</h2>
+      <ul class="plain">
+        <li><a href="mailto:julietalarar98@gmail.com">julietalarar98@gmail.com</a></li>
+        <li><a href="tel:+573222118698">+57 322 211 8698</a></li>
+        
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-base muted">
+    <p>© 2026 Julieta Lara Romero</p>
+    <p>Hecho a mano con HTML, CSS y JavaScript. Los gráficos usan datos sintéticos.</p>
+  </div>
+</footer>
+<script src="../../assets/site.js" defer></script>
+<script type="application/json" id="chart-data">{"locale":"es-CO","charts":{"p6-curves":{"type":"line","unit":"%","labels":["M0","M1","M2","M3","M4","M5","M6"],"axis":"Afiliados aún activos (%)","series":[{"name":"Llamada de bienvenida","values":[100,86,82.1,78.4,74.9,71.5,68.3],"color":"iris"},{"name":"Solo correo","values":[100,76,70.3,65,60.1,55.6,51.4],"color":"orchid","dash":true}]}}}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" defer></script>
+<script src="../../assets/charts.js" defer></script>
+</body>
+</html>

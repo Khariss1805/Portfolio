@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Projects | Julieta Lara Romero</title>
+  <meta name="description" content="Practice case studies on synthetic data. Each one has the question, the method, the code and what I would recommend.">
+  <meta name="color-scheme" content="light dark">
+  <meta property="og:title" content="Projects | Julieta Lara Romero">
+  <meta property="og:description" content="Practice case studies on synthetic data. Each one has the question, the method, the code and what I would recommend.">
+  <meta property="og:type" content="website">
+  <link rel="alternate" hreflang="en" href="https://khariss1805.github.io/Portfolio/projects.html">
+  <link rel="alternate" hreflang="nl" href="https://khariss1805.github.io/Portfolio/nl/projects.html">
+  <link rel="alternate" hreflang="pt-PT" href="https://khariss1805.github.io/Portfolio/pt/projects.html">
+  <link rel="alternate" hreflang="es" href="https://khariss1805.github.io/Portfolio/es/projects.html">
+  <link rel="alternate" hreflang="x-default" href="https://khariss1805.github.io/Portfolio/projects.html">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Instrument+Sans:ital,wght@0,400..700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/site.css">
+  <script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="brand" href="index.html">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="13" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="16" cy="16" r="5" fill="currentColor"/></svg>
+      <span><span class="brand-name">Julieta Lara Romero</span><span class="brand-role">CX & Data Analyst</span></span>
+    </a>
+    <nav class="main-nav" aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="projects.html" aria-current="page">Projects</a>
+      <a href="assets/Julieta-Lara-Romero-CV.pdf">Résumé</a>
+    </nav>
+    <nav class="lang-switch" aria-label="Language"><a href="projects.html" hreflang="en" lang="en" title="English" aria-current="true">EN</a><a href="nl/projects.html" hreflang="nl" lang="nl" title="Nederlands">NL</a><a href="pt/projects.html" hreflang="pt-PT" lang="pt-PT" title="Português">PT</a><a href="es/projects.html" hreflang="es" lang="es" title="Español">ES</a></nav>
+  </div>
+</header>
+<main id="main">
+<section class="page-head">
+  <div class="wrap">
+    <p class="hero-role">Projects</p>
+    <h1>Six questions from a contact centre, answered with data</h1>
+    <p class="hero-lead">Practice case studies on synthetic data. Each one has the question, the method, the code and what I would recommend.</p>
+    <p class="practice-note">This is a practice project. The company is fictional and the data is synthetic, generated to behave like real contact-centre data. The questions, methods and code are the ones I would use on the job.</p>
+  </div>
+</section>
+<section class="section section-tight" aria-label="Projects">
+  <div class="wrap">
+    <div class="filters" role="group" aria-label="Projects" hidden><button type="button" aria-pressed="true" data-filter="all">All projects <span>6</span></button><button type="button" aria-pressed="false" data-filter="cx">Customer experience <span>2</span></button><button type="button" aria-pressed="false" data-filter="quality">Quality and performance <span>2</span></button><button type="button" aria-pressed="false" data-filter="ops">Operations and growth <span>2</span></button></div>
+    <ol class="proj-list plain" id="proj-list"><li class="proj" data-cat="cx">
+  <a class="proj-link" href="projects/csat-drivers.html">
+    <span class="proj-main">
+      <span class="proj-cat">Customer experience</span>
+      <span class="proj-title">What really drives CSAT in a multilingual support desk</span>
+      <span class="proj-short">Which parts of a contact make customers satisfied or not, across six contact reasons and four language queues.</span>
+      <span class="proj-tools"><span>Python</span><span>pandas</span><span>Logistic regression</span><span>Power BI</span></span>
+    </span>
+    <span class="proj-results"><span class="result"><strong>+29.1 pts</strong><span>CSAT when solved first time</span></span><span class="result"><strong>−14.4 pts</strong><span>when not served in own language</span></span></span>
+  </a>
+</li><li class="proj" data-cat="quality">
+  <a class="proj-link" href="projects/agent-scorecard.html">
+    <span class="proj-main">
+      <span class="proj-cat">Quality and performance</span>
+      <span class="proj-title">An agent scorecard that doesn’t reward rushing</span>
+      <span class="proj-short">A Power BI style dashboard for 40 agents that shows speed, quality and resolution together.</span>
+      <span class="proj-tools"><span>Power BI</span><span>DAX</span><span>SQL</span><span>Excel</span></span>
+    </span>
+    <span class="proj-results"><span class="result"><strong>13 of 40</strong><span>agents fast but below QA target</span></span><span class="result"><strong>21.9%</strong><span>of contacts fail case notes</span></span></span>
+  </a>
+</li><li class="proj" data-cat="cx">
+  <a class="proj-link" href="projects/repeat-contacts.html">
+    <span class="proj-main">
+      <span class="proj-cat">Customer experience</span>
+      <span class="proj-title">Finding where repeat contacts come from</span>
+      <span class="proj-short">SQL in PostgreSQL to measure first-contact resolution properly and find the reasons customers call back.</span>
+      <span class="proj-tools"><span>PostgreSQL</span><span>SQL window functions</span><span>Tableau</span></span>
+    </span>
+    <span class="proj-results"><span class="result"><strong>54.9%</strong><span>of repeats come from two reasons</span></span><span class="result"><strong>60%</strong><span>of repeats happen within 48 hours</span></span></span>
+  </a>
+</li><li class="proj" data-cat="ops">
+  <a class="proj-link" href="projects/volume-forecast.html">
+    <span class="proj-main">
+      <span class="proj-cat">Operations and growth</span>
+      <span class="proj-title">Forecasting contact volume and staffing by the hour</span>
+      <span class="proj-short">A weekly volume forecast and an hour-by-hour staffing plan with Erlang C, built in Excel and checked in Python.</span>
+      <span class="proj-tools"><span>Excel</span><span>Python</span><span>Erlang C</span><span>Forecasting</span></span>
+    </span>
+    <span class="proj-results"><span class="result"><strong>5%</strong><span>average forecast error</span></span><span class="result"><strong>76 hours</strong><span>of agent time saved on a Monday</span></span></span>
+  </a>
+</li><li class="proj" data-cat="quality">
+  <a class="proj-link" href="projects/qa-calibration.html">
+    <span class="proj-main">
+      <span class="proj-cat">Quality and performance</span>
+      <span class="proj-title">Do our QA evaluators agree with each other?</span>
+      <span class="proj-short">A calibration study of six QA evaluators who scored the same 30 contacts.</span>
+      <span class="proj-tools"><span>Google Sheets</span><span>Python</span><span>QA scorecards</span></span>
+    </span>
+    <span class="proj-results"><span class="result"><strong>10.3 pts</strong><span>between the most and least strict evaluator</span></span><span class="result"><strong>50%</strong><span>agreement on empathy</span></span></span>
+  </a>
+</li><li class="proj" data-cat="ops">
+  <a class="proj-link" href="projects/retention-cohorts.html">
+    <span class="proj-main">
+      <span class="proj-cat">Operations and growth</span>
+      <span class="proj-title">Does a welcome call keep new members longer?</span>
+      <span class="proj-short">Cohort analysis of a fictional health membership, comparing a welcome call with email-only onboarding.</span>
+      <span class="proj-tools"><span>SQL</span><span>Tableau</span><span>Cohort analysis</span><span>Figma</span></span>
+    </span>
+    <span class="proj-results"><span class="result"><strong>+16.9 pts</strong><span>active members at month 6</span></span><span class="result"><strong>+7 pts</strong><span>month-3 retention after the rollout</span></span></span>
+  </a>
+</li></ol>
+  </div>
+</section>
+<section class="section band" aria-labelledby="earlier-h">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="earlier-h">Earlier work</h2>
+      <p class="lede">Design case studies from my Multimedia Engineering degree.</p>
+    </div>
+    <ul class="earlier plain"><li><a href="design/Irina.html"><strong>La resiliencia de Irina</strong><span>Serious VR game design: research, personas, journey maps and prototypes.</span></a></li><li><a href="design/nona.html"><strong>NonaAntojos</strong><span>Mobile web menu for a local food business: task flows, architecture and prototypes.</span></a></li></ul>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap cta-row">
+    <h2>Want the dates and details?</h2>
+    <a class="btn" href="assets/Julieta-Lara-Romero-CV.pdf" download>Download my résumé</a>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <p class="footer-name">Julieta Lara Romero</p>
+      <p class="muted">CX & Data Analyst. Trilingual (Spanish, English, Portuguese), with a background in Multimedia Engineering and Business Intelligence.</p>
+    </div>
+    <div>
+      <h2 class="footer-h">Pages</h2>
+      <ul class="plain">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="assets/Julieta-Lara-Romero-CV.pdf">Résumé</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2 class="footer-h">Contact</h2>
+      <ul class="plain">
+        <li><a href="mailto:julietalarar98@gmail.com">julietalarar98@gmail.com</a></li>
+        <li><a href="tel:+573222118698">+57 322 211 8698</a></li>
+        
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-base muted">
+    <p>© 2026 Julieta Lara Romero</p>
+    <p>Built by hand with HTML, CSS and JavaScript. Charts use synthetic data.</p>
+  </div>
+</footer>
+<script src="assets/site.js" defer></script>
+
+</body>
+</html>

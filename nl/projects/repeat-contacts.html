@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Waar herhaalcontacten vandaan komen | Julieta Lara Romero</title>
+  <meta name="description" content="SQL in PostgreSQL om oplossing bij eerste contact goed te meten en te vinden waarom klanten terugbellen.">
+  <meta name="color-scheme" content="light dark">
+  <meta property="og:title" content="Waar herhaalcontacten vandaan komen | Julieta Lara Romero">
+  <meta property="og:description" content="SQL in PostgreSQL om oplossing bij eerste contact goed te meten en te vinden waarom klanten terugbellen.">
+  <meta property="og:type" content="website">
+  <link rel="alternate" hreflang="en" href="https://khariss1805.github.io/Portfolio/projects/repeat-contacts.html">
+  <link rel="alternate" hreflang="nl" href="https://khariss1805.github.io/Portfolio/nl/projects/repeat-contacts.html">
+  <link rel="alternate" hreflang="pt-PT" href="https://khariss1805.github.io/Portfolio/pt/projects/repeat-contacts.html">
+  <link rel="alternate" hreflang="es" href="https://khariss1805.github.io/Portfolio/es/projects/repeat-contacts.html">
+  <link rel="alternate" hreflang="x-default" href="https://khariss1805.github.io/Portfolio/projects/repeat-contacts.html">
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Instrument+Sans:ital,wght@0,400..700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/site.css">
+  <script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+<a class="skip" href="#main">Naar de inhoud</a>
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="brand" href="../index.html">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="13" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="16" cy="16" r="5" fill="currentColor"/></svg>
+      <span><span class="brand-name">Julieta Lara Romero</span><span class="brand-role">CX- en data-analist</span></span>
+    </a>
+    <nav class="main-nav" aria-label="Main">
+      <a href="../index.html">Home</a>
+      <a href="../about.html">Over mij</a>
+      <a href="../projects.html" aria-current="page">Projecten</a>
+      <a href="../../assets/Julieta-Lara-Romero-CV.pdf">Cv</a>
+    </nav>
+    <nav class="lang-switch" aria-label="Taal"><a href="../../projects/repeat-contacts.html" hreflang="en" lang="en" title="English">EN</a><a href="repeat-contacts.html" hreflang="nl" lang="nl" title="Nederlands" aria-current="true">NL</a><a href="../../pt/projects/repeat-contacts.html" hreflang="pt-PT" lang="pt-PT" title="Português">PT</a><a href="../../es/projects/repeat-contacts.html" hreflang="es" lang="es" title="Español">ES</a></nav>
+  </div>
+</header>
+<main id="main">
+<article>
+<header class="page-head case-head">
+  <div class="wrap narrow">
+    <nav class="crumbs" aria-label="Kruimelpad"><a href="../index.html">Home</a><span aria-hidden="true">/</span><a href="../projects.html">Projecten</a></nav>
+    <p class="case-tags"><span class="tag">Klantbeleving</span><span class="tag tag-practice">Oefenproject</span></p>
+    <h1>Waar herhaalcontacten vandaan komen</h1>
+    <p class="hero-lead">De klantenservice rapporteerde FCR via een vinkje van de medewerker. Ik mat het aan wat klanten echt deden: namen ze binnen zeven dagen opnieuw contact op?</p>
+    <div class="case-results"><span class="result"><strong>54,9%</strong><span>van de herhaalcontacten komt uit twee redenen</span></span><span class="result"><strong>60%</strong><span>gebeurt binnen 48 uur</span></span></div>
+    <p class="practice-note">Dit is een oefenproject. Het bedrijf is fictief en de data is synthetisch, gegenereerd om zich te gedragen als echte contactcenterdata. De vragen, methodes en code zijn wat ik in de praktijk zou gebruiken.</p>
+  </div>
+</header>
+<div class="wrap narrow case-body">
+  <section><h2>De vraag</h2><p>Medewerkers vinkten contacten aan als opgelost, dus de gerapporteerde FCR lag boven de 90%. Toch bleef het volume groeien.</p><p>De vraag: hoe vaak komen klanten echt terug, waarover, en hoe snel?</p></section>
+  <section><h2>De data</h2><p>26.000 contacten over zes maanden, met klant-ID, tijdstip, kanaal en contactreden.</p></section>
+  <section><h2>Wat ik deed</h2><ol class="steps"><li>Windowfuncties (LEAD over de contacten van elke klant) gebruikt om het volgende contact van dezelfde klant binnen zeven dagen te vinden.</li><li>Een contact alleen als herhaalcontact geteld als het volgende over dezelfde reden ging, zodat een nieuw probleem de medewerker niet wordt aangerekend.</li><li>Het herhaalpercentage gegroepeerd per reden en per aantal dagen tot de klant terugkwam, en gepubliceerd in Tableau.</li></ol></section>
+</div>
+
+<div class="wrap narrow case-body">
+  <section><h2>Wat ik vond</h2><div class="finding">
+      <h3>De echte FCR is 79,9%, niet 90%</h3>
+      <p>Op 20,1% van de contacten volgt binnen een week een nieuw contact over hetzelfde. Bezorging (32,1%) en productstoringen (27,5%) hebben de hoogste herhaalpercentages.</p>
+      <figure class="chart-fig">
+  <div class="figbox"><div class="chart" style="--h:324px"><canvas id="p3-reasons" role="img" aria-label="Herhaalcontact binnen 7 dagen, per reden."></canvas></div></div>
+  <figcaption>Herhaalcontact binnen 7 dagen, per reden. <span class="muted">Beweeg over de grafiek of tik erop voor de exacte waarden.</span></figcaption>
+  <details class="data-table"><summary>Toon de cijfers</summary><div class="table-scroll"><table><thead><tr><th></th><th scope="col">Herhaalcontact binnen 7 dagen (%)</th></tr></thead><tbody><tr><th scope="row">Bezorging</th><td class="num">32,1</td></tr><tr><th scope="row">Productstoring</th><td class="num">27,5</td></tr><tr><th scope="row">Facturatie</th><td class="num">24,1</td></tr><tr><th scope="row">Toegang tot account</th><td class="num">11,8</td></tr><tr><th scope="row">Abonnementswijziging</th><td class="num">10</td></tr><tr><th scope="row">Opzegging</th><td class="num">8,4</td></tr></tbody></table></div></details>
+</figure>
+    </div><div class="finding">
+      <h3>Klanten komen snel terug</h3>
+      <p>60% van de herhaalcontacten gebeurt binnen twee dagen. Dat wijst op antwoorden die het probleem niet oplosten, zoals verouderde track-and-trace-informatie, en niet op nieuwe problemen.</p>
+      <figure class="chart-fig">
+  <div class="figbox"><div class="chart"><canvas id="p3-days" role="img" aria-label="Wanneer herhaalcontacten plaatsvinden, als aandeel van alle herhaalcontacten."></canvas></div></div>
+  <figcaption>Wanneer herhaalcontacten plaatsvinden, als aandeel van alle herhaalcontacten. <span class="muted">Beweeg over de grafiek of tik erop voor de exacte waarden.</span></figcaption>
+  <details class="data-table"><summary>Toon de cijfers</summary><div class="table-scroll"><table><thead><tr><th></th><th scope="col">Aandeel herhaalcontacten (%)</th></tr></thead><tbody><tr><th scope="row">Dag 1</th><td class="num">38,4</td></tr><tr><th scope="row">Dag 2</th><td class="num">21,5</td></tr><tr><th scope="row">Dag 3</th><td class="num">11,8</td></tr><tr><th scope="row">Dag 4</th><td class="num">9,5</td></tr><tr><th scope="row">Dag 5</th><td class="num">7</td></tr><tr><th scope="row">Dag 6</th><td class="num">5,9</td></tr><tr><th scope="row">Dag 7</th><td class="num">5,8</td></tr></tbody></table></div></details>
+</figure>
+    </div></section>
+  <section><h2>Wat ik zou aanraden</h2><ul class="recs"><li>Het vinkje in elk rapport vervangen door de herhaalmeting over 7 dagen.</li><li>Eerst de kennisbankantwoorden over bezorging en productstoringen herzien. Die naar het gemiddelde brengen scheelt ongeveer 52 contacten per week.</li><li>Binnen 24 uur een proactieve update sturen bij openstaande bezorgzaken.</li></ul></section>
+  <section><h2>Een blik op de code</h2>
+    <figure class="code"><figcaption>PostgreSQL</figcaption><pre tabindex="0"><code>WITH ordered AS (
+  SELECT
+    contact_id,
+    customer_id,
+    reason,
+    started_at,
+    LEAD(started_at) OVER w AS next_at,
+    LEAD(reason)     OVER w AS next_reason
+  FROM contacts
+  WINDOW w AS (PARTITION BY customer_id ORDER BY started_at)
+)
+SELECT
+  reason,
+  COUNT(*)                                          AS contacts,
+  ROUND(100.0 * AVG(
+    CASE WHEN next_reason = reason
+          AND next_at &lt; started_at + INTERVAL '7 days'
+         THEN 1 ELSE 0 END), 1)                     AS repeat_rate_pct
+FROM ordered
+GROUP BY reason
+ORDER BY repeat_rate_pct DESC;</code></pre></figure>
+  </section>
+  <section><h2>Tools</h2><ul class="tags plain"><li>PostgreSQL</li><li>SQL-windowfuncties</li><li>Tableau</li></ul></section>
+  <nav class="case-nav" aria-label="Projecten">
+    <a href="../projects.html">Alle projecten</a>
+    <a class="case-next" href="volume-forecast.html"><span class="muted">Volgend project</span>Contactvolume voorspellen en per uur plannen</a>
+  </nav>
+</div>
+</article>
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <p class="footer-name">Julieta Lara Romero</p>
+      <p class="muted">CX- en data-analist. Drietalig (Spaans, Engels en Portugees), met een achtergrond in Multimedia Engineering en Business Intelligence.</p>
+    </div>
+    <div>
+      <h2 class="footer-h">Pagina’s</h2>
+      <ul class="plain">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../about.html">Over mij</a></li>
+        <li><a href="../projects.html">Projecten</a></li>
+        <li><a href="../../assets/Julieta-Lara-Romero-CV.pdf">Cv</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2 class="footer-h">Contact</h2>
+      <ul class="plain">
+        <li><a href="mailto:julietalarar98@gmail.com">julietalarar98@gmail.com</a></li>
+        <li><a href="tel:+573222118698">+57 322 211 8698</a></li>
+        
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-base muted">
+    <p>© 2026 Julieta Lara Romero</p>
+    <p>Met de hand gebouwd in HTML, CSS en JavaScript. De grafieken gebruiken synthetische data.</p>
+  </div>
+</footer>
+<script src="../../assets/site.js" defer></script>
+<script type="application/json" id="chart-data">{"locale":"nl-NL","charts":{"p3-reasons":{"type":"hbar","unit":"%","labels":["Bezorging","Productstoring","Facturatie","Toegang tot account","Abonnementswijziging","Opzegging"],"series":[{"name":"Herhaalcontact binnen 7 dagen (%)","values":[32.1,27.5,24.1,11.8,10,8.4],"colors":["orchid","orchid","iris","iris","iris","iris"]}],"axis":"Herhaalcontact binnen 7 dagen (%)"},"p3-days":{"type":"bar","unit":"%","labels":["Dag 1","Dag 2","Dag 3","Dag 4","Dag 5","Dag 6","Dag 7"],"series":[{"name":"Aandeel herhaalcontacten (%)","values":[38.4,21.5,11.8,9.5,7,5.9,5.8],"colors":["orchid","orchid","iris","iris","iris","iris","iris"]}],"axis":"Aandeel herhaalcontacten (%)"}}}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" defer></script>
+<script src="../../assets/charts.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Een medewerkersscorecard die haast niet beloont | Julieta Lara Romero</title>
+  <meta name="description" content="Een dashboard in Power BI-stijl voor 40 medewerkers dat snelheid, kwaliteit en oplossing samen laat zien.">
+  <meta name="color-scheme" content="light dark">
+  <meta property="og:title" content="Een medewerkersscorecard die haast niet beloont | Julieta Lara Romero">
+  <meta property="og:description" content="Een dashboard in Power BI-stijl voor 40 medewerkers dat snelheid, kwaliteit en oplossing samen laat zien.">
+  <meta property="og:type" content="website">
+  <link rel="alternate" hreflang="en" href="https://khariss1805.github.io/Portfolio/projects/agent-scorecard.html">
+  <link rel="alternate" hreflang="nl" href="https://khariss1805.github.io/Portfolio/nl/projects/agent-scorecard.html">
+  <link rel="alternate" hreflang="pt-PT" href="https://khariss1805.github.io/Portfolio/pt/projects/agent-scorecard.html">
+  <link rel="alternate" hreflang="es" href="https://khariss1805.github.io/Portfolio/es/projects/agent-scorecard.html">
+  <link rel="alternate" hreflang="x-default" href="https://khariss1805.github.io/Portfolio/projects/agent-scorecard.html">
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Instrument+Sans:ital,wght@0,400..700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/site.css">
+  <script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+<a class="skip" href="#main">Naar de inhoud</a>
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="brand" href="../index.html">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="13" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="16" cy="16" r="5" fill="currentColor"/></svg>
+      <span><span class="brand-name">Julieta Lara Romero</span><span class="brand-role">CX- en data-analist</span></span>
+    </a>
+    <nav class="main-nav" aria-label="Main">
+      <a href="../index.html">Home</a>
+      <a href="../about.html">Over mij</a>
+      <a href="../projects.html" aria-current="page">Projecten</a>
+      <a href="../../assets/Julieta-Lara-Romero-CV.pdf">Cv</a>
+    </nav>
+    <nav class="lang-switch" aria-label="Taal"><a href="../../projects/agent-scorecard.html" hreflang="en" lang="en" title="English">EN</a><a href="agent-scorecard.html" hreflang="nl" lang="nl" title="Nederlands" aria-current="true">NL</a><a href="../../pt/projects/agent-scorecard.html" hreflang="pt-PT" lang="pt-PT" title="Português">PT</a><a href="../../es/projects/agent-scorecard.html" hreflang="es" lang="es" title="Español">ES</a></nav>
+  </div>
+</header>
+<main id="main">
+<article>
+<header class="page-head case-head">
+  <div class="wrap narrow">
+    <nav class="crumbs" aria-label="Kruimelpad"><a href="../index.html">Home</a><span aria-hidden="true">/</span><a href="../projects.html">Projecten</a></nav>
+    <p class="case-tags"><span class="tag">Kwaliteit en prestaties</span><span class="tag tag-practice">Oefenproject</span></p>
+    <h1>Een medewerkersscorecard die haast niet beloont</h1>
+    <p class="hero-lead">Het oude teamrapport rangschikte medewerkers alleen op afhandeltijd. Ik bouwde een scorecard die snelheid, kwaliteit en oplossing op één scherm zet, zodat coaching vanuit het hele plaatje begint.</p>
+    <div class="case-results"><span class="result"><strong>13 van 40</strong><span>medewerkers snel maar onder kwaliteitsdoel</span></span><span class="result"><strong>21,9%</strong><span>van de contacten scoort onvoldoende op dossiernotities</span></span></div>
+    <p class="practice-note">Dit is een oefenproject. Het bedrijf is fictief en de data is synthetisch, gegenereerd om zich te gedragen als echte contactcenterdata. De vragen, methodes en code zijn wat ik in de praktijk zou gebruiken.</p>
+  </div>
+</header>
+<div class="wrap narrow case-body">
+  <section><h2>De vraag</h2><p>Teamleiders coachten op AHT omdat dat bovenaan het rapport stond. Medewerkers leerden dat snel afsluiten was wat telde.</p><p>De vraag: welke medewerkers hebben coaching nodig, en waarop, als je snelheid, kwaliteit en oplossing samen bekijkt?</p></section>
+  <section><h2>De data</h2><p>Eén maand resultaten van 40 medewerkers: gemiddelde afhandeltijd, kwaliteitsscore, oplossing bij eerste contact en CSAT. Plus het resultaat van elk kwaliteitsonderdeel bij beoordeelde contacten.</p></section>
+  <section><h2>Wat ik deed</h2><ol class="steps"><li>Per metric één SQL-view geschreven, zodat elk rapport dezelfde definitie gebruikt, bijvoorbeeld FCR als geen herhaalcontact binnen 7 dagen.</li><li>De data gemodelleerd in een sterschema: medewerkers, datums en wachtrijen als dimensies, contacten en beoordelingen als feiten.</li><li>Het dashboard hieronder gebouwd: vier KPI-tegels, een grafiek van AHT tegen kwaliteit met de teammediaan en het kwaliteitsdoel, en de onderdelen die het vaakst onvoldoende zijn.</li><li>DAX-measures toegevoegd voor de doelen, zodat een tegel alleen van kleur verandert als een doel niet gehaald wordt.</li></ol></section>
+</div>
+<div class="wrap wide"><div class="dash" aria-label="Dashboard">
+      <div class="dash-bar"><span class="dash-dots" aria-hidden="true"><i></i><i></i><i></i></span><span>Een medewerkersscorecard die haast niet beloont</span></div>
+      <div class="kpis"><div class="kpi"><span>Mediane AHT</span><strong>7,2 min</strong></div><div class="kpi kpi-miss"><span>Gem. kwaliteit</span><strong>84,2</strong></div><div class="kpi"><span>Gem. CSAT</span><strong>78,9%</strong></div><div class="kpi kpi-miss"><span>Gem. FCR</span><strong>69,9%</strong></div></div>
+      <div class="dash-grid">
+        <figure class="chart-fig">
+  <div class="figbox"><div class="chart"><canvas id="p2-scatter" role="img" aria-label="Elke stip is een medewerker. De lijnen tonen de mediane AHT van het team en het kwaliteitsdoel van 85."></canvas></div></div>
+  <figcaption>Elke stip is een medewerker. De lijnen tonen de mediane AHT van het team en het kwaliteitsdoel van 85. <span class="muted">Beweeg over de grafiek of tik erop voor de exacte waarden.</span></figcaption>
+  <details class="data-table"><summary>Toon de cijfers</summary><div class="table-scroll"><table><thead><tr><th>Medewerker</th><th>Gemiddelde afhandeltijd (seconden)</th><th>Kwaliteitsscore</th><th></th></tr></thead><tbody><tr><th scope="row">A01</th><td class="num">430</td><td class="num">81,9</td><td>Snel, onder kwaliteitsdoel</td></tr><tr><th scope="row">A02</th><td class="num">412</td><td class="num">87,3</td><td>Overige medewerkers</td></tr><tr><th scope="row">A03</th><td class="num">470</td><td class="num">83,4</td><td>Overige medewerkers</td></tr><tr><th scope="row">A04</th><td class="num">309</td><td class="num">96,3</td><td>Overige medewerkers</td></tr><tr><th scope="row">A05</th><td class="num">463</td><td class="num">80</td><td>Overige medewerkers</td></tr><tr><th scope="row">A06</th><td class="num">478</td><td class="num">88,9</td><td>Trager, haalt kwaliteitsdoel</td></tr><tr><th scope="row">A07</th><td class="num">339</td><td class="num">84,7</td><td>Snel, onder kwaliteitsdoel</td></tr><tr><th scope="row">A08</th><td class="num">409</td><td class="num">72,7</td><td>Snel, onder kwaliteitsdoel</td></tr><tr><th scope="row">A09</th><td class="num">423</td><td class="num">79,6</td><td>Snel, onder kwaliteitsdoel</td></tr><tr><th scope="row">A10</th><td class="num">389</td><td class="num">78,9</td><td>Snel, onder kwaliteitsdoel</td></tr><tr><th scope="row">A11</th><td class="num">424</td><td class="num">79,9</td><td>Snel, onder kwaliteitsdoel</td></tr><tr><th scope="row">A12</th><td class="num">393</td><td class="num">92</td><td>Overige medewerkers</td></tr><tr><th scope="row">A13</th><td class="num">483</td><td class="num">91</td><td>Trager, haalt kwaliteitsdoel</td></tr><tr><th scope="row">A14</th><td class="num">549</td><td class="num">71,7</td><td>Overige medewerkers</td></tr><tr><th scope="row">A15</th><td class="num">345</td><td class="num">92,1</td><td>Overige medewerkers</td></tr><tr><th scope="row">A16</th><td class="num">257</td><td class="num">81,8</td><td>Snel, onder kwaliteitsdoel</td></tr><tr><th scope="row">A17</th><td class="num">366</td><td class="num">77,7</td><td>Snel, onder kwaliteitsdoel</td></tr><tr><th scope="row">A18</th><td class="num">480</td><td class="num">88</td><td>Trager, haalt kwaliteitsdoel</td></tr><tr><th scope="row">A19</th><td class="num">323</td><td class="num">75,5</td><td>Snel, onder kwaliteitsdoel</td></tr><tr><th scope="row">A20</th><td class="num">374</td><td class="num">81</td><td>Snel, onder kwaliteitsdoel</td></tr><tr><th scope="row">A21</th><td class="num">431</td><td class="num">97,2</td><td>Trager, haalt kwaliteitsdoel</td></tr><tr><th scope="row">A22</th><td class="num">558</td><td class="num">82,9</td><td>Overige medewerkers</td></tr><tr><th scope="row">A23</th><td class="num">388</td><td class="num">80,5</td><td>Snel, onder kwaliteitsdoel</td></tr><tr><th scope="row">A24</th><td class="num">526</td><td class="num">98</td><td>Trager, haalt kwaliteitsdoel</td></tr><tr><th scope="row">A25</th><td class="num">499</td><td class="num">84,3</td><td>Overige medewerkers</td></tr><tr><th scope="row">A26</th><td class="num">419</td><td class="num">88,3</td><td>Overige medewerkers</td></tr><tr><th scope="row">A27</th><td class="num">480</td><td class="num">84,5</td><td>Overige medewerkers</td></tr><tr><th scope="row">A28</th><td class="num">455</td><td class="num">76,9</td><td>Overige medewerkers</td></tr><tr><th scope="row">A29</th><td class="num">457</td><td class="num">79,5</td><td>Overige medewerkers</td></tr><tr><th scope="row">A30</th><td class="num">544</td><td class="num">89,7</td><td>Trager, haalt kwaliteitsdoel</td></tr><tr><th scope="row">A31</th><td class="num">540</td><td class="num">73,9</td><td>Overige medewerkers</td></tr><tr><th scope="row">A32</th><td class="num">338</td><td class="num">97,2</td><td>Overige medewerkers</td></tr><tr><th scope="row">A33</th><td class="num">352</td><td class="num">85,8</td><td>Overige medewerkers</td></tr><tr><th scope="row">A34</th><td class="num">446</td><td class="num">77,5</td><td>Overige medewerkers</td></tr><tr><th scope="row">A35</th><td class="num">282</td><td class="num">82,4</td><td>Snel, onder kwaliteitsdoel</td></tr><tr><th scope="row">A36</th><td class="num">386</td><td class="num">78,4</td><td>Snel, onder kwaliteitsdoel</td></tr><tr><th scope="row">A37</th><td class="num">500</td><td class="num">90,5</td><td>Trager, haalt kwaliteitsdoel</td></tr><tr><th scope="row">A38</th><td class="num">471</td><td class="num">86</td><td>Trager, haalt kwaliteitsdoel</td></tr><tr><th scope="row">A39</th><td class="num">432</td><td class="num">84,7</td><td>Overige medewerkers</td></tr><tr><th scope="row">A40</th><td class="num">439</td><td class="num">85,7</td><td>Trager, haalt kwaliteitsdoel</td></tr></tbody></table></div></details>
+</figure><figure class="chart-fig">
+  <div class="figbox"><div class="chart" style="--h:412px"><canvas id="p2-items" role="img" aria-label="Aandeel beoordeelde contacten dat elk onderdeel niet haalt."></canvas></div></div>
+  <figcaption>Aandeel beoordeelde contacten dat elk onderdeel niet haalt. <span class="muted">Beweeg over de grafiek of tik erop voor de exacte waarden.</span></figcaption>
+  <details class="data-table"><summary>Toon de cijfers</summary><div class="table-scroll"><table><thead><tr><th></th><th scope="col">Contacten die dit onderdeel niet halen (%)</th></tr></thead><tbody><tr><th scope="row">Dossiernotities</th><td class="num">21,9</td></tr><tr><th scope="row">Empathie</th><td class="num">17,4</td></tr><tr><th scope="row">Juiste oplossing</th><td class="num">14,2</td></tr><tr><th scope="row">Identiteitscontrole</th><td class="num">11,8</td></tr><tr><th scope="row">Juiste informatie</th><td class="num">9,6</td></tr><tr><th scope="row">Wachtstand</th><td class="num">7,3</td></tr><tr><th scope="row">Afsluiting</th><td class="num">4,4</td></tr><tr><th scope="row">Begroeting</th><td class="num">3,1</td></tr></tbody></table></div></details>
+</figure>
+      </div>
+    </div></div>
+<div class="wrap narrow case-body">
+  <section><h2>Wat ik vond</h2><div class="finding">
+      <h3>Snelheid en oplossing trekken de andere kant op</h3>
+      <p>De correlatie tussen AHT en FCR is 0,46: medewerkers die er langer over doen, lossen vaker in één keer op. De tien snelste medewerkers halen gemiddeld 65,4% FCR, tegen 69,9% voor het team.</p>
+      
+    </div><div class="finding">
+      <h3>Begin de coaching bij notities en empathie</h3>
+      <p>Dossiernotities scoren onvoldoende bij 21,9% van de beoordeelde contacten en empathie bij 17,4%. Beide schiet je makkelijk over als je je afhandeltijd omlaag wilt krijgen.</p>
+      
+    </div></section>
+  <section><h2>Wat ik zou aanraden</h2><ul class="recs"><li>AHT alleen tonen naast kwaliteit en FCR, nooit als losse ranglijst.</li><li>De 13 medewerkers in de groep snel en onder het doel eerst coachen op notities en empathie.</li><li>De 9 tragere medewerkers met hoge kwaliteit vragen wat ze anders doen, en dat in een korte handleiding zetten.</li></ul></section>
+  <section><h2>Een blik op de code</h2>
+    <figure class="code"><figcaption>SQL + DAX</figcaption><pre tabindex="0"><code>-- One definition of each metric, used by every report
+CREATE VIEW agent_month AS
+SELECT
+  c.agent_id,
+  date_trunc('month', c.started_at)           AS month,
+  AVG(c.handle_sec)                           AS aht_sec,
+  AVG(CASE WHEN r.repeat_7d THEN 0 ELSE 1 END) AS fcr,
+  AVG(s.csat_top2)                            AS csat,
+  AVG(q.score)                                AS qa_score
+FROM contacts c
+LEFT JOIN repeats  r ON r.contact_id = c.contact_id
+LEFT JOIN surveys  s ON s.contact_id = c.contact_id
+LEFT JOIN qa_evals q ON q.contact_id = c.contact_id
+GROUP BY 1, 2;
+
+-- DAX: flag a tile only when the target is missed
+QA vs target =
+VAR qa = AVERAGE ( agent_month[qa_score] )
+RETURN IF ( qa &lt; 85, &quot;#B5179E&quot;, &quot;#5B3FD1&quot; )</code></pre></figure>
+  </section>
+  <section><h2>Tools</h2><ul class="tags plain"><li>Power BI</li><li>DAX</li><li>SQL</li><li>Excel</li></ul></section>
+  <nav class="case-nav" aria-label="Projecten">
+    <a href="../projects.html">Alle projecten</a>
+    <a class="case-next" href="repeat-contacts.html"><span class="muted">Volgend project</span>Waar herhaalcontacten vandaan komen</a>
+  </nav>
+</div>
+</article>
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <p class="footer-name">Julieta Lara Romero</p>
+      <p class="muted">CX- en data-analist. Drietalig (Spaans, Engels en Portugees), met een achtergrond in Multimedia Engineering en Business Intelligence.</p>
+    </div>
+    <div>
+      <h2 class="footer-h">Pagina’s</h2>
+      <ul class="plain">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../about.html">Over mij</a></li>
+        <li><a href="../projects.html">Projecten</a></li>
+        <li><a href="../../assets/Julieta-Lara-Romero-CV.pdf">Cv</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2 class="footer-h">Contact</h2>
+      <ul class="plain">
+        <li><a href="mailto:julietalarar98@gmail.com">julietalarar98@gmail.com</a></li>
+        <li><a href="tel:+573222118698">+57 322 211 8698</a></li>
+        
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-base muted">
+    <p>© 2026 Julieta Lara Romero</p>
+    <p>Met de hand gebouwd in HTML, CSS en JavaScript. De grafieken gebruiken synthetische data.</p>
+  </div>
+</footer>
+<script src="../../assets/site.js" defer></script>
+<script type="application/json" id="chart-data">{"locale":"nl-NL","charts":{"p2-scatter":{"type":"scatter","xLabel":"Gemiddelde afhandeltijd (seconden)","yLabel":"Kwaliteitsscore","refX":431,"refY":85,"groups":[{"name":"Snel, onder kwaliteitsdoel","color":"orchid","points":[{"x":430,"y":81.9,"id":"A01"},{"x":339,"y":84.7,"id":"A07"},{"x":409,"y":72.7,"id":"A08"},{"x":423,"y":79.6,"id":"A09"},{"x":389,"y":78.9,"id":"A10"},{"x":424,"y":79.9,"id":"A11"},{"x":257,"y":81.8,"id":"A16"},{"x":366,"y":77.7,"id":"A17"},{"x":323,"y":75.5,"id":"A19"},{"x":374,"y":81,"id":"A20"},{"x":388,"y":80.5,"id":"A23"},{"x":282,"y":82.4,"id":"A35"},{"x":386,"y":78.4,"id":"A36"}]},{"name":"Overige medewerkers","color":"lav","points":[{"x":412,"y":87.3,"id":"A02"},{"x":470,"y":83.4,"id":"A03"},{"x":309,"y":96.3,"id":"A04"},{"x":463,"y":80,"id":"A05"},{"x":393,"y":92,"id":"A12"},{"x":549,"y":71.7,"id":"A14"},{"x":345,"y":92.1,"id":"A15"},{"x":558,"y":82.9,"id":"A22"},{"x":499,"y":84.3,"id":"A25"},{"x":419,"y":88.3,"id":"A26"},{"x":480,"y":84.5,"id":"A27"},{"x":455,"y":76.9,"id":"A28"},{"x":457,"y":79.5,"id":"A29"},{"x":540,"y":73.9,"id":"A31"},{"x":338,"y":97.2,"id":"A32"},{"x":352,"y":85.8,"id":"A33"},{"x":446,"y":77.5,"id":"A34"},{"x":432,"y":84.7,"id":"A39"}]},{"name":"Trager, haalt kwaliteitsdoel","color":"iris","points":[{"x":478,"y":88.9,"id":"A06"},{"x":483,"y":91,"id":"A13"},{"x":480,"y":88,"id":"A18"},{"x":431,"y":97.2,"id":"A21"},{"x":526,"y":98,"id":"A24"},{"x":544,"y":89.7,"id":"A30"},{"x":500,"y":90.5,"id":"A37"},{"x":471,"y":86,"id":"A38"},{"x":439,"y":85.7,"id":"A40"}]}],"agentLabel":"Medewerker"},"p2-items":{"type":"hbar","unit":"%","labels":["Dossiernotities","Empathie","Juiste oplossing","Identiteitscontrole","Juiste informatie","Wachtstand","Afsluiting","Begroeting"],"series":[{"name":"Contacten die dit onderdeel niet halen (%)","values":[21.9,17.4,14.2,11.8,9.6,7.3,4.4,3.1],"colors":["orchid","orchid","iris","iris","iris","iris","iris","iris"]}],"axis":"Contacten die dit onderdeel niet halen (%)"}}}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" defer></script>
+<script src="../../assets/charts.js" defer></script>
+</body>
+</html>

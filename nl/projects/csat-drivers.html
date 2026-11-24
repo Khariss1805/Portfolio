@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Wat de CSAT echt bepaalt bij een meertalige klantenservice | Julieta Lara Romero</title>
+  <meta name="description" content="Welke onderdelen van een contact klanten tevreden maken of niet, over zes contactredenen en vier taalwachtrijen.">
+  <meta name="color-scheme" content="light dark">
+  <meta property="og:title" content="Wat de CSAT echt bepaalt bij een meertalige klantenservice | Julieta Lara Romero">
+  <meta property="og:description" content="Welke onderdelen van een contact klanten tevreden maken of niet, over zes contactredenen en vier taalwachtrijen.">
+  <meta property="og:type" content="website">
+  <link rel="alternate" hreflang="en" href="https://khariss1805.github.io/Portfolio/projects/csat-drivers.html">
+  <link rel="alternate" hreflang="nl" href="https://khariss1805.github.io/Portfolio/nl/projects/csat-drivers.html">
+  <link rel="alternate" hreflang="pt-PT" href="https://khariss1805.github.io/Portfolio/pt/projects/csat-drivers.html">
+  <link rel="alternate" hreflang="es" href="https://khariss1805.github.io/Portfolio/es/projects/csat-drivers.html">
+  <link rel="alternate" hreflang="x-default" href="https://khariss1805.github.io/Portfolio/projects/csat-drivers.html">
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Instrument+Sans:ital,wght@0,400..700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/site.css">
+  <script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+<a class="skip" href="#main">Naar de inhoud</a>
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="brand" href="../index.html">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="13" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="16" cy="16" r="5" fill="currentColor"/></svg>
+      <span><span class="brand-name">Julieta Lara Romero</span><span class="brand-role">CX- en data-analist</span></span>
+    </a>
+    <nav class="main-nav" aria-label="Main">
+      <a href="../index.html">Home</a>
+      <a href="../about.html">Over mij</a>
+      <a href="../projects.html" aria-current="page">Projecten</a>
+      <a href="../../assets/Julieta-Lara-Romero-CV.pdf">Cv</a>
+    </nav>
+    <nav class="lang-switch" aria-label="Taal"><a href="../../projects/csat-drivers.html" hreflang="en" lang="en" title="English">EN</a><a href="csat-drivers.html" hreflang="nl" lang="nl" title="Nederlands" aria-current="true">NL</a><a href="../../pt/projects/csat-drivers.html" hreflang="pt-PT" lang="pt-PT" title="Português">PT</a><a href="../../es/projects/csat-drivers.html" hreflang="es" lang="es" title="Español">ES</a></nav>
+  </div>
+</header>
+<main id="main">
+<article>
+<header class="page-head case-head">
+  <div class="wrap narrow">
+    <nav class="crumbs" aria-label="Kruimelpad"><a href="../index.html">Home</a><span aria-hidden="true">/</span><a href="../projects.html">Projecten</a></nav>
+    <p class="case-tags"><span class="tag">Klantbeleving</span><span class="tag tag-practice">Oefenproject</span></p>
+    <h1>Wat de CSAT echt bepaalt bij een meertalige klantenservice</h1>
+    <p class="hero-lead">Elke week rapporteerde de klantenservice één CSAT-cijfer. Het ging op en neer en niemand wist waarom. Ik heb het uitgesplitst naar wat er in elk contact gebeurde.</p>
+    <div class="case-results"><span class="result"><strong>+29,1 pt</strong><span>CSAT bij oplossing in één keer</span></span><span class="result"><strong>−14,4 pt</strong><span>als de klant niet in eigen taal wordt geholpen</span></span></div>
+    <p class="practice-note">Dit is een oefenproject. Het bedrijf is fictief en de data is synthetisch, gegenereerd om zich te gedragen als echte contactcenterdata. De vragen, methodes en code zijn wat ik in de praktijk zou gebruiken.</p>
+  </div>
+</header>
+<div class="wrap narrow case-body">
+  <section><h2>De vraag</h2><p>Een fictieve klantenservice helpt klanten in het Engels, Spaans, Portugees en Nederlands. De tevredenheid ligt rond de 69,5% en het management wil die omhoog krijgen.</p><p>De vraag: welke onderdelen van de klantbeleving hangen samen met tevredenheid, en welke kan de organisatie echt veranderen?</p></section>
+  <section><h2>De data</h2><p>18.000 contacten met een enquête achteraf, over zes maanden. Per contact: reden, taalwachtrij, of het bij het eerste contact is opgelost, aantal keer doorverbonden, wachttijd, ervaring van de medewerker en of de klant in de eigen taal is geholpen.</p></section>
+  <section><h2>Wat ik deed</h2><ol class="steps"><li>Eerst de data gecontroleerd: dubbele enquêtes, contacten zonder reden en onmogelijke wachttijden.</li><li>CSAT vergeleken per contactreden en per taalwachtrij om te zien waar de verschillen zaten.</li><li>Per factor de tevredenheid met en zonder die factor vergeleken, en een logistische regressie gebruikt om te controleren of elk effect overeind bleef als de andere constant werden gehouden.</li><li>Het resultaat omgezet in een Power BI-overzicht van één pagina dat teamleiders per wachtrij kunnen filteren.</li></ol></section>
+</div>
+
+<div class="wrap narrow case-body">
+  <section><h2>Wat ik vond</h2><div class="finding">
+      <h3>In één keer oplossen weegt het zwaarst</h3>
+      <p>Klanten van wie het probleem bij het eerste contact werd opgelost, waren 29,1 punten tevredener. Dat is meer dan twee keer zoveel als elke andere factor, wachttijd inbegrepen.</p>
+      <figure class="chart-fig">
+  <div class="figbox"><div class="chart" style="--h:280px"><canvas id="p1-drivers" role="img" aria-label="Verschil in CSAT met en zonder elke factor, in procentpunten."></canvas></div></div>
+  <figcaption>Verschil in CSAT met en zonder elke factor, in procentpunten. <span class="muted">Beweeg over de grafiek of tik erop voor de exacte waarden.</span></figcaption>
+  <details class="data-table"><summary>Toon de cijfers</summary><div class="table-scroll"><table><thead><tr><th></th><th scope="col">Verschil in CSAT (punten)</th></tr></thead><tbody><tr><th scope="row">Opgelost bij eerste contact</th><td class="num">29,1</td></tr><tr><th scope="row">Geholpen in eigen taal</th><td class="num">14,4</td></tr><tr><th scope="row">Minder dan 2 minuten gewacht</th><td class="num">12,7</td></tr><tr><th scope="row">Niet doorverbonden</th><td class="num">10,1</td></tr><tr><th scope="row">Medewerker 3+ maanden in dienst</th><td class="num">5,6</td></tr></tbody></table></div></details>
+</figure>
+    </div><div class="finding">
+      <h3>Opzeggingen en storingen trekken het gemiddelde omlaag</h3>
+      <p>De CSAT loopt van 76% bij abonnementswijzigingen tot 60,7% bij opzeggingen. Een deel van dat verschil komt door de reden zelf en niet door hoe de medewerker het aanpakte, dus deze redenen hebben eigen doelen nodig.</p>
+      <figure class="chart-fig">
+  <div class="figbox"><div class="chart" style="--h:324px"><canvas id="p1-reasons" role="img" aria-label="CSAT per contactreden."></canvas></div></div>
+  <figcaption>CSAT per contactreden. <span class="muted">Beweeg over de grafiek of tik erop voor de exacte waarden.</span></figcaption>
+  <details class="data-table"><summary>Toon de cijfers</summary><div class="table-scroll"><table><thead><tr><th></th><th scope="col">CSAT (% tevreden)</th></tr></thead><tbody><tr><th scope="row">Abonnementswijziging</th><td class="num">76</td></tr><tr><th scope="row">Toegang tot account</th><td class="num">75,8</td></tr><tr><th scope="row">Bezorging</th><td class="num">71,8</td></tr><tr><th scope="row">Facturatie</th><td class="num">66,7</td></tr><tr><th scope="row">Productstoring</th><td class="num">63,3</td></tr><tr><th scope="row">Opzegging</th><td class="num">60,7</td></tr></tbody></table></div></details>
+</figure>
+    </div><div class="finding">
+      <h3>De Nederlandse wachtrij heeft een taalprobleem, geen medewerkersprobleem</h3>
+      <p>Maar 58,1% van de Nederlandstalige klanten werd in het Nederlands geholpen. Dan was de CSAT 70,9%; in het Engels zakte die naar 57,6%.</p>
+      <figure class="chart-fig">
+  <div class="figbox"><div class="chart"><canvas id="p1-langs" role="img" aria-label="CSAT per taalwachtrij."></canvas></div></div>
+  <figcaption>CSAT per taalwachtrij. <span class="muted">Beweeg over de grafiek of tik erop voor de exacte waarden.</span></figcaption>
+  <details class="data-table"><summary>Toon de cijfers</summary><div class="table-scroll"><table><thead><tr><th></th><th scope="col">CSAT (% tevreden)</th></tr></thead><tbody><tr><th scope="row">Engelse wachtrij</th><td class="num">70,5</td></tr><tr><th scope="row">Spaanse wachtrij</th><td class="num">71,7</td></tr><tr><th scope="row">Portugese wachtrij</th><td class="num">68,6</td></tr><tr><th scope="row">Nederlandse wachtrij</th><td class="num">65,3</td></tr></tbody></table></div></details>
+</figure>
+    </div></section>
+  <section><h2>Wat ik zou aanraden</h2><ul class="recs"><li>FCR naast CSAT tonen in de weekrapportage, en onopgeloste contacten eerder bekijken dan lage scores.</li><li>Nederlandstalige medewerkers aannemen of opleiden voor de piekuren, vóór andere wachtrijen worden uitgebreid.</li><li>CSAT per contactreden rapporteren, zodat een week met veel opzeggingen niet als slechte service wordt gelezen.</li></ul></section>
+  <section><h2>Een blik op de code</h2>
+    <figure class="code"><figcaption>Python</figcaption><pre tabindex="0"><code>import pandas as pd
+import statsmodels.formula.api as smf
+
+contacts = pd.read_csv(&quot;contacts_with_survey.csv&quot;)
+
+# Data checks before any analysis
+contacts = contacts.drop_duplicates(&quot;contact_id&quot;)
+contacts = contacts[contacts[&quot;reason&quot;].notna() &amp; contacts[&quot;wait_sec&quot;].between(0, 3600)]
+
+contacts[&quot;satisfied&quot;] = (contacts[&quot;csat&quot;] &gt;= 4).astype(int)
+contacts[&quot;long_wait&quot;] = (contacts[&quot;wait_sec&quot;] &gt; 120).astype(int)
+
+# Does each factor still matter when the others are held constant?
+model = smf.logit(
+    &quot;satisfied ~ fcr + transfers + long_wait + new_agent&quot;
+    &quot; + native_language + C(reason) + C(queue)&quot;,
+    data=contacts,
+).fit()
+
+print(model.summary())</code></pre></figure>
+  </section>
+  <section><h2>Tools</h2><ul class="tags plain"><li>Python</li><li>pandas</li><li>Logistische regressie</li><li>Power BI</li></ul></section>
+  <nav class="case-nav" aria-label="Projecten">
+    <a href="../projects.html">Alle projecten</a>
+    <a class="case-next" href="agent-scorecard.html"><span class="muted">Volgend project</span>Een medewerkersscorecard die haast niet beloont</a>
+  </nav>
+</div>
+</article>
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <p class="footer-name">Julieta Lara Romero</p>
+      <p class="muted">CX- en data-analist. Drietalig (Spaans, Engels en Portugees), met een achtergrond in Multimedia Engineering en Business Intelligence.</p>
+    </div>
+    <div>
+      <h2 class="footer-h">Pagina’s</h2>
+      <ul class="plain">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../about.html">Over mij</a></li>
+        <li><a href="../projects.html">Projecten</a></li>
+        <li><a href="../../assets/Julieta-Lara-Romero-CV.pdf">Cv</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2 class="footer-h">Contact</h2>
+      <ul class="plain">
+        <li><a href="mailto:julietalarar98@gmail.com">julietalarar98@gmail.com</a></li>
+        <li><a href="tel:+573222118698">+57 322 211 8698</a></li>
+        
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-base muted">
+    <p>© 2026 Julieta Lara Romero</p>
+    <p>Met de hand gebouwd in HTML, CSS en JavaScript. De grafieken gebruiken synthetische data.</p>
+  </div>
+</footer>
+<script src="../../assets/site.js" defer></script>
+<script type="application/json" id="chart-data">{"locale":"nl-NL","charts":{"p1-drivers":{"type":"hbar","unit":" pt","labels":["Opgelost bij eerste contact","Geholpen in eigen taal","Minder dan 2 minuten gewacht","Niet doorverbonden","Medewerker 3+ maanden in dienst"],"series":[{"name":"Verschil in CSAT (punten)","values":[29.1,14.4,12.7,10.1,5.6],"color":"iris"}],"axis":"Verschil in CSAT (punten)"},"p1-reasons":{"type":"hbar","unit":"%","min":50,"labels":["Abonnementswijziging","Toegang tot account","Bezorging","Facturatie","Productstoring","Opzegging"],"series":[{"name":"CSAT (% tevreden)","values":[76,75.8,71.8,66.7,63.3,60.7],"colors":["iris","iris","iris","iris","orchid","orchid"]}],"axis":"CSAT (% tevreden)"},"p1-langs":{"type":"bar","unit":"%","min":50,"labels":["Engelse wachtrij","Spaanse wachtrij","Portugese wachtrij","Nederlandse wachtrij"],"series":[{"name":"CSAT (% tevreden)","values":[70.5,71.7,68.6,65.3],"colors":["iris","iris","iris","orchid"]}],"axis":"CSAT (% tevreden)"}}}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" defer></script>
+<script src="../../assets/charts.js" defer></script>
+</body>
+</html>

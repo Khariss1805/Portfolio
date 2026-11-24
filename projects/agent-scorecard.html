@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>An agent scorecard that doesn’t reward rushing | Julieta Lara Romero</title>
+  <meta name="description" content="A Power BI style dashboard for 40 agents that shows speed, quality and resolution together.">
+  <meta name="color-scheme" content="light dark">
+  <meta property="og:title" content="An agent scorecard that doesn’t reward rushing | Julieta Lara Romero">
+  <meta property="og:description" content="A Power BI style dashboard for 40 agents that shows speed, quality and resolution together.">
+  <meta property="og:type" content="website">
+  <link rel="alternate" hreflang="en" href="https://khariss1805.github.io/Portfolio/projects/agent-scorecard.html">
+  <link rel="alternate" hreflang="nl" href="https://khariss1805.github.io/Portfolio/nl/projects/agent-scorecard.html">
+  <link rel="alternate" hreflang="pt-PT" href="https://khariss1805.github.io/Portfolio/pt/projects/agent-scorecard.html">
+  <link rel="alternate" hreflang="es" href="https://khariss1805.github.io/Portfolio/es/projects/agent-scorecard.html">
+  <link rel="alternate" hreflang="x-default" href="https://khariss1805.github.io/Portfolio/projects/agent-scorecard.html">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Instrument+Sans:ital,wght@0,400..700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/site.css">
+  <script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="brand" href="../index.html">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="13" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="16" cy="16" r="5" fill="currentColor"/></svg>
+      <span><span class="brand-name">Julieta Lara Romero</span><span class="brand-role">CX & Data Analyst</span></span>
+    </a>
+    <nav class="main-nav" aria-label="Main">
+      <a href="../index.html">Home</a>
+      <a href="../about.html">About</a>
+      <a href="../projects.html" aria-current="page">Projects</a>
+      <a href="../assets/Julieta-Lara-Romero-CV.pdf">Résumé</a>
+    </nav>
+    <nav class="lang-switch" aria-label="Language"><a href="agent-scorecard.html" hreflang="en" lang="en" title="English" aria-current="true">EN</a><a href="../nl/projects/agent-scorecard.html" hreflang="nl" lang="nl" title="Nederlands">NL</a><a href="../pt/projects/agent-scorecard.html" hreflang="pt-PT" lang="pt-PT" title="Português">PT</a><a href="../es/projects/agent-scorecard.html" hreflang="es" lang="es" title="Español">ES</a></nav>
+  </div>
+</header>
+<main id="main">
+<article>
+<header class="page-head case-head">
+  <div class="wrap narrow">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">Home</a><span aria-hidden="true">/</span><a href="../projects.html">Projects</a></nav>
+    <p class="case-tags"><span class="tag">Quality and performance</span><span class="tag tag-practice">Practice project</span></p>
+    <h1>An agent scorecard that doesn’t reward rushing</h1>
+    <p class="hero-lead">The old team report ranked agents by handle time alone. I built a scorecard that puts speed, quality and resolution on one screen, so coaching starts from the full picture.</p>
+    <div class="case-results"><span class="result"><strong>13 of 40</strong><span>agents fast but below QA target</span></span><span class="result"><strong>21.9%</strong><span>of contacts fail case notes</span></span></div>
+    <p class="practice-note">This is a practice project. The company is fictional and the data is synthetic, generated to behave like real contact-centre data. The questions, methods and code are the ones I would use on the job.</p>
+  </div>
+</header>
+<div class="wrap narrow case-body">
+  <section><h2>The question</h2><p>Team leads coached on AHT because it was the number at the top of the report. Agents learned that closing contacts quickly was what counted.</p><p>The question: which agents need coaching, and on what, once speed, quality and resolution are seen together?</p></section>
+  <section><h2>The data</h2><p>One month of results for 40 agents: average handle time, QA score from the quality scorecard, first-contact resolution and CSAT. Plus the pass and fail result of every QA item on evaluated contacts.</p></section>
+  <section><h2>What I did</h2><ol class="steps"><li>Wrote one SQL view per metric so every report uses the same definition, for example FCR as no repeat contact in 7 days.</li><li>Modelled the data in a star schema: agents, dates and queues as dimensions, contacts and evaluations as facts.</li><li>Built the dashboard below: four KPI tiles, an AHT against QA chart split by the team median and the QA target, and the QA items that fail most.</li><li>Added DAX measures for targets so tiles change colour only when a target is missed.</li></ol></section>
+</div>
+<div class="wrap wide"><div class="dash" aria-label="Dashboard">
+      <div class="dash-bar"><span class="dash-dots" aria-hidden="true"><i></i><i></i><i></i></span><span>An agent scorecard that doesn’t reward rushing</span></div>
+      <div class="kpis"><div class="kpi"><span>Median AHT</span><strong>7.2 min</strong></div><div class="kpi kpi-miss"><span>Average QA</span><strong>84.2</strong></div><div class="kpi"><span>Average CSAT</span><strong>78.9%</strong></div><div class="kpi kpi-miss"><span>Average FCR</span><strong>69.9%</strong></div></div>
+      <div class="dash-grid">
+        <figure class="chart-fig">
+  <div class="figbox"><div class="chart"><canvas id="p2-scatter" role="img" aria-label="Each dot is an agent. Lines show the team median AHT and the QA target of 85."></canvas></div></div>
+  <figcaption>Each dot is an agent. Lines show the team median AHT and the QA target of 85. <span class="muted">Hover or tap the chart for exact values.</span></figcaption>
+  <details class="data-table"><summary>Show the numbers</summary><div class="table-scroll"><table><thead><tr><th>Agent</th><th>Average handle time (seconds)</th><th>QA score</th><th></th></tr></thead><tbody><tr><th scope="row">A01</th><td class="num">430</td><td class="num">81.9</td><td>Fast, below QA target</td></tr><tr><th scope="row">A02</th><td class="num">412</td><td class="num">87.3</td><td>Other agents</td></tr><tr><th scope="row">A03</th><td class="num">470</td><td class="num">83.4</td><td>Other agents</td></tr><tr><th scope="row">A04</th><td class="num">309</td><td class="num">96.3</td><td>Other agents</td></tr><tr><th scope="row">A05</th><td class="num">463</td><td class="num">80</td><td>Other agents</td></tr><tr><th scope="row">A06</th><td class="num">478</td><td class="num">88.9</td><td>Slower, meets QA target</td></tr><tr><th scope="row">A07</th><td class="num">339</td><td class="num">84.7</td><td>Fast, below QA target</td></tr><tr><th scope="row">A08</th><td class="num">409</td><td class="num">72.7</td><td>Fast, below QA target</td></tr><tr><th scope="row">A09</th><td class="num">423</td><td class="num">79.6</td><td>Fast, below QA target</td></tr><tr><th scope="row">A10</th><td class="num">389</td><td class="num">78.9</td><td>Fast, below QA target</td></tr><tr><th scope="row">A11</th><td class="num">424</td><td class="num">79.9</td><td>Fast, below QA target</td></tr><tr><th scope="row">A12</th><td class="num">393</td><td class="num">92</td><td>Other agents</td></tr><tr><th scope="row">A13</th><td class="num">483</td><td class="num">91</td><td>Slower, meets QA target</td></tr><tr><th scope="row">A14</th><td class="num">549</td><td class="num">71.7</td><td>Other agents</td></tr><tr><th scope="row">A15</th><td class="num">345</td><td class="num">92.1</td><td>Other agents</td></tr><tr><th scope="row">A16</th><td class="num">257</td><td class="num">81.8</td><td>Fast, below QA target</td></tr><tr><th scope="row">A17</th><td class="num">366</td><td class="num">77.7</td><td>Fast, below QA target</td></tr><tr><th scope="row">A18</th><td class="num">480</td><td class="num">88</td><td>Slower, meets QA target</td></tr><tr><th scope="row">A19</th><td class="num">323</td><td class="num">75.5</td><td>Fast, below QA target</td></tr><tr><th scope="row">A20</th><td class="num">374</td><td class="num">81</td><td>Fast, below QA target</td></tr><tr><th scope="row">A21</th><td class="num">431</td><td class="num">97.2</td><td>Slower, meets QA target</td></tr><tr><th scope="row">A22</th><td class="num">558</td><td class="num">82.9</td><td>Other agents</td></tr><tr><th scope="row">A23</th><td class="num">388</td><td class="num">80.5</td><td>Fast, below QA target</td></tr><tr><th scope="row">A24</th><td class="num">526</td><td class="num">98</td><td>Slower, meets QA target</td></tr><tr><th scope="row">A25</th><td class="num">499</td><td class="num">84.3</td><td>Other agents</td></tr><tr><th scope="row">A26</th><td class="num">419</td><td class="num">88.3</td><td>Other agents</td></tr><tr><th scope="row">A27</th><td class="num">480</td><td class="num">84.5</td><td>Other agents</td></tr><tr><th scope="row">A28</th><td class="num">455</td><td class="num">76.9</td><td>Other agents</td></tr><tr><th scope="row">A29</th><td class="num">457</td><td class="num">79.5</td><td>Other agents</td></tr><tr><th scope="row">A30</th><td class="num">544</td><td class="num">89.7</td><td>Slower, meets QA target</td></tr><tr><th scope="row">A31</th><td class="num">540</td><td class="num">73.9</td><td>Other agents</td></tr><tr><th scope="row">A32</th><td class="num">338</td><td class="num">97.2</td><td>Other agents</td></tr><tr><th scope="row">A33</th><td class="num">352</td><td class="num">85.8</td><td>Other agents</td></tr><tr><th scope="row">A34</th><td class="num">446</td><td class="num">77.5</td><td>Other agents</td></tr><tr><th scope="row">A35</th><td class="num">282</td><td class="num">82.4</td><td>Fast, below QA target</td></tr><tr><th scope="row">A36</th><td class="num">386</td><td class="num">78.4</td><td>Fast, below QA target</td></tr><tr><th scope="row">A37</th><td class="num">500</td><td class="num">90.5</td><td>Slower, meets QA target</td></tr><tr><th scope="row">A38</th><td class="num">471</td><td class="num">86</td><td>Slower, meets QA target</td></tr><tr><th scope="row">A39</th><td class="num">432</td><td class="num">84.7</td><td>Other agents</td></tr><tr><th scope="row">A40</th><td class="num">439</td><td class="num">85.7</td><td>Slower, meets QA target</td></tr></tbody></table></div></details>
+</figure><figure class="chart-fig">
+  <div class="figbox"><div class="chart" style="--h:412px"><canvas id="p2-items" role="img" aria-label="Share of evaluated contacts failing each QA item."></canvas></div></div>
+  <figcaption>Share of evaluated contacts failing each QA item. <span class="muted">Hover or tap the chart for exact values.</span></figcaption>
+  <details class="data-table"><summary>Show the numbers</summary><div class="table-scroll"><table><thead><tr><th></th><th scope="col">Contacts failing this item (%)</th></tr></thead><tbody><tr><th scope="row">Case notes</th><td class="num">21.9</td></tr><tr><th scope="row">Empathy</th><td class="num">17.4</td></tr><tr><th scope="row">Correct resolution</th><td class="num">14.2</td></tr><tr><th scope="row">Identity check</th><td class="num">11.8</td></tr><tr><th scope="row">Accurate information</th><td class="num">9.6</td></tr><tr><th scope="row">Hold etiquette</th><td class="num">7.3</td></tr><tr><th scope="row">Closing</th><td class="num">4.4</td></tr><tr><th scope="row">Greeting</th><td class="num">3.1</td></tr></tbody></table></div></details>
+</figure>
+      </div>
+    </div></div>
+<div class="wrap narrow case-body">
+  <section><h2>What I found</h2><div class="finding">
+      <h3>Speed and resolution pull in opposite directions</h3>
+      <p>The correlation between AHT and FCR is 0.46: agents who take longer tend to solve more at the first attempt. The ten fastest agents average 65.4% FCR, against 69.9% for the team.</p>
+      
+    </div><div class="finding">
+      <h3>Coaching should start with notes and empathy</h3>
+      <p>Case notes fail on 21.9% of evaluated contacts and empathy on 17.4%. Both are easy to skip when an agent is trying to lower handle time.</p>
+      
+    </div></section>
+  <section><h2>What I would recommend</h2><ul class="recs"><li>Show AHT only next to QA and FCR, never as a ranking on its own.</li><li>Coach the 13 agents in the fast and below-target group on notes and empathy first.</li><li>Ask the 9 slower, high-quality agents what they do differently, and turn it into a short guide.</li></ul></section>
+  <section><h2>A look at the code</h2>
+    <figure class="code"><figcaption>SQL + DAX</figcaption><pre tabindex="0"><code>-- One definition of each metric, used by every report
+CREATE VIEW agent_month AS
+SELECT
+  c.agent_id,
+  date_trunc('month', c.started_at)           AS month,
+  AVG(c.handle_sec)                           AS aht_sec,
+  AVG(CASE WHEN r.repeat_7d THEN 0 ELSE 1 END) AS fcr,
+  AVG(s.csat_top2)                            AS csat,
+  AVG(q.score)                                AS qa_score
+FROM contacts c
+LEFT JOIN repeats  r ON r.contact_id = c.contact_id
+LEFT JOIN surveys  s ON s.contact_id = c.contact_id
+LEFT JOIN qa_evals q ON q.contact_id = c.contact_id
+GROUP BY 1, 2;
+
+-- DAX: flag a tile only when the target is missed
+QA vs target =
+VAR qa = AVERAGE ( agent_month[qa_score] )
+RETURN IF ( qa &lt; 85, &quot;#B5179E&quot;, &quot;#5B3FD1&quot; )</code></pre></figure>
+  </section>
+  <section><h2>Tools</h2><ul class="tags plain"><li>Power BI</li><li>DAX</li><li>SQL</li><li>Excel</li></ul></section>
+  <nav class="case-nav" aria-label="Projects">
+    <a href="../projects.html">All projects</a>
+    <a class="case-next" href="repeat-contacts.html"><span class="muted">Next project</span>Finding where repeat contacts come from</a>
+  </nav>
+</div>
+</article>
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <p class="footer-name">Julieta Lara Romero</p>
+      <p class="muted">CX & Data Analyst. Trilingual (Spanish, English, Portuguese), with a background in Multimedia Engineering and Business Intelligence.</p>
+    </div>
+    <div>
+      <h2 class="footer-h">Pages</h2>
+      <ul class="plain">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li><a href="../projects.html">Projects</a></li>
+        <li><a href="../assets/Julieta-Lara-Romero-CV.pdf">Résumé</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2 class="footer-h">Contact</h2>
+      <ul class="plain">
+        <li><a href="mailto:julietalarar98@gmail.com">julietalarar98@gmail.com</a></li>
+        <li><a href="tel:+573222118698">+57 322 211 8698</a></li>
+        
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-base muted">
+    <p>© 2026 Julieta Lara Romero</p>
+    <p>Built by hand with HTML, CSS and JavaScript. Charts use synthetic data.</p>
+  </div>
+</footer>
+<script src="../assets/site.js" defer></script>
+<script type="application/json" id="chart-data">{"locale":"en-GB","charts":{"p2-scatter":{"type":"scatter","xLabel":"Average handle time (seconds)","yLabel":"QA score","refX":431,"refY":85,"groups":[{"name":"Fast, below QA target","color":"orchid","points":[{"x":430,"y":81.9,"id":"A01"},{"x":339,"y":84.7,"id":"A07"},{"x":409,"y":72.7,"id":"A08"},{"x":423,"y":79.6,"id":"A09"},{"x":389,"y":78.9,"id":"A10"},{"x":424,"y":79.9,"id":"A11"},{"x":257,"y":81.8,"id":"A16"},{"x":366,"y":77.7,"id":"A17"},{"x":323,"y":75.5,"id":"A19"},{"x":374,"y":81,"id":"A20"},{"x":388,"y":80.5,"id":"A23"},{"x":282,"y":82.4,"id":"A35"},{"x":386,"y":78.4,"id":"A36"}]},{"name":"Other agents","color":"lav","points":[{"x":412,"y":87.3,"id":"A02"},{"x":470,"y":83.4,"id":"A03"},{"x":309,"y":96.3,"id":"A04"},{"x":463,"y":80,"id":"A05"},{"x":393,"y":92,"id":"A12"},{"x":549,"y":71.7,"id":"A14"},{"x":345,"y":92.1,"id":"A15"},{"x":558,"y":82.9,"id":"A22"},{"x":499,"y":84.3,"id":"A25"},{"x":419,"y":88.3,"id":"A26"},{"x":480,"y":84.5,"id":"A27"},{"x":455,"y":76.9,"id":"A28"},{"x":457,"y":79.5,"id":"A29"},{"x":540,"y":73.9,"id":"A31"},{"x":338,"y":97.2,"id":"A32"},{"x":352,"y":85.8,"id":"A33"},{"x":446,"y":77.5,"id":"A34"},{"x":432,"y":84.7,"id":"A39"}]},{"name":"Slower, meets QA target","color":"iris","points":[{"x":478,"y":88.9,"id":"A06"},{"x":483,"y":91,"id":"A13"},{"x":480,"y":88,"id":"A18"},{"x":431,"y":97.2,"id":"A21"},{"x":526,"y":98,"id":"A24"},{"x":544,"y":89.7,"id":"A30"},{"x":500,"y":90.5,"id":"A37"},{"x":471,"y":86,"id":"A38"},{"x":439,"y":85.7,"id":"A40"}]}],"agentLabel":"Agent"},"p2-items":{"type":"hbar","unit":"%","labels":["Case notes","Empathy","Correct resolution","Identity check","Accurate information","Hold etiquette","Closing","Greeting"],"series":[{"name":"Contacts failing this item (%)","values":[21.9,17.4,14.2,11.8,9.6,7.3,4.4,3.1],"colors":["orchid","orchid","iris","iris","iris","iris","iris","iris"]}],"axis":"Contacts failing this item (%)"}}}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" defer></script>
+<script src="../assets/charts.js" defer></script>
+</body>
+</html>

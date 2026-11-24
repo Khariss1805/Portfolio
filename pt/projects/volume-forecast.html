@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Previsão de volume e dimensionamento hora a hora | Julieta Lara Romero</title>
+  <meta name="description" content="Uma previsão semanal de volume e um plano de pessoal hora a hora com Erlang C, em Excel e verificado em Python.">
+  <meta name="color-scheme" content="light dark">
+  <meta property="og:title" content="Previsão de volume e dimensionamento hora a hora | Julieta Lara Romero">
+  <meta property="og:description" content="Uma previsão semanal de volume e um plano de pessoal hora a hora com Erlang C, em Excel e verificado em Python.">
+  <meta property="og:type" content="website">
+  <link rel="alternate" hreflang="en" href="https://khariss1805.github.io/Portfolio/projects/volume-forecast.html">
+  <link rel="alternate" hreflang="nl" href="https://khariss1805.github.io/Portfolio/nl/projects/volume-forecast.html">
+  <link rel="alternate" hreflang="pt-PT" href="https://khariss1805.github.io/Portfolio/pt/projects/volume-forecast.html">
+  <link rel="alternate" hreflang="es" href="https://khariss1805.github.io/Portfolio/es/projects/volume-forecast.html">
+  <link rel="alternate" hreflang="x-default" href="https://khariss1805.github.io/Portfolio/projects/volume-forecast.html">
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Instrument+Sans:ital,wght@0,400..700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/site.css">
+  <script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+<a class="skip" href="#main">Saltar para o conteúdo</a>
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="brand" href="../index.html">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="13" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="16" cy="16" r="5" fill="currentColor"/></svg>
+      <span><span class="brand-name">Julieta Lara Romero</span><span class="brand-role">Analista de CX e dados</span></span>
+    </a>
+    <nav class="main-nav" aria-label="Main">
+      <a href="../index.html">Início</a>
+      <a href="../about.html">Sobre mim</a>
+      <a href="../projects.html" aria-current="page">Projetos</a>
+      <a href="../../assets/Julieta-Lara-Romero-CV.pdf">CV</a>
+    </nav>
+    <nav class="lang-switch" aria-label="Idioma"><a href="../../projects/volume-forecast.html" hreflang="en" lang="en" title="English">EN</a><a href="../../nl/projects/volume-forecast.html" hreflang="nl" lang="nl" title="Nederlands">NL</a><a href="volume-forecast.html" hreflang="pt-PT" lang="pt-PT" title="Português" aria-current="true">PT</a><a href="../../es/projects/volume-forecast.html" hreflang="es" lang="es" title="Español">ES</a></nav>
+  </div>
+</header>
+<main id="main">
+<article>
+<header class="page-head case-head">
+  <div class="wrap narrow">
+    <nav class="crumbs" aria-label="Percurso de navegação"><a href="../index.html">Início</a><span aria-hidden="true">/</span><a href="../projects.html">Projetos</a></nav>
+    <p class="case-tags"><span class="tag">Operações e crescimento</span><span class="tag tag-practice">Projeto de prática</span></p>
+    <h1>Previsão de volume e dimensionamento hora a hora</h1>
+    <p class="hero-lead">O serviço escalava o mesmo número de agentes todo o dia, todos os dias. Previ quantos contactos iam chegar e quantos agentes são realmente precisos em cada hora.</p>
+    <div class="case-results"><span class="result"><strong>5%</strong><span>de erro médio da previsão</span></span><span class="result"><strong>76 horas</strong><span>de agente poupadas numa segunda-feira</span></span></div>
+    <p class="practice-note">Este é um projeto de prática. A empresa é fictícia e os dados são sintéticos, gerados para se comportarem como dados reais de um contact centre. As perguntas, os métodos e o código são os que usaria no trabalho.</p>
+  </div>
+</header>
+<div class="wrap narrow case-body">
+  <section><h2>A pergunta</h2><p>Os clientes esperavam demasiado ao fim da manhã, enquanto ao fim do dia havia agentes sem trabalho.</p><p>A pergunta: quantos contactos vão chegar nas próximas semanas, e quantos agentes são precisos em cada hora para atender 80% em menos de 20 segundos?</p></section>
+  <section><h2>Os dados</h2><p>Dois anos de volume semanal, um perfil intradiário por dia e hora, e um tempo médio de atendimento de 380 segundos.</p></section>
+  <section><h2>O que fiz</h2><ol class="steps"><li>Criei uma previsão sazonal: a mesma semana do ano anterior, ajustada pelo crescimento homólogo. Simples o suficiente para manter em Excel.</li><li>Testei-a com honestidade: previ as últimas 12 semanas conhecidas como se fossem desconhecidas e comparei com o que aconteceu.</li><li>Distribuí a previsão semanal por dias e horas com o perfil intradiário.</li><li>Usei Erlang C para calcular os agentes necessários por hora com um nível de serviço de 80/20, e verifiquei o resultado do Excel em Python.</li></ol></section>
+</div>
+
+<div class="wrap narrow case-body">
+  <section><h2>O que descobri</h2><div class="finding">
+      <h3>Um modelo simples é suficientemente preciso</h3>
+      <p>Nas 12 semanas de teste o erro médio (MAPE) foi de 5%. A previsão para a próxima semana é de 5895 contactos, subindo para 7188 no pico de fim de ano.</p>
+      <figure class="chart-fig">
+  <div class="figbox"><div class="chart"><canvas id="p4-forecast" role="img" aria-label="Contactos por semana: últimas 52 semanas, teste e previsão a 12 semanas."></canvas></div></div>
+  <figcaption>Contactos por semana: últimas 52 semanas, teste e previsão a 12 semanas. <span class="muted">Passe o rato ou toque no gráfico para ver os valores.</span></figcaption>
+  <details class="data-table"><summary>Ver os números</summary><div class="table-scroll"><table><thead><tr><th></th><th scope="col">Real</th><th scope="col">Previsão de teste</th><th scope="col">Previsão</th><th scope="col">Intervalo provável ↑</th><th scope="col">Intervalo provável ↓</th></tr></thead><tbody><tr><th scope="row">S1</th><td class="num">5370</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td></tr><tr><th scope="row">S2</th><td class="num">5230</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td></tr><tr><th scope="row">S3</th><td class="num">5528</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td></tr><tr><th scope="row">S4</th><td class="num">5136</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td></tr><tr><th scope="row">S5</th><td class="num">5615</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td></tr><tr><th scope="row">S6</th><td class="num">5625</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td></tr><tr><th scope="row">S7</th><td class="num">5663</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td></tr><tr><th scope="row">S8</th><td class="num">5967</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td></tr><tr><th scope="row">S9</th><td class="num">5633</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td></tr><tr><th scope="row">S10</th><td class="num">6214</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td></tr><tr><th scope="row">S11</th><td class="num">6152</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td></tr><tr><th scope="row">S12</th><td class="num">6548</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td></tr><tr><th scope="row">S13</th><td class="num">6568</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td></tr><tr><th scope="row">S14</th><td class="num">6356</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td></tr><tr><th scope="row">S15</th><td class="num">7050</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td></tr><tr><th scope="row">S16</th><td class="num">6695</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td></tr><tr><th scope="row">S17</th><td class="num">6946</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td></tr><tr><th scope="row">S18</th><td class="num">6741</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td></tr><tr><th scope="row">S19</th><td class="num">6949</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td></tr><tr><th scope="row">S20</th><td class="num">6731</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td></tr><tr><th scope="row">S21</th><td class="num">7026</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td></tr><tr><th scope="row">S22</th><td class="num">7184</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td></tr><tr><th scope="row">S23</th><td class="num">7378</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td></tr><tr><th scope="row">S24</th><td class="num">7157</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td></tr><tr><th scope="row">S25</th><td class="num">7219</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td></tr><tr><th scope="row">S26</th><td class="num">7212</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td></tr><tr><th scope="row">S27</th><td class="num">7307</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td></tr><tr><th scope="row">S28</th><td class="num">7271</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td></tr><tr><th scope="row">S29</th><td class="num">7051</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td></tr><tr><th scope="row">S30</th><td class="num">6626</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td></tr><tr><th scope="row">S31</th><td class="num">7226</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td></tr><tr><th scope="row">S32</th><td class="num">7049</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td></tr><tr><th scope="row">S33</th><td class="num">7006</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td></tr><tr><th scope="row">S34</th><td class="num">6604</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td></tr><tr><th scope="row">S35</th><td class="num">6264</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td></tr><tr><th scope="row">S36</th><td class="num">6377</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td></tr><tr><th scope="row">S37</th><td class="num">6263</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td></tr><tr><th scope="row">S38</th><td class="num">6474</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td></tr><tr><th scope="row">S39</th><td class="num">6380</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td></tr><tr><th scope="row">S40</th><td class="num">5902</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td></tr><tr><th scope="row">S41</th><td class="num">5611</td><td class="num">6112</td><td class="num"></td><td class="num"></td><td class="num"></td></tr><tr><th scope="row">S42</th><td class="num">5788</td><td class="num">6113</td><td class="num"></td><td class="num"></td><td class="num"></td></tr><tr><th scope="row">S43</th><td class="num">5556</td><td class="num">5690</td><td class="num"></td><td class="num"></td><td class="num"></td></tr><tr><th scope="row">S44</th><td class="num">5588</td><td class="num">5837</td><td class="num"></td><td class="num"></td><td class="num"></td></tr><tr><th scope="row">S45</th><td class="num">5625</td><td class="num">5721</td><td class="num"></td><td class="num"></td><td class="num"></td></tr><tr><th scope="row">S46</th><td class="num">5565</td><td class="num">5605</td><td class="num"></td><td class="num"></td><td class="num"></td></tr><tr><th scope="row">S47</th><td class="num">6959</td><td class="num">6797</td><td class="num"></td><td class="num"></td><td class="num"></td></tr><tr><th scope="row">S48</th><td class="num">6657</td><td class="num">7217</td><td class="num"></td><td class="num"></td><td class="num"></td></tr><tr><th scope="row">S49</th><td class="num">6797</td><td class="num">7243</td><td class="num"></td><td class="num"></td><td class="num"></td></tr><tr><th scope="row">S50</th><td class="num">6780</td><td class="num">7455</td><td class="num"></td><td class="num"></td><td class="num"></td></tr><tr><th scope="row">S51</th><td class="num">7015</td><td class="num">7358</td><td class="num"></td><td class="num"></td><td class="num"></td></tr><tr><th scope="row">S52</th><td class="num">7128</td><td class="num">7405</td><td class="num">7128</td><td class="num"></td><td class="num"></td></tr><tr><th scope="row">S53</th><td class="num"></td><td class="num"></td><td class="num">5895</td><td class="num">6366</td><td class="num">5424</td></tr><tr><th scope="row">S54</th><td class="num"></td><td class="num"></td><td class="num">5741</td><td class="num">6199</td><td class="num">5283</td></tr><tr><th scope="row">S55</th><td class="num"></td><td class="num"></td><td class="num">6068</td><td class="num">6552</td><td class="num">5584</td></tr><tr><th scope="row">S56</th><td class="num"></td><td class="num"></td><td class="num">5638</td><td class="num">6088</td><td class="num">5188</td></tr><tr><th scope="row">S57</th><td class="num"></td><td class="num"></td><td class="num">6163</td><td class="num">6655</td><td class="num">5671</td></tr><tr><th scope="row">S58</th><td class="num"></td><td class="num"></td><td class="num">6174</td><td class="num">6667</td><td class="num">5681</td></tr><tr><th scope="row">S59</th><td class="num"></td><td class="num"></td><td class="num">6216</td><td class="num">6712</td><td class="num">5720</td></tr><tr><th scope="row">S60</th><td class="num"></td><td class="num"></td><td class="num">6550</td><td class="num">7073</td><td class="num">6027</td></tr><tr><th scope="row">S61</th><td class="num"></td><td class="num"></td><td class="num">6183</td><td class="num">6677</td><td class="num">5689</td></tr><tr><th scope="row">S62</th><td class="num"></td><td class="num"></td><td class="num">6821</td><td class="num">7366</td><td class="num">6276</td></tr><tr><th scope="row">S63</th><td class="num"></td><td class="num"></td><td class="num">6753</td><td class="num">7292</td><td class="num">6214</td></tr><tr><th scope="row">S64</th><td class="num"></td><td class="num"></td><td class="num">7188</td><td class="num">7762</td><td class="num">6614</td></tr></tbody></table></div></details>
+</figure>
+    </div><div class="finding">
+      <h3>A maioria dos contactos chega em duas ondas</h3>
+      <p>O volume atinge o máximo por volta das 11:00 e de novo a meio da tarde, e a segunda-feira é o dia mais cheio.</p>
+      <figure class="chart-fig"><div class="figbox"><div class="table-scroll"><table class="heat-table">
+  <caption class="sr-only">Contactos previstos para a próxima semana, por dia e hora.</caption>
+  <thead><tr><th scope="col"></th><th scope="col">8h</th><th scope="col">9h</th><th scope="col">10h</th><th scope="col">11h</th><th scope="col">12h</th><th scope="col">13h</th><th scope="col">14h</th><th scope="col">15h</th><th scope="col">16h</th><th scope="col">17h</th><th scope="col">18h</th><th scope="col">19h</th><th scope="col">20h</th></tr></thead>
+  <tbody><tr><th scope="row">Seg</th><td class="heat" style="--k:0.409">56</td><td class="heat heat-strong" style="--k:0.642">88</td><td class="heat heat-strong" style="--k:0.876">120</td><td class="heat heat-strong" style="--k:1.000">137</td><td class="heat heat-strong" style="--k:1.000">137</td><td class="heat heat-strong" style="--k:0.949">130</td><td class="heat heat-strong" style="--k:0.927">127</td><td class="heat heat-strong" style="--k:0.869">119</td><td class="heat heat-strong" style="--k:0.701">96</td><td class="heat" style="--k:0.467">64</td><td class="heat" style="--k:0.285">39</td><td class="heat" style="--k:0.190">26</td><td class="heat" style="--k:0.153">21</td></tr><tr><th scope="row">Ter</th><td class="heat" style="--k:0.380">52</td><td class="heat heat-strong" style="--k:0.599">82</td><td class="heat heat-strong" style="--k:0.810">111</td><td class="heat heat-strong" style="--k:0.934">128</td><td class="heat heat-strong" style="--k:0.934">128</td><td class="heat heat-strong" style="--k:0.891">122</td><td class="heat heat-strong" style="--k:0.861">118</td><td class="heat heat-strong" style="--k:0.810">111</td><td class="heat heat-strong" style="--k:0.650">89</td><td class="heat" style="--k:0.438">60</td><td class="heat" style="--k:0.263">36</td><td class="heat" style="--k:0.175">24</td><td class="heat" style="--k:0.146">20</td></tr><tr><th scope="row">Qua</th><td class="heat" style="--k:0.358">49</td><td class="heat heat-strong" style="--k:0.555">76</td><td class="heat heat-strong" style="--k:0.752">103</td><td class="heat heat-strong" style="--k:0.869">119</td><td class="heat heat-strong" style="--k:0.861">118</td><td class="heat heat-strong" style="--k:0.825">113</td><td class="heat heat-strong" style="--k:0.803">110</td><td class="heat heat-strong" style="--k:0.752">103</td><td class="heat heat-strong" style="--k:0.606">83</td><td class="heat" style="--k:0.401">55</td><td class="heat" style="--k:0.248">34</td><td class="heat" style="--k:0.161">22</td><td class="heat" style="--k:0.131">18</td></tr><tr><th scope="row">Qui</th><td class="heat" style="--k:0.343">47</td><td class="heat" style="--k:0.533">73</td><td class="heat heat-strong" style="--k:0.723">99</td><td class="heat heat-strong" style="--k:0.832">114</td><td class="heat heat-strong" style="--k:0.832">114</td><td class="heat heat-strong" style="--k:0.788">108</td><td class="heat heat-strong" style="--k:0.766">105</td><td class="heat heat-strong" style="--k:0.715">98</td><td class="heat heat-strong" style="--k:0.577">79</td><td class="heat" style="--k:0.387">53</td><td class="heat" style="--k:0.234">32</td><td class="heat" style="--k:0.153">21</td><td class="heat" style="--k:0.131">18</td></tr><tr><th scope="row">Sex</th><td class="heat" style="--k:0.328">45</td><td class="heat" style="--k:0.518">71</td><td class="heat heat-strong" style="--k:0.701">96</td><td class="heat heat-strong" style="--k:0.803">110</td><td class="heat heat-strong" style="--k:0.803">110</td><td class="heat heat-strong" style="--k:0.766">105</td><td class="heat heat-strong" style="--k:0.745">102</td><td class="heat heat-strong" style="--k:0.693">95</td><td class="heat heat-strong" style="--k:0.562">77</td><td class="heat" style="--k:0.380">52</td><td class="heat" style="--k:0.226">31</td><td class="heat" style="--k:0.153">21</td><td class="heat" style="--k:0.124">17</td></tr><tr><th scope="row">Sáb</th><td class="heat" style="--k:0.182">25</td><td class="heat" style="--k:0.285">39</td><td class="heat" style="--k:0.387">53</td><td class="heat" style="--k:0.438">60</td><td class="heat" style="--k:0.438">60</td><td class="heat" style="--k:0.416">57</td><td class="heat" style="--k:0.409">56</td><td class="heat" style="--k:0.380">52</td><td class="heat" style="--k:0.307">42</td><td class="heat" style="--k:0.204">28</td><td class="heat" style="--k:0.124">17</td><td class="heat" style="--k:0.080">11</td><td class="heat" style="--k:0.066">9</td></tr><tr><th scope="row">Dom</th><td class="heat" style="--k:0.088">12</td><td class="heat" style="--k:0.139">19</td><td class="heat" style="--k:0.182">25</td><td class="heat" style="--k:0.212">29</td><td class="heat" style="--k:0.212">29</td><td class="heat" style="--k:0.204">28</td><td class="heat" style="--k:0.197">27</td><td class="heat" style="--k:0.182">25</td><td class="heat" style="--k:0.146">20</td><td class="heat" style="--k:0.102">14</td><td class="heat" style="--k:0.058">8</td><td class="heat" style="--k:0.036">5</td><td class="heat" style="--k:0.036">5</td></tr></tbody></table></div></div><figcaption>Contactos previstos para a próxima semana, por dia e hora.</figcaption></figure>
+    </div><div class="finding">
+      <h3>Escalar por hora liberta tempo real</h3>
+      <p>No pico das 11:00, 137 contactos precisam de 19 agentes. Escalar para o pico durante todo o dia usaria 247 horas de agente numa segunda-feira; seguir a curva precisa de 171.</p>
+      <figure class="chart-fig">
+  <div class="figbox"><div class="chart"><canvas id="p4-staff" role="img" aria-label="Plano de segunda-feira: contactos, agentes necessários e nível de serviço esperado."></canvas></div></div>
+  <figcaption>Plano de segunda-feira: contactos, agentes necessários e nível de serviço esperado. <span class="muted">Passe o rato ou toque no gráfico para ver os valores.</span></figcaption>
+  <details class="data-table"><summary>Ver os números</summary><div class="table-scroll"><table><thead><tr><th></th><th scope="col">Contactos</th><th scope="col">Agentes necessários</th><th scope="col">Nível de serviço</th></tr></thead><tbody><tr><th scope="row">8:00</th><td class="num">56</td><td class="num">9</td><td class="num">84,5</td></tr><tr><th scope="row">9:00</th><td class="num">88</td><td class="num">13</td><td class="num">84,4</td></tr><tr><th scope="row">10:00</th><td class="num">120</td><td class="num">17</td><td class="num">85,4</td></tr><tr><th scope="row">11:00</th><td class="num">137</td><td class="num">19</td><td class="num">85,1</td></tr><tr><th scope="row">12:00</th><td class="num">137</td><td class="num">19</td><td class="num">85,1</td></tr><tr><th scope="row">13:00</th><td class="num">130</td><td class="num">18</td><td class="num">83,8</td></tr><tr><th scope="row">14:00</th><td class="num">127</td><td class="num">18</td><td class="num">86,5</td></tr><tr><th scope="row">15:00</th><td class="num">119</td><td class="num">17</td><td class="num">86,2</td></tr><tr><th scope="row">16:00</th><td class="num">96</td><td class="num">14</td><td class="num">84,6</td></tr><tr><th scope="row">17:00</th><td class="num">64</td><td class="num">10</td><td class="num">84,3</td></tr><tr><th scope="row">18:00</th><td class="num">39</td><td class="num">7</td><td class="num">86,9</td></tr><tr><th scope="row">19:00</th><td class="num">26</td><td class="num">5</td><td class="num">84,2</td></tr><tr><th scope="row">20:00</th><td class="num">21</td><td class="num">5</td><td class="num">92,6</td></tr></tbody></table></div></details>
+</figure>
+    </div></section>
+  <section><h2>O que recomendaria</h2><ul class="recs"><li>Fazer os horários a partir do plano por hora, com entradas desfasadas em torno do pico do fim da manhã.</li><li>Usar as horas libertadas ao fim do dia para formação, revisões de qualidade e back office.</li><li>Atualizar a previsão todas as semanas e acompanhar o seu erro, para que os planeadores confiem nela.</li></ul></section>
+  <section><h2>Um olhar sobre o código</h2>
+    <figure class="code"><figcaption>Python</figcaption><pre tabindex="0"><code>from math import exp, factorial
+
+def erlang_c(agents: int, traffic: float) -&gt; float:
+    &quot;&quot;&quot;Probability that a contact has to wait.&quot;&quot;&quot;
+    top = traffic**agents / factorial(agents) * agents / (agents - traffic)
+    bottom = sum(traffic**k / factorial(k) for k in range(agents)) + top
+    return top / bottom
+
+def agents_needed(contacts_per_hour, aht_sec=380, target_sec=20, level=0.80):
+    traffic = contacts_per_hour * aht_sec / 3600      # in Erlangs
+    agents = int(traffic) + 1
+    while True:
+        wait = erlang_c(agents, traffic)
+        service = 1 - wait * exp(-(agents - traffic) * target_sec / aht_sec)
+        if service &gt;= level:
+            return agents, round(service, 3)
+        agents += 1
+
+print(agents_needed(137))   # late-morning peak on a Monday</code></pre></figure>
+  </section>
+  <section><h2>Ferramentas</h2><ul class="tags plain"><li>Excel</li><li>Python</li><li>Erlang C</li><li>Previsão</li></ul></section>
+  <nav class="case-nav" aria-label="Projetos">
+    <a href="../projects.html">Todos os projetos</a>
+    <a class="case-next" href="qa-calibration.html"><span class="muted">Próximo projeto</span>Os nossos avaliadores de qualidade estão de acordo?</a>
+  </nav>
+</div>
+</article>
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <p class="footer-name">Julieta Lara Romero</p>
+      <p class="muted">Analista de CX e dados. Trilingue (espanhol, inglês e português), com formação em Engenharia Multimédia e Business Intelligence.</p>
+    </div>
+    <div>
+      <h2 class="footer-h">Páginas</h2>
+      <ul class="plain">
+        <li><a href="../index.html">Início</a></li>
+        <li><a href="../about.html">Sobre mim</a></li>
+        <li><a href="../projects.html">Projetos</a></li>
+        <li><a href="../../assets/Julieta-Lara-Romero-CV.pdf">CV</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2 class="footer-h">Contacto</h2>
+      <ul class="plain">
+        <li><a href="mailto:julietalarar98@gmail.com">julietalarar98@gmail.com</a></li>
+        <li><a href="tel:+573222118698">+57 322 211 8698</a></li>
+        
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-base muted">
+    <p>© 2026 Julieta Lara Romero</p>
+    <p>Feito à mão com HTML, CSS e JavaScript. Os gráficos usam dados sintéticos.</p>
+  </div>
+</footer>
+<script src="../../assets/site.js" defer></script>
+<script type="application/json" id="chart-data">{"locale":"pt-PT","charts":{"p4-forecast":{"type":"line","labels":["S1","S2","S3","S4","S5","S6","S7","S8","S9","S10","S11","S12","S13","S14","S15","S16","S17","S18","S19","S20","S21","S22","S23","S24","S25","S26","S27","S28","S29","S30","S31","S32","S33","S34","S35","S36","S37","S38","S39","S40","S41","S42","S43","S44","S45","S46","S47","S48","S49","S50","S51","S52","S53","S54","S55","S56","S57","S58","S59","S60","S61","S62","S63","S64"],"axis":"Contactos por semana","series":[{"name":"Real","values":[5370,5230,5528,5136,5615,5625,5663,5967,5633,6214,6152,6548,6568,6356,7050,6695,6946,6741,6949,6731,7026,7184,7378,7157,7219,7212,7307,7271,7051,6626,7226,7049,7006,6604,6264,6377,6263,6474,6380,5902,5611,5788,5556,5588,5625,5565,6959,6657,6797,6780,7015,7128,null,null,null,null,null,null,null,null,null,null,null,null],"color":"ink"},{"name":"Previsão de teste","values":[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,6112,6113,5690,5837,5721,5605,6797,7217,7243,7455,7358,7405,null,null,null,null,null,null,null,null,null,null,null,null],"color":"orchid","dash":true},{"name":"Previsão","values":[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,7128,5895,5741,6068,5638,6163,6174,6216,6550,6183,6821,6753,7188],"color":"iris"},{"name":"Intervalo provável","values":[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,6366,6199,6552,6088,6655,6667,6712,7073,6677,7366,7292,7762],"color":"lav","band":"upper","hidden":true},{"name":"Intervalo provável","values":[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,5424,5283,5584,5188,5671,5681,5720,6027,5689,6276,6214,6614],"color":"lav","band":"lower"}]},"p4-staff":{"type":"combo","labels":["8:00","9:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00","20:00"],"axis":"Contactos","axis2":"Agentes necessários","series":[{"name":"Contactos","values":[56,88,120,137,137,130,127,119,96,64,39,26,21],"color":"lav"},{"name":"Agentes necessários","values":[9,13,17,19,19,18,18,17,14,10,7,5,5],"color":"iris","line":true}],"extra":{"name":"Nível de serviço","values":[84.5,84.4,85.4,85.1,85.1,83.8,86.5,86.2,84.6,84.3,86.9,84.2,92.6],"unit":"%"}}}}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" defer></script>
+<script src="../../assets/charts.js" defer></script>
+</body>
+</html>

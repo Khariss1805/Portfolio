@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>What really drives CSAT in a multilingual support desk | Julieta Lara Romero</title>
+  <meta name="description" content="Which parts of a contact make customers satisfied or not, across six contact reasons and four language queues.">
+  <meta name="color-scheme" content="light dark">
+  <meta property="og:title" content="What really drives CSAT in a multilingual support desk | Julieta Lara Romero">
+  <meta property="og:description" content="Which parts of a contact make customers satisfied or not, across six contact reasons and four language queues.">
+  <meta property="og:type" content="website">
+  <link rel="alternate" hreflang="en" href="https://khariss1805.github.io/Portfolio/projects/csat-drivers.html">
+  <link rel="alternate" hreflang="nl" href="https://khariss1805.github.io/Portfolio/nl/projects/csat-drivers.html">
+  <link rel="alternate" hreflang="pt-PT" href="https://khariss1805.github.io/Portfolio/pt/projects/csat-drivers.html">
+  <link rel="alternate" hreflang="es" href="https://khariss1805.github.io/Portfolio/es/projects/csat-drivers.html">
+  <link rel="alternate" hreflang="x-default" href="https://khariss1805.github.io/Portfolio/projects/csat-drivers.html">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Instrument+Sans:ital,wght@0,400..700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/site.css">
+  <script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="brand" href="../index.html">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="13" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="16" cy="16" r="5" fill="currentColor"/></svg>
+      <span><span class="brand-name">Julieta Lara Romero</span><span class="brand-role">CX & Data Analyst</span></span>
+    </a>
+    <nav class="main-nav" aria-label="Main">
+      <a href="../index.html">Home</a>
+      <a href="../about.html">About</a>
+      <a href="../projects.html" aria-current="page">Projects</a>
+      <a href="../assets/Julieta-Lara-Romero-CV.pdf">Résumé</a>
+    </nav>
+    <nav class="lang-switch" aria-label="Language"><a href="csat-drivers.html" hreflang="en" lang="en" title="English" aria-current="true">EN</a><a href="../nl/projects/csat-drivers.html" hreflang="nl" lang="nl" title="Nederlands">NL</a><a href="../pt/projects/csat-drivers.html" hreflang="pt-PT" lang="pt-PT" title="Português">PT</a><a href="../es/projects/csat-drivers.html" hreflang="es" lang="es" title="Español">ES</a></nav>
+  </div>
+</header>
+<main id="main">
+<article>
+<header class="page-head case-head">
+  <div class="wrap narrow">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">Home</a><span aria-hidden="true">/</span><a href="../projects.html">Projects</a></nav>
+    <p class="case-tags"><span class="tag">Customer experience</span><span class="tag tag-practice">Practice project</span></p>
+    <h1>What really drives CSAT in a multilingual support desk</h1>
+    <p class="hero-lead">Every week the desk reported one CSAT number. It went up and down and nobody could say why. I broke it down by what happened in each contact.</p>
+    <div class="case-results"><span class="result"><strong>+29.1 pts</strong><span>CSAT when solved first time</span></span><span class="result"><strong>−14.4 pts</strong><span>when not served in own language</span></span></div>
+    <p class="practice-note">This is a practice project. The company is fictional and the data is synthetic, generated to behave like real contact-centre data. The questions, methods and code are the ones I would use on the job.</p>
+  </div>
+</header>
+<div class="wrap narrow case-body">
+  <section><h2>The question</h2><p>A fictional support desk serves customers in English, Spanish, Portuguese and Dutch. Satisfaction sits around 69.5% and management wants to raise it.</p><p>The question: which parts of the customer’s experience are linked to satisfaction, and which ones can the operation actually change?</p></section>
+  <section><h2>The data</h2><p>18,000 contacts with a post-contact survey over six months. For each contact: reason, language queue, whether it was solved on first contact, number of transfers, waiting time, the agent’s tenure, and whether the customer was served in their own language.</p></section>
+  <section><h2>What I did</h2><ol class="steps"><li>Checked the data first: duplicate surveys, contacts with no reason code, and waiting times that were impossible.</li><li>Compared CSAT across contact reasons and language queues to see where the gaps were.</li><li>For each factor, compared satisfaction with and without it, then fitted a logistic regression to check that each effect held when the others were controlled for.</li><li>Turned the result into a one-page Power BI view that team leads could filter by queue.</li></ol></section>
+</div>
+
+<div class="wrap narrow case-body">
+  <section><h2>What I found</h2><div class="finding">
+      <h3>Solving the problem the first time matters most</h3>
+      <p>Customers whose issue was solved on first contact were 29.1 points more satisfied. That is more than double any other factor, including waiting time.</p>
+      <figure class="chart-fig">
+  <div class="figbox"><div class="chart" style="--h:280px"><canvas id="p1-drivers" role="img" aria-label="Difference in CSAT with and without each factor, in percentage points."></canvas></div></div>
+  <figcaption>Difference in CSAT with and without each factor, in percentage points. <span class="muted">Hover or tap the chart for exact values.</span></figcaption>
+  <details class="data-table"><summary>Show the numbers</summary><div class="table-scroll"><table><thead><tr><th></th><th scope="col">Difference in CSAT (points)</th></tr></thead><tbody><tr><th scope="row">Solved on first contact</th><td class="num">29.1</td></tr><tr><th scope="row">Served in own language</th><td class="num">14.4</td></tr><tr><th scope="row">Waited under 2 minutes</th><td class="num">12.7</td></tr><tr><th scope="row">Not transferred</th><td class="num">10.1</td></tr><tr><th scope="row">Agent with 3+ months</th><td class="num">5.6</td></tr></tbody></table></div></details>
+</figure>
+    </div><div class="finding">
+      <h3>Cancellations and product faults pull the average down</h3>
+      <p>CSAT ranges from 76% for plan changes to 60.7% for cancellations. Part of that gap comes from the reason itself, not from how the agent handled it, so these reasons need their own targets.</p>
+      <figure class="chart-fig">
+  <div class="figbox"><div class="chart" style="--h:324px"><canvas id="p1-reasons" role="img" aria-label="CSAT by contact reason."></canvas></div></div>
+  <figcaption>CSAT by contact reason. <span class="muted">Hover or tap the chart for exact values.</span></figcaption>
+  <details class="data-table"><summary>Show the numbers</summary><div class="table-scroll"><table><thead><tr><th></th><th scope="col">CSAT (% satisfied)</th></tr></thead><tbody><tr><th scope="row">Plan change</th><td class="num">76</td></tr><tr><th scope="row">Account access</th><td class="num">75.8</td></tr><tr><th scope="row">Delivery</th><td class="num">71.8</td></tr><tr><th scope="row">Billing</th><td class="num">66.7</td></tr><tr><th scope="row">Product fault</th><td class="num">63.3</td></tr><tr><th scope="row">Cancellation</th><td class="num">60.7</td></tr></tbody></table></div></details>
+</figure>
+    </div><div class="finding">
+      <h3>The Dutch queue has a language problem, not an agent problem</h3>
+      <p>Only 58.1% of Dutch-speaking customers were served in Dutch. When they were, CSAT was 70.9%; when they were served in English it fell to 57.6%.</p>
+      <figure class="chart-fig">
+  <div class="figbox"><div class="chart"><canvas id="p1-langs" role="img" aria-label="CSAT by language queue."></canvas></div></div>
+  <figcaption>CSAT by language queue. <span class="muted">Hover or tap the chart for exact values.</span></figcaption>
+  <details class="data-table"><summary>Show the numbers</summary><div class="table-scroll"><table><thead><tr><th></th><th scope="col">CSAT (% satisfied)</th></tr></thead><tbody><tr><th scope="row">English queue</th><td class="num">70.5</td></tr><tr><th scope="row">Spanish queue</th><td class="num">71.7</td></tr><tr><th scope="row">Portuguese queue</th><td class="num">68.6</td></tr><tr><th scope="row">Dutch queue</th><td class="num">65.3</td></tr></tbody></table></div></details>
+</figure>
+    </div></section>
+  <section><h2>What I would recommend</h2><ul class="recs"><li>Track FCR next to CSAT on the weekly report, and review unresolved contacts before reviewing low scores.</li><li>Hire or train Dutch-speaking agents for peak hours before adding agents to other queues.</li><li>Report CSAT by contact reason, so cancellation-heavy weeks are not read as poor service.</li></ul></section>
+  <section><h2>A look at the code</h2>
+    <figure class="code"><figcaption>Python</figcaption><pre tabindex="0"><code>import pandas as pd
+import statsmodels.formula.api as smf
+
+contacts = pd.read_csv(&quot;contacts_with_survey.csv&quot;)
+
+# Data checks before any analysis
+contacts = contacts.drop_duplicates(&quot;contact_id&quot;)
+contacts = contacts[contacts[&quot;reason&quot;].notna() &amp; contacts[&quot;wait_sec&quot;].between(0, 3600)]
+
+contacts[&quot;satisfied&quot;] = (contacts[&quot;csat&quot;] &gt;= 4).astype(int)
+contacts[&quot;long_wait&quot;] = (contacts[&quot;wait_sec&quot;] &gt; 120).astype(int)
+
+# Does each factor still matter when the others are held constant?
+model = smf.logit(
+    &quot;satisfied ~ fcr + transfers + long_wait + new_agent&quot;
+    &quot; + native_language + C(reason) + C(queue)&quot;,
+    data=contacts,
+).fit()
+
+print(model.summary())</code></pre></figure>
+  </section>
+  <section><h2>Tools</h2><ul class="tags plain"><li>Python</li><li>pandas</li><li>Logistic regression</li><li>Power BI</li></ul></section>
+  <nav class="case-nav" aria-label="Projects">
+    <a href="../projects.html">All projects</a>
+    <a class="case-next" href="agent-scorecard.html"><span class="muted">Next project</span>An agent scorecard that doesn’t reward rushing</a>
+  </nav>
+</div>
+</article>
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <p class="footer-name">Julieta Lara Romero</p>
+      <p class="muted">CX & Data Analyst. Trilingual (Spanish, English, Portuguese), with a background in Multimedia Engineering and Business Intelligence.</p>
+    </div>
+    <div>
+      <h2 class="footer-h">Pages</h2>
+      <ul class="plain">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li><a href="../projects.html">Projects</a></li>
+        <li><a href="../assets/Julieta-Lara-Romero-CV.pdf">Résumé</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2 class="footer-h">Contact</h2>
+      <ul class="plain">
+        <li><a href="mailto:julietalarar98@gmail.com">julietalarar98@gmail.com</a></li>
+        <li><a href="tel:+573222118698">+57 322 211 8698</a></li>
+        
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-base muted">
+    <p>© 2026 Julieta Lara Romero</p>
+    <p>Built by hand with HTML, CSS and JavaScript. Charts use synthetic data.</p>
+  </div>
+</footer>
+<script src="../assets/site.js" defer></script>
+<script type="application/json" id="chart-data">{"locale":"en-GB","charts":{"p1-drivers":{"type":"hbar","unit":" pts","labels":["Solved on first contact","Served in own language","Waited under 2 minutes","Not transferred","Agent with 3+ months"],"series":[{"name":"Difference in CSAT (points)","values":[29.1,14.4,12.7,10.1,5.6],"color":"iris"}],"axis":"Difference in CSAT (points)"},"p1-reasons":{"type":"hbar","unit":"%","min":50,"labels":["Plan change","Account access","Delivery","Billing","Product fault","Cancellation"],"series":[{"name":"CSAT (% satisfied)","values":[76,75.8,71.8,66.7,63.3,60.7],"colors":["iris","iris","iris","iris","orchid","orchid"]}],"axis":"CSAT (% satisfied)"},"p1-langs":{"type":"bar","unit":"%","min":50,"labels":["English queue","Spanish queue","Portuguese queue","Dutch queue"],"series":[{"name":"CSAT (% satisfied)","values":[70.5,71.7,68.6,65.3],"colors":["iris","iris","iris","orchid"]}],"axis":"CSAT (% satisfied)"}}}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" defer></script>
+<script src="../assets/charts.js" defer></script>
+</body>
+</html>
