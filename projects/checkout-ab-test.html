@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Did the new checkout design really work? | Julieta Lara Romero</title>
+  <meta name="description" content="An A/B test of a redesigned checkout, read carefully: overall effect, effect by device and whether the result can be trusted.">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f7f4fc" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#150f26" media="(prefers-color-scheme: dark)">
+  <meta property="og:title" content="Did the new checkout design really work? | Julieta Lara Romero">
+  <meta property="og:description" content="An A/B test of a redesigned checkout, read carefully: overall effect, effect by device and whether the result can be trusted.">
+  <meta property="og:type" content="website">
+  <link rel="alternate" hreflang="en" href="https://khariss1805.github.io/Portfolio/projects/checkout-ab-test.html">
+  <link rel="alternate" hreflang="nl" href="https://khariss1805.github.io/Portfolio/nl/projects/checkout-ab-test.html">
+  <link rel="alternate" hreflang="pt-PT" href="https://khariss1805.github.io/Portfolio/pt/projects/checkout-ab-test.html">
+  <link rel="alternate" hreflang="es" href="https://khariss1805.github.io/Portfolio/es/projects/checkout-ab-test.html">
+  <link rel="alternate" hreflang="x-default" href="https://khariss1805.github.io/Portfolio/projects/checkout-ab-test.html">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Instrument+Sans:ital,wght@0,400..700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/site.css">
+  <script>document.documentElement.classList.add('js');setTimeout(function(){if(!window.__site)document.documentElement.classList.remove('js')},3000)</script>
+</head>
+<body>
+<div class="read-progress" aria-hidden="true"></div>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="brand" href="../index.html">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="13" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="16" cy="16" r="5" fill="currentColor"/></svg>
+      <span><span class="brand-name">Julieta Lara Romero</span><span class="brand-role">Data Analyst & UX/UI Designer</span></span>
+    </a>
+    <nav class="main-nav" aria-label="Main">
+      <a href="../index.html">Home</a>
+      <a href="../about.html">About</a>
+      <a href="../projects.html" aria-current="page">Projects</a>
+      <a href="../assets/Julieta-Lara-Romero-CV.pdf">Résumé</a>
+    </nav>
+    <nav class="lang-switch" aria-label="Language"><a href="checkout-ab-test.html" hreflang="en" lang="en" title="English" aria-current="true">EN</a><a href="../nl/projects/checkout-ab-test.html" hreflang="nl" lang="nl" title="Nederlands">NL</a><a href="../pt/projects/checkout-ab-test.html" hreflang="pt-PT" lang="pt-PT" title="Português">PT</a><a href="../es/projects/checkout-ab-test.html" hreflang="es" lang="es" title="Español">ES</a></nav>
+  </div>
+</header>
+<main id="main">
+<article>
+<header class="page-head case-head">
+  <div class="wrap narrow">
+    <nav class="crumbs hero-in" style="--d:0" aria-label="Breadcrumb"><a href="../index.html">Home</a><span aria-hidden="true">/</span><a href="../projects.html">Projects</a></nav>
+    <p class="case-tags hero-in" style="--d:1"><span class="tag">UX research</span><span class="tag tag-practice">Practice project</span></p>
+    <h1 class="hero-in" style="--d:2">Did the new checkout design really work?</h1>
+    <p class="hero-lead hero-in" style="--d:3">The design team simplified the checkout from four steps to two. Before rolling it out, I checked whether it changed what customers did.</p>
+    <div class="case-results hero-in" style="--d:4"><span class="result"><strong>+<span class="count" data-to="25" data-dec="0">25</span>%</strong><span>more completed purchases</span></span><span class="result"><strong>+<span class="count" data-to="28" data-dec="0">28</span>%</strong><span>on mobile, where it mattered most</span></span></div>
+    <p class="practice-note hero-in" style="--d:5">This is a practice project. The company is fictional and the data is synthetic, generated to behave like real product data. The questions, methods and code are the ones I would use on the job.</p>
+  </div>
+</header>
+<div class="wrap narrow case-body">
+  <section data-reveal><h2>The question</h2><p>A fictional online shop redesigned its checkout in Figma: fewer fields, a progress bar and guest checkout on the first screen.</p><p>The question: does the new design make more people finish their purchase, and is the effect the same on mobile and desktop?</p></section>
+  <section data-reveal><h2>The data</h2><p>48,578 checkout sessions over 21 days, split at random between the current design (A) and the new one (B), with device and whether the purchase was completed.</p></section>
+  <section><h2 data-reveal>What I did</h2><ol class="steps"><li data-reveal style="--d:0">Checked the split first: if A and B did not get about half the traffic each, the test would be broken.</li><li data-reveal style="--d:1">Compared conversion rates with a two-proportion z-test and confidence intervals.</li><li data-reveal style="--d:2">Broke the result down by device, because the redesign mainly targeted small screens.</li><li data-reveal style="--d:3">Plotted conversion day by day to make sure the result was stable and not an early fluke.</li></ol></section>
+</div>
+
+<div class="wrap narrow case-body">
+  <section><h2 data-reveal>What I found</h2><div class="finding">
+      <h3 data-reveal>The new checkout converts better</h3>
+      <p data-reveal>Conversion went from 2.91% with the current design to 3.64% with the new one, 25% more. The difference is very unlikely to be chance (p < 0.001).</p>
+      <figure class="chart-fig" data-reveal>
+  <div class="figbox"><div class="chart"><canvas id="p2-cum" role="img" aria-label="Cumulative conversion rate by day. The lines separate early and stay apart."></canvas></div></div>
+  <figcaption>Cumulative conversion rate by day. The lines separate early and stay apart. <span class="muted">Hover or tap the chart for exact values.</span></figcaption>
+  <details class="data-table"><summary>Show the numbers</summary><div class="table-scroll"><table><thead><tr><th></th><th scope="col">Current checkout (A)</th><th scope="col">New checkout (B)</th></tr></thead><tbody><tr><th scope="row">Day 1</th><td class="num">3.02</td><td class="num">3.89</td></tr><tr><th scope="row">Day 2</th><td class="num">3.1</td><td class="num">3.42</td></tr><tr><th scope="row">Day 3</th><td class="num">2.77</td><td class="num">3.61</td></tr><tr><th scope="row">Day 4</th><td class="num">2.81</td><td class="num">3.26</td></tr><tr><th scope="row">Day 5</th><td class="num">2.87</td><td class="num">3.38</td></tr><tr><th scope="row">Day 6</th><td class="num">2.82</td><td class="num">3.46</td></tr><tr><th scope="row">Day 7</th><td class="num">2.69</td><td class="num">3.48</td></tr><tr><th scope="row">Day 8</th><td class="num">2.74</td><td class="num">3.44</td></tr><tr><th scope="row">Day 9</th><td class="num">2.76</td><td class="num">3.56</td></tr><tr><th scope="row">Day 10</th><td class="num">2.85</td><td class="num">3.55</td></tr><tr><th scope="row">Day 11</th><td class="num">2.86</td><td class="num">3.61</td></tr><tr><th scope="row">Day 12</th><td class="num">2.85</td><td class="num">3.55</td></tr><tr><th scope="row">Day 13</th><td class="num">2.82</td><td class="num">3.63</td></tr><tr><th scope="row">Day 14</th><td class="num">2.87</td><td class="num">3.71</td></tr><tr><th scope="row">Day 15</th><td class="num">2.88</td><td class="num">3.78</td></tr><tr><th scope="row">Day 16</th><td class="num">2.87</td><td class="num">3.73</td></tr><tr><th scope="row">Day 17</th><td class="num">2.9</td><td class="num">3.71</td></tr><tr><th scope="row">Day 18</th><td class="num">2.85</td><td class="num">3.69</td></tr><tr><th scope="row">Day 19</th><td class="num">2.9</td><td class="num">3.65</td></tr><tr><th scope="row">Day 20</th><td class="num">2.88</td><td class="num">3.63</td></tr><tr><th scope="row">Day 21</th><td class="num">2.91</td><td class="num">3.64</td></tr></tbody></table></div></details>
+</figure>
+    </div><div class="finding">
+      <h3 data-reveal>Mobile users gain the most</h3>
+      <p data-reveal>On mobile, conversion rose from 2.46% to 3.14% (+28%). Desktop improved too, by 21%. Fewer fields matter most on a small screen.</p>
+      <figure class="chart-fig" data-reveal>
+  <div class="figbox"><div class="chart"><canvas id="p2-devices" role="img" aria-label="Conversion rate by device and design."></canvas></div></div>
+  <figcaption>Conversion rate by device and design. <span class="muted">Hover or tap the chart for exact values.</span></figcaption>
+  <details class="data-table"><summary>Show the numbers</summary><div class="table-scroll"><table><thead><tr><th></th><th scope="col">Current checkout (A)</th><th scope="col">New checkout (B)</th></tr></thead><tbody><tr><th scope="row">Mobile</th><td class="num">2.46</td><td class="num">3.14</td></tr><tr><th scope="row">Desktop</th><td class="num">3.68</td><td class="num">4.44</td></tr></tbody></table></div></details>
+</figure>
+    </div></section>
+  <section><h2 data-reveal>What I would recommend</h2><ul class="recs"><li data-reveal style="--d:0">Roll out the new checkout to everyone, starting with mobile.</li><li data-reveal style="--d:1">Keep watching conversion for a month after launch, in case the effect fades once it is no longer new.</li><li data-reveal style="--d:2">Next test: remove the account creation step on mobile entirely.</li></ul></section>
+  <section data-reveal><h2>A look at the code</h2>
+    <figure class="code"><figcaption>Python</figcaption><pre tabindex="0" translate="no"><code>import pandas as pd
+from statsmodels.stats.proportion import proportions_ztest, proportion_confint
+
+sessions = pd.read_csv(&quot;checkout_experiment.csv&quot;)   # one row per session
+
+# Guard against a broken split before reading any result
+split = sessions[&quot;variant&quot;].value_counts(normalize=True)
+assert abs(split[&quot;A&quot;] - 0.5) &lt; 0.01, &quot;Sample ratio mismatch&quot;
+
+summary = sessions.groupby(&quot;variant&quot;)[&quot;converted&quot;].agg([&quot;sum&quot;, &quot;count&quot;])
+z, p_value = proportions_ztest(summary[&quot;sum&quot;], summary[&quot;count&quot;])
+low, high = proportion_confint(summary[&quot;sum&quot;], summary[&quot;count&quot;], method=&quot;wilson&quot;)
+
+by_device = (sessions.groupby([&quot;device&quot;, &quot;variant&quot;])[&quot;converted&quot;]
+                     .mean().mul(100).round(2).unstack())
+print(summary, f&quot;p = {p_value:.4f}&quot;, by_device, sep=&quot;\n&quot;)</code></pre></figure>
+  </section>
+  <section data-reveal><h2>Tools</h2><ul class="tags plain"><li>Python</li><li>statsmodels</li><li>A/B testing</li><li>Figma</li></ul></section>
+  <nav class="case-nav" aria-label="Projects" data-reveal>
+    <a href="../projects.html">All projects</a>
+    <a class="case-next" href="signup-funnel.html"><span class="muted">Next project</span>Where new users drop out of sign-up</a>
+  </nav>
+</div>
+</article>
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <p class="footer-name">Julieta Lara Romero</p>
+      <p class="muted">Data Analyst and UX/UI Designer. Trilingual (Spanish, English, Portuguese), with a background in Multimedia Engineering and Business Intelligence.</p>
+    </div>
+    <div>
+      <h2 class="footer-h">Pages</h2>
+      <ul class="plain">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li><a href="../projects.html">Projects</a></li>
+        <li><a href="../assets/Julieta-Lara-Romero-CV.pdf">Résumé</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2 class="footer-h">Contact</h2>
+      <ul class="plain">
+        <li><a href="mailto:julietalarar98@gmail.com">julietalarar98@gmail.com</a></li>
+        <li><a href="https://www.linkedin.com/in/julieta-lara-romero-525366285/" rel="me">LinkedIn</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-base muted">
+    <p>© 2026 Julieta Lara Romero</p>
+    <p>Designed and built by hand with HTML, CSS and JavaScript. Charts use synthetic data.</p>
+  </div>
+</footer>
+<script src="../assets/site.js" defer></script>
+<script type="application/json" id="chart-data">{"locale":"en-GB","charts":{"p2-cum":{"type":"line","unit":"%","labels":["Day 1","Day 2","Day 3","Day 4","Day 5","Day 6","Day 7","Day 8","Day 9","Day 10","Day 11","Day 12","Day 13","Day 14","Day 15","Day 16","Day 17","Day 18","Day 19","Day 20","Day 21"],"axis":"Cumulative conversion (%)","series":[{"name":"Current checkout (A)","values":[3.02,3.1,2.77,2.81,2.87,2.82,2.69,2.74,2.76,2.85,2.86,2.85,2.82,2.87,2.88,2.87,2.9,2.85,2.9,2.88,2.91],"color":"lav","dash":true},{"name":"New checkout (B)","values":[3.89,3.42,3.61,3.26,3.38,3.46,3.48,3.44,3.56,3.55,3.61,3.55,3.63,3.71,3.78,3.73,3.71,3.69,3.65,3.63,3.64],"color":"iris"}]},"p2-devices":{"type":"bar","unit":"%","min":0,"labels":["Mobile","Desktop"],"axis":"Conversion rate (%)","legend":true,"series":[{"name":"Current checkout (A)","values":[2.46,3.68],"color":"lav"},{"name":"New checkout (B)","values":[3.14,4.44],"color":"iris"}]}}}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" defer></script>
+<script src="../assets/charts.js" defer></script>
+</body>
+</html>

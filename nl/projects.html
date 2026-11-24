@@ -6,6 +6,8 @@
   <title>Projecten | Julieta Lara Romero</title>
   <meta name="description" content="Oefencases met synthetische data. Elke case bevat de vraag, de methode, de code en wat ik zou aanraden.">
   <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f7f4fc" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#150f26" media="(prefers-color-scheme: dark)">
   <meta property="og:title" content="Projecten | Julieta Lara Romero">
   <meta property="og:description" content="Oefencases met synthetische data. Elke case bevat de vraag, de methode, de code en wat ik zou aanraden.">
   <meta property="og:type" content="website">
@@ -19,7 +21,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Instrument+Sans:ital,wght@0,400..700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/site.css">
-  <script>document.documentElement.classList.add('js')</script>
+  <script>document.documentElement.classList.add('js');setTimeout(function(){if(!window.__site)document.documentElement.classList.remove('js')},3000)</script>
 </head>
 <body>
 <a class="skip" href="#main">Naar de inhoud</a>
@@ -27,7 +29,7 @@
   <div class="wrap header-row">
     <a class="brand" href="index.html">
       <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="13" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="16" cy="16" r="5" fill="currentColor"/></svg>
-      <span><span class="brand-name">Julieta Lara Romero</span><span class="brand-role">CX- en data-analist</span></span>
+      <span><span class="brand-name">Julieta Lara Romero</span><span class="brand-role">Data-analist en UX/UI-designer</span></span>
     </a>
     <nav class="main-nav" aria-label="Main">
       <a href="index.html">Home</a>
@@ -41,89 +43,89 @@
 <main id="main">
 <section class="page-head">
   <div class="wrap">
-    <p class="hero-role">Projecten</p>
-    <h1>Zes vragen uit een contactcenter, beantwoord met data</h1>
-    <p class="hero-lead">Oefencases met synthetische data. Elke case bevat de vraag, de methode, de code en wat ik zou aanraden.</p>
-    <p class="practice-note">Dit is een oefenproject. Het bedrijf is fictief en de data is synthetisch, gegenereerd om zich te gedragen als echte contactcenterdata. De vragen, methodes en code zijn wat ik in de praktijk zou gebruiken.</p>
+    <p class="hero-role hero-in" style="--d:0">Projecten</p>
+    <h1 class="hero-in" style="--d:1">Zes productvragen, beantwoord met data en design</h1>
+    <p class="hero-lead hero-in" style="--d:2">Oefencases met synthetische data. Elke case bevat de vraag, de methode, de code en wat ik zou aanraden.</p>
+    <p class="practice-note hero-in" style="--d:3">Dit is een oefenproject. Het bedrijf is fictief en de data is synthetisch, gegenereerd om zich te gedragen als echte productdata. De vragen, methodes en code zijn wat ik in de praktijk zou gebruiken.</p>
   </div>
 </section>
 <section class="section section-tight" aria-label="Projecten">
   <div class="wrap">
-    <div class="filters" role="group" aria-label="Projecten" hidden><button type="button" aria-pressed="true" data-filter="all">Alle <span>6</span></button><button type="button" aria-pressed="false" data-filter="cx">Klantbeleving <span>2</span></button><button type="button" aria-pressed="false" data-filter="quality">Kwaliteit en prestaties <span>2</span></button><button type="button" aria-pressed="false" data-filter="ops">Operatie en groei <span>2</span></button></div>
-    <ol class="proj-list plain" id="proj-list"><li class="proj" data-cat="cx">
-  <a class="proj-link" href="projects/csat-drivers.html">
+    <div class="filters" role="group" aria-label="Projecten" hidden><button type="button" aria-pressed="true" data-filter="all">Alle <span>6</span></button><button type="button" aria-pressed="false" data-filter="bi">Dashboards en BI <span>2</span></button><button type="button" aria-pressed="false" data-filter="product">Productanalyse <span>2</span></button><button type="button" aria-pressed="false" data-filter="ux">UX-onderzoek <span>2</span></button></div>
+    <ol class="proj-list plain" id="proj-list"><li class="proj" data-cat="bi" data-reveal style="--d:0">
+  <a class="proj-link" href="projects/sales-dashboard.html">
     <span class="proj-main">
-      <span class="proj-cat">Klantbeleving</span>
-      <span class="proj-title">Wat de CSAT echt bepaalt bij een meertalige klantenservice</span>
-      <span class="proj-short">Welke onderdelen van een contact klanten tevreden maken of niet, over zes contactredenen en vier taalwachtrijen.</span>
-      <span class="proj-tools"><span>Python</span><span>pandas</span><span>Logistische regressie</span><span>Power BI</span></span>
+      <span class="proj-cat">Dashboards en BI</span>
+      <span class="proj-title">Een salesdashboard waar een webshop op kan draaien</span>
+      <span class="proj-short">Een dashboard in Power BI-stijl met een jaar aan bestellingen: omzet, categorieën, seizoenen en retouren op één scherm.</span>
+      <span class="proj-tools"><span translate="no">Power BI</span><span translate="no">DAX</span><span translate="no">SQL</span><span translate="no">Excel</span></span>
     </span>
-    <span class="proj-results"><span class="result"><strong>+29,1 pt</strong><span>CSAT bij oplossing in één keer</span></span><span class="result"><strong>−14,4 pt</strong><span>als de klant niet in eigen taal wordt geholpen</span></span></span>
+    <span class="proj-results"><span class="result"><strong><span class="count" data-to="53.8" data-dec="1">53,8</span>%</strong><span>van de omzet komt uit twee categorieën</span></span><span class="result"><strong><span class="count" data-to="21.9" data-dec="1">21,9</span>%</strong><span>van de kledingbestellingen komt retour</span></span></span>
   </a>
-</li><li class="proj" data-cat="quality">
-  <a class="proj-link" href="projects/agent-scorecard.html">
+</li><li class="proj" data-cat="ux" data-reveal style="--d:1">
+  <a class="proj-link" href="projects/checkout-ab-test.html">
     <span class="proj-main">
-      <span class="proj-cat">Kwaliteit en prestaties</span>
-      <span class="proj-title">Een medewerkersscorecard die haast niet beloont</span>
-      <span class="proj-short">Een dashboard in Power BI-stijl voor 40 medewerkers dat snelheid, kwaliteit en oplossing samen laat zien.</span>
-      <span class="proj-tools"><span>Power BI</span><span>DAX</span><span>SQL</span><span>Excel</span></span>
+      <span class="proj-cat">UX-onderzoek</span>
+      <span class="proj-title">Werkte het nieuwe checkoutontwerp echt?</span>
+      <span class="proj-short">Een A/B-test van een vernieuwde checkout, zorgvuldig gelezen: het totale effect, het effect per apparaat en of de uitkomst te vertrouwen is.</span>
+      <span class="proj-tools"><span translate="no">Python</span><span translate="no">statsmodels</span><span translate="no">A/B-testen</span><span translate="no">Figma</span></span>
     </span>
-    <span class="proj-results"><span class="result"><strong>13 van 40</strong><span>medewerkers snel maar onder kwaliteitsdoel</span></span><span class="result"><strong>21,9%</strong><span>van de contacten scoort onvoldoende op dossiernotities</span></span></span>
+    <span class="proj-results"><span class="result"><strong>+<span class="count" data-to="25" data-dec="0">25</span>%</strong><span>meer afgeronde aankopen</span></span><span class="result"><strong>+<span class="count" data-to="28" data-dec="0">28</span>%</strong><span>op mobiel, waar het het meest telde</span></span></span>
   </a>
-</li><li class="proj" data-cat="cx">
-  <a class="proj-link" href="projects/repeat-contacts.html">
+</li><li class="proj" data-cat="product" data-reveal style="--d:2">
+  <a class="proj-link" href="projects/signup-funnel.html">
     <span class="proj-main">
-      <span class="proj-cat">Klantbeleving</span>
-      <span class="proj-title">Waar herhaalcontacten vandaan komen</span>
-      <span class="proj-short">SQL in PostgreSQL om oplossing bij eerste contact goed te meten en te vinden waarom klanten terugbellen.</span>
-      <span class="proj-tools"><span>PostgreSQL</span><span>SQL-windowfuncties</span><span>Tableau</span></span>
+      <span class="proj-cat">Productanalyse</span>
+      <span class="proj-title">Waar nieuwe gebruikers afhaken bij het aanmelden</span>
+      <span class="proj-short">Een funnelanalyse in PostgreSQL van een aanmelding in zes stappen, per apparaat, om de stap te vinden die als eerste een nieuw ontwerp verdient.</span>
+      <span class="proj-tools"><span translate="no">PostgreSQL</span><span translate="no">SQL</span><span translate="no">Tableau</span><span translate="no">Figma</span></span>
     </span>
-    <span class="proj-results"><span class="result"><strong>54,9%</strong><span>van de herhaalcontacten komt uit twee redenen</span></span><span class="result"><strong>60%</strong><span>gebeurt binnen 48 uur</span></span></span>
+    <span class="proj-results"><span class="result"><strong><span class="count" data-to="12.8" data-dec="1">12,8</span>%</strong><span>van de bezoekers wordt actieve gebruiker</span></span><span class="result"><strong><span class="count" data-to="48" data-dec="0">48</span>%</strong><span>van de mobiele gebruikers haakt af bij de e-mailbevestiging</span></span></span>
   </a>
-</li><li class="proj" data-cat="ops">
-  <a class="proj-link" href="projects/volume-forecast.html">
+</li><li class="proj" data-cat="ux" data-reveal style="--d:3">
+  <a class="proj-link" href="projects/usability-study.html">
     <span class="proj-main">
-      <span class="proj-cat">Operatie en groei</span>
-      <span class="proj-title">Contactvolume voorspellen en per uur plannen</span>
-      <span class="proj-short">Een wekelijkse volumeprognose en een planning per uur met Erlang C, gebouwd in Excel en gecontroleerd in Python.</span>
-      <span class="proj-tools"><span>Excel</span><span>Python</span><span>Erlang C</span><span>Forecasting</span></span>
+      <span class="proj-cat">UX-onderzoek</span>
+      <span class="proj-title">Twee prototypes van een boekingsapp getest</span>
+      <span class="proj-short">Een begeleide usabilitystudie met taaksucces, tijd per taak en SUS-scores, waarin twee rondes van een Figma-prototype worden vergeleken.</span>
+      <span class="proj-tools"><span translate="no">Figma</span><span translate="no">Usabilitytests</span><span translate="no">SUS</span><span translate="no">Python</span><span translate="no">Google Sheets</span></span>
     </span>
-    <span class="proj-results"><span class="result"><strong>5%</strong><span>gemiddelde afwijking van de prognose</span></span><span class="result"><strong>76 uur</strong><span>medewerkerstijd bespaard op een maandag</span></span></span>
+    <span class="proj-results"><span class="result"><strong><span class="count" data-to="80.8" data-dec="1">80,8</span></strong><span>SUS-score, eerst 58,8</span></span><span class="result"><strong><span class="count" data-to="37" data-dec="0">37</span>%</strong><span>minder tijd om de taken te voltooien</span></span></span>
   </a>
-</li><li class="proj" data-cat="quality">
-  <a class="proj-link" href="projects/qa-calibration.html">
+</li><li class="proj" data-cat="bi" data-reveal style="--d:4">
+  <a class="proj-link" href="projects/order-forecast.html">
     <span class="proj-main">
-      <span class="proj-cat">Kwaliteit en prestaties</span>
-      <span class="proj-title">Zijn onze kwaliteitsbeoordelaars het met elkaar eens?</span>
-      <span class="proj-short">Een kalibratiestudie van zes kwaliteitsbeoordelaars die dezelfde 30 contacten scoorden.</span>
-      <span class="proj-tools"><span>Google Sheets</span><span>Python</span><span>QA-scorecards</span></span>
+      <span class="proj-cat">Dashboards en BI</span>
+      <span class="proj-title">Wekelijkse bestellingen voorspellen voor een webshop</span>
+      <span class="proj-short">Een wekelijkse bestelprognose die eenvoudig genoeg is voor Excel, eerlijk getest, plus wanneer in de week klanten kopen.</span>
+      <span class="proj-tools"><span translate="no">Python</span><span translate="no">Excel</span><span translate="no">Forecasting</span><span translate="no">Tableau</span></span>
     </span>
-    <span class="proj-results"><span class="result"><strong>10,3 pt</strong><span>tussen de strengste en de mildste beoordelaar</span></span><span class="result"><strong>50%</strong><span>overeenstemming over empathie</span></span></span>
+    <span class="proj-results"><span class="result"><strong><span class="count" data-to="5.1" data-dec="1">5,1</span>%</strong><span>gemiddelde afwijking van de prognose</span></span><span class="result"><strong><span class="count" data-to="41" data-dec="0">41</span>%</strong><span>van de bestellingen tussen 19:00 en 23:00</span></span></span>
   </a>
-</li><li class="proj" data-cat="ops">
-  <a class="proj-link" href="projects/retention-cohorts.html">
+</li><li class="proj" data-cat="product" data-reveal style="--d:5">
+  <a class="proj-link" href="projects/onboarding-retention.html">
     <span class="proj-main">
-      <span class="proj-cat">Operatie en groei</span>
-      <span class="proj-title">Blijven nieuwe leden langer door een welkomstgesprek?</span>
-      <span class="proj-short">Cohortanalyse van een fictief zorgabonnement: welkomstgesprek vergeleken met onboarding alleen per e-mail.</span>
-      <span class="proj-tools"><span>SQL</span><span>Tableau</span><span>Cohortanalyse</span><span>Figma</span></span>
+      <span class="proj-cat">Productanalyse</span>
+      <span class="proj-title">Blijven nieuwe leden langer door een onboarding-rondleiding?</span>
+      <span class="proj-short">Cohortanalyse van een fictieve wellness-app nadat die een begeleide rondleiding voor nieuwe leden toevoegde.</span>
+      <span class="proj-tools"><span translate="no">SQL</span><span translate="no">Tableau</span><span translate="no">Cohortanalyse</span><span translate="no">Figma</span></span>
     </span>
-    <span class="proj-results"><span class="result"><strong>+16,9 pt</strong><span>actieve leden na 6 maanden</span></span><span class="result"><strong>+7 pt</strong><span>retentie na 3 maanden sinds de invoering</span></span></span>
+    <span class="proj-results"><span class="result"><strong>+<span class="count" data-to="16.9" data-dec="1">16,9</span> pt</strong><span>actieve leden na 6 maanden</span></span><span class="result"><strong>+<span class="count" data-to="7" data-dec="0">7</span> pt</strong><span>retentie na 3 maanden sinds de lancering</span></span></span>
   </a>
 </li></ol>
   </div>
 </section>
 <section class="section band" aria-labelledby="earlier-h">
   <div class="wrap">
-    <div class="section-head">
-      <h2 id="earlier-h">Eerder werk</h2>
-      <p class="lede">Ontwerpcases uit mijn studie Multimedia Engineering.</p>
+    <div class="section-head" data-reveal>
+      <h2 id="earlier-h">Eerder ontwerpwerk</h2>
+      <p class="lede">UX- en UI-cases uit mijn studie Multimedia Engineering.</p>
     </div>
-    <ul class="earlier plain"><li><a href="../design/Irina.html"><strong>La resiliencia de Irina</strong><span>Ontwerp van een serious VR-game: onderzoek, persona’s, customer journeys en prototypes.</span></a></li><li><a href="../design/nona.html"><strong>NonaAntojos</strong><span>Mobiel webmenu voor een lokale eetzaak: taakflows, informatiearchitectuur en prototypes.</span></a></li></ul>
+    <ul class="earlier plain"><li data-reveal style="--d:0"><a href="../design/Irina.html"><strong>La resiliencia de Irina</strong><span>Ontwerp van een serious VR-game: onderzoek, persona’s, customer journeys en prototypes.</span></a></li><li data-reveal style="--d:1"><a href="../design/nona.html"><strong>NonaAntojos</strong><span>Mobiel webmenu voor een lokale eetzaak: taakflows, informatiearchitectuur en prototypes.</span></a></li></ul>
   </div>
 </section>
 <section class="section">
-  <div class="wrap cta-row">
+  <div class="wrap cta-row" data-reveal>
     <h2>Wil je de data en details zien?</h2>
     <a class="btn" href="../assets/Julieta-Lara-Romero-CV.pdf" download>Download mijn cv</a>
   </div>
@@ -133,7 +135,7 @@
   <div class="wrap footer-grid">
     <div>
       <p class="footer-name">Julieta Lara Romero</p>
-      <p class="muted">CX- en data-analist. Drietalig (Spaans, Engels en Portugees), met een achtergrond in Multimedia Engineering en Business Intelligence.</p>
+      <p class="muted">Data-analist en UX/UI-designer. Drietalig (Spaans, Engels en Portugees), met een achtergrond in Multimedia Engineering en Business Intelligence.</p>
     </div>
     <div>
       <h2 class="footer-h">Pagina’s</h2>
@@ -148,14 +150,13 @@
       <h2 class="footer-h">Contact</h2>
       <ul class="plain">
         <li><a href="mailto:julietalarar98@gmail.com">julietalarar98@gmail.com</a></li>
-        <li><a href="tel:+573222118698">+57 322 211 8698</a></li>
-        
+        <li><a href="https://www.linkedin.com/in/julieta-lara-romero-525366285/" rel="me">LinkedIn</a></li>
       </ul>
     </div>
   </div>
   <div class="wrap footer-base muted">
     <p>© 2026 Julieta Lara Romero</p>
-    <p>Met de hand gebouwd in HTML, CSS en JavaScript. De grafieken gebruiken synthetische data.</p>
+    <p>Met de hand ontworpen en gebouwd in HTML, CSS en JavaScript. De grafieken gebruiken synthetische data.</p>
   </div>
 </footer>
 <script src="../assets/site.js" defer></script>

@@ -4,10 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Sobre a Julieta | Julieta Lara Romero</title>
-  <meta name="description" content="Analista de CX e dados com formação em Engenharia Multimédia e Business Intelligence, e anos de experiência do lado do cliente em contact centres.">
+  <meta name="description" content="Analista de dados e designer UX/UI, licenciada em Engenharia Multimédia e com especialização em Business Intelligence.">
   <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f7f4fc" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#150f26" media="(prefers-color-scheme: dark)">
   <meta property="og:title" content="Sobre a Julieta | Julieta Lara Romero">
-  <meta property="og:description" content="Analista de CX e dados com formação em Engenharia Multimédia e Business Intelligence, e anos de experiência do lado do cliente em contact centres.">
+  <meta property="og:description" content="Analista de dados e designer UX/UI, licenciada em Engenharia Multimédia e com especialização em Business Intelligence.">
   <meta property="og:type" content="website">
   <link rel="alternate" hreflang="en" href="https://khariss1805.github.io/Portfolio/about.html">
   <link rel="alternate" hreflang="nl" href="https://khariss1805.github.io/Portfolio/nl/about.html">
@@ -19,7 +21,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Instrument+Sans:ital,wght@0,400..700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/site.css">
-  <script>document.documentElement.classList.add('js')</script>
+  <script>document.documentElement.classList.add('js');setTimeout(function(){if(!window.__site)document.documentElement.classList.remove('js')},3000)</script>
 </head>
 <body>
 <a class="skip" href="#main">Saltar para o conteúdo</a>
@@ -27,7 +29,7 @@
   <div class="wrap header-row">
     <a class="brand" href="index.html">
       <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="13" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="16" cy="16" r="5" fill="currentColor"/></svg>
-      <span><span class="brand-name">Julieta Lara Romero</span><span class="brand-role">Analista de CX e dados</span></span>
+      <span><span class="brand-name">Julieta Lara Romero</span><span class="brand-role">Analista de dados e designer UX/UI</span></span>
     </a>
     <nav class="main-nav" aria-label="Main">
       <a href="index.html">Início</a>
@@ -42,12 +44,12 @@
 <section class="page-head">
   <div class="wrap about-grid">
     <div>
-      <p class="hero-role">Sobre mim</p>
-      <h1>Olá, sou a Julieta</h1>
-      <p class="hero-lead">Analista de CX e dados com formação em Engenharia Multimédia e Business Intelligence, e anos de experiência do lado do cliente em contact centres.</p>
-      <p>Conheço as métricas de contact centre por dentro. Como assistente de apoio ao cliente era avaliada todos os dias em CSAT, AHT e qualidade, e vi muitas vezes um número num dashboard contar mal a história de um turno.</p><p>A Engenharia Multimédia ensinou-me a desenhar para a pessoa do outro lado do ecrã. A especialização em Business Intelligence deu-me as ferramentas para o fazer com dados: SQL, Power BI, Tableau e Python.</p><p>Agora quero trabalhar onde essas duas coisas se encontram: analisar dados de clientes e de operações, e criar relatórios que chefes de equipa e agentes compreendam e usem.</p>
+      <p class="hero-role hero-in" style="--d:0">Sobre mim</p>
+      <h1 class="hero-in" style="--d:1">Olá, sou a Julieta</h1>
+      <p class="hero-lead hero-in" style="--d:2">Analista de dados e designer UX/UI, licenciada em Engenharia Multimédia e com especialização em Business Intelligence.</p>
+      <p class="hero-in" style="--d:3">Trabalho entre duas disciplinas. A análise de dados diz-me o que as pessoas fazem num produto; a investigação e o design UX dizem-me porquê, e o que mudar.</p><p class="hero-in" style="--d:4">A Engenharia Multimédia deu-me design de interação, desenvolvimento web e investigação de utilizadores. A especialização em Business Intelligence acrescentou SQL, modelação de dados, Power BI, Tableau e Python.</p><p class="hero-in" style="--d:5">Anos em funções de contacto com clientes ensinaram-me a ouvir os utilizadores e a explicar as coisas de forma simples, que é quase todo o trabalho quando se apresentam dados.</p>
     </div>
-    <aside class="lang-card">
+    <aside class="lang-card hero-in" style="--d:3">
       <h2 class="h3">Línguas</h2>
       <ul class="plain"><li><strong>Espanhol</strong> <span class="muted">Nativo</span></li><li><strong>Inglês</strong> <span class="muted">Avançado (C2)</span></li><li><strong>Português</strong> <span class="muted">Intermédio (B2)</span></li><li><strong>Italiano</strong> <span class="muted">Básico</span></li></ul>
     </aside>
@@ -56,117 +58,119 @@
 
 <section class="section" aria-labelledby="tl-h">
   <div class="wrap">
-    <div class="section-head">
+    <div class="section-head" data-reveal>
       <h2 id="tl-h">Experiência e formação</h2>
-      <p class="lede">Do apoio ao cliente aos dados. Abra uma linha para ler mais.</p>
+      <p class="lede">Abra uma linha para ler mais.</p>
     </div>
-    <ol class="timeline plain"><li class="tl-item tl-study">
+    <ol class="timeline plain"><li class="tl-item tl-study" data-reveal style="--d:0">
     <details>
       <summary>
         <span class="tl-date">2016</span>
         <span class="tl-what"><strong>Inglês académico</strong><span class="muted">The Cambridge English Institute</span></span>
         <span class="tl-kind">Formação</span>
+        <span class="tl-icon" aria-hidden="true"></span>
       </summary>
-      <p>Programa de inglês académico. Hoje trabalho em inglês com nível C2.</p>
+      <div class="tl-body"><p>Programa de inglês académico. Hoje trabalho em inglês com nível C2.</p></div>
     </details>
-  </li><li class="tl-item tl-work">
+  </li><li class="tl-item tl-work" data-reveal style="--d:1">
     <details>
       <summary>
         <span class="tl-date">2018</span>
         <span class="tl-what"><strong>Consultora de vendas</strong><span class="muted">Cars Planes Group, Córdoba, Argentina</span></span>
         <span class="tl-kind">Trabalho</span>
+        <span class="tl-icon" aria-hidden="true"></span>
       </summary>
-      <p>Venda presencial e aconselhamento a clientes. O meu primeiro trabalho em contacto direto com clientes.</p>
+      <div class="tl-body"><p>Venda presencial e aconselhamento a clientes. O meu primeiro trabalho em contacto direto com clientes.</p></div>
     </details>
-  </li><li class="tl-item tl-work">
+  </li><li class="tl-item tl-work" data-reveal style="--d:2">
     <details>
       <summary>
         <span class="tl-date">2019–2020</span>
         <span class="tl-what"><strong>Assistente de apoio ao cliente</strong><span class="muted">Sitel, Cali</span></span>
         <span class="tl-kind">Trabalho</span>
+        <span class="tl-icon" aria-hidden="true"></span>
       </summary>
-      <p>Atendimento a clientes de uma conta internacional, com objetivos de nível de serviço, tempo de atendimento e qualidade.</p>
+      <div class="tl-body"><p>Apoio em inglês e espanhol a clientes de uma empresa internacional; aí vi em primeira mão onde os utilizadores ficam bloqueados nos produtos digitais.</p></div>
     </details>
-  </li><li class="tl-item tl-study">
+  </li><li class="tl-item tl-study" data-reveal style="--d:3">
     <details>
       <summary>
         <span class="tl-date">2020–2024</span>
         <span class="tl-what"><strong>Licenciatura em Engenharia Multimédia</strong><span class="muted">Universidad Autónoma de Occidente</span></span>
         <span class="tl-kind">Formação</span>
+        <span class="tl-icon" aria-hidden="true"></span>
       </summary>
-      <p>Design de interação, desenvolvimento web, produção audiovisual e investigação de utilizadores.</p>
+      <div class="tl-body"><p>Design de interação, desenvolvimento web, produção audiovisual e investigação de utilizadores.</p></div>
     </details>
-  </li><li class="tl-item tl-work">
+  </li><li class="tl-item tl-work" data-reveal style="--d:0">
     <details>
       <summary>
         <span class="tl-date">2022</span>
         <span class="tl-what"><strong>Criadora de conteúdos</strong><span class="muted">ViveEsports, Cali</span></span>
         <span class="tl-kind">Trabalho</span>
+        <span class="tl-icon" aria-hidden="true"></span>
       </summary>
-      <p>Planeamento e produção de conteúdos para as redes sociais de uma comunidade de esports.</p>
+      <div class="tl-body"><p>Planeei, desenhei e editei conteúdos para as redes sociais de uma comunidade de esports.</p></div>
     </details>
-  </li><li class="tl-item tl-study">
+  </li><li class="tl-item tl-study" data-reveal style="--d:1">
     <details>
       <summary>
         <span class="tl-date">2024</span>
         <span class="tl-what"><strong>Certificações em investigação e design UX/UI</strong><span class="muted">The Interaction Design Foundation</span></span>
         <span class="tl-kind">Formação</span>
+        <span class="tl-icon" aria-hidden="true"></span>
       </summary>
-      <p>Interação Humano-Computador, design UI/UX móvel, e estratégia e adoção de produto.</p>
+      <div class="tl-body"><p>Interação Humano-Computador, design UI/UX móvel, e estratégia e adoção de produto.</p></div>
     </details>
-  </li><li class="tl-item tl-work">
+  </li><li class="tl-item tl-work" data-reveal style="--d:2">
     <details>
       <summary>
         <span class="tl-date">2024–2025</span>
         <span class="tl-what"><strong>Assistente de apoio ao cliente</strong><span class="muted">TaskUs, Cali</span></span>
         <span class="tl-kind">Trabalho</span>
+        <span class="tl-icon" aria-hidden="true"></span>
       </summary>
-      <p>Apoio a clientes de uma empresa internacional num ambiente BPO avaliado por CSAT, AHT e scorecards de qualidade.</p>
+      <div class="tl-body"><p>Apoio em inglês a utilizadores do produto digital de um cliente internacional.</p></div>
     </details>
-  </li><li class="tl-item tl-study">
+  </li><li class="tl-item tl-study" data-reveal style="--d:3">
     <details>
       <summary>
         <span class="tl-date">2025–hoje</span>
         <span class="tl-what"><strong>Especialização em Business Intelligence com ênfase em Big Data</strong><span class="muted">Universidad Autónoma de Occidente</span></span>
         <span class="tl-kind">Formação</span>
+        <span class="tl-icon" aria-hidden="true"></span>
       </summary>
-      <p>Modelação de dados, SQL, ETL, dashboards em Power BI e Tableau, e análise com Python. Em curso.</p>
+      <div class="tl-body"><p>Modelação de dados, SQL, ETL, dashboards em Power BI e Tableau, e análise com Python. Em curso.</p></div>
     </details>
-  </li><li class="tl-item tl-work">
+  </li><li class="tl-item tl-work" data-reveal style="--d:0">
     <details>
       <summary>
         <span class="tl-date">2025–2026</span>
         <span class="tl-what"><strong>Community manager</strong><span class="muted">Khryzos & Zephyra, Cali</span></span>
         <span class="tl-kind">Trabalho</span>
+        <span class="tl-icon" aria-hidden="true"></span>
       </summary>
-      <p>Gestão das redes sociais e da comunicação com clientes de um negócio de comida local, incluindo o seu menu para telemóvel.</p>
+      <div class="tl-body"><p>Geri as redes sociais de um negócio de comida local e desenhei o seu menu para telemóvel.</p></div>
     </details>
-  </li><li class="tl-item tl-study">
-    <details>
-      <summary>
-        <span class="tl-date">2026</span>
-        <span class="tl-what"><strong>Garantia de qualidade e métricas de call center</strong><span class="muted">Udemy</span></span>
-        <span class="tl-kind">Formação</span>
-      </summary>
-      <p>Scorecards de qualidade, calibração e KPI de contact centre.</p>
-    </details>
-  </li><li class="tl-item tl-study">
+  </li><li class="tl-item tl-study" data-reveal style="--d:1">
     <details>
       <summary>
         <span class="tl-date">2026</span>
         <span class="tl-what"><strong>Português, de iniciante a avançado</strong><span class="muted">Udemy</span></span>
         <span class="tl-kind">Formação</span>
+        <span class="tl-icon" aria-hidden="true"></span>
       </summary>
-      <p>Português de nível B2.</p>
+      <div class="tl-body"><p>Português de nível B2.</p></div>
     </details>
-  </li><li class="tl-item tl-work">
+  </li><li class="tl-item tl-work" data-reveal style="--d:2">
     <details open>
       <summary>
         <span class="tl-date">2026</span>
         <span class="tl-what"><strong>Especialista em envolvimento de membros</strong><span class="muted">EasyHealth, Cali</span></span>
         <span class="tl-kind">Trabalho</span>
+        <span class="tl-icon" aria-hidden="true"></span>
       </summary>
-      <p>Comunicação e fidelização de membros de um serviço de subscrição de saúde.</p>
+      <div class="tl-body"><p>Comunicação e fidelização de membros de um serviço de subscrição de saúde.</p></div>
     </details>
   </li></ol>
   </div>
@@ -174,24 +178,23 @@
 
 <section class="section band" aria-labelledby="earlier-h">
   <div class="wrap">
-    <div class="section-head">
+    <div class="section-head" data-reveal>
       <h2 id="earlier-h">Trabalho de design anterior</h2>
-      <p class="lede">Casos de estudo dos meus anos de Engenharia Multimédia, no meu portefólio anterior.</p>
+      <p class="lede">Casos de UX e UI dos meus anos de Engenharia Multimédia, no meu portefólio anterior.</p>
     </div>
-    <ul class="earlier plain"><li><a href="../design/Irina.html"><strong>La resiliencia de Irina</strong><span>Design de um jogo sério em realidade virtual: investigação, personas, journey maps e protótipos.</span></a></li><li><a href="../design/nona.html"><strong>NonaAntojos</strong><span>Menu web para telemóvel de um negócio de comida local: fluxos de tarefas, arquitetura e protótipos.</span></a></li></ul>
+    <ul class="earlier plain"><li data-reveal style="--d:0"><a href="../design/Irina.html"><strong>La resiliencia de Irina</strong><span>Design de um jogo sério em realidade virtual: investigação, personas, journey maps e protótipos.</span></a></li><li data-reveal style="--d:1"><a href="../design/nona.html"><strong>NonaAntojos</strong><span>Menu web para telemóvel de um negócio de comida local: fluxos de tarefas, arquitetura e protótipos.</span></a></li></ul>
   </div>
 </section>
 
 <section class="section contact" id="contact" aria-labelledby="contact-h">
   <div class="wrap contact-inner">
-    <div>
+    <div data-reveal>
       <h2 id="contact-h">Vamos conversar</h2>
-      <p class="lede">Procuro funções de analista de dados e analista de CX, nos Países Baixos, na UE ou em remoto. A forma mais rápida de me contactar é por e-mail.</p>
+      <p class="lede">Procuro funções em análise de dados, business intelligence e design UX/UI. A melhor forma de me contactar é por e-mail ou LinkedIn.</p>
     </div>
-    <ul class="contact-list plain">
+    <ul class="contact-list plain" data-reveal>
       <li><span class="muted">E-mail</span><a href="mailto:julietalarar98@gmail.com">julietalarar98@gmail.com</a></li>
-      <li><span class="muted">Telefone</span><a href="tel:+573222118698">+57 322 211 8698</a></li>
-      
+      <li><span class="muted">LinkedIn</span><a href="https://www.linkedin.com/in/julieta-lara-romero-525366285/" rel="me">linkedin.com/in/julieta-lara-romero-525366285</a></li>
       <li><a class="btn" href="../assets/Julieta-Lara-Romero-CV.pdf" download>Descarregar CV (PDF, em inglês)</a></li>
     </ul>
   </div>
@@ -201,7 +204,7 @@
   <div class="wrap footer-grid">
     <div>
       <p class="footer-name">Julieta Lara Romero</p>
-      <p class="muted">Analista de CX e dados. Trilingue (espanhol, inglês e português), com formação em Engenharia Multimédia e Business Intelligence.</p>
+      <p class="muted">Analista de dados e designer UX/UI. Trilingue (espanhol, inglês e português), com formação em Engenharia Multimédia e Business Intelligence.</p>
     </div>
     <div>
       <h2 class="footer-h">Páginas</h2>
@@ -216,14 +219,13 @@
       <h2 class="footer-h">Contacto</h2>
       <ul class="plain">
         <li><a href="mailto:julietalarar98@gmail.com">julietalarar98@gmail.com</a></li>
-        <li><a href="tel:+573222118698">+57 322 211 8698</a></li>
-        
+        <li><a href="https://www.linkedin.com/in/julieta-lara-romero-525366285/" rel="me">LinkedIn</a></li>
       </ul>
     </div>
   </div>
   <div class="wrap footer-base muted">
     <p>© 2026 Julieta Lara Romero</p>
-    <p>Feito à mão com HTML, CSS e JavaScript. Os gráficos usam dados sintéticos.</p>
+    <p>Desenhado e construído à mão com HTML, CSS e JavaScript. Os gráficos usam dados sintéticos.</p>
   </div>
 </footer>
 <script src="../assets/site.js" defer></script>

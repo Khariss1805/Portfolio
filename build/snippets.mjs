@@ -1,121 +1,116 @@
 // Code excerpts shown on each case-study page. Same in every language.
 export default {
   p1: {
-    lang: 'Python',
-    code: `import pandas as pd
-import statsmodels.formula.api as smf
-
-contacts = pd.read_csv("contacts_with_survey.csv")
-
-# Data checks before any analysis
-contacts = contacts.drop_duplicates("contact_id")
-contacts = contacts[contacts["reason"].notna() & contacts["wait_sec"].between(0, 3600)]
-
-contacts["satisfied"] = (contacts["csat"] >= 4).astype(int)
-contacts["long_wait"] = (contacts["wait_sec"] > 120).astype(int)
-
-# Does each factor still matter when the others are held constant?
-model = smf.logit(
-    "satisfied ~ fcr + transfers + long_wait + new_agent"
-    " + native_language + C(reason) + C(queue)",
-    data=contacts,
-).fit()
-
-print(model.summary())`,
-  },
-  p2: {
     lang: 'SQL + DAX',
-    code: `-- One definition of each metric, used by every report
-CREATE VIEW agent_month AS
+    code: `-- Monthly revenue and returns by category (feeds the Power BI model)
 SELECT
-  c.agent_id,
-  date_trunc('month', c.started_at)           AS month,
-  AVG(c.handle_sec)                           AS aht_sec,
-  AVG(CASE WHEN r.repeat_7d THEN 0 ELSE 1 END) AS fcr,
-  AVG(s.csat_top2)                            AS csat,
-  AVG(q.score)                                AS qa_score
-FROM contacts c
-LEFT JOIN repeats  r ON r.contact_id = c.contact_id
-LEFT JOIN surveys  s ON s.contact_id = c.contact_id
-LEFT JOIN qa_evals q ON q.contact_id = c.contact_id
+  date_trunc('month', o.ordered_at)              AS month,
+  p.category,
+  COUNT(DISTINCT o.order_id)                     AS orders,
+  SUM(oi.quantity * oi.unit_price)               AS revenue,
+  AVG(CASE WHEN r.order_id IS NOT NULL THEN 1.0 ELSE 0 END) AS return_rate
+FROM orders o
+JOIN order_items oi USING (order_id)
+JOIN products    p  USING (product_id)
+LEFT JOIN returns r USING (order_id)
+WHERE o.status <> 'cancelled'
 GROUP BY 1, 2;
 
--- DAX: flag a tile only when the target is missed
-QA vs target =
-VAR qa = AVERAGE ( agent_month[qa_score] )
-RETURN IF ( qa < 85, "#B5179E", "#5B3FD1" )`,
+-- DAX measures
+Average order value = DIVIDE ( [Revenue], [Orders] )
+Revenue vs last year % =
+VAR prev = CALCULATE ( [Revenue], SAMEPERIODLASTYEAR ( 'Date'[Date] ) )
+RETURN DIVIDE ( [Revenue] - prev, prev )`,
+  },
+  p2: {
+    lang: 'Python',
+    code: `import pandas as pd
+from statsmodels.stats.proportion import proportions_ztest, proportion_confint
+
+sessions = pd.read_csv("checkout_experiment.csv")   # one row per session
+
+# Guard against a broken split before reading any result
+split = sessions["variant"].value_counts(normalize=True)
+assert abs(split["A"] - 0.5) < 0.01, "Sample ratio mismatch"
+
+summary = sessions.groupby("variant")["converted"].agg(["sum", "count"])
+z, p_value = proportions_ztest(summary["sum"], summary["count"])
+low, high = proportion_confint(summary["sum"], summary["count"], method="wilson")
+
+by_device = (sessions.groupby(["device", "variant"])["converted"]
+                     .mean().mul(100).round(2).unstack())
+print(summary, f"p = {p_value:.4f}", by_device, sep="\\n")`,
   },
   p3: {
     lang: 'PostgreSQL',
-    code: `WITH ordered AS (
+    code: `WITH steps AS (
   SELECT
-    contact_id,
-    customer_id,
-    reason,
-    started_at,
-    LEAD(started_at) OVER w AS next_at,
-    LEAD(reason)     OVER w AS next_reason
-  FROM contacts
-  WINDOW w AS (PARTITION BY customer_id ORDER BY started_at)
+    user_id,
+    device,
+    MAX(CASE WHEN event = 'landing_view'   THEN 1 ELSE 0 END) AS s1_landing,
+    MAX(CASE WHEN event = 'signup_start'   THEN 1 ELSE 0 END) AS s2_start,
+    MAX(CASE WHEN event = 'email_entered'  THEN 1 ELSE 0 END) AS s3_email,
+    MAX(CASE WHEN event = 'email_verified' THEN 1 ELSE 0 END) AS s4_verified,
+    MAX(CASE WHEN event = 'profile_done'   THEN 1 ELSE 0 END) AS s5_profile,
+    MAX(CASE WHEN event = 'first_project'  THEN 1 ELSE 0 END) AS s6_first
+  FROM events
+  WHERE occurred_at >= now() - INTERVAL '30 days'
+  GROUP BY user_id, device
 )
 SELECT
-  reason,
-  COUNT(*)                                          AS contacts,
-  ROUND(100.0 * AVG(
-    CASE WHEN next_reason = reason
-          AND next_at < started_at + INTERVAL '7 days'
-         THEN 1 ELSE 0 END), 1)                     AS repeat_rate_pct
-FROM ordered
-GROUP BY reason
-ORDER BY repeat_rate_pct DESC;`,
+  device,
+  SUM(s1_landing)  AS landing,
+  SUM(s2_start)    AS started,
+  SUM(s4_verified) AS verified,
+  SUM(s6_first)    AS activated,
+  ROUND(100.0 * SUM(s4_verified) / NULLIF(SUM(s3_email), 0), 1) AS verify_rate_pct
+FROM steps
+GROUP BY device;`,
   },
   p4: {
     lang: 'Python',
-    code: `from math import exp, factorial
+    code: `import pandas as pd
 
-def erlang_c(agents: int, traffic: float) -> float:
-    """Probability that a contact has to wait."""
-    top = traffic**agents / factorial(agents) * agents / (agents - traffic)
-    bottom = sum(traffic**k / factorial(k) for k in range(agents)) + top
-    return top / bottom
+answers = pd.read_csv("sus_answers.csv")   # participant, round, q1..q10 (1 to 5)
 
-def agents_needed(contacts_per_hour, aht_sec=380, target_sec=20, level=0.80):
-    traffic = contacts_per_hour * aht_sec / 3600      # in Erlangs
-    agents = int(traffic) + 1
-    while True:
-        wait = erlang_c(agents, traffic)
-        service = 1 - wait * exp(-(agents - traffic) * target_sec / aht_sec)
-        if service >= level:
-            return agents, round(service, 3)
-        agents += 1
+odd  = [f"q{i}" for i in (1, 3, 5, 7, 9)]
+even = [f"q{i}" for i in (2, 4, 6, 8, 10)]
 
-print(agents_needed(137))   # late-morning peak on a Monday`,
+# System Usability Scale: positive items score x-1, negative items 5-x, then x2.5
+answers["sus"] = ((answers[odd] - 1).sum(axis=1)
+                  + (5 - answers[even]).sum(axis=1)) * 2.5
+
+tasks = pd.read_csv("task_results.csv")     # participant, round, task, success, seconds
+summary = tasks.groupby(["round", "task"]).agg(
+    success_rate=("success", "mean"),
+    median_time=("seconds", "median"),
+)
+print(answers.groupby("round")["sus"].mean().round(1))`,
   },
   p5: {
     lang: 'Python',
-    code: `import pandas as pd
+    code: `import numpy as np
+import pandas as pd
 
-scores = pd.read_csv("calibration_session.csv")   # one row per evaluator x contact
+weekly = pd.read_csv("orders.csv", parse_dates=["date"]).resample("W", on="date")["order_id"].count()
 
-consensus = scores.groupby("contact_id")["total"].median().rename("consensus")
-scores = scores.join(consensus, on="contact_id")
-scores["diff"] = scores["total"] - scores["consensus"]
+def seasonal_forecast(history: pd.Series, horizon: int = 12) -> np.ndarray:
+    """Same week last year, scaled by recent year-on-year growth."""
+    growth = history[-12:].mean() / history[-64:-52].mean()
+    return history[-52:-52 + horizon].to_numpy() * growth
 
-by_evaluator = scores.groupby("evaluator")["diff"].mean().round(1)
-
-# Item agreement: share of contacts where every evaluator gave the same pass/fail
-items = pd.read_csv("calibration_items.csv")
-agreement = (
-    items.groupby(["item", "contact_id"])["passed"].nunique().eq(1)
-         .groupby("item").mean().mul(100).sort_values()
-)`,
+# Honest test: hide the last 12 weeks, forecast them, compare
+train, test = weekly[:-12], weekly[-12:]
+pred = seasonal_forecast(train)
+mape = np.mean(np.abs(pred - test.to_numpy()) / test.to_numpy()) * 100
+print(f"MAPE on the last 12 weeks: {mape:.1f}%")`,
   },
   p6: {
     lang: 'SQL',
     code: `WITH members AS (
   SELECT member_id,
          date_trunc('month', signup_at) AS cohort,
-         onboarding_channel
+         saw_onboarding_tour
   FROM memberships
 ),
 activity AS (

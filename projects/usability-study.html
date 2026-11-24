@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Testing two prototypes of a booking app | Julieta Lara Romero</title>
+  <meta name="description" content="A moderated usability study with task success, time on task and SUS scores, comparing two rounds of a Figma prototype.">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f7f4fc" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#150f26" media="(prefers-color-scheme: dark)">
+  <meta property="og:title" content="Testing two prototypes of a booking app | Julieta Lara Romero">
+  <meta property="og:description" content="A moderated usability study with task success, time on task and SUS scores, comparing two rounds of a Figma prototype.">
+  <meta property="og:type" content="website">
+  <link rel="alternate" hreflang="en" href="https://khariss1805.github.io/Portfolio/projects/usability-study.html">
+  <link rel="alternate" hreflang="nl" href="https://khariss1805.github.io/Portfolio/nl/projects/usability-study.html">
+  <link rel="alternate" hreflang="pt-PT" href="https://khariss1805.github.io/Portfolio/pt/projects/usability-study.html">
+  <link rel="alternate" hreflang="es" href="https://khariss1805.github.io/Portfolio/es/projects/usability-study.html">
+  <link rel="alternate" hreflang="x-default" href="https://khariss1805.github.io/Portfolio/projects/usability-study.html">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Instrument+Sans:ital,wght@0,400..700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/site.css">
+  <script>document.documentElement.classList.add('js');setTimeout(function(){if(!window.__site)document.documentElement.classList.remove('js')},3000)</script>
+</head>
+<body>
+<div class="read-progress" aria-hidden="true"></div>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="brand" href="../index.html">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="13" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="16" cy="16" r="5" fill="currentColor"/></svg>
+      <span><span class="brand-name">Julieta Lara Romero</span><span class="brand-role">Data Analyst & UX/UI Designer</span></span>
+    </a>
+    <nav class="main-nav" aria-label="Main">
+      <a href="../index.html">Home</a>
+      <a href="../about.html">About</a>
+      <a href="../projects.html" aria-current="page">Projects</a>
+      <a href="../assets/Julieta-Lara-Romero-CV.pdf">Résumé</a>
+    </nav>
+    <nav class="lang-switch" aria-label="Language"><a href="usability-study.html" hreflang="en" lang="en" title="English" aria-current="true">EN</a><a href="../nl/projects/usability-study.html" hreflang="nl" lang="nl" title="Nederlands">NL</a><a href="../pt/projects/usability-study.html" hreflang="pt-PT" lang="pt-PT" title="Português">PT</a><a href="../es/projects/usability-study.html" hreflang="es" lang="es" title="Español">ES</a></nav>
+  </div>
+</header>
+<main id="main">
+<article>
+<header class="page-head case-head">
+  <div class="wrap narrow">
+    <nav class="crumbs hero-in" style="--d:0" aria-label="Breadcrumb"><a href="../index.html">Home</a><span aria-hidden="true">/</span><a href="../projects.html">Projects</a></nav>
+    <p class="case-tags hero-in" style="--d:1"><span class="tag">UX research</span><span class="tag tag-practice">Practice project</span></p>
+    <h1 class="hero-in" style="--d:2">Testing two prototypes of a booking app</h1>
+    <p class="hero-lead hero-in" style="--d:3">A fitness studio wanted an app to book classes. I tested the first Figma prototype, redesigned the weak spots, and tested again with numbers to compare.</p>
+    <div class="case-results hero-in" style="--d:4"><span class="result"><strong><span class="count" data-to="80.8" data-dec="1">80.8</span></strong><span>SUS score, up from 58.8</span></span><span class="result"><strong><span class="count" data-to="37" data-dec="0">37</span>%</strong><span>less time to complete the tasks</span></span></div>
+    <p class="practice-note hero-in" style="--d:5">This is a practice project. The company is fictional and the data is synthetic, generated to behave like real product data. The questions, methods and code are the ones I would use on the job.</p>
+  </div>
+</header>
+<div class="wrap narrow case-body">
+  <section data-reveal><h2>The question</h2><p>The first prototype looked good in reviews, but nobody had watched real people use it.</p><p>The question: can people complete the five key tasks, where do they struggle, and did the redesign fix it?</p></section>
+  <section data-reveal><h2>The data</h2><p>Two rounds with 10 participants each. For each of 5 tasks: whether they completed it and how long it took. After each session, the 10-question System Usability Scale (SUS).</p></section>
+  <section><h2 data-reveal>What I did</h2><ol class="steps"><li data-reveal style="--d:0">Wrote realistic task scenarios, for example “Your Thursday class is cancelled. Book another one this week.”</li><li data-reveal style="--d:1">Ran moderated sessions on the Figma prototype and logged success, time and comments in a sheet.</li><li data-reveal style="--d:2">Scored SUS in Python and compared both rounds task by task.</li><li data-reveal style="--d:3">Redesigned the two weakest flows, cancelling and changing payment, before the second round.</li></ol></section>
+</div>
+
+<div class="wrap narrow case-body">
+  <section><h2 data-reveal>What I found</h2><div class="finding">
+      <h3 data-reveal>Cancelling a booking was the main problem</h3>
+      <p data-reveal>In the first round only 40% of participants managed to cancel a booking; the option was hidden in a menu. After moving it onto the booking card, 70% succeeded.</p>
+      <figure class="chart-fig" data-reveal>
+  <div class="figbox"><div class="chart"><canvas id="p4-success" role="img" aria-label="Share of participants who completed each task, by prototype."></canvas></div></div>
+  <figcaption>Share of participants who completed each task, by prototype. <span class="muted">Hover or tap the chart for exact values.</span></figcaption>
+  <details class="data-table"><summary>Show the numbers</summary><div class="table-scroll"><table><thead><tr><th></th><th scope="col">Prototype 1</th><th scope="col">Prototype 2</th></tr></thead><tbody><tr><th scope="row">Find a class</th><td class="num">100</td><td class="num">100</td></tr><tr><th scope="row">Book a class</th><td class="num">70</td><td class="num">80</td></tr><tr><th scope="row">Cancel a booking</th><td class="num">40</td><td class="num">70</td></tr><tr><th scope="row">Change payment method</th><td class="num">50</td><td class="num">100</td></tr><tr><th scope="row">Invite a friend</th><td class="num">80</td><td class="num">80</td></tr></tbody></table></div></details>
+</figure>
+    </div><div class="finding">
+      <h3 data-reveal>The redesign made everything faster</h3>
+      <p data-reveal>Cancelling went from 136 to 52 seconds, and the five tasks together took 37% less time. The SUS score rose from 58.8, below the usual average of 68, to 80.8.</p>
+      <figure class="chart-fig" data-reveal>
+  <div class="figbox"><div class="chart" style="--h:460px"><canvas id="p4-time" role="img" aria-label="Median time on task in seconds, by prototype."></canvas></div></div>
+  <figcaption>Median time on task in seconds, by prototype. <span class="muted">Hover or tap the chart for exact values.</span></figcaption>
+  <details class="data-table"><summary>Show the numbers</summary><div class="table-scroll"><table><thead><tr><th></th><th scope="col">Prototype 1</th><th scope="col">Prototype 2</th></tr></thead><tbody><tr><th scope="row">Find a class</th><td class="num">36</td><td class="num">35</td></tr><tr><th scope="row">Book a class</th><td class="num">91</td><td class="num">63</td></tr><tr><th scope="row">Cancel a booking</th><td class="num">136</td><td class="num">52</td></tr><tr><th scope="row">Change payment method</th><td class="num">113</td><td class="num">77</td></tr><tr><th scope="row">Invite a friend</th><td class="num">64</td><td class="num">50</td></tr></tbody></table></div></details>
+</figure>
+    </div></section>
+  <section><h2 data-reveal>What I would recommend</h2><ul class="recs"><li data-reveal style="--d:0">Build the second prototype and keep cancellation on the booking card.</li><li data-reveal style="--d:1">Run a short third round on the invite flow, which did not improve.</li><li data-reveal style="--d:2">Track the same tasks in the live app with analytics, to see if the lab results hold.</li></ul></section>
+  <section data-reveal><h2>A look at the code</h2>
+    <figure class="code"><figcaption>Python</figcaption><pre tabindex="0" translate="no"><code>import pandas as pd
+
+answers = pd.read_csv(&quot;sus_answers.csv&quot;)   # participant, round, q1..q10 (1 to 5)
+
+odd  = [f&quot;q{i}&quot; for i in (1, 3, 5, 7, 9)]
+even = [f&quot;q{i}&quot; for i in (2, 4, 6, 8, 10)]
+
+# System Usability Scale: positive items score x-1, negative items 5-x, then x2.5
+answers[&quot;sus&quot;] = ((answers[odd] - 1).sum(axis=1)
+                  + (5 - answers[even]).sum(axis=1)) * 2.5
+
+tasks = pd.read_csv(&quot;task_results.csv&quot;)     # participant, round, task, success, seconds
+summary = tasks.groupby([&quot;round&quot;, &quot;task&quot;]).agg(
+    success_rate=(&quot;success&quot;, &quot;mean&quot;),
+    median_time=(&quot;seconds&quot;, &quot;median&quot;),
+)
+print(answers.groupby(&quot;round&quot;)[&quot;sus&quot;].mean().round(1))</code></pre></figure>
+  </section>
+  <section data-reveal><h2>Tools</h2><ul class="tags plain"><li>Figma</li><li>Usability testing</li><li>SUS</li><li>Python</li><li>Google Sheets</li></ul></section>
+  <nav class="case-nav" aria-label="Projects" data-reveal>
+    <a href="../projects.html">All projects</a>
+    <a class="case-next" href="order-forecast.html"><span class="muted">Next project</span>Forecasting weekly orders for an online store</a>
+  </nav>
+</div>
+</article>
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <p class="footer-name">Julieta Lara Romero</p>
+      <p class="muted">Data Analyst and UX/UI Designer. Trilingual (Spanish, English, Portuguese), with a background in Multimedia Engineering and Business Intelligence.</p>
+    </div>
+    <div>
+      <h2 class="footer-h">Pages</h2>
+      <ul class="plain">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li><a href="../projects.html">Projects</a></li>
+        <li><a href="../assets/Julieta-Lara-Romero-CV.pdf">Résumé</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2 class="footer-h">Contact</h2>
+      <ul class="plain">
+        <li><a href="mailto:julietalarar98@gmail.com">julietalarar98@gmail.com</a></li>
+        <li><a href="https://www.linkedin.com/in/julieta-lara-romero-525366285/" rel="me">LinkedIn</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-base muted">
+    <p>© 2026 Julieta Lara Romero</p>
+    <p>Designed and built by hand with HTML, CSS and JavaScript. Charts use synthetic data.</p>
+  </div>
+</footer>
+<script src="../assets/site.js" defer></script>
+<script type="application/json" id="chart-data">{"locale":"en-GB","charts":{"p4-success":{"type":"bar","unit":"%","min":0,"max":100,"labels":["Find a class","Book a class","Cancel a booking","Change payment method","Invite a friend"],"axis":"Completed the task (%)","legend":true,"series":[{"name":"Prototype 1","values":[100,70,40,50,80],"color":"lav"},{"name":"Prototype 2","values":[100,80,70,100,80],"color":"iris"}]},"p4-time":{"type":"hbar","unit":" s","labels":["Find a class","Book a class","Cancel a booking","Change payment method","Invite a friend"],"axis":"Median time on task (seconds)","legend":true,"series":[{"name":"Prototype 1","values":[36,91,136,113,64],"color":"lav"},{"name":"Prototype 2","values":[35,63,52,77,50],"color":"iris"}]}}}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" defer></script>
+<script src="../assets/charts.js" defer></script>
+</body>
+</html>

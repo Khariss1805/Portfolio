@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Un dashboard de ventas para una tienda en línea | Julieta Lara Romero</title>
+  <meta name="description" content="Un dashboard estilo Power BI con un año de pedidos: ingresos, categorías, temporadas y devoluciones en una sola pantalla.">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f7f4fc" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#150f26" media="(prefers-color-scheme: dark)">
+  <meta property="og:title" content="Un dashboard de ventas para una tienda en línea | Julieta Lara Romero">
+  <meta property="og:description" content="Un dashboard estilo Power BI con un año de pedidos: ingresos, categorías, temporadas y devoluciones en una sola pantalla.">
+  <meta property="og:type" content="website">
+  <link rel="alternate" hreflang="en" href="https://khariss1805.github.io/Portfolio/projects/sales-dashboard.html">
+  <link rel="alternate" hreflang="nl" href="https://khariss1805.github.io/Portfolio/nl/projects/sales-dashboard.html">
+  <link rel="alternate" hreflang="pt-PT" href="https://khariss1805.github.io/Portfolio/pt/projects/sales-dashboard.html">
+  <link rel="alternate" hreflang="es" href="https://khariss1805.github.io/Portfolio/es/projects/sales-dashboard.html">
+  <link rel="alternate" hreflang="x-default" href="https://khariss1805.github.io/Portfolio/projects/sales-dashboard.html">
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Instrument+Sans:ital,wght@0,400..700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/site.css">
+  <script>document.documentElement.classList.add('js');setTimeout(function(){if(!window.__site)document.documentElement.classList.remove('js')},3000)</script>
+</head>
+<body>
+<div class="read-progress" aria-hidden="true"></div>
+<a class="skip" href="#main">Ir al contenido</a>
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="brand" href="../index.html">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="13" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="16" cy="16" r="5" fill="currentColor"/></svg>
+      <span><span class="brand-name">Julieta Lara Romero</span><span class="brand-role">Analista de datos y diseñadora UX/UI</span></span>
+    </a>
+    <nav class="main-nav" aria-label="Main">
+      <a href="../index.html">Inicio</a>
+      <a href="../about.html">Sobre mí</a>
+      <a href="../projects.html" aria-current="page">Proyectos</a>
+      <a href="../../assets/Julieta-Lara-Romero-CV.pdf">Hoja de vida</a>
+    </nav>
+    <nav class="lang-switch" aria-label="Idioma"><a href="../../projects/sales-dashboard.html" hreflang="en" lang="en" title="English">EN</a><a href="../../nl/projects/sales-dashboard.html" hreflang="nl" lang="nl" title="Nederlands">NL</a><a href="../../pt/projects/sales-dashboard.html" hreflang="pt-PT" lang="pt-PT" title="Português">PT</a><a href="sales-dashboard.html" hreflang="es" lang="es" title="Español" aria-current="true">ES</a></nav>
+  </div>
+</header>
+<main id="main">
+<article>
+<header class="page-head case-head">
+  <div class="wrap narrow">
+    <nav class="crumbs hero-in" style="--d:0" aria-label="Ruta de navegación"><a href="../index.html">Inicio</a><span aria-hidden="true">/</span><a href="../projects.html">Proyectos</a></nav>
+    <p class="case-tags hero-in" style="--d:1"><span class="tag">Dashboards y BI</span><span class="tag tag-practice">Proyecto de práctica</span></p>
+    <h1 class="hero-in" style="--d:2">Un dashboard de ventas para una tienda en línea</h1>
+    <p class="hero-lead hero-in" style="--d:3">La tienda seguía sus ventas en cinco hojas de cálculo que nunca coincidían. Construí un solo modelo y un solo dashboard, para que todos los equipos lean los mismos números.</p>
+    <div class="case-results hero-in" style="--d:4"><span class="result"><strong><span class="count" data-to="53.8" data-dec="1">53,8</span>%</strong><span>de los ingresos viene de dos categorías</span></span><span class="result"><strong><span class="count" data-to="21.9" data-dec="1">21,9</span>%</strong><span>de los pedidos de ropa se devuelven</span></span></div>
+    <p class="practice-note hero-in" style="--d:5">Este es un proyecto de práctica. La empresa es ficticia y los datos son sintéticos, generados para comportarse como datos reales de un producto. Las preguntas, los métodos y el código son los que usaría en el trabajo.</p>
+  </div>
+</header>
+<div class="wrap narrow case-body">
+  <section data-reveal><h2>La pregunta</h2><p>Una tienda en línea ficticia vende en seis categorías. Cada equipo exportaba sus propios números y las reuniones empezaban discutiendo cuál hoja tenía la razón.</p><p>La pregunta: ¿de dónde vienen los ingresos, cuándo llegan al pico y qué se los está comiendo sin que nadie lo note?</p></section>
+  <section data-reveal><h2>Los datos</h2><p>Doce meses de pedidos: 39.709 pedidos, con sus artículos, productos y categorías, más cada devolución.</p></section>
+  <section><h2 data-reveal>Lo que hice</h2><ol class="steps"><li data-reveal style="--d:0">Escribí una consulta SQL por cada definición de negocio, por ejemplo ingresos sin pedidos cancelados, para que todos los visuales usen la misma lógica.</li><li data-reveal style="--d:1">Modelé los datos en esquema estrella: pedidos y devoluciones como hechos; fechas, productos y categorías como dimensiones.</li><li data-reveal style="--d:2">Construí el dashboard de abajo: cuatro KPI, ingresos por mes y un desglose por categoría.</li><li data-reveal style="--d:3">Agregué medidas DAX para el pedido promedio y el crecimiento frente al año anterior.</li></ol></section>
+</div>
+<div class="wrap wide"><div class="dash" data-reveal>
+      <div class="dash-bar"><span class="dash-dots" aria-hidden="true"><i></i><i></i><i></i></span><span>Un dashboard de ventas para una tienda en línea</span></div>
+      <div class="kpis"><div class="kpi"><span>Ingresos</span><strong>€<span class="count" data-to="2.34" data-dec="2">2,34</span>M</strong></div><div class="kpi"><span>Pedidos</span><strong><span class="count" data-to="39709" data-dec="0">39.709</span></strong></div><div class="kpi"><span>Pedido promedio</span><strong>€<span class="count" data-to="59" data-dec="0">59</span></strong></div><div class="kpi kpi-miss"><span>Tasa de devolución</span><strong><span class="count" data-to="8.6" data-dec="1">8,6</span>%</strong></div></div>
+      <div class="dash-grid">
+        <div class="dash-wide"><figure class="chart-fig" data-reveal>
+  <div class="figbox"><div class="chart"><canvas id="p1-months" role="img" aria-label="Ingresos por mes."></canvas></div></div>
+  <figcaption>Ingresos por mes. <span class="muted">Pasa el cursor o toca el gráfico para ver los valores.</span></figcaption>
+  <details class="data-table"><summary>Ver los números</summary><div class="table-scroll"><table><thead><tr><th></th><th scope="col">Ingresos (miles de €)</th></tr></thead><tbody><tr><th scope="row">Ene</th><td class="num">150</td></tr><tr><th scope="row">Feb</th><td class="num">138</td></tr><tr><th scope="row">Mar</th><td class="num">158</td></tr><tr><th scope="row">Abr</th><td class="num">170</td></tr><tr><th scope="row">May</th><td class="num">184</td></tr><tr><th scope="row">Jun</th><td class="num">175</td></tr><tr><th scope="row">Jul</th><td class="num">174</td></tr><tr><th scope="row">Ago</th><td class="num">186</td></tr><tr><th scope="row">Sep</th><td class="num">182</td></tr><tr><th scope="row">Oct</th><td class="num">214</td></tr><tr><th scope="row">Nov</th><td class="num">281</td></tr><tr><th scope="row">Dic</th><td class="num">340</td></tr></tbody></table></div></details>
+</figure></div>
+        <figure class="chart-fig" data-reveal>
+  <div class="figbox"><div class="chart" style="--h:354px"><canvas id="p1-cats" role="img" aria-label="Ingresos por categoría en el año."></canvas></div></div>
+  <figcaption>Ingresos por categoría en el año. <span class="muted">Pasa el cursor o toca el gráfico para ver los valores.</span></figcaption>
+  <details class="data-table"><summary>Ver los números</summary><div class="table-scroll"><table><thead><tr><th></th><th scope="col">Ingresos (miles de €)</th></tr></thead><tbody><tr><th scope="row">Electrónica</th><td class="num">698</td></tr><tr><th scope="row">Hogar</th><td class="num">559</td></tr><tr><th scope="row">Ropa</th><td class="num">407</td></tr><tr><th scope="row">Belleza</th><td class="num">289</td></tr><tr><th scope="row">Deportes</th><td class="num">244</td></tr><tr><th scope="row">Libros</th><td class="num">142</td></tr></tbody></table></div></details>
+</figure>
+        <figure class="chart-fig" data-reveal>
+  <div class="figbox"><div class="chart" style="--h:354px"><canvas id="p1-returns" role="img" aria-label="Porcentaje de pedidos devueltos, por categoría."></canvas></div></div>
+  <figcaption>Porcentaje de pedidos devueltos, por categoría. <span class="muted">Pasa el cursor o toca el gráfico para ver los valores.</span></figcaption>
+  <details class="data-table"><summary>Ver los números</summary><div class="table-scroll"><table><thead><tr><th></th><th scope="col">Pedidos devueltos (%)</th></tr></thead><tbody><tr><th scope="row">Ropa</th><td class="num">21,9</td></tr><tr><th scope="row">Deportes</th><td class="num">9,7</td></tr><tr><th scope="row">Hogar</th><td class="num">8,2</td></tr><tr><th scope="row">Electrónica</th><td class="num">5,3</td></tr><tr><th scope="row">Belleza</th><td class="num">3,4</td></tr><tr><th scope="row">Libros</th><td class="num">2,2</td></tr></tbody></table></div></details>
+</figure>
+      </div>
+    </div></div>
+<div class="wrap narrow case-body">
+  <section><h2 data-reveal>Lo que encontré</h2><div class="finding">
+      <h3 data-reveal>Dos categorías sostienen la tienda</h3>
+      <p data-reveal>Electrónica y hogar generan el 53,8% de los ingresos. Un mal mes en cualquiera de las dos mueve todo el negocio.</p>
+      
+    </div><div class="finding">
+      <h3 data-reveal>Diciembre vale casi dos meses normales</h3>
+      <p data-reveal>Los ingresos de diciembre están 73% por encima del promedio mensual, y el último trimestre aporta el 35,5% del año. El inventario y las campañas deben estar listos en octubre.</p>
+      
+    </div><div class="finding">
+      <h3 data-reveal>Las devoluciones de ropa son un costo oculto</h3>
+      <p data-reveal>Se devuelve el 21,9% de los pedidos de ropa, frente al 8,6% en toda la tienda. Son unos 89 mil € en ventas reembolsadas al año.</p>
+      
+    </div></section>
+  <section><h2 data-reveal>Lo que recomendaría</h2><ul class="recs"><li data-reveal style="--d:0">Dejar las hojas de cada equipo y usar el modelo compartido como única fuente de números.</li><li data-reveal style="--d:1">Planear inventario y marketing del último trimestre desde octubre, no desde noviembre.</li><li data-reveal style="--d:2">Probar una mejor guía de tallas en las páginas de ropa y medir su éxito con la tasa de devolución.</li></ul></section>
+  <section data-reveal><h2>Un vistazo al código</h2>
+    <figure class="code"><figcaption>SQL + DAX</figcaption><pre tabindex="0" translate="no"><code>-- Monthly revenue and returns by category (feeds the Power BI model)
+SELECT
+  date_trunc('month', o.ordered_at)              AS month,
+  p.category,
+  COUNT(DISTINCT o.order_id)                     AS orders,
+  SUM(oi.quantity * oi.unit_price)               AS revenue,
+  AVG(CASE WHEN r.order_id IS NOT NULL THEN 1.0 ELSE 0 END) AS return_rate
+FROM orders o
+JOIN order_items oi USING (order_id)
+JOIN products    p  USING (product_id)
+LEFT JOIN returns r USING (order_id)
+WHERE o.status &lt;&gt; 'cancelled'
+GROUP BY 1, 2;
+
+-- DAX measures
+Average order value = DIVIDE ( [Revenue], [Orders] )
+Revenue vs last year % =
+VAR prev = CALCULATE ( [Revenue], SAMEPERIODLASTYEAR ( 'Date'[Date] ) )
+RETURN DIVIDE ( [Revenue] - prev, prev )</code></pre></figure>
+  </section>
+  <section data-reveal><h2>Herramientas</h2><ul class="tags plain"><li>Power BI</li><li>DAX</li><li>SQL</li><li>Excel</li></ul></section>
+  <nav class="case-nav" aria-label="Proyectos" data-reveal>
+    <a href="../projects.html">Todos los proyectos</a>
+    <a class="case-next" href="checkout-ab-test.html"><span class="muted">Siguiente proyecto</span>¿Funcionó de verdad el nuevo diseño del checkout?</a>
+  </nav>
+</div>
+</article>
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <p class="footer-name">Julieta Lara Romero</p>
+      <p class="muted">Analista de datos y diseñadora UX/UI. Trilingüe (español, inglés y portugués), con formación en Ingeniería Multimedia e Inteligencia de Negocios.</p>
+    </div>
+    <div>
+      <h2 class="footer-h">Páginas</h2>
+      <ul class="plain">
+        <li><a href="../index.html">Inicio</a></li>
+        <li><a href="../about.html">Sobre mí</a></li>
+        <li><a href="../projects.html">Proyectos</a></li>
+        <li><a href="../../assets/Julieta-Lara-Romero-CV.pdf">Hoja de vida</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2 class="footer-h">Contacto</h2>
+      <ul class="plain">
+        <li><a href="mailto:julietalarar98@gmail.com">julietalarar98@gmail.com</a></li>
+        <li><a href="https://www.linkedin.com/in/julieta-lara-romero-525366285/" rel="me">LinkedIn</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-base muted">
+    <p>© 2026 Julieta Lara Romero</p>
+    <p>Diseñado y construido a mano con HTML, CSS y JavaScript. Los gráficos usan datos sintéticos.</p>
+  </div>
+</footer>
+<script src="../../assets/site.js" defer></script>
+<script type="application/json" id="chart-data">{"locale":"es-CO","charts":{"p1-months":{"type":"bar","labels":["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"],"axis":"Ingresos (miles de €)","series":[{"name":"Ingresos (miles de €)","values":[150,138,158,170,184,175,174,186,182,214,281,340],"colors":["iris","iris","iris","iris","iris","iris","iris","iris","iris","orchid","orchid","orchid"]}]},"p1-cats":{"type":"hbar","labels":["Electrónica","Hogar","Ropa","Belleza","Deportes","Libros"],"axis":"Ingresos (miles de €)","series":[{"name":"Ingresos (miles de €)","values":[698,559,407,289,244,142],"colors":["orchid","orchid","iris","iris","iris","iris"]}]},"p1-returns":{"type":"hbar","unit":"%","labels":["Ropa","Deportes","Hogar","Electrónica","Belleza","Libros"],"axis":"Pedidos devueltos (%)","series":[{"name":"Pedidos devueltos (%)","values":[21.9,9.7,8.2,5.3,3.4,2.2],"colors":["orchid","iris","iris","iris","iris","iris"]}]}}}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" defer></script>
+<script src="../../assets/charts.js" defer></script>
+</body>
+</html>

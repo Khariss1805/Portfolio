@@ -6,6 +6,8 @@
   <title>Projetos | Julieta Lara Romero</title>
   <meta name="description" content="Casos de estudo de prática com dados sintéticos. Cada um tem a pergunta, o método, o código e o que eu recomendaria.">
   <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f7f4fc" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#150f26" media="(prefers-color-scheme: dark)">
   <meta property="og:title" content="Projetos | Julieta Lara Romero">
   <meta property="og:description" content="Casos de estudo de prática com dados sintéticos. Cada um tem a pergunta, o método, o código e o que eu recomendaria.">
   <meta property="og:type" content="website">
@@ -19,7 +21,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Instrument+Sans:ital,wght@0,400..700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/site.css">
-  <script>document.documentElement.classList.add('js')</script>
+  <script>document.documentElement.classList.add('js');setTimeout(function(){if(!window.__site)document.documentElement.classList.remove('js')},3000)</script>
 </head>
 <body>
 <a class="skip" href="#main">Saltar para o conteúdo</a>
@@ -27,7 +29,7 @@
   <div class="wrap header-row">
     <a class="brand" href="index.html">
       <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="13" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="16" cy="16" r="5" fill="currentColor"/></svg>
-      <span><span class="brand-name">Julieta Lara Romero</span><span class="brand-role">Analista de CX e dados</span></span>
+      <span><span class="brand-name">Julieta Lara Romero</span><span class="brand-role">Analista de dados e designer UX/UI</span></span>
     </a>
     <nav class="main-nav" aria-label="Main">
       <a href="index.html">Início</a>
@@ -41,89 +43,89 @@
 <main id="main">
 <section class="page-head">
   <div class="wrap">
-    <p class="hero-role">Projetos</p>
-    <h1>Seis perguntas de um contact centre, respondidas com dados</h1>
-    <p class="hero-lead">Casos de estudo de prática com dados sintéticos. Cada um tem a pergunta, o método, o código e o que eu recomendaria.</p>
-    <p class="practice-note">Este é um projeto de prática. A empresa é fictícia e os dados são sintéticos, gerados para se comportarem como dados reais de um contact centre. As perguntas, os métodos e o código são os que usaria no trabalho.</p>
+    <p class="hero-role hero-in" style="--d:0">Projetos</p>
+    <h1 class="hero-in" style="--d:1">Seis perguntas de produto, respondidas com dados e design</h1>
+    <p class="hero-lead hero-in" style="--d:2">Casos de estudo de prática com dados sintéticos. Cada um tem a pergunta, o método, o código e o que eu recomendaria.</p>
+    <p class="practice-note hero-in" style="--d:3">Este é um projeto de prática. A empresa é fictícia e os dados são sintéticos, gerados para se comportarem como dados reais de um produto. As perguntas, os métodos e o código são os que usaria no trabalho.</p>
   </div>
 </section>
 <section class="section section-tight" aria-label="Projetos">
   <div class="wrap">
-    <div class="filters" role="group" aria-label="Projetos" hidden><button type="button" aria-pressed="true" data-filter="all">Todos <span>6</span></button><button type="button" aria-pressed="false" data-filter="cx">Experiência do cliente <span>2</span></button><button type="button" aria-pressed="false" data-filter="quality">Qualidade e desempenho <span>2</span></button><button type="button" aria-pressed="false" data-filter="ops">Operações e crescimento <span>2</span></button></div>
-    <ol class="proj-list plain" id="proj-list"><li class="proj" data-cat="cx">
-  <a class="proj-link" href="projects/csat-drivers.html">
+    <div class="filters" role="group" aria-label="Projetos" hidden><button type="button" aria-pressed="true" data-filter="all">Todos <span>6</span></button><button type="button" aria-pressed="false" data-filter="bi">Dashboards e BI <span>2</span></button><button type="button" aria-pressed="false" data-filter="product">Análise de produto <span>2</span></button><button type="button" aria-pressed="false" data-filter="ux">Investigação UX <span>2</span></button></div>
+    <ol class="proj-list plain" id="proj-list"><li class="proj" data-cat="bi" data-reveal style="--d:0">
+  <a class="proj-link" href="projects/sales-dashboard.html">
     <span class="proj-main">
-      <span class="proj-cat">Experiência do cliente</span>
-      <span class="proj-title">O que faz realmente mexer o CSAT num apoio ao cliente multilingue</span>
-      <span class="proj-short">Que partes de um contacto deixam o cliente satisfeito ou não, em seis motivos de contacto e quatro filas de língua.</span>
-      <span class="proj-tools"><span>Python</span><span>pandas</span><span>Regressão logística</span><span>Power BI</span></span>
+      <span class="proj-cat">Dashboards e BI</span>
+      <span class="proj-title">Um dashboard de vendas para uma loja online</span>
+      <span class="proj-short">Um dashboard ao estilo Power BI com um ano de encomendas: receita, categorias, sazonalidade e devoluções num só ecrã.</span>
+      <span class="proj-tools"><span translate="no">Power BI</span><span translate="no">DAX</span><span translate="no">SQL</span><span translate="no">Excel</span></span>
     </span>
-    <span class="proj-results"><span class="result"><strong>+29,1 pts</strong><span>de CSAT quando resolvido à primeira</span></span><span class="result"><strong>−14,4 pts</strong><span>quando não atendido na sua língua</span></span></span>
+    <span class="proj-results"><span class="result"><strong><span class="count" data-to="53.8" data-dec="1">53,8</span>%</strong><span>da receita vem de duas categorias</span></span><span class="result"><strong><span class="count" data-to="21.9" data-dec="1">21,9</span>%</strong><span>das encomendas de vestuário são devolvidas</span></span></span>
   </a>
-</li><li class="proj" data-cat="quality">
-  <a class="proj-link" href="projects/agent-scorecard.html">
+</li><li class="proj" data-cat="ux" data-reveal style="--d:1">
+  <a class="proj-link" href="projects/checkout-ab-test.html">
     <span class="proj-main">
-      <span class="proj-cat">Qualidade e desempenho</span>
-      <span class="proj-title">Um scorecard de agentes que não premeia a pressa</span>
-      <span class="proj-short">Um dashboard ao estilo Power BI para 40 agentes que mostra velocidade, qualidade e resolução em conjunto.</span>
-      <span class="proj-tools"><span>Power BI</span><span>DAX</span><span>SQL</span><span>Excel</span></span>
+      <span class="proj-cat">Investigação UX</span>
+      <span class="proj-title">O novo design do checkout funcionou mesmo?</span>
+      <span class="proj-short">Um teste A/B de um checkout redesenhado, lido com cuidado: efeito global, efeito por dispositivo e se o resultado é fiável.</span>
+      <span class="proj-tools"><span translate="no">Python</span><span translate="no">statsmodels</span><span translate="no">Testes A/B</span><span translate="no">Figma</span></span>
     </span>
-    <span class="proj-results"><span class="result"><strong>13 de 40</strong><span>agentes rápidos mas abaixo do objetivo de qualidade</span></span><span class="result"><strong>21,9%</strong><span>dos contactos falham nas notas do caso</span></span></span>
+    <span class="proj-results"><span class="result"><strong>+<span class="count" data-to="25" data-dec="0">25</span>%</strong><span>mais compras concluídas</span></span><span class="result"><strong>+<span class="count" data-to="28" data-dec="0">28</span>%</strong><span>no telemóvel, onde mais importava</span></span></span>
   </a>
-</li><li class="proj" data-cat="cx">
-  <a class="proj-link" href="projects/repeat-contacts.html">
+</li><li class="proj" data-cat="product" data-reveal style="--d:2">
+  <a class="proj-link" href="projects/signup-funnel.html">
     <span class="proj-main">
-      <span class="proj-cat">Experiência do cliente</span>
-      <span class="proj-title">De onde vêm os recontactos</span>
-      <span class="proj-short">SQL em PostgreSQL para medir bem a resolução no primeiro contacto e descobrir porque é que os clientes voltam a ligar.</span>
-      <span class="proj-tools"><span>PostgreSQL</span><span>Funções de janela SQL</span><span>Tableau</span></span>
+      <span class="proj-cat">Análise de produto</span>
+      <span class="proj-title">Onde os novos utilizadores desistem do registo</span>
+      <span class="proj-short">Análise de funil em PostgreSQL de um registo com seis passos, por dispositivo, para encontrar o passo que vale a pena redesenhar primeiro.</span>
+      <span class="proj-tools"><span translate="no">PostgreSQL</span><span translate="no">SQL</span><span translate="no">Tableau</span><span translate="no">Figma</span></span>
     </span>
-    <span class="proj-results"><span class="result"><strong>54,9%</strong><span>dos recontactos vêm de dois motivos</span></span><span class="result"><strong>60%</strong><span>acontecem em menos de 48 horas</span></span></span>
+    <span class="proj-results"><span class="result"><strong><span class="count" data-to="12.8" data-dec="1">12,8</span>%</strong><span>dos visitantes tornam-se utilizadores ativos</span></span><span class="result"><strong><span class="count" data-to="48" data-dec="0">48</span>%</strong><span>dos utilizadores de telemóvel perdidos na confirmação do e-mail</span></span></span>
   </a>
-</li><li class="proj" data-cat="ops">
-  <a class="proj-link" href="projects/volume-forecast.html">
+</li><li class="proj" data-cat="ux" data-reveal style="--d:3">
+  <a class="proj-link" href="projects/usability-study.html">
     <span class="proj-main">
-      <span class="proj-cat">Operações e crescimento</span>
-      <span class="proj-title">Previsão de volume e dimensionamento hora a hora</span>
-      <span class="proj-short">Uma previsão semanal de volume e um plano de pessoal hora a hora com Erlang C, em Excel e verificado em Python.</span>
-      <span class="proj-tools"><span>Excel</span><span>Python</span><span>Erlang C</span><span>Previsão</span></span>
+      <span class="proj-cat">Investigação UX</span>
+      <span class="proj-title">A testar dois protótipos de uma app de reservas</span>
+      <span class="proj-short">Um estudo de usabilidade moderado com sucesso por tarefa, tempo por tarefa e pontuação SUS, a comparar duas rondas de um protótipo em Figma.</span>
+      <span class="proj-tools"><span translate="no">Figma</span><span translate="no">Testes de usabilidade</span><span translate="no">SUS</span><span translate="no">Python</span><span translate="no">Google Sheets</span></span>
     </span>
-    <span class="proj-results"><span class="result"><strong>5%</strong><span>de erro médio da previsão</span></span><span class="result"><strong>76 horas</strong><span>de agente poupadas numa segunda-feira</span></span></span>
+    <span class="proj-results"><span class="result"><strong><span class="count" data-to="80.8" data-dec="1">80,8</span></strong><span>pontuação SUS, antes 58,8</span></span><span class="result"><strong><span class="count" data-to="37" data-dec="0">37</span>%</strong><span>menos tempo para concluir as tarefas</span></span></span>
   </a>
-</li><li class="proj" data-cat="quality">
-  <a class="proj-link" href="projects/qa-calibration.html">
+</li><li class="proj" data-cat="bi" data-reveal style="--d:4">
+  <a class="proj-link" href="projects/order-forecast.html">
     <span class="proj-main">
-      <span class="proj-cat">Qualidade e desempenho</span>
-      <span class="proj-title">Os nossos avaliadores de qualidade estão de acordo?</span>
-      <span class="proj-short">Um estudo de calibração de seis avaliadores de qualidade que pontuaram os mesmos 30 contactos.</span>
-      <span class="proj-tools"><span>Google Sheets</span><span>Python</span><span>Scorecards de QA</span></span>
+      <span class="proj-cat">Dashboards e BI</span>
+      <span class="proj-title">Previsão de encomendas semanais para uma loja online</span>
+      <span class="proj-short">Uma previsão semanal de encomendas simples o suficiente para manter em Excel, testada com honestidade, e quando os clientes compram na semana.</span>
+      <span class="proj-tools"><span translate="no">Python</span><span translate="no">Excel</span><span translate="no">Previsão</span><span translate="no">Tableau</span></span>
     </span>
-    <span class="proj-results"><span class="result"><strong>10,3 pts</strong><span>entre o avaliador mais exigente e o mais brando</span></span><span class="result"><strong>50%</strong><span>de acordo na empatia</span></span></span>
+    <span class="proj-results"><span class="result"><strong><span class="count" data-to="5.1" data-dec="1">5,1</span>%</strong><span>de erro médio da previsão</span></span><span class="result"><strong><span class="count" data-to="41" data-dec="0">41</span>%</strong><span>das encomendas entre as 19:00 e as 23:00</span></span></span>
   </a>
-</li><li class="proj" data-cat="ops">
-  <a class="proj-link" href="projects/retention-cohorts.html">
+</li><li class="proj" data-cat="product" data-reveal style="--d:5">
+  <a class="proj-link" href="projects/onboarding-retention.html">
     <span class="proj-main">
-      <span class="proj-cat">Operações e crescimento</span>
-      <span class="proj-title">Uma chamada de boas-vindas faz os membros ficar mais tempo?</span>
-      <span class="proj-short">Análise de coortes de uma subscrição de saúde fictícia, a comparar a chamada de boas-vindas com boas-vindas só por e-mail.</span>
-      <span class="proj-tools"><span>SQL</span><span>Tableau</span><span>Análise de coortes</span><span>Figma</span></span>
+      <span class="proj-cat">Análise de produto</span>
+      <span class="proj-title">Um tour de boas-vindas faz os membros ficar mais tempo?</span>
+      <span class="proj-short">Análise de coortes de uma app de bem-estar fictícia depois de acrescentar um tour guiado para novos membros.</span>
+      <span class="proj-tools"><span translate="no">SQL</span><span translate="no">Tableau</span><span translate="no">Análise de coortes</span><span translate="no">Figma</span></span>
     </span>
-    <span class="proj-results"><span class="result"><strong>+16,9 pts</strong><span>de membros ativos ao 6.º mês</span></span><span class="result"><strong>+7 pts</strong><span>de retenção ao 3.º mês após a mudança</span></span></span>
+    <span class="proj-results"><span class="result"><strong>+<span class="count" data-to="16.9" data-dec="1">16,9</span> pts</strong><span>de membros ativos ao 6.º mês</span></span><span class="result"><strong>+<span class="count" data-to="7" data-dec="0">7</span> pts</strong><span>de retenção ao 3.º mês após o lançamento</span></span></span>
   </a>
 </li></ol>
   </div>
 </section>
 <section class="section band" aria-labelledby="earlier-h">
   <div class="wrap">
-    <div class="section-head">
-      <h2 id="earlier-h">Trabalho anterior</h2>
-      <p class="lede">Casos de design do meu curso de Engenharia Multimédia.</p>
+    <div class="section-head" data-reveal>
+      <h2 id="earlier-h">Trabalho de design anterior</h2>
+      <p class="lede">Casos de UX e UI do meu curso de Engenharia Multimédia.</p>
     </div>
-    <ul class="earlier plain"><li><a href="../design/Irina.html"><strong>La resiliencia de Irina</strong><span>Design de um jogo sério em realidade virtual: investigação, personas, journey maps e protótipos.</span></a></li><li><a href="../design/nona.html"><strong>NonaAntojos</strong><span>Menu web para telemóvel de um negócio de comida local: fluxos de tarefas, arquitetura e protótipos.</span></a></li></ul>
+    <ul class="earlier plain"><li data-reveal style="--d:0"><a href="../design/Irina.html"><strong>La resiliencia de Irina</strong><span>Design de um jogo sério em realidade virtual: investigação, personas, journey maps e protótipos.</span></a></li><li data-reveal style="--d:1"><a href="../design/nona.html"><strong>NonaAntojos</strong><span>Menu web para telemóvel de um negócio de comida local: fluxos de tarefas, arquitetura e protótipos.</span></a></li></ul>
   </div>
 </section>
 <section class="section">
-  <div class="wrap cta-row">
+  <div class="wrap cta-row" data-reveal>
     <h2>Quer ver datas e detalhes?</h2>
     <a class="btn" href="../assets/Julieta-Lara-Romero-CV.pdf" download>Descarregar o meu CV</a>
   </div>
@@ -133,7 +135,7 @@
   <div class="wrap footer-grid">
     <div>
       <p class="footer-name">Julieta Lara Romero</p>
-      <p class="muted">Analista de CX e dados. Trilingue (espanhol, inglês e português), com formação em Engenharia Multimédia e Business Intelligence.</p>
+      <p class="muted">Analista de dados e designer UX/UI. Trilingue (espanhol, inglês e português), com formação em Engenharia Multimédia e Business Intelligence.</p>
     </div>
     <div>
       <h2 class="footer-h">Páginas</h2>
@@ -148,14 +150,13 @@
       <h2 class="footer-h">Contacto</h2>
       <ul class="plain">
         <li><a href="mailto:julietalarar98@gmail.com">julietalarar98@gmail.com</a></li>
-        <li><a href="tel:+573222118698">+57 322 211 8698</a></li>
-        
+        <li><a href="https://www.linkedin.com/in/julieta-lara-romero-525366285/" rel="me">LinkedIn</a></li>
       </ul>
     </div>
   </div>
   <div class="wrap footer-base muted">
     <p>© 2026 Julieta Lara Romero</p>
-    <p>Feito à mão com HTML, CSS e JavaScript. Os gráficos usam dados sintéticos.</p>
+    <p>Desenhado e construído à mão com HTML, CSS e JavaScript. Os gráficos usam dados sintéticos.</p>
   </div>
 </footer>
 <script src="../assets/site.js" defer></script>

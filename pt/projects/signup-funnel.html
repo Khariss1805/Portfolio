@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Onde os novos utilizadores desistem do registo | Julieta Lara Romero</title>
+  <meta name="description" content="Análise de funil em PostgreSQL de um registo com seis passos, por dispositivo, para encontrar o passo que vale a pena redesenhar primeiro.">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f7f4fc" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#150f26" media="(prefers-color-scheme: dark)">
+  <meta property="og:title" content="Onde os novos utilizadores desistem do registo | Julieta Lara Romero">
+  <meta property="og:description" content="Análise de funil em PostgreSQL de um registo com seis passos, por dispositivo, para encontrar o passo que vale a pena redesenhar primeiro.">
+  <meta property="og:type" content="website">
+  <link rel="alternate" hreflang="en" href="https://khariss1805.github.io/Portfolio/projects/signup-funnel.html">
+  <link rel="alternate" hreflang="nl" href="https://khariss1805.github.io/Portfolio/nl/projects/signup-funnel.html">
+  <link rel="alternate" hreflang="pt-PT" href="https://khariss1805.github.io/Portfolio/pt/projects/signup-funnel.html">
+  <link rel="alternate" hreflang="es" href="https://khariss1805.github.io/Portfolio/es/projects/signup-funnel.html">
+  <link rel="alternate" hreflang="x-default" href="https://khariss1805.github.io/Portfolio/projects/signup-funnel.html">
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Instrument+Sans:ital,wght@0,400..700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/site.css">
+  <script>document.documentElement.classList.add('js');setTimeout(function(){if(!window.__site)document.documentElement.classList.remove('js')},3000)</script>
+</head>
+<body>
+<div class="read-progress" aria-hidden="true"></div>
+<a class="skip" href="#main">Saltar para o conteúdo</a>
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="brand" href="../index.html">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="13" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="16" cy="16" r="5" fill="currentColor"/></svg>
+      <span><span class="brand-name">Julieta Lara Romero</span><span class="brand-role">Analista de dados e designer UX/UI</span></span>
+    </a>
+    <nav class="main-nav" aria-label="Main">
+      <a href="../index.html">Início</a>
+      <a href="../about.html">Sobre mim</a>
+      <a href="../projects.html" aria-current="page">Projetos</a>
+      <a href="../../assets/Julieta-Lara-Romero-CV.pdf">CV</a>
+    </nav>
+    <nav class="lang-switch" aria-label="Idioma"><a href="../../projects/signup-funnel.html" hreflang="en" lang="en" title="English">EN</a><a href="../../nl/projects/signup-funnel.html" hreflang="nl" lang="nl" title="Nederlands">NL</a><a href="signup-funnel.html" hreflang="pt-PT" lang="pt-PT" title="Português" aria-current="true">PT</a><a href="../../es/projects/signup-funnel.html" hreflang="es" lang="es" title="Español">ES</a></nav>
+  </div>
+</header>
+<main id="main">
+<article>
+<header class="page-head case-head">
+  <div class="wrap narrow">
+    <nav class="crumbs hero-in" style="--d:0" aria-label="Percurso de navegação"><a href="../index.html">Início</a><span aria-hidden="true">/</span><a href="../projects.html">Projetos</a></nav>
+    <p class="case-tags hero-in" style="--d:1"><span class="tag">Análise de produto</span><span class="tag tag-practice">Projeto de prática</span></p>
+    <h1 class="hero-in" style="--d:2">Onde os novos utilizadores desistem do registo</h1>
+    <p class="hero-lead hero-in" style="--d:3">Uma aplicação web tinha muitas visitas mas poucos utilizadores ativos. Segui cada visitante pelo registo para descobrir exatamente onde desistia.</p>
+    <div class="case-results hero-in" style="--d:4"><span class="result"><strong><span class="count" data-to="12.8" data-dec="1">12,8</span>%</strong><span>dos visitantes tornam-se utilizadores ativos</span></span><span class="result"><strong><span class="count" data-to="48" data-dec="0">48</span>%</strong><span>dos utilizadores de telemóvel perdidos na confirmação do e-mail</span></span></div>
+    <p class="practice-note hero-in" style="--d:5">Este é um projeto de prática. A empresa é fictícia e os dados são sintéticos, gerados para se comportarem como dados reais de um produto. As perguntas, os métodos e o código são os que usaria no trabalho.</p>
+  </div>
+</header>
+<div class="wrap narrow case-body">
+  <section data-reveal><h2>A pergunta</h2><p>Uma aplicação web fictícia de gestão de projetos recebe 40 000 visitantes por mês, mas só uma pequena parte chega a criar o primeiro projeto.</p><p>A pergunta: em que passo as pessoas saem, e é o mesmo no telemóvel e no computador?</p></section>
+  <section data-reveal><h2>Os dados</h2><p>Um mês de registos de eventos: o dispositivo de cada utilizador e os passos do registo a que chegou, desde ver a página inicial até criar um primeiro projeto.</p></section>
+  <section><h2 data-reveal>O que fiz</h2><ol class="steps"><li data-reveal style="--d:0">Transformei os eventos numa linha por utilizador com uma marca por cada passo do funil, usando agregação condicional em SQL.</li><li data-reveal style="--d:1">Calculei a percentagem de visitantes que chega a cada passo, e a que se perde em cada um, por dispositivo.</li><li data-reveal style="--d:2">Criei o funil em Tableau e partilhei-o com a equipa de design.</li><li data-reveal style="--d:3">Esbocei em Figma um fluxo de confirmação mais leve para o passo que perdia mais utilizadores.</li></ol></section>
+</div>
+
+<div class="wrap narrow case-body">
+  <section><h2 data-reveal>O que descobri</h2><div class="finding">
+      <h3 data-reveal>No telemóvel ficam para trás em cada passo</h3>
+      <p data-reveal>18,7% dos visitantes no computador acabam por criar um projeto, contra 9,5% no telemóvel. A diferença abre-se na confirmação do e-mail.</p>
+      <figure class="chart-fig" data-reveal>
+  <div class="figbox"><div class="chart" style="--h:534px"><canvas id="p3-funnel" role="img" aria-label="Percentagem de visitantes que chega a cada passo, por dispositivo."></canvas></div></div>
+  <figcaption>Percentagem de visitantes que chega a cada passo, por dispositivo. <span class="muted">Passe o rato ou toque no gráfico para ver os valores.</span></figcaption>
+  <details class="data-table"><summary>Ver os números</summary><div class="table-scroll"><table><thead><tr><th></th><th scope="col">Computador</th><th scope="col">Telemóvel</th></tr></thead><tbody><tr><th scope="row">Página inicial</th><td class="num">100</td><td class="num">100</td></tr><tr><th scope="row">Iniciou o registo</th><td class="num">44</td><td class="num">38</td></tr><tr><th scope="row">Introduziu o e-mail</th><td class="num">38,7</td><td class="num">30,8</td></tr><tr><th scope="row">Confirmou o e-mail</th><td class="num">28,7</td><td class="num">16</td></tr><tr><th scope="row">Completou o perfil</th><td class="num">24,6</td><td class="num">13,4</td></tr><tr><th scope="row">Criou o primeiro projeto</th><td class="num">18,7</td><td class="num">9,5</td></tr></tbody></table></div></details>
+</figure>
+    </div><div class="finding">
+      <h3 data-reveal>A confirmação do e-mail é o passo a corrigir</h3>
+      <p data-reveal>Depois de começarem o registo, a confirmação é a maior fuga: 39,1% de quem introduz o e-mail nunca o confirma. No telemóvel são 48%, no computador 26%. As pessoas mudam para a app de e-mail e não voltam.</p>
+      <figure class="chart-fig" data-reveal>
+  <div class="figbox"><div class="chart"><canvas id="p3-drop" role="img" aria-label="Percentagem de utilizadores perdida em cada passo."></canvas></div></div>
+  <figcaption>Percentagem de utilizadores perdida em cada passo. <span class="muted">Passe o rato ou toque no gráfico para ver os valores.</span></figcaption>
+  <details class="data-table"><summary>Ver os números</summary><div class="table-scroll"><table><thead><tr><th></th><th scope="col">Utilizadores perdidos no passo (%)</th></tr></thead><tbody><tr><th scope="row">Iniciou o registo</th><td class="num">59,9</td></tr><tr><th scope="row">Introduziu o e-mail</th><td class="num">16,3</td></tr><tr><th scope="row">Confirmou o e-mail</th><td class="num">39,1</td></tr><tr><th scope="row">Completou o perfil</th><td class="num">15</td></tr><tr><th scope="row">Criou o primeiro projeto</th><td class="num">26,5</td></tr></tbody></table></div></details>
+</figure>
+    </div></section>
+  <section><h2 data-reveal>O que recomendaria</h2><ul class="recs"><li data-reveal style="--d:0">Deixar os utilizadores começar a trabalhar antes de confirmarem o e-mail, e pedi-lo mais tarde.</li><li data-reveal style="--d:1">No telemóvel, trocar o link de confirmação por um código de seis dígitos que se escreve sem sair da app.</li><li data-reveal style="--d:2">Se a confirmação no telemóvel igualasse a do computador, a app ganharia cerca de 1050 utilizadores ativos por mês.</li></ul></section>
+  <section data-reveal><h2>Um olhar sobre o código</h2>
+    <figure class="code"><figcaption>PostgreSQL</figcaption><pre tabindex="0" translate="no"><code>WITH steps AS (
+  SELECT
+    user_id,
+    device,
+    MAX(CASE WHEN event = 'landing_view'   THEN 1 ELSE 0 END) AS s1_landing,
+    MAX(CASE WHEN event = 'signup_start'   THEN 1 ELSE 0 END) AS s2_start,
+    MAX(CASE WHEN event = 'email_entered'  THEN 1 ELSE 0 END) AS s3_email,
+    MAX(CASE WHEN event = 'email_verified' THEN 1 ELSE 0 END) AS s4_verified,
+    MAX(CASE WHEN event = 'profile_done'   THEN 1 ELSE 0 END) AS s5_profile,
+    MAX(CASE WHEN event = 'first_project'  THEN 1 ELSE 0 END) AS s6_first
+  FROM events
+  WHERE occurred_at &gt;= now() - INTERVAL '30 days'
+  GROUP BY user_id, device
+)
+SELECT
+  device,
+  SUM(s1_landing)  AS landing,
+  SUM(s2_start)    AS started,
+  SUM(s4_verified) AS verified,
+  SUM(s6_first)    AS activated,
+  ROUND(100.0 * SUM(s4_verified) / NULLIF(SUM(s3_email), 0), 1) AS verify_rate_pct
+FROM steps
+GROUP BY device;</code></pre></figure>
+  </section>
+  <section data-reveal><h2>Ferramentas</h2><ul class="tags plain"><li>PostgreSQL</li><li>SQL</li><li>Tableau</li><li>Figma</li></ul></section>
+  <nav class="case-nav" aria-label="Projetos" data-reveal>
+    <a href="../projects.html">Todos os projetos</a>
+    <a class="case-next" href="usability-study.html"><span class="muted">Próximo projeto</span>A testar dois protótipos de uma app de reservas</a>
+  </nav>
+</div>
+</article>
+</main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <p class="footer-name">Julieta Lara Romero</p>
+      <p class="muted">Analista de dados e designer UX/UI. Trilingue (espanhol, inglês e português), com formação em Engenharia Multimédia e Business Intelligence.</p>
+    </div>
+    <div>
+      <h2 class="footer-h">Páginas</h2>
+      <ul class="plain">
+        <li><a href="../index.html">Início</a></li>
+        <li><a href="../about.html">Sobre mim</a></li>
+        <li><a href="../projects.html">Projetos</a></li>
+        <li><a href="../../assets/Julieta-Lara-Romero-CV.pdf">CV</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2 class="footer-h">Contacto</h2>
+      <ul class="plain">
+        <li><a href="mailto:julietalarar98@gmail.com">julietalarar98@gmail.com</a></li>
+        <li><a href="https://www.linkedin.com/in/julieta-lara-romero-525366285/" rel="me">LinkedIn</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-base muted">
+    <p>© 2026 Julieta Lara Romero</p>
+    <p>Desenhado e construído à mão com HTML, CSS e JavaScript. Os gráficos usam dados sintéticos.</p>
+  </div>
+</footer>
+<script src="../../assets/site.js" defer></script>
+<script type="application/json" id="chart-data">{"locale":"pt-PT","charts":{"p3-funnel":{"type":"hbar","unit":"%","max":100,"labels":["Página inicial","Iniciou o registo","Introduziu o e-mail","Confirmou o e-mail","Completou o perfil","Criou o primeiro projeto"],"axis":"Visitantes que chegam ao passo (%)","legend":true,"series":[{"name":"Computador","values":[100,44,38.7,28.7,24.6,18.7],"color":"iris"},{"name":"Telemóvel","values":[100,38,30.8,16,13.4,9.5],"color":"orchid"}]},"p3-drop":{"type":"bar","unit":"%","labels":["Iniciou o registo","Introduziu o e-mail","Confirmou o e-mail","Completou o perfil","Criou o primeiro projeto"],"axis":"Utilizadores perdidos no passo (%)","series":[{"name":"Utilizadores perdidos no passo (%)","values":[59.9,16.3,39.1,15,26.5],"colors":["iris","iris","orchid","iris","iris"]}]}}}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" defer></script>
+<script src="../../assets/charts.js" defer></script>
+</body>
+</html>

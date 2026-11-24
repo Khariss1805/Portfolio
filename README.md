@@ -1,6 +1,6 @@
 # Julieta Lara Romero, portfolio
 
-CX & Data Analyst portfolio, in English with Dutch (`/nl`), European Portuguese (`/pt`) and Spanish (`/es`) versions. Served as a static site on GitHub Pages.
+Data Analyst and UX/UI Designer portfolio, in English with Dutch (`/nl`), European Portuguese (`/pt`) and Spanish (`/es`) versions. Served as a static site on GitHub Pages.
 
 ## Structure
 
@@ -11,7 +11,7 @@ CX & Data Analyst portfolio, in English with Dutch (`/nl`), European Portuguese 
 
 ## Editing
 
-Text lives in `build/content/{en,nl,pt,es}.mjs`. Contact details and the LinkedIn URL are in `CONFIG` at the top of `build/build.mjs`. After any change:
+Text lives in `build/content/{en,nl,pt,es}.mjs`. Contact details (email and LinkedIn) are in `CONFIG` at the top of `build/build.mjs`. Motion (scroll reveal, count-up numbers, chart drawing) lives in `assets/site.js`, `assets/charts.js` and the Motion section of `assets/site.css`; all of it respects reduced-motion settings. After any change:
 
 ```bash
 node build/build.mjs
