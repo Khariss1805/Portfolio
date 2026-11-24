@@ -36,7 +36,7 @@
       <a href="../index.html">Home</a>
       <a href="../about.html">About</a>
       <a href="../projects.html" aria-current="page">Projects</a>
-      <a href="../assets/Julieta-Lara-Romero-CV.pdf">Résumé</a>
+      <a href="../resume.html">Résumé</a>
     </nav>
     <nav class="lang-switch" aria-label="Language"><a href="signup-funnel.html" hreflang="en" lang="en" title="English" aria-current="true">EN</a><a href="../nl/projects/signup-funnel.html" hreflang="nl" lang="nl" title="Nederlands">NL</a><a href="../pt/projects/signup-funnel.html" hreflang="pt-PT" lang="pt-PT" title="Português">PT</a><a href="../es/projects/signup-funnel.html" hreflang="es" lang="es" title="Español">ES</a></nav>
   </div>
@@ -59,6 +59,39 @@
   <section><h2 data-reveal>What I did</h2><ol class="steps"><li data-reveal style="--d:0">Turned raw events into one row per user with a flag for each funnel step, using conditional aggregation in SQL.</li><li data-reveal style="--d:1">Calculated the share of visitors reaching each step, and the share lost at each step, by device.</li><li data-reveal style="--d:2">Built the funnel in Tableau and shared it with the design team.</li><li data-reveal style="--d:3">Sketched a lighter verification flow in Figma for the step that lost the most users.</li></ol></section>
 </div>
 
+<section class="xl-section" aria-labelledby="xl-h-signup-funnel">
+  <div class="wrap narrow case-body"><h2 id="xl-h-signup-funnel" data-reveal>Excel dashboard</h2><p data-reveal>The same analysis as a working Excel workbook, with formulas, conditional formatting and charts. Select a highlighted cell to see its formula, and switch sheets at the bottom.</p></div>
+  <div class="wrap wide">
+    <div class="xl" data-reveal data-xl>
+      <div class="xl-top">
+        <span class="xl-app" aria-hidden="true">X</span>
+        <span class="xl-file" translate="no">signup-funnel.xlsx</span>
+        <span class="xl-saved">Saved</span>
+      </div>
+      <div class="xl-ribbon" aria-hidden="true"><span>File</span><span class="on">Home</span><span>Insert</span><span>Formulas</span><span>Data</span><span>View</span></div>
+      <div class="xl-fbar">
+      <span class="xl-name" aria-label="Selected cell">C4</span>
+      <span class="xl-fx" aria-hidden="true">fx</span>
+      <output class="xl-formula" aria-live="polite" aria-label="Formula bar" translate="no">=B4/A4</output>
+    </div>
+    <div class="xl-sheet" role="tabpanel" id="xl-signup-funnel-0" aria-labelledby="xl-signup-funnel-0-tab">
+    <div class="xl-grid-scroll" tabindex="0" aria-label="Dashboard">
+      <table class="xl-grid"><caption class="sr-only">Where new users drop out of sign-up</caption><thead><tr><th class="xl-corner" aria-hidden="true"></th><th scope="col">A</th><th scope="col">B</th><th scope="col">C</th><th scope="col">D</th></tr></thead><tbody><tr><th scope="row">1</th><td data-ref="A1" class="xl-title" colspan="4">Where new users drop out of sign-up</td></tr><tr><th scope="row">2</th><td data-ref="A2"></td><td data-ref="B2"></td><td data-ref="C2"></td><td data-ref="D2"></td></tr><tr><th scope="row">3</th><td data-ref="A3" class="xl-kpi-label">Visitors</td><td data-ref="B3" class="xl-kpi-label">Active users</td><td data-ref="C3" class="xl-kpi-label">Visitor to active user</td><td data-ref="D3" class="xl-kpi-label">Lost at verification</td></tr><tr><th scope="row">4</th><td data-ref="A4" class="xl-kpi">40,000</td><td data-ref="B4" class="xl-kpi">5,104</td><td data-ref="C4" data-f="=B4/A4" tabindex="0" class="xl-kpi xl-f">12.8%</td><td data-ref="D4" class="xl-kpi">39.1%</td></tr><tr><th scope="row">5</th><td data-ref="A5"></td><td data-ref="B5"></td><td data-ref="C5"></td><td data-ref="D5"></td></tr><tr><th scope="row">6</th><td data-ref="A6" class="xl-head">Step</td><td data-ref="B6" class="xl-head">Desktop (%)</td><td data-ref="C6" class="xl-head">Mobile (%)</td><td data-ref="D6" class="xl-head">Gap</td></tr><tr><th scope="row">7</th><td data-ref="A7" class="xl-cat">Landing page</td><td data-ref="B7" class="xl-num xl-bar" style="--bar:100.0%">100%</td><td data-ref="C7" class="xl-num xl-bar" style="--bar:100.0%">100%</td><td data-ref="D7" data-f="=B7-C7" tabindex="0" class="xl-num xl-scale xl-f" style="--k:0.000">0 pts</td></tr><tr><th scope="row">8</th><td data-ref="A8" class="xl-cat">Started sign-up</td><td data-ref="B8" class="xl-num xl-bar" style="--bar:36.6%">44%</td><td data-ref="C8" class="xl-num xl-bar" style="--bar:37.0%">38%</td><td data-ref="D8" data-f="=B8-C8" tabindex="0" class="xl-num xl-scale xl-f" style="--k:0.472">+6 pts</td></tr><tr><th scope="row">9</th><td data-ref="A9" class="xl-cat">Entered email</td><td data-ref="B9" class="xl-num xl-bar" style="--bar:30.6%">38.7%</td><td data-ref="C9" class="xl-num xl-bar" style="--bar:29.7%">30.8%</td><td data-ref="D9" data-f="=B9-C9" tabindex="0" class="xl-num xl-scale xl-strong xl-f" style="--k:0.622">+7.9 pts</td></tr><tr><th scope="row">10</th><td data-ref="A10" class="xl-cat">Verified email</td><td data-ref="B10" class="xl-num xl-bar" style="--bar:19.3%">28.7%</td><td data-ref="C10" class="xl-num xl-bar" style="--bar:14.6%">16%</td><td data-ref="D10" data-f="=B10-C10" tabindex="0" class="xl-num xl-scale xl-strong xl-f" style="--k:1.000">+12.7 pts</td></tr><tr><th scope="row">11</th><td data-ref="A11" class="xl-cat">Completed profile</td><td data-ref="B11" class="xl-num xl-bar" style="--bar:14.7%">24.6%</td><td data-ref="C11" class="xl-num xl-bar" style="--bar:12.0%">13.4%</td><td data-ref="D11" data-f="=B11-C11" tabindex="0" class="xl-num xl-scale xl-strong xl-f" style="--k:0.882">+11.2 pts</td></tr><tr><th scope="row">12</th><td data-ref="A12" class="xl-cat">Created first project</td><td data-ref="B12" class="xl-num xl-bar" style="--bar:8.0%">18.7%</td><td data-ref="C12" class="xl-num xl-bar" style="--bar:8.0%">9.5%</td><td data-ref="D12" data-f="=B12-C12" tabindex="0" class="xl-num xl-scale xl-strong xl-f" style="--k:0.724">+9.2 pts</td></tr></tbody></table>
+    </div>
+  </div><div class="xl-sheet" role="tabpanel" id="xl-signup-funnel-1" aria-labelledby="xl-signup-funnel-1-tab" hidden>
+    <div class="xl-grid-scroll" tabindex="0" aria-label="Drop-off">
+      <table class="xl-grid"><caption class="sr-only">Users lost at each step (%)</caption><thead><tr><th class="xl-corner" aria-hidden="true"></th><th scope="col">A</th><th scope="col">B</th></tr></thead><tbody><tr><th scope="row">1</th><td data-ref="A1" class="xl-title" colspan="2">Users lost at each step (%)</td></tr><tr><th scope="row">2</th><td data-ref="A2"></td><td data-ref="B2"></td></tr><tr><th scope="row">3</th><td data-ref="A3" class="xl-head">Step</td><td data-ref="B3" class="xl-head">Users lost at each step (%)</td></tr><tr><th scope="row">4</th><td data-ref="A4" class="xl-cat">Started sign-up</td><td data-ref="B4" class="xl-num xl-scale xl-strong" style="--k:1.000">59.9%</td></tr><tr><th scope="row">5</th><td data-ref="A5" class="xl-cat">Entered email</td><td data-ref="B5" class="xl-num xl-scale" style="--k:0.029">16.3%</td></tr><tr><th scope="row">6</th><td data-ref="A6" class="xl-cat">Verified email</td><td data-ref="B6" class="xl-num xl-scale" style="--k:0.537">39.1%</td></tr><tr><th scope="row">7</th><td data-ref="A7" class="xl-cat">Completed profile</td><td data-ref="B7" class="xl-num xl-scale" style="--k:0.000">15%</td></tr><tr><th scope="row">8</th><td data-ref="A8" class="xl-cat">Created first project</td><td data-ref="B8" class="xl-num xl-scale" style="--k:0.256">26.5%</td></tr></tbody></table>
+    </div>
+  </div>
+    <div class="xl-tabs" role="tablist" aria-label="Sheets"><button type="button" role="tab" id="xl-signup-funnel-0-tab" aria-controls="xl-signup-funnel-0" aria-selected="true">Dashboard</button><button type="button" role="tab" id="xl-signup-funnel-1-tab" aria-controls="xl-signup-funnel-1" aria-selected="false" tabindex="-1">Drop-off</button><span class="xl-plus" aria-hidden="true">+</span></div>
+    <div class="xl-status" aria-hidden="true"><span>Ready</span><span>Select a cell with a corner mark to see its formula</span></div>
+    </div>
+    <div class="actions xl-actions" data-reveal>
+      <a class="btn" href="../assets/excel/signup-funnel.xlsx" download="signup-funnel.xlsx"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 4v11M7 10l5 5 5-5M5 19.5h14"/></svg>Download the workbook (.xlsx)</a>
+      <p class="muted">Opens in Excel, Google Sheets or LibreOffice.</p>
+    </div>
+  </div>
+</section>
 <div class="wrap narrow case-body">
   <section><h2 data-reveal>What I found</h2><div class="finding">
       <h3 data-reveal>Mobile users fall behind at every step</h3>
@@ -113,30 +146,35 @@ GROUP BY device;</code></pre></figure>
 </main>
 <footer class="site-footer">
   <div class="wrap footer-grid">
-    <div>
-      <p class="footer-name">Julieta Lara Romero</p>
+    <div class="footer-about">
+      <a class="footer-brand" href="../index.html">
+        <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="13" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="16" cy="16" r="5" fill="currentColor"/></svg>
+        <span class="footer-name">Julieta Lara Romero</span>
+      </a>
       <p class="muted">Data Analyst and UX/UI Designer. Trilingual (Spanish, English, Portuguese), with a background in Multimedia Engineering and Business Intelligence.</p>
+      <div class="socials"><a class="social" href="mailto:julietalarar98@gmail.com" aria-label="Email" title="Email"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6"/></svg></a><a class="social" href="https://www.linkedin.com/in/julieta-lara-romero-525366285/" rel="me noopener" target="_blank" aria-label="LinkedIn" title="LinkedIn"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="3.5" width="17" height="17" rx="3"/><path d="M8 10.5V16M8 7.8v.1M11.5 16v-5.5M11.5 13c0-1.6 1-2.6 2.4-2.6s2.1 1 2.1 2.6V16"/></svg></a><a class="social" href="../resume.html" aria-label="Résumé" title="Résumé"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 3.5h7l4 4v13H7z"/><path d="M14 3.5v4h4M9.5 12h6M9.5 15h6M9.5 18h4"/></svg></a></div>
     </div>
-    <div>
-      <h2 class="footer-h">Pages</h2>
-      <ul class="plain">
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="../about.html">About</a></li>
-        <li><a href="../projects.html">Projects</a></li>
-        <li><a href="../assets/Julieta-Lara-Romero-CV.pdf">Résumé</a></li>
+    <nav aria-labelledby="f-pages">
+      <h2 class="footer-h" id="f-pages">Pages</h2>
+      <ul class="plain footer-links">
+        <li><a href="../index.html"><span>Home</span></a></li>
+        <li><a href="../about.html"><span>About</span></a></li>
+        <li><a href="../projects.html"><span>Projects</span></a></li>
+        <li><a href="../resume.html"><span>Résumé</span></a></li>
       </ul>
-    </div>
+    </nav>
     <div>
       <h2 class="footer-h">Contact</h2>
-      <ul class="plain">
-        <li><a href="mailto:julietalarar98@gmail.com">julietalarar98@gmail.com</a></li>
-        <li><a href="https://www.linkedin.com/in/julieta-lara-romero-525366285/" rel="me">LinkedIn</a></li>
+      <ul class="plain footer-links">
+        <li><a href="mailto:julietalarar98@gmail.com"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6"/></svg><span>Write to me</span></a></li>
+        <li><a href="https://www.linkedin.com/in/julieta-lara-romero-525366285/" rel="me noopener" target="_blank"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="3.5" width="17" height="17" rx="3"/><path d="M8 10.5V16M8 7.8v.1M11.5 16v-5.5M11.5 13c0-1.6 1-2.6 2.4-2.6s2.1 1 2.1 2.6V16"/></svg><span>LinkedIn</span><span class="sr-only"> (opens in a new tab)</span></a></li>
+        <li><a href="../resume.html"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 3.5h7l4 4v13H7z"/><path d="M14 3.5v4h4M9.5 12h6M9.5 15h6M9.5 18h4"/></svg><span>Résumé</span></a></li>
       </ul>
     </div>
   </div>
-  <div class="wrap footer-base muted">
-    <p>© 2026 Julieta Lara Romero</p>
-    <p>Designed and built by hand with HTML, CSS and JavaScript. Charts use synthetic data.</p>
+  <div class="wrap footer-base">
+    <p>© 2026 Julieta Lara Romero<span class="dot" aria-hidden="true">·</span><span class="muted">Designed and built by hand with HTML, CSS and JavaScript. Charts use synthetic data.</span></p>
+    <a class="to-top" href="#main">Back to top<svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 19V5M6 11l6-6 6 6"/></svg></a>
   </div>
 </footer>
 <script src="../assets/site.js" defer></script>

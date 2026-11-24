@@ -5,7 +5,8 @@ Data Analyst and UX/UI Designer portfolio, in English with Dutch (`/nl`), Europe
 ## Structure
 
 - `index.html`, `about.html`, `projects.html`, `projects/*.html`: generated English pages. Translations live in `nl/`, `pt/` and `es/`.
-- `assets/`: stylesheet, scripts, favicon and the downloadable CV (PDF).
+- `assets/`: stylesheet, scripts, favicon, the CV (PDF) and `excel/`, one Excel workbook per project.
+- `resume.html`: the CV as a web page (from `build/cv.html`), with a PDF download button.
 - `design/`: the previous design portfolio (Multimedia Engineering work), linked as earlier work.
 - `build/`: the generator. Do not edit the generated HTML by hand.
 
@@ -16,6 +17,8 @@ Text lives in `build/content/{en,nl,pt,es}.mjs`. Contact details (email and Link
 ```bash
 node build/build.mjs
 ```
+
+The build also writes `assets/excel/<project>.xlsx` (formulas, conditional formatting and charts) from `build/workbooks.mjs` when Python 3 and `openpyxl` are installed (`pip install openpyxl`). Each project page shows an Excel-style preview of the same workbook. To show your own workbook instead, add it to `excel` in `CONFIG` (`build/build.mjs`): either `file` (your own .xlsx in `assets/excel/`) or `embed` (an embed link from Excel for the web / OneDrive).
 
 To regenerate the CV PDF after editing `build/cv.html` (needs Playwright):
 
