@@ -1,6 +1,6 @@
 // Static site generator for the portfolio. Run: node build/build.mjs
 // Writes English pages at the repo root and translations under /nl, /pt and /es.
-import { mkdirSync, writeFileSync, rmSync, existsSync } from 'node:fs';
+import { mkdirSync, writeFileSync, rmSync, existsSync, readFileSync } from 'node:fs';
 import { dirname, join, posix } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { buildData } from './data.mjs';
@@ -27,6 +27,8 @@ const LANGS = [
 const PROJECTS = ['sales-dashboard', 'checkout-ab-test', 'signup-funnel', 'usability-study', 'order-forecast', 'onboarding-retention'];
 const FEATURED = ['sales-dashboard', 'checkout-ab-test', 'usability-study'];
 const data = buildData();
+const MEDIA = JSON.parse(readFileSync(join(ROOT, 'assets/work/manifest.json'), 'utf8'));
+const WORK = ['irina', 'nona'];
 
 // ---------------------------------------------------------------- helpers
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -195,8 +197,119 @@ function projectRow(c, slug, from, dir, i) {
 </li>`;
 }
 
-function earlierList(c, p) {
-  return c.about.earlier.map((e, i) => `<li data-reveal style="--d:${i}"><a href="${rel(p, e.href)}"><strong>${e.t}</strong><span>${e.d}</span></a></li>`).join('');
+function earlierList(c, p, dir) {
+  const cards = [
+    ['irina', c.work.irina.title, c.work.irina.lead, c.work.irina.cover],
+    ['nona', c.work.nona.title, c.work.nona.lead, c.work.nona.cover],
+    ['archive', c.work.archive.title, c.work.archive.card, 'visual-concept'],
+  ];
+  return cards.map(([slug, t, d, img], i) => `<li data-reveal style="--d:${i}"><a href="${rel(p, dir + 'work/' + slug + '.html')}">
+    <span class="earlier-img">${pic(img, '', p, { lazy: true })}</span>
+    <strong>${t}</strong><span>${d}</span></a></li>`).join('');
+}
+
+// ---------------------------------------------------------------- media
+function pic(key, alt, from, { lazy = true, cls = '' } = {}) {
+  const m = MEDIA[key];
+  if (!m) throw new Error('Missing image ' + key);
+  return `<img src="${rel(from, 'assets/work/' + key + '.webp')}" width="${m.w}" height="${m.h}" alt="${esc(alt)}"${lazy ? ' loading="lazy" decoding="async"' : ''}${cls ? ` class="${cls}"` : ''}>`;
+}
+function mediaItem(c, key, caption, from, i, desc = '') {
+  const m = MEDIA[key];
+  if (m.video) {
+    return `<figure class="tile tile-video" data-reveal style="--d:${i % 3}">
+      <div class="tile-media${m.h > m.w ? ' tall' : ''}"><video controls preload="none" playsinline poster="${rel(from, 'assets/work/' + key + '.webp')}" width="${m.w}" height="${m.h}"><source src="${rel(from, 'assets/work/' + key + '.mp4')}" type="video/mp4"></video></div>
+      <figcaption><strong>${caption}</strong>${desc ? `<span>${desc}</span>` : ''}</figcaption>
+    </figure>`;
+  }
+  return `<figure class="tile" data-reveal style="--d:${i % 3}">
+    <button type="button" class="tile-media" data-lightbox="${rel(from, 'assets/work/' + key + '.webp')}" data-caption="${esc(caption)}" aria-label="${esc(c.work.labels.openImage + ': ' + caption)}">${pic(key, caption, from)}</button>
+    <figcaption><strong>${caption}</strong>${desc ? `<span>${desc}</span>` : ''}</figcaption>
+  </figure>`;
+}
+function lightbox(c) {
+  const L = c.work.labels;
+  return `<dialog class="lightbox" aria-label="${L.openImage}">
+  <figure><img alt=""><figcaption></figcaption></figure>
+  <button type="button" class="lb-btn lb-close" data-lb="close" aria-label="${L.close}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  <button type="button" class="lb-btn lb-prev" data-lb="-1" aria-label="${L.prev}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+  <button type="button" class="lb-btn lb-next" data-lb="1" aria-label="${L.nextImage}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+</dialog>`;
+}
+
+// ---------------------------------------------------------------- earlier work: case studies
+function workCase(c, dir, key, i) {
+  const file = `work/${key}.html`;
+  const p = dir + file;
+  const w = c.work[key];
+  const L = c.work.labels;
+  const nextKey = i + 1 < WORK.length ? WORK[i + 1] : 'archive';
+  const nextTitle = nextKey === 'archive' ? c.work.archive.title : c.work[nextKey].title;
+  const links = w.links.map(([href, label], k) => `<a class="btn${k ? ' btn-quiet' : ''}" href="${href}" rel="noopener" target="_blank">${label}<span class="sr-only"> (opens in a new tab)</span></a>`).join('');
+  let n = 0;
+  const groups = w.groups.map((g) => `<div class="tile-group">
+      <h3 data-reveal>${g.h}</h3>
+      <div class="gallery">${g.items.map(([img, cap]) => mediaItem(c, img, cap, p, n++)).join('')}</div>
+    </div>`).join('');
+  const body = `<article>
+<header class="page-head case-head">
+  <div class="wrap narrow">
+    <nav class="crumbs hero-in" style="--d:0" aria-label="${c.labels.breadcrumbs}"><a href="${rel(p, dir + 'index.html')}">${c.nav.home}</a><span aria-hidden="true">/</span><a href="${rel(p, dir + 'projects.html')}">${c.nav.projects}</a></nav>
+    <p class="case-tags hero-in" style="--d:1"><span class="tag">${w.kicker}</span><span class="tag tag-practice">${c.work.tag}</span></p>
+    <h1 class="hero-in" style="--d:2">${w.title}</h1>
+    <p class="hero-lead hero-in" style="--d:3">${w.lead}</p>
+    <dl class="facts hero-in" style="--d:4" aria-label="${L.facts}">${w.facts.map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join('')}</dl>
+    <div class="actions hero-in" style="--d:5">${links}</div>
+  </div>
+</header>
+<div class="wrap wide"><figure class="cover hero-in" style="--d:5">${pic(w.cover, w.title, p, { lazy: false })}</figure></div>
+<div class="wrap narrow case-body">
+  <section data-reveal><h2>${L.challenge}</h2>${w.challenge.map((t) => `<p>${t}</p>`).join('')}</section>
+  <section><h2 data-reveal>${L.process}</h2><ol class="steps">${w.process.map((t, k) => `<li data-reveal style="--d:${k}">${t}</li>`).join('')}</ol></section>
+  <section data-reveal><h2>${L.role}</h2>${w.role.map((t) => `<p>${t}</p>`).join('')}</section>
+  <section><h2 data-reveal>${L.artefacts}</h2><p class="muted" data-reveal>${L.enlarge}</p></section>
+</div>
+<div class="wrap wide">${groups}</div>
+<div class="wrap narrow case-body">
+  <div class="actions" data-reveal>${links}</div>
+  <nav class="case-nav" aria-label="${c.nav.projects}" data-reveal>
+    <a href="${rel(p, dir + 'projects.html')}">${L.back}</a>
+    <a class="case-next" href="${rel(p, dir + 'work/' + nextKey + '.html')}"><span class="muted">${c.labels.next}</span>${nextTitle}</a>
+  </nav>
+</div>
+</article>
+${lightbox(c)}`;
+  page(c, dir, file, 'projects', `${w.title} | ${CONFIG.name}`, w.lead, body, '', true);
+}
+
+// ---------------------------------------------------------------- earlier work: archive
+function workArchive(c, dir) {
+  const file = 'work/archive.html';
+  const p = dir + file;
+  const a = c.work.archive;
+  const chips = a.groups.map((g) => `<a href="#${g.id}">${g.h}</a>`).join('');
+  const groups = a.groups.map((g) => `<section class="section-tight archive-group" id="${g.id}" aria-labelledby="${g.id}-h">
+    <div class="section-head" data-reveal><h2 id="${g.id}-h">${g.h}</h2><p class="lede">${g.sub}</p></div>
+    <div class="gallery">${g.items.map(([img, t, d], i) => mediaItem(c, img, t, p, i, d)).join('')}</div>
+  </section>`).join('');
+  const body = `<section class="page-head">
+  <div class="wrap">
+    <nav class="crumbs hero-in" style="--d:0" aria-label="${c.labels.breadcrumbs}"><a href="${rel(p, dir + 'index.html')}">${c.nav.home}</a><span aria-hidden="true">/</span><a href="${rel(p, dir + 'projects.html')}">${c.nav.projects}</a></nav>
+    <p class="case-tags hero-in" style="--d:1"><span class="tag tag-practice">${c.work.tag}</span></p>
+    <h1 class="hero-in" style="--d:2">${a.heading}</h1>
+    <p class="hero-lead hero-in" style="--d:3">${a.lead}</p>
+    <nav class="chips hero-in" style="--d:4" aria-label="${a.heading}">${chips}</nav>
+  </div>
+</section>
+<div class="wrap wide">${groups}</div>
+<div class="wrap narrow case-body">
+  <nav class="case-nav" aria-label="${c.nav.projects}" data-reveal>
+    <a href="${rel(p, dir + 'projects.html')}">${c.work.labels.back}</a>
+    <a class="case-next" href="${rel(p, dir + 'work/irina.html')}"><span class="muted">${c.labels.next}</span>${c.work.irina.title}</a>
+  </nav>
+</div>
+${lightbox(c)}`;
+  page(c, dir, file, 'projects', `${a.title} | ${CONFIG.name}`, a.lead, body);
 }
 
 // ---------------------------------------------------------------- home
@@ -314,7 +427,7 @@ function about(c, dir) {
 <section class="section band" aria-labelledby="earlier-h">
   <div class="wrap">
     ${sectionHead('earlier-h', c.about.earlierHeading, c.about.earlierSub)}
-    <ul class="earlier plain">${earlierList(c, p)}</ul>
+    <ul class="earlier plain">${earlierList(c, p, dir)}</ul>
   </div>
 </section>
 
@@ -347,7 +460,7 @@ function projectsIndex(c, dir) {
 <section class="section band" aria-labelledby="earlier-h">
   <div class="wrap">
     ${sectionHead('earlier-h', c.projectsPage.earlierHeading, c.projectsPage.earlierSub)}
-    <ul class="earlier plain">${earlierList(c, p)}</ul>
+    <ul class="earlier plain">${earlierList(c, p, dir)}</ul>
   </div>
 </section>
 <section class="section">
@@ -532,17 +645,32 @@ ${dash ? `<div class="wrap wide">${dash}</div>` : ''}
 for (const l of LANGS) {
   if (l.dir && existsSync(join(ROOT, l.dir))) rmSync(join(ROOT, l.dir), { recursive: true });
 }
-if (existsSync(join(ROOT, 'projects'))) rmSync(join(ROOT, 'projects'), { recursive: true });
+for (const d of ['projects', 'work']) if (existsSync(join(ROOT, d))) rmSync(join(ROOT, d), { recursive: true });
 for (const l of LANGS) {
   home(l.c, l.dir);
   about(l.c, l.dir);
   projectsIndex(l.c, l.dir);
   PROJECTS.forEach((s, i) => caseStudy(l.c, l.dir, s, i));
+  WORK.forEach((k, i) => workCase(l.c, l.dir, k, i));
+  workArchive(l.c, l.dir);
 }
-const pages = ['index.html', 'about.html', 'projects.html', ...PROJECTS.map((s) => `projects/${s}.html`)];
+const pages = ['index.html', 'about.html', 'projects.html', ...PROJECTS.map((s) => `projects/${s}.html`), ...WORK.map((k) => `work/${k}.html`), 'work/archive.html'];
 writeFileSync(join(ROOT, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 ${LANGS.flatMap((l) => pages.map((pg) => `  <url><loc>${SITE}${l.dir}${pg}</loc>${LANGS.map((a) => `<xhtml:link rel="alternate" hreflang="${a.c.lang}" href="${SITE}${a.dir}${pg}"/>`).join('')}</url>`)).join('\n')}
 </urlset>
 `);
+// The old design pages now point to their redesigned versions.
+const REDIRECTS = { 'Irina.html': 'work/irina.html', 'nona.html': 'work/nona.html', 'graphic.html': 'work/archive.html#graphic', 'content.html': 'work/archive.html#motion', 'webdev.html': 'work/archive.html#web', 'index.html': 'index.html' };
+for (const [from, to] of Object.entries(REDIRECTS)) {
+  const target = '../' + to;
+  writeFileSync(join(ROOT, 'design', from), `<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Moved</title>
+<link rel="canonical" href="${SITE}${to.split('#')[0]}">
+<meta http-equiv="refresh" content="0; url=${target}">
+<meta name="robots" content="noindex">
+</head><body><p>This page has moved: <a href="${target}">${target}</a></p>
+<script>location.replace(${JSON.stringify(target)})</script></body></html>
+`);
+}
 console.log(`Built ${LANGS.length} languages × ${pages.length} pages`);
