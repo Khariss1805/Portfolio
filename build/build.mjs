@@ -2,9 +2,12 @@
 // Writes English pages at the repo root and translations under /nl, /pt and /es.
 import { mkdirSync, writeFileSync, rmSync, existsSync, readFileSync } from 'node:fs';
 import { dirname, join, posix } from 'node:path';
+import { spawnSync } from 'node:child_process';
+import { tmpdir } from 'node:os';
 import { fileURLToPath } from 'node:url';
 import { buildData } from './data.mjs';
 import snippets from './snippets.mjs';
+import { workbooks, colName } from './workbooks.mjs';
 import en from './content/en.mjs';
 import nl from './content/nl.mjs';
 import pt from './content/pt.mjs';
@@ -17,6 +20,15 @@ const CONFIG = {
   email: 'julietalarar98@gmail.com',
   linkedin: 'https://www.linkedin.com/in/julieta-lara-romero-525366285/',
   cv: 'assets/Julieta-Lara-Romero-CV.pdf',
+  // Excel workbook shown on each project page. By default the build writes a
+  // workbook from the synthetic data to assets/excel/<project>.xlsx. To show
+  // your own instead, add an entry here:
+  //   'sales-dashboard': { file: 'assets/excel/my-dashboard.xlsx' }
+  //     links your own file (put it in assets/excel/ under a different name);
+  //   'sales-dashboard': { embed: 'https://onedrive.live.com/embed?...' }
+  //     shows your live workbook from OneDrive / Excel for the web (File >
+  //     Share > Embed in Excel) instead of the built-in preview.
+  excel: {},
 };
 const LANGS = [
   { c: en, dir: '', code: 'EN' },
@@ -52,7 +64,6 @@ function rel(from, to) {
   const r = posix.relative(posix.dirname('/' + from), '/' + to);
   return r === '' ? './' : r;
 }
-const linkedinLabel = CONFIG.linkedin.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '');
 
 // ---------------------------------------------------------------- layout
 function head(c, page, title, description, dir) {
@@ -98,41 +109,65 @@ function header(c, page, dir, current) {
       ${link('index.html', c.nav.home, 'home')}
       ${link('about.html', c.nav.about, 'about')}
       ${link('projects.html', c.nav.projects, 'projects')}
-      <a href="${rel(dir + page, CONFIG.cv)}">${c.nav.resume}</a>
+      ${link('resume.html', c.nav.resume, 'resume')}
     </nav>
     <nav class="lang-switch" aria-label="${c.nav.language}">${langs}</nav>
   </div>
 </header>`;
 }
 
+// Small line icons (24px grid, stroked with currentColor).
+const ICON = {
+  mail: '<path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6"/>',
+  linkedin: '<rect x="3.5" y="3.5" width="17" height="17" rx="3"/><path d="M8 10.5V16M8 7.8v.1M11.5 16v-5.5M11.5 13c0-1.6 1-2.6 2.4-2.6s2.1 1 2.1 2.6V16"/>',
+  doc: '<path d="M7 3.5h7l4 4v13H7z"/><path d="M14 3.5v4h4M9.5 12h6M9.5 15h6M9.5 18h4"/>',
+  arrow: '<path d="M7 17L17 7M9 7h8v8"/>',
+  up: '<path d="M12 19V5M6 11l6-6 6 6"/>',
+  download: '<path d="M12 4v11M7 10l5 5 5-5M5 19.5h14"/>',
+  print: '<path d="M7 9V4h10v5M7 17H5v-7h14v7h-2M7 14h10v6H7z"/>',
+  sheet: '<rect x="3.5" y="4.5" width="17" height="15" rx="2"/><path d="M3.5 9.5h17M3.5 14.5h17M9.5 4.5v15"/>',
+};
+const icon = (k, cls = 'icon') => `<svg class="${cls}" viewBox="0 0 24 24" aria-hidden="true" focusable="false">${ICON[k]}</svg>`;
+
 function footer(c, page, dir) {
   const p = dir + page;
+  const F = c.footer;
+  const social = [
+    [`mailto:${CONFIG.email}`, 'mail', c.contact.email, ''],
+    [CONFIG.linkedin, 'linkedin', 'LinkedIn', ' rel="me noopener" target="_blank"'],
+    [rel(p, dir + 'resume.html'), 'doc', c.nav.resume, ''],
+  ].map(([href, ic, label, extra]) => `<a class="social" href="${href}"${extra} aria-label="${esc(label)}" title="${esc(label)}">${icon(ic)}</a>`).join('');
   return `<footer class="site-footer">
   <div class="wrap footer-grid">
-    <div>
-      <p class="footer-name">${CONFIG.name}</p>
-      <p class="muted">${c.footer.bio}</p>
+    <div class="footer-about">
+      <a class="footer-brand" href="${rel(p, dir + 'index.html')}">
+        <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="13" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="16" cy="16" r="5" fill="currentColor"/></svg>
+        <span class="footer-name">${CONFIG.name}</span>
+      </a>
+      <p class="muted">${F.bio}</p>
+      <div class="socials">${social}</div>
     </div>
-    <div>
-      <h2 class="footer-h">${c.footer.pages}</h2>
-      <ul class="plain">
-        <li><a href="${rel(p, dir + 'index.html')}">${c.nav.home}</a></li>
-        <li><a href="${rel(p, dir + 'about.html')}">${c.nav.about}</a></li>
-        <li><a href="${rel(p, dir + 'projects.html')}">${c.nav.projects}</a></li>
-        <li><a href="${rel(p, CONFIG.cv)}">${c.nav.resume}</a></li>
+    <nav aria-labelledby="f-pages">
+      <h2 class="footer-h" id="f-pages">${F.pages}</h2>
+      <ul class="plain footer-links">
+        <li><a href="${rel(p, dir + 'index.html')}"><span>${c.nav.home}</span></a></li>
+        <li><a href="${rel(p, dir + 'about.html')}"><span>${c.nav.about}</span></a></li>
+        <li><a href="${rel(p, dir + 'projects.html')}"><span>${c.nav.projects}</span></a></li>
+        <li><a href="${rel(p, dir + 'resume.html')}"><span>${c.nav.resume}</span></a></li>
       </ul>
-    </div>
+    </nav>
     <div>
-      <h2 class="footer-h">${c.footer.contact}</h2>
-      <ul class="plain">
-        <li><a href="mailto:${CONFIG.email}">${CONFIG.email}</a></li>
-        <li><a href="${CONFIG.linkedin}" rel="me">LinkedIn</a></li>
+      <h2 class="footer-h">${F.contact}</h2>
+      <ul class="plain footer-links">
+        <li><a href="mailto:${CONFIG.email}">${icon('mail')}<span>${c.contact.write}</span></a></li>
+        <li><a href="${CONFIG.linkedin}" rel="me noopener" target="_blank">${icon('linkedin')}<span>LinkedIn</span><span class="sr-only"> ${c.labels.newTab}</span></a></li>
+        <li><a href="${rel(p, dir + 'resume.html')}">${icon('doc')}<span>${c.nav.resume}</span></a></li>
       </ul>
     </div>
   </div>
-  <div class="wrap footer-base muted">
-    <p>© ${new Date().getFullYear()} ${CONFIG.name}</p>
-    <p>${c.footer.built}</p>
+  <div class="wrap footer-base">
+    <p>© ${new Date().getFullYear()} ${CONFIG.name}<span class="dot" aria-hidden="true">·</span><span class="muted">${F.built}</span></p>
+    <a class="to-top" href="#main">${F.top}${icon('up')}</a>
   </div>
 </footer>`;
 }
@@ -169,11 +204,19 @@ function contactBlock(c, p) {
       <h2 id="contact-h">${c.contact.heading}</h2>
       <p class="lede">${c.contact.text}</p>
     </div>
-    <ul class="contact-list plain" data-reveal>
-      <li><span class="muted">${c.contact.email}</span><a href="mailto:${CONFIG.email}">${CONFIG.email}</a></li>
-      <li><span class="muted">${c.contact.linkedin}</span><a href="${CONFIG.linkedin}" rel="me">${linkedinLabel}</a></li>
-      <li><a class="btn" href="${rel(p, CONFIG.cv)}" download>${c.contact.resume}</a></li>
-    </ul>
+    <div class="contact-side" data-reveal>
+      <ul class="contact-cards plain">
+        <li><a class="contact-card" href="mailto:${CONFIG.email}">
+          <span class="cc-icon">${icon('mail')}</span>
+          <span class="cc-text"><span class="cc-label">${c.contact.email}</span><span class="cc-value">${CONFIG.email}</span></span>
+          <span class="cc-go">${icon('arrow')}</span></a></li>
+        <li><a class="contact-card" href="${CONFIG.linkedin}" rel="me noopener" target="_blank">
+          <span class="cc-icon">${icon('linkedin')}</span>
+          <span class="cc-text"><span class="cc-label">${c.contact.linkedin}</span><span class="cc-value">${c.contact.profile}</span></span>
+          <span class="cc-go">${icon('arrow')}</span><span class="sr-only"> ${c.labels.newTab}</span></a></li>
+      </ul>
+      <a class="btn btn-contact" href="${rel(p, p.replace(/[^/]*$/, '') + 'resume.html')}">${icon('doc')}${c.contact.resume}</a>
+    </div>
   </div>
 </section>`;
 }
@@ -333,7 +376,7 @@ function home(c, dir) {
       <p class="muted hero-loc hero-in" style="--d:4">${c.home.location}</p>
       <div class="actions hero-in" style="--d:5">
         <a class="btn" href="#work">${c.home.ctaWork}</a>
-        <a class="btn btn-quiet" href="${rel(p, CONFIG.cv)}" download>${c.home.ctaResume}</a>
+        <a class="btn btn-quiet" href="${rel(p, dir + 'resume.html')}">${c.home.ctaResume}</a>
       </div>
     </div>
     <figure class="flow hero-in" style="--d:4" aria-labelledby="flow-cap">
@@ -466,7 +509,7 @@ function projectsIndex(c, dir) {
 <section class="section">
   <div class="wrap cta-row" data-reveal>
     <h2>${c.projectsPage.cta}</h2>
-    <a class="btn" href="${rel(p, CONFIG.cv)}" download>${c.projectsPage.ctaBtn}</a>
+    <a class="btn" href="${rel(p, dir + 'resume.html')}">${c.projectsPage.ctaBtn}</a>
   </div>
 </section>`;
   page(c, dir, 'projects.html', 'projects', `${c.projectsPage.title} | ${CONFIG.name}`, c.projectsPage.sub, body);
@@ -568,12 +611,161 @@ function chartFigure(c, id, caption, specs) {
 </figure>`;
 }
 
+// ---------------------------------------------------------------- Excel workbook preview
+function xlFormat(v, fmt, c) {
+  if (v == null || typeof v === 'string') return v == null ? '' : esc(v);
+  switch (fmt) {
+    case 'int': return num(v, c, 0);
+    case 'eur': return '€' + num(v, c, 0);
+    case 'eur2': return '€' + new Intl.NumberFormat(c.locale, { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(v);
+    case 'pct': return num(v, c, 1) + '%';
+    case 'pct0': return num(v, c, 0) + '%';
+    case 'pct2': return num(v, c, 2) + '%';
+    case 'ratio': return num(v * 100, c, 1) + '%';
+    case 'pts': return (v > 0 ? '+' : '') + num(v, c, 1) + ' pts';
+    case 'n1': return num(v, c, 1);
+    default: return num(v, c, 2);
+  }
+}
+
+function xlSheet(c, sh, si, slug) {
+  const ncols = Math.max(sh.head.length, sh.kpis.length);
+  // Min and max per column (or per block) for conditional formatting.
+  const range = (cols) => {
+    const vals = sh.rows.flatMap((r) => cols.map((ci) => r[ci].v)).filter((v) => typeof v === 'number');
+    return [Math.min(...vals), Math.max(...vals)];
+  };
+  const block = sh.head.map((h, i) => (h.cf === 'scale-all' ? i : -1)).filter((i) => i > -1);
+  const ranges = sh.head.map((h, ci) => (h.cf === 'scale-all' ? range(block) : h.cf ? range([ci]) : null));
+  const letters = Array.from({ length: ncols }, (_, i) => `<th scope="col">${colName(i)}</th>`).join('');
+  const cell = (ref, html, { f = '', cls = '', style = '', th = false } = {}) => {
+    const tag = th ? 'th' : 'td';
+    return `<${tag} data-ref="${ref}"${f ? ` data-f="${esc(f)}" tabindex="0"` : ''}${cls ? ` class="${cls}"` : ''}${style ? ` style="${style}"` : ''}>${html}</${tag}>`;
+  };
+  const blank = (r, from = 0) => Array.from({ length: ncols - from }, (_, i) => cell(`${colName(i + from)}${r}`, '')).join('');
+  const rows = [];
+  const row = (n, cells, cls = '') => rows.push(`<tr${cls ? ` class="${cls}"` : ''}><th scope="row">${n}</th>${cells}</tr>`);
+  row(1, `<td data-ref="A1" class="xl-title" colspan="${ncols}">${esc(sh.title)}</td>`);
+  row(2, blank(2));
+  if (sh.kpis.length) {
+    row(3, sh.kpis.map((k, i) => cell(`${colName(i)}3`, esc(k.label), { cls: 'xl-kpi-label' })).join('') + blank(3, sh.kpis.length));
+    row(4, sh.kpis.map((k, i) => cell(`${colName(i)}4`, xlFormat(k.v, k.fmt, c), { f: k.f || '', cls: 'xl-kpi' + (k.f ? ' xl-f' : '') })).join('') + blank(4, sh.kpis.length));
+    row(5, blank(5));
+  }
+  row(sh.hdr, sh.head.map((h, i) => cell(`${colName(i)}${sh.hdr}`, esc(h.label), { cls: 'xl-head' })).join('') + blank(sh.hdr, sh.head.length));
+  sh.rows.forEach((r, ri) => {
+    const n = sh.first + ri;
+    row(n, r.map((x, ci) => {
+      const h = sh.head[ci];
+      let cls = ci === 0 ? 'xl-cat' : 'xl-num';
+      let style = '';
+      const rg = ranges[ci];
+      if (rg && typeof x.v === 'number') {
+        const k = rg[1] === rg[0] ? 1 : (x.v - rg[0]) / (rg[1] - rg[0]);
+        if (h.cf === 'bar') { cls += ' xl-bar'; style = `--bar:${(8 + 92 * k).toFixed(1)}%`; }
+        else { cls += ' xl-scale' + (k > 0.62 ? ' xl-strong' : ''); style = `--k:${k.toFixed(3)}`; }
+      }
+      if (x.f) cls += ' xl-f';
+      return cell(`${colName(ci)}${n}`, xlFormat(x.v, h.fmt, c), { f: x.f || '', cls, style });
+    }).join('') + blank(n, r.length));
+  });
+  const id = `xl-${slug}-${si}`;
+  return `<div class="xl-sheet" role="tabpanel" id="${id}" aria-labelledby="${id}-tab"${si ? ' hidden' : ''}>
+    <div class="xl-grid-scroll" tabindex="0" aria-label="${esc(sh.name)}">
+      <table class="xl-grid"><caption class="sr-only">${esc(sh.title)}</caption><thead><tr><th class="xl-corner" aria-hidden="true"></th>${letters}</tr></thead><tbody>${rows.join('')}</tbody></table>
+    </div>
+  </div>`;
+}
+
+function excelBlock(c, slug, p, sheets) {
+  const X = c.xl;
+  const own = CONFIG.excel[slug] || {};
+  const file = own.file || `assets/excel/${slug}.xlsx`;
+  const fileName = file.split('/').pop();
+  const ribbon = X.ribbon.map((t, i) => `<span${i === 1 ? ' class="on"' : ''}>${t}</span>`).join('');
+  let body;
+  if (own.embed) {
+    body = `<div class="xl-embed"><iframe src="${esc(own.embed)}" title="${esc(X.heading)}" loading="lazy" allowfullscreen></iframe></div>`;
+  } else {
+    const firstF = sheets[0].kpis.find((k) => k.f) ? sheets[0].kpis.findIndex((k) => k.f) : -1;
+    const startRef = firstF > -1 ? `${colName(firstF)}4` : 'A1';
+    const startF = firstF > -1 ? sheets[0].kpis[firstF].f : sheets[0].title;
+    const tabs = sheets.map((sh, si) => `<button type="button" role="tab" id="xl-${slug}-${si}-tab" aria-controls="xl-${slug}-${si}" aria-selected="${si ? 'false' : 'true'}"${si ? ' tabindex="-1"' : ''}>${esc(sh.name)}</button>`).join('');
+    body = `<div class="xl-fbar">
+      <span class="xl-name" aria-label="${X.cell}">${startRef}</span>
+      <span class="xl-fx" aria-hidden="true">fx</span>
+      <output class="xl-formula" aria-live="polite" aria-label="${X.formulaBar}" translate="no">${esc(startF)}</output>
+    </div>
+    ${sheets.map((sh, si) => xlSheet(c, sh, si, slug)).join('')}
+    <div class="xl-tabs" role="tablist" aria-label="${X.sheets}">${tabs}<span class="xl-plus" aria-hidden="true">+</span></div>
+    <div class="xl-status" aria-hidden="true"><span>${X.ready}</span><span>${X.hint}</span></div>`;
+  }
+  return `<section class="xl-section" aria-labelledby="xl-h-${slug}">
+  <div class="wrap narrow case-body"><h2 id="xl-h-${slug}" data-reveal>${X.heading}</h2><p data-reveal>${X.sub}</p></div>
+  <div class="wrap wide">
+    <div class="xl" data-reveal data-xl>
+      <div class="xl-top">
+        <span class="xl-app" aria-hidden="true">X</span>
+        <span class="xl-file" translate="no">${esc(fileName)}</span>
+        <span class="xl-saved">${X.fileSaved}</span>
+      </div>
+      <div class="xl-ribbon" aria-hidden="true">${ribbon}</div>
+      ${body}
+    </div>
+    <div class="actions xl-actions" data-reveal>
+      <a class="btn" href="${rel(p, file)}" download="${esc(fileName)}">${icon('download')}${X.download}</a>
+      <p class="muted">${X.opens}</p>
+    </div>
+  </div>
+</section>`;
+}
+
+// ---------------------------------------------------------------- résumé
+function resume(c, dir) {
+  const p = dir + 'resume.html';
+  const R = c.resume;
+  const src = readFileSync(join(ROOT, 'build/cv.html'), 'utf8');
+  let cv = src.slice(src.indexOf('<body>') + 6, src.indexOf('</body>')).trim();
+  cv = cv
+    .replace(CONFIG.email, `<a href="mailto:${CONFIG.email}">${CONFIG.email}</a>`)
+    .replace(/linkedin\.com\/in\/[\w-]+/, `<a href="${CONFIG.linkedin}" rel="me noopener" target="_blank">LinkedIn</a>`)
+    .replace('khariss1805.github.io/Portfolio', `<a href="${SITE}">khariss1805.github.io/Portfolio</a>`)
+    .replace(/class="contact"/g, 'class="cv-contact"')
+    .replace('<h1>', '<h2 class="cv-name">').replace('</h1>', '</h2>');
+  const body = `<section class="page-head resume-head">
+  <div class="wrap narrow">
+    <p class="hero-role hero-in" style="--d:0">${c.nav.resume}</p>
+    <h1 class="hero-in" style="--d:1">${R.heading}</h1>
+    <p class="hero-lead hero-in" style="--d:2">${R.lead}</p>
+    ${R.note ? `<p class="practice-note hero-in" style="--d:3">${R.note}</p>` : ''}
+    <div class="actions hero-in" style="--d:4">
+      <a class="btn" href="${rel(p, CONFIG.cv)}" download="Julieta-Lara-Romero-CV.pdf">${icon('download')}${R.download}</a>
+      <button type="button" class="btn btn-quiet" data-print>${icon('print')}${R.print}</button>
+    </div>
+  </div>
+</section>
+<section class="section-tight resume-body">
+  <div class="wrap narrow">
+    <article class="cv-sheet hero-in" style="--d:4" lang="en">${cv}</article>
+  </div>
+</section>
+${contactBlock(c, p)}`;
+  page(c, dir, 'resume.html', 'resume', `${R.title} | ${CONFIG.name}`, R.lead, body);
+}
+
+const bookCache = new Map();
+function workbooksFor(c) {
+  if (!bookCache.has(c)) bookCache.set(c, workbooks(data, c, (s) => T(c.projects[s].title, c)));
+  return bookCache.get(c);
+}
+
 // ---------------------------------------------------------------- case study
 function caseStudy(c, dir, slug, i) {
   const file = `projects/${slug}.html`;
   const p = dir + file;
   const pr = c.projects[slug];
   const specs = chartSpecs(c);
+  const book = workbooksFor(c)[slug];
   const used = [];
   const fig = (id, cap) => { if (specs[id]) used.push(id); return chartFigure(c, id, cap, specs); };
   const next = PROJECTS[(i + 1) % PROJECTS.length];
@@ -622,6 +814,7 @@ function caseStudy(c, dir, slug, i) {
   <section><h2 data-reveal>${c.labels.approach}</h2><ol class="steps">${pr.approach.map((t, k) => `<li data-reveal style="--d:${k}">${T(t, c)}</li>`).join('')}</ol></section>
 </div>
 ${dash ? `<div class="wrap wide">${dash}</div>` : ''}
+${excelBlock(c, slug, p, book)}
 <div class="wrap narrow case-body">
   <section><h2 data-reveal>${c.labels.findings}</h2>${findings}</section>
   <section><h2 data-reveal>${c.labels.recommend}</h2><ul class="recs">${pr.recommend.map((t, k) => `<li data-reveal style="--d:${k}">${T(t, c)}</li>`).join('')}</ul></section>
@@ -650,11 +843,12 @@ for (const l of LANGS) {
   home(l.c, l.dir);
   about(l.c, l.dir);
   projectsIndex(l.c, l.dir);
+  resume(l.c, l.dir);
   PROJECTS.forEach((s, i) => caseStudy(l.c, l.dir, s, i));
   WORK.forEach((k, i) => workCase(l.c, l.dir, k, i));
   workArchive(l.c, l.dir);
 }
-const pages = ['index.html', 'about.html', 'projects.html', ...PROJECTS.map((s) => `projects/${s}.html`), ...WORK.map((k) => `work/${k}.html`), 'work/archive.html'];
+const pages = ['index.html', 'about.html', 'projects.html', 'resume.html', ...PROJECTS.map((s) => `projects/${s}.html`), ...WORK.map((k) => `work/${k}.html`), 'work/archive.html'];
 writeFileSync(join(ROOT, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 ${LANGS.flatMap((l) => pages.map((pg) => `  <url><loc>${SITE}${l.dir}${pg}</loc>${LANGS.map((a) => `<xhtml:link rel="alternate" hreflang="${a.c.lang}" href="${SITE}${a.dir}${pg}"/>`).join('')}</url>`)).join('\n')}
@@ -674,3 +868,16 @@ for (const [from, to] of Object.entries(REDIRECTS)) {
 `);
 }
 console.log(`Built ${LANGS.length} languages × ${pages.length} pages`);
+
+// Excel files: written from the English spec with Python and openpyxl. If either
+// is missing, the files already in assets/excel/ are kept as they are.
+{
+  const spec = Object.fromEntries(PROJECTS.filter((s) => !(CONFIG.excel[s] && CONFIG.excel[s].file))
+    .map((s) => [s, { author: CONFIG.name, sheets: workbooksFor(en)[s] }]));
+  const tmp = join(tmpdir(), `portfolio-excel-${process.pid}.json`);
+  writeFileSync(tmp, JSON.stringify(spec));
+  const r = spawnSync('python3', [join(ROOT, 'build/excel.py'), tmp, join(ROOT, 'assets/excel')], { encoding: 'utf8' });
+  rmSync(tmp, { force: true });
+  if (r.status === 0) console.log(r.stdout.trim());
+  else console.warn('Excel files not rebuilt (needs python3 + openpyxl):', (r.stderr || r.error || '').toString().trim().split('\n').pop());
+}

@@ -36,7 +36,7 @@
       <a href="../index.html">Home</a>
       <a href="../about.html">About</a>
       <a href="../projects.html" aria-current="page">Projects</a>
-      <a href="../assets/Julieta-Lara-Romero-CV.pdf">Résumé</a>
+      <a href="../resume.html">Résumé</a>
     </nav>
     <nav class="lang-switch" aria-label="Language"><a href="checkout-ab-test.html" hreflang="en" lang="en" title="English" aria-current="true">EN</a><a href="../nl/projects/checkout-ab-test.html" hreflang="nl" lang="nl" title="Nederlands">NL</a><a href="../pt/projects/checkout-ab-test.html" hreflang="pt-PT" lang="pt-PT" title="Português">PT</a><a href="../es/projects/checkout-ab-test.html" hreflang="es" lang="es" title="Español">ES</a></nav>
   </div>
@@ -59,6 +59,39 @@
   <section><h2 data-reveal>What I did</h2><ol class="steps"><li data-reveal style="--d:0">Checked the split first: if A and B did not get about half the traffic each, the test would be broken.</li><li data-reveal style="--d:1">Compared conversion rates with a two-proportion z-test and confidence intervals.</li><li data-reveal style="--d:2">Broke the result down by device, because the redesign mainly targeted small screens.</li><li data-reveal style="--d:3">Plotted conversion day by day to make sure the result was stable and not an early fluke.</li></ol></section>
 </div>
 
+<section class="xl-section" aria-labelledby="xl-h-checkout-ab-test">
+  <div class="wrap narrow case-body"><h2 id="xl-h-checkout-ab-test" data-reveal>Excel dashboard</h2><p data-reveal>The same analysis as a working Excel workbook, with formulas, conditional formatting and charts. Select a highlighted cell to see its formula, and switch sheets at the bottom.</p></div>
+  <div class="wrap wide">
+    <div class="xl" data-reveal data-xl>
+      <div class="xl-top">
+        <span class="xl-app" aria-hidden="true">X</span>
+        <span class="xl-file" translate="no">checkout-ab-test.xlsx</span>
+        <span class="xl-saved">Saved</span>
+      </div>
+      <div class="xl-ribbon" aria-hidden="true"><span>File</span><span class="on">Home</span><span>Insert</span><span>Formulas</span><span>Data</span><span>View</span></div>
+      <div class="xl-fbar">
+      <span class="xl-name" aria-label="Selected cell">C4</span>
+      <span class="xl-fx" aria-hidden="true">fx</span>
+      <output class="xl-formula" aria-live="polite" aria-label="Formula bar" translate="no">=B4/A4-1</output>
+    </div>
+    <div class="xl-sheet" role="tabpanel" id="xl-checkout-ab-test-0" aria-labelledby="xl-checkout-ab-test-0-tab">
+    <div class="xl-grid-scroll" tabindex="0" aria-label="Dashboard">
+      <table class="xl-grid"><caption class="sr-only">Did the new checkout design really work?</caption><thead><tr><th class="xl-corner" aria-hidden="true"></th><th scope="col">A</th><th scope="col">B</th><th scope="col">C</th><th scope="col">D</th></tr></thead><tbody><tr><th scope="row">1</th><td data-ref="A1" class="xl-title" colspan="4">Did the new checkout design really work?</td></tr><tr><th scope="row">2</th><td data-ref="A2"></td><td data-ref="B2"></td><td data-ref="C2"></td><td data-ref="D2"></td></tr><tr><th scope="row">3</th><td data-ref="A3" class="xl-kpi-label">Conversion A</td><td data-ref="B3" class="xl-kpi-label">Conversion B</td><td data-ref="C3" class="xl-kpi-label">Lift</td><td data-ref="D3" class="xl-kpi-label">Sessions</td></tr><tr><th scope="row">4</th><td data-ref="A4" class="xl-kpi">2.91%</td><td data-ref="B4" class="xl-kpi">3.64%</td><td data-ref="C4" data-f="=B4/A4-1" tabindex="0" class="xl-kpi xl-f">25.1%</td><td data-ref="D4" class="xl-kpi">48,578</td></tr><tr><th scope="row">5</th><td data-ref="A5"></td><td data-ref="B5"></td><td data-ref="C5"></td><td data-ref="D5"></td></tr><tr><th scope="row">6</th><td data-ref="A6" class="xl-head">Device</td><td data-ref="B6" class="xl-head">Conversion A</td><td data-ref="C6" class="xl-head">Conversion B</td><td data-ref="D6" class="xl-head">Lift</td></tr><tr><th scope="row">7</th><td data-ref="A7" class="xl-cat">Mobile</td><td data-ref="B7" class="xl-num">2.46%</td><td data-ref="C7" class="xl-num">3.14%</td><td data-ref="D7" data-f="=C7/B7-1" tabindex="0" class="xl-num xl-scale xl-strong xl-f" style="--k:1.000">27.6%</td></tr><tr><th scope="row">8</th><td data-ref="A8" class="xl-cat">Desktop</td><td data-ref="B8" class="xl-num">3.68%</td><td data-ref="C8" class="xl-num">4.44%</td><td data-ref="D8" data-f="=C8/B8-1" tabindex="0" class="xl-num xl-scale xl-f" style="--k:0.000">20.7%</td></tr></tbody></table>
+    </div>
+  </div><div class="xl-sheet" role="tabpanel" id="xl-checkout-ab-test-1" aria-labelledby="xl-checkout-ab-test-1-tab" hidden>
+    <div class="xl-grid-scroll" tabindex="0" aria-label="Daily">
+      <table class="xl-grid"><caption class="sr-only">Cumulative conversion by day</caption><thead><tr><th class="xl-corner" aria-hidden="true"></th><th scope="col">A</th><th scope="col">B</th><th scope="col">C</th><th scope="col">D</th></tr></thead><tbody><tr><th scope="row">1</th><td data-ref="A1" class="xl-title" colspan="4">Cumulative conversion by day</td></tr><tr><th scope="row">2</th><td data-ref="A2"></td><td data-ref="B2"></td><td data-ref="C2"></td><td data-ref="D2"></td></tr><tr><th scope="row">3</th><td data-ref="A3" class="xl-head">Day</td><td data-ref="B3" class="xl-head">Conversion A</td><td data-ref="C3" class="xl-head">Conversion B</td><td data-ref="D3" class="xl-head">Gap</td></tr><tr><th scope="row">4</th><td data-ref="A4" class="xl-cat">Day 1</td><td data-ref="B4" class="xl-num">3.02%</td><td data-ref="C4" class="xl-num">3.89%</td><td data-ref="D4" data-f="=C4-B4" tabindex="0" class="xl-num xl-bar xl-f" style="--bar:95.2%">+0.9 pts</td></tr><tr><th scope="row">5</th><td data-ref="A5" class="xl-cat">Day 2</td><td data-ref="B5" class="xl-num">3.1%</td><td data-ref="C5" class="xl-num">3.42%</td><td data-ref="D5" data-f="=C5-B5" tabindex="0" class="xl-num xl-bar xl-f" style="--bar:8.0%">+0.3 pts</td></tr><tr><th scope="row">6</th><td data-ref="A6" class="xl-cat">Day 3</td><td data-ref="B6" class="xl-num">2.77%</td><td data-ref="C6" class="xl-num">3.61%</td><td data-ref="D6" data-f="=C6-B6" tabindex="0" class="xl-num xl-bar xl-f" style="--bar:90.5%">+0.8 pts</td></tr><tr><th scope="row">7</th><td data-ref="A7" class="xl-cat">Day 4</td><td data-ref="B7" class="xl-num">2.81%</td><td data-ref="C7" class="xl-num">3.26%</td><td data-ref="D7" data-f="=C7-B7" tabindex="0" class="xl-num xl-bar xl-f" style="--bar:28.6%">+0.4 pts</td></tr><tr><th scope="row">8</th><td data-ref="A8" class="xl-cat">Day 5</td><td data-ref="B8" class="xl-num">2.87%</td><td data-ref="C8" class="xl-num">3.38%</td><td data-ref="D8" data-f="=C8-B8" tabindex="0" class="xl-num xl-bar xl-f" style="--bar:38.1%">+0.5 pts</td></tr><tr><th scope="row">9</th><td data-ref="A9" class="xl-cat">Day 6</td><td data-ref="B9" class="xl-num">2.82%</td><td data-ref="C9" class="xl-num">3.46%</td><td data-ref="D9" data-f="=C9-B9" tabindex="0" class="xl-num xl-bar xl-f" style="--bar:58.8%">+0.6 pts</td></tr><tr><th scope="row">10</th><td data-ref="A10" class="xl-cat">Day 7</td><td data-ref="B10" class="xl-num">2.69%</td><td data-ref="C10" class="xl-num">3.48%</td><td data-ref="D10" data-f="=C10-B10" tabindex="0" class="xl-num xl-bar xl-f" style="--bar:82.6%">+0.8 pts</td></tr><tr><th scope="row">11</th><td data-ref="A11" class="xl-cat">Day 8</td><td data-ref="B11" class="xl-num">2.74%</td><td data-ref="C11" class="xl-num">3.44%</td><td data-ref="D11" data-f="=C11-B11" tabindex="0" class="xl-num xl-bar xl-f" style="--bar:68.3%">+0.7 pts</td></tr><tr><th scope="row">12</th><td data-ref="A12" class="xl-cat">Day 9</td><td data-ref="B12" class="xl-num">2.76%</td><td data-ref="C12" class="xl-num">3.56%</td><td data-ref="D12" data-f="=C12-B12" tabindex="0" class="xl-num xl-bar xl-f" style="--bar:84.1%">+0.8 pts</td></tr><tr><th scope="row">13</th><td data-ref="A13" class="xl-cat">Day 10</td><td data-ref="B13" class="xl-num">2.85%</td><td data-ref="C13" class="xl-num">3.55%</td><td data-ref="D13" data-f="=C13-B13" tabindex="0" class="xl-num xl-bar xl-f" style="--bar:68.3%">+0.7 pts</td></tr><tr><th scope="row">14</th><td data-ref="A14" class="xl-cat">Day 11</td><td data-ref="B14" class="xl-num">2.86%</td><td data-ref="C14" class="xl-num">3.61%</td><td data-ref="D14" data-f="=C14-B14" tabindex="0" class="xl-num xl-bar xl-f" style="--bar:76.2%">+0.8 pts</td></tr><tr><th scope="row">15</th><td data-ref="A15" class="xl-cat">Day 12</td><td data-ref="B15" class="xl-num">2.85%</td><td data-ref="C15" class="xl-num">3.55%</td><td data-ref="D15" data-f="=C15-B15" tabindex="0" class="xl-num xl-bar xl-f" style="--bar:68.3%">+0.7 pts</td></tr><tr><th scope="row">16</th><td data-ref="A16" class="xl-cat">Day 13</td><td data-ref="B16" class="xl-num">2.82%</td><td data-ref="C16" class="xl-num">3.63%</td><td data-ref="D16" data-f="=C16-B16" tabindex="0" class="xl-num xl-bar xl-f" style="--bar:85.7%">+0.8 pts</td></tr><tr><th scope="row">17</th><td data-ref="A17" class="xl-cat">Day 14</td><td data-ref="B17" class="xl-num">2.87%</td><td data-ref="C17" class="xl-num">3.71%</td><td data-ref="D17" data-f="=C17-B17" tabindex="0" class="xl-num xl-bar xl-f" style="--bar:90.5%">+0.8 pts</td></tr><tr><th scope="row">18</th><td data-ref="A18" class="xl-cat">Day 15</td><td data-ref="B18" class="xl-num">2.88%</td><td data-ref="C18" class="xl-num">3.78%</td><td data-ref="D18" data-f="=C18-B18" tabindex="0" class="xl-num xl-bar xl-f" style="--bar:100.0%">+0.9 pts</td></tr><tr><th scope="row">19</th><td data-ref="A19" class="xl-cat">Day 16</td><td data-ref="B19" class="xl-num">2.87%</td><td data-ref="C19" class="xl-num">3.73%</td><td data-ref="D19" data-f="=C19-B19" tabindex="0" class="xl-num xl-bar xl-f" style="--bar:93.7%">+0.9 pts</td></tr><tr><th scope="row">20</th><td data-ref="A20" class="xl-cat">Day 17</td><td data-ref="B20" class="xl-num">2.9%</td><td data-ref="C20" class="xl-num">3.71%</td><td data-ref="D20" data-f="=C20-B20" tabindex="0" class="xl-num xl-bar xl-f" style="--bar:85.7%">+0.8 pts</td></tr><tr><th scope="row">21</th><td data-ref="A21" class="xl-cat">Day 18</td><td data-ref="B21" class="xl-num">2.85%</td><td data-ref="C21" class="xl-num">3.69%</td><td data-ref="D21" data-f="=C21-B21" tabindex="0" class="xl-num xl-bar xl-f" style="--bar:90.5%">+0.8 pts</td></tr><tr><th scope="row">22</th><td data-ref="A22" class="xl-cat">Day 19</td><td data-ref="B22" class="xl-num">2.9%</td><td data-ref="C22" class="xl-num">3.65%</td><td data-ref="D22" data-f="=C22-B22" tabindex="0" class="xl-num xl-bar xl-f" style="--bar:76.2%">+0.8 pts</td></tr><tr><th scope="row">23</th><td data-ref="A23" class="xl-cat">Day 20</td><td data-ref="B23" class="xl-num">2.88%</td><td data-ref="C23" class="xl-num">3.63%</td><td data-ref="D23" data-f="=C23-B23" tabindex="0" class="xl-num xl-bar xl-f" style="--bar:76.2%">+0.8 pts</td></tr><tr><th scope="row">24</th><td data-ref="A24" class="xl-cat">Day 21</td><td data-ref="B24" class="xl-num">2.91%</td><td data-ref="C24" class="xl-num">3.64%</td><td data-ref="D24" data-f="=C24-B24" tabindex="0" class="xl-num xl-bar xl-f" style="--bar:73.0%">+0.7 pts</td></tr></tbody></table>
+    </div>
+  </div>
+    <div class="xl-tabs" role="tablist" aria-label="Sheets"><button type="button" role="tab" id="xl-checkout-ab-test-0-tab" aria-controls="xl-checkout-ab-test-0" aria-selected="true">Dashboard</button><button type="button" role="tab" id="xl-checkout-ab-test-1-tab" aria-controls="xl-checkout-ab-test-1" aria-selected="false" tabindex="-1">Daily</button><span class="xl-plus" aria-hidden="true">+</span></div>
+    <div class="xl-status" aria-hidden="true"><span>Ready</span><span>Select a cell with a corner mark to see its formula</span></div>
+    </div>
+    <div class="actions xl-actions" data-reveal>
+      <a class="btn" href="../assets/excel/checkout-ab-test.xlsx" download="checkout-ab-test.xlsx"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 4v11M7 10l5 5 5-5M5 19.5h14"/></svg>Download the workbook (.xlsx)</a>
+      <p class="muted">Opens in Excel, Google Sheets or LibreOffice.</p>
+    </div>
+  </div>
+</section>
 <div class="wrap narrow case-body">
   <section><h2 data-reveal>What I found</h2><div class="finding">
       <h3 data-reveal>The new checkout converts better</h3>
@@ -106,30 +139,35 @@ print(summary, f&quot;p = {p_value:.4f}&quot;, by_device, sep=&quot;\n&quot;)</c
 </main>
 <footer class="site-footer">
   <div class="wrap footer-grid">
-    <div>
-      <p class="footer-name">Julieta Lara Romero</p>
+    <div class="footer-about">
+      <a class="footer-brand" href="../index.html">
+        <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="13" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="16" cy="16" r="5" fill="currentColor"/></svg>
+        <span class="footer-name">Julieta Lara Romero</span>
+      </a>
       <p class="muted">Data Analyst and UX/UI Designer. Trilingual (Spanish, English, Portuguese), with a background in Multimedia Engineering and Business Intelligence.</p>
+      <div class="socials"><a class="social" href="mailto:julietalarar98@gmail.com" aria-label="Email" title="Email"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6"/></svg></a><a class="social" href="https://www.linkedin.com/in/julieta-lara-romero-525366285/" rel="me noopener" target="_blank" aria-label="LinkedIn" title="LinkedIn"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="3.5" width="17" height="17" rx="3"/><path d="M8 10.5V16M8 7.8v.1M11.5 16v-5.5M11.5 13c0-1.6 1-2.6 2.4-2.6s2.1 1 2.1 2.6V16"/></svg></a><a class="social" href="../resume.html" aria-label="Résumé" title="Résumé"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 3.5h7l4 4v13H7z"/><path d="M14 3.5v4h4M9.5 12h6M9.5 15h6M9.5 18h4"/></svg></a></div>
     </div>
-    <div>
-      <h2 class="footer-h">Pages</h2>
-      <ul class="plain">
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="../about.html">About</a></li>
-        <li><a href="../projects.html">Projects</a></li>
-        <li><a href="../assets/Julieta-Lara-Romero-CV.pdf">Résumé</a></li>
+    <nav aria-labelledby="f-pages">
+      <h2 class="footer-h" id="f-pages">Pages</h2>
+      <ul class="plain footer-links">
+        <li><a href="../index.html"><span>Home</span></a></li>
+        <li><a href="../about.html"><span>About</span></a></li>
+        <li><a href="../projects.html"><span>Projects</span></a></li>
+        <li><a href="../resume.html"><span>Résumé</span></a></li>
       </ul>
-    </div>
+    </nav>
     <div>
       <h2 class="footer-h">Contact</h2>
-      <ul class="plain">
-        <li><a href="mailto:julietalarar98@gmail.com">julietalarar98@gmail.com</a></li>
-        <li><a href="https://www.linkedin.com/in/julieta-lara-romero-525366285/" rel="me">LinkedIn</a></li>
+      <ul class="plain footer-links">
+        <li><a href="mailto:julietalarar98@gmail.com"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6"/></svg><span>Write to me</span></a></li>
+        <li><a href="https://www.linkedin.com/in/julieta-lara-romero-525366285/" rel="me noopener" target="_blank"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="3.5" width="17" height="17" rx="3"/><path d="M8 10.5V16M8 7.8v.1M11.5 16v-5.5M11.5 13c0-1.6 1-2.6 2.4-2.6s2.1 1 2.1 2.6V16"/></svg><span>LinkedIn</span><span class="sr-only"> (opens in a new tab)</span></a></li>
+        <li><a href="../resume.html"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 3.5h7l4 4v13H7z"/><path d="M14 3.5v4h4M9.5 12h6M9.5 15h6M9.5 18h4"/></svg><span>Résumé</span></a></li>
       </ul>
     </div>
   </div>
-  <div class="wrap footer-base muted">
-    <p>© 2026 Julieta Lara Romero</p>
-    <p>Designed and built by hand with HTML, CSS and JavaScript. Charts use synthetic data.</p>
+  <div class="wrap footer-base">
+    <p>© 2026 Julieta Lara Romero<span class="dot" aria-hidden="true">·</span><span class="muted">Designed and built by hand with HTML, CSS and JavaScript. Charts use synthetic data.</span></p>
+    <a class="to-top" href="#main">Back to top<svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 19V5M6 11l6-6 6 6"/></svg></a>
   </div>
 </footer>
 <script src="../assets/site.js" defer></script>

@@ -149,6 +149,60 @@
     });
   }
 
+  /* ------------------------------------------------------------ Excel workbook
+     Sheet tabs switch the visible sheet (arrow keys move between tabs).
+     Selecting a cell shows its address and formula in the formula bar, the
+     way Excel does; cells without a formula show their value. */
+  [].forEach.call(document.querySelectorAll('[data-xl]'), function (book) {
+    var nameBox = book.querySelector('.xl-name');
+    var bar = book.querySelector('.xl-formula');
+    var tabs = [].slice.call(book.querySelectorAll('[role="tab"]'));
+    var selected = null;
+    function select(td) {
+      if (!td || !nameBox) return;
+      if (selected) selected.classList.remove('is-sel');
+      selected = td;
+      td.classList.add('is-sel');
+      nameBox.textContent = td.dataset.ref;
+      bar.textContent = td.dataset.f || td.textContent;
+    }
+    book.addEventListener('click', function (e) {
+      var td = e.target.closest('td[data-ref]');
+      if (td && book.contains(td)) select(td);
+    });
+    book.addEventListener('focusin', function (e) {
+      if (e.target.matches && e.target.matches('td[data-ref]')) select(e.target);
+    });
+    function activate(tab, focus) {
+      tabs.forEach(function (t) {
+        var on = t === tab;
+        t.setAttribute('aria-selected', String(on));
+        t.tabIndex = on ? 0 : -1;
+        var panel = document.getElementById(t.getAttribute('aria-controls'));
+        if (panel) panel.hidden = !on;
+      });
+      if (focus) tab.focus();
+      var panel = document.getElementById(tab.getAttribute('aria-controls'));
+      var first = panel && (panel.querySelector('td[data-f]') || panel.querySelector('td[data-ref]'));
+      select(first);
+      if (panel && !reduced && panel.animate) panel.animate([{ opacity: 0.3 }, { opacity: 1 }], { duration: 200, easing: 'ease-out' });
+    }
+    tabs.forEach(function (t, i) {
+      t.addEventListener('click', function () { activate(t, false); });
+      t.addEventListener('keydown', function (e) {
+        var k = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+        if (k) { e.preventDefault(); activate(tabs[(i + k + tabs.length) % tabs.length], true); }
+      });
+    });
+    var start = book.querySelector('.xl-sheet:not([hidden]) td[data-f]');
+    if (start) select(start);
+  });
+
+  /* ------------------------------------------------------------ print (résumé page) */
+  [].forEach.call(document.querySelectorAll('[data-print]'), function (b) {
+    b.addEventListener('click', function () { window.print(); });
+  });
+
   /* ------------------------------------------------------------ project filters */
   var group = document.querySelector('.filters');
   var list = document.getElementById('proj-list');
